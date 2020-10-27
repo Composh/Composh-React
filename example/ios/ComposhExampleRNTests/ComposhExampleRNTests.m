@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface ReactNativeComposhTests : XCTestCase
+@interface ComposhExampleRNTests : XCTestCase
 
 @end
 
-@implementation ReactNativeComposhTests
+@implementation ComposhExampleRNTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {

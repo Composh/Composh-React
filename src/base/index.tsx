@@ -7,7 +7,7 @@
 // import Card from './Card';
 // import CheckBox from './CheckBox';
 import Chip from './Chip';
-// import Container from './Container';
+import Container from './Container';
 // import Content from './Content';
 // import Dialog from './Dialog';
 // import Divider from './Divider';
@@ -24,7 +24,7 @@ import Overlay from './Overlay';
 import StatusViewBar from './StatusViewBar';
 // import Subtitle from './Subtitle';
 // import Table from './Table';
-// import Title from './Title';
+import Title from './Title';
 // import Toggle from './Toggle';
 import Toolbar from './Toolbar/Toolbar';
 import ToolbarGroup from './Toolbar/ToolbarGroup';
@@ -41,7 +41,7 @@ export {
   // Card,
   // CheckBox,
   Chip,
-  // Container,
+  Container,
   // Content,
   // Dialog,
   // Divider,
@@ -58,7 +58,7 @@ export {
   StatusViewBar,
   // Subtitle,
   // Table,
-  // Title,
+  Title,
   // Toggle,
   Toolbar,
   ToolbarGroup,

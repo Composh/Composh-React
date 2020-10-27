@@ -1,27 +1,24 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import {
   Dimensions,
-  Platform,
   StyleSheet,
   View,
-  ViewPropTypes,
 } from 'react-native';
 
 // Lib Configs Import
 import {
   Colors,
-  Sizes,
 } from '../../constants';
 
 const deviceHeight = Dimensions.get('window').height;
 
 
 
-const Container = (props) => {
+const Container = (props: any) => {
   const {
     children,
   } = props;

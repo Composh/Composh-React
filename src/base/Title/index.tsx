@@ -11,22 +11,26 @@ import {
 
 import {
   Colors,
-  Sizes,
+  Metrics,
 } from '../../constants';
 
 
 
-const Title = (props) => {
-  const {
-    color,
-  } = props;
+interface Props {
+  color?: string;
+  style?: any;
+}
 
+
+
+const Title: React.FC<Props> = (props: any) => {
   return (
     <Text
       {...props}
       style={[
-        { color: color ? color : Colors.BLACK },
-        styles.titleStyles,
+        { color: props.color ? props.color : Colors.BLACK },
+        // styles.titleStyles,
+        props.style,
       ]}
       numberOfLines={1}
       ellipsizeMode="tail"
@@ -51,7 +55,7 @@ const styles = StyleSheet.create({
 
   titleStyles: {
     marginTop: Platform.OS === 'ios' ? 1 : -2, // It Was Just 1
-    fontSize: Platform.OS === 'ios' ? Sizes.TITLE_IOS : Sizes.TITLE_ANDROID,
+    fontSize: Platform.OS === 'ios' ? Metrics.TITLE_IOS : Metrics.TITLE_ANDROID,
     fontWeight: Platform.OS === 'ios' ? '700' : undefined,
 
     // fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto_medium', //Don't Work
