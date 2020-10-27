@@ -15,11 +15,11 @@ import ZocialIcon from 'react-native-vector-icons/Zocial';
 
 const customIcons = {};
 
-export const registerCustomIconType = (id, customIcon) => {
+export const registerCustomIconType = (id: string | number, customIcon: any) => {
   customIcons[id] = customIcon;
 };
 
-export default type => {
+export default (type: string) => {
   switch (type) {
     case 'antdesign':
       return AntDesignIcon;

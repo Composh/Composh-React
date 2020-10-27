@@ -25,3 +25,7 @@
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
+  
+  "engines": {
+    "node": ">=10"
+  },
