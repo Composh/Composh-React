@@ -12,9 +12,7 @@ import WemoScreen from './screens/Wemo';
 const App = () => {
   return (
     <>
-      <StatusBar barStyle="dark-content" />
-      {/* <ChipScreen /> */}
-      <WemoScreen />
+      <ChipScreen />
     </>
   );
 };
