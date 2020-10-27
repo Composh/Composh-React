@@ -1,0 +1,23 @@
+# Dotfiles
+.expo
+
+.babelrc
+.eslintignore
+.eslintrc
+.eslintrc.json
+
+.watchmanconfig
+
+.gitattributes
+_config.yml
+
+# Documents
+
+# Test cases
+example/
+
+# routes.js
+# assets/
+# src/screens/
+# .prettierrc
+# 
