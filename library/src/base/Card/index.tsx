@@ -3,11 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  Dimensions,
-  Platform,
   StyleSheet,
   View,
-  ViewPropTypes,
 } from 'react-native';
 
 // Lib Configs Import
@@ -17,7 +14,6 @@ import {
 
 import {
   Colors,
-  Sizes,
 } from '../../constants';
 
 // Plugins Import

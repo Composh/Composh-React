@@ -11,7 +11,7 @@ import {
 
 import {
   Colors,
-  Sizes,
+  Metrics,
 } from '../../constants';
 
 
@@ -50,9 +50,9 @@ const styles = StyleSheet.create({
 
   titleStyles: {
     marginTop: Platform.OS === 'ios' ? 1 : -1, // It Was Just 1
-    fontSize: Platform.OS === 'ios' ? Sizes.SUBTITLE_IOS : Sizes.SUBTITLE_ANDROID,
+    fontSize: Platform.OS === 'ios' ? Metrics.SUBTITLE_IOS : Metrics.SUBTITLE_ANDROID,
     fontWeight: Platform.OS === 'ios' ? '300' : undefined,
-    
+
     // fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto_medium', //Don't Work
     // textAlign: Platform.OS === 'ios' ? 'center' : 'left',
     // paddingLeft: Platform.OS === 'ios' ? 4 : 0,

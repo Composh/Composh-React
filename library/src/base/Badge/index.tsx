@@ -12,7 +12,7 @@ import {
 
 import {
   Colors,
-  Sizes,
+  Metrics,
 } from '../../constants';
 
 
@@ -114,8 +114,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',
-    minWidth: Sizes.BADGE_CIRCLE_SIZE,
-    height: Sizes.BADGE_CIRCLE_SIZE + 1,
+    minWidth: Metrics.BADGE_CIRCLE_SIZE,
+    height: Metrics.BADGE_CIRCLE_SIZE + 1,
     paddingBottom: 2,
     paddingHorizontal: 5,
     borderWidth: StyleSheet.hairlineWidth,
@@ -123,19 +123,19 @@ const styles = StyleSheet.create({
   },
 
   badgeRound: {
-    borderRadius: Sizes.BADGE_CIRCLE_SIZE / 2,
+    borderRadius: Metrics.BADGE_CIRCLE_SIZE / 2,
   },
 
   badgeBlock: {
-    borderRadius: Sizes.BADGE_CIRCLE_SIZE / 4,
+    borderRadius: Metrics.BADGE_CIRCLE_SIZE / 4,
   },
 
   miniBadge: {
     paddingHorizontal: 0,
     paddingVertical: 0,
-    minWidth: Sizes.BADGE_MINI_CIRCLE_SIZE,
-    height: Sizes.BADGE_MINI_CIRCLE_SIZE,
-    borderRadius: Sizes.BADGE_MINI_CIRCLE_SIZE / 2,
+    minWidth: Metrics.BADGE_MINI_CIRCLE_SIZE,
+    height: Metrics.BADGE_MINI_CIRCLE_SIZE,
+    borderRadius: Metrics.BADGE_MINI_CIRCLE_SIZE / 2,
   },
 
   text: {

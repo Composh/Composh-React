@@ -1,6 +1,10 @@
 // React Components Import
 import React from 'react';
-import { View } from 'react-native';
+
+import {
+  Text,
+  View,
+} from 'react-native';
 
 // Styled Component Common Import
 import {
@@ -36,6 +40,165 @@ const ChipScreen: React.FC = () => {
           </Title>
         }
       />
+
+
+      <View>
+
+
+        <View>
+
+          <Text>
+            Basic
+          </Text>
+
+          <View style={{
+            flexDirection: 'row',
+          }}>
+
+            <Text>
+              Default
+            </Text>
+
+            <Text>
+              Icon
+            </Text>
+
+            <Text>
+              Avatar
+            </Text>
+
+          </View>
+
+        </View>
+
+
+
+
+
+
+        <View>
+
+          <Text>
+            Colors
+          </Text>
+
+          <View style={{
+            flexDirection: 'row',
+          }}>
+
+            <Text>
+              Red
+            </Text>
+
+            <Text>
+              Green
+            </Text>
+
+            <Text>
+              Darkblue
+            </Text>
+
+          </View>
+
+        </View>
+
+
+
+
+
+
+        <View>
+
+          <Text>
+            Outline
+          </Text>
+
+          <View style={{
+            flexDirection: 'row',
+          }}>
+
+            <Text>
+              Red
+            </Text>
+
+            <Text>
+              Green
+            </Text>
+
+            <Text>
+              Darkblue
+            </Text>
+
+          </View>
+
+        </View>
+
+
+
+
+
+
+        <View>
+
+          <Text>
+            Icons
+          </Text>
+
+          <View style={{
+            flexDirection: 'row',
+          }}>
+
+            <Text>
+              Home
+            </Text>
+
+            <Text>
+              Camera
+            </Text>
+
+            <Text>
+              User
+            </Text>
+
+          </View>
+
+        </View>
+
+
+
+
+
+
+        <View>
+
+          <Text>
+            Avatar
+          </Text>
+
+          <View style={{
+            flexDirection: 'row',
+          }}>
+
+            <Text>
+              Andy
+            </Text>
+
+            <Text>
+              Martin
+            </Text>
+
+            <Text>
+              Carla
+            </Text>
+
+          </View>
+
+        </View>
+
+
+
+
+      </View>
 
 
 

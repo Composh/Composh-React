@@ -1,22 +1,15 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import {
-  Dimensions,
-  Platform,
   ScrollView,
   StyleSheet,
   View,
-  ViewPropTypes,
 } from 'react-native';
 
 // Lib Configs Import
-import {
-  Colors,
-  Sizes,
-} from '../../constants';
 
 
 
