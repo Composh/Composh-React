@@ -54,7 +54,7 @@ interface Props {
 
 
 
-const Chip: React.FC<Props> = (props) => {
+const Chip: React.FC<Props> = (props: any) => {
   // const [elevation, setElevation] = useState(new Animated.Value(0));
 
   // const scale = 2;
