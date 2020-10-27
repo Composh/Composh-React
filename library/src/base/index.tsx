@@ -10,7 +10,7 @@ import Chip from './Chip';
 import Container from './Container';
 // import Content from './Content';
 // import Dialog from './Dialog';
-// import Divider from './Divider';
+import Divider from './Divider';
 // import FAB from './FAB';
 // import FABItem from './FAB/Item';
 // import Footer from './Footer';
@@ -44,7 +44,7 @@ export {
   Container,
   // Content,
   // Dialog,
-  // Divider,
+  Divider,
   // FAB,
   // FABItem,
   // Footer,
