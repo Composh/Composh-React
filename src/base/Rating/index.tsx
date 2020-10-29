@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 // import { Container } from './styles';
 
-const ButtonBack: React.FC = () => {
+const Rating: React.FC = () => {
   return (
 
     <View />
@@ -11,4 +11,4 @@ const ButtonBack: React.FC = () => {
   );
 }
 
-export default ButtonBack;
+export default Rating;
