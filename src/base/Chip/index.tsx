@@ -1,5 +1,3 @@
-// https://callstack.github.io/react-native-paper/chip.html
-
 import React from 'react';
 
 import {
@@ -12,15 +10,11 @@ import {
 import color from 'color';
 
 import Icon from '../Icon';
-// import Icon from '~/components/Icon';
-
-// import select from '../assets/select.png'
-// import cancel from '../assets/cancel.png'
 
 
 
 interface Props {
-  // children,
+  // Button Props,
   activeOpacity?: number;
   disabled?: boolean;
 
@@ -39,17 +33,12 @@ interface Props {
   onLongPress?: any;
   onClose?: any;
 
-  // Icon Props
-  iconType?: string;
-  iconName?: string;
+  // Visual Label
+  thumb?: any;
 
   // Text Props
   title?: string;
   textStyle?: any;
-
-  // avatar,
-
-  // testID,
 }
 
 
@@ -153,6 +142,7 @@ const Chip: React.FC<Props> = (props: any) => {
 
 
   return (
+
     <TouchableOpacity
       activeOpacity={props.activeOpacity || 0.75}
       disabled={props.disabled}
@@ -182,17 +172,12 @@ const Chip: React.FC<Props> = (props: any) => {
         )}
         */}
 
-        {props.iconType && props.iconName
-          // && !avatar
-          && (
-            <Icon
-              style={{ marginRight: 10 }}
-              type={props.iconType}
-              name={props.iconName}
-              size={18}
-              color={textColor()}
-            />
-          )}
+
+        {props.thumb && (
+          <View style={styles.thumb}>
+            {props.thumb}
+          </View>
+        )}
 
 
         <Text
@@ -216,18 +201,15 @@ const Chip: React.FC<Props> = (props: any) => {
             accessibilityComponentType="button">
             <View style={styles.icon}>
               <Icon
-                style={{ marginLeft: 8 }}
                 type="material-community"
                 name="close-circle"
-                size={16}
+                size={18}
                 color={iconColor()}
               />
             </View>
           </TouchableOpacity>
         )}
       </View>
-
-      {/* </TouchableRipple> */}
 
     </TouchableOpacity>
 
@@ -242,7 +224,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     height: 35,
     paddingLeft: 15,
-    paddingRight: 12,
+    paddingRight: 15,
     margin: 2,
     borderWidth: StyleSheet.hairlineWidth,
     borderStyle: 'solid',
@@ -252,13 +234,17 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    // paddingHorizontal: 4,
+  },
+
+  thumb: {
+    marginRight: 8,
   },
 
   icon: {
+    marginLeft: 8,
+    marginRight: -2,
     paddingTop: 4,
     paddingBottom: 4,
-    // backgroundColor: 'red',
   },
 
   text: {
