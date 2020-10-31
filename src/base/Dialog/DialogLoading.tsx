@@ -9,15 +9,9 @@ import {
   View,
 } from 'react-native';
 
-// Lib Configs Import
-import {
-  Colors,
-  Sizes,
-} from '../../constants';
 
 
-
-const DialogLoading = (props) => {
+const DialogLoading = (props: any) => {
   const {
     visible,
     heightLoader,

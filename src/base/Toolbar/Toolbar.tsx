@@ -6,7 +6,7 @@ import {
 
 import {
   Metrics,
-} from '../../constants';
+} from '~/common/constants';
 
 import {
   CenterContainer,
@@ -15,7 +15,7 @@ import {
   ToolbarContainer,
 } from './styled';
 
-import StatusViewBar from '../../base/StatusViewBar';
+import StatusViewBar from '~/components/StatusViewBar';
 
 
 
@@ -92,7 +92,7 @@ const Toolbar: React.FC<Props> = (props: any) => {
           {
             paddingLeft: props.noSubToolbarPadding ? 0 : 8,
             paddingRight: props.noSubToolbarPadding ? 0 : 8,
-            minHeight: Platform.select({ android: Metrics.SUBTOOLBAR_ANDROID, ios: Metrics.SUBTOOLBAR_IOS }),
+            height: Platform.select({ android: Metrics.SUBTOOLBAR_ANDROID, ios: Metrics.SUBTOOLBAR_IOS }),
             backgroundColor: props.backgroundColor,
             justifyContent: 'center',
           },
