@@ -1,6 +1,6 @@
 # composh-react
 
-> React + Component + Osh = A React Component Library
+> Components + React + Osh = A React Component Library
 
 
 [![NPM](https://img.shields.io/npm/v/composh-react.svg)](https://www.npmjs.com/package/composh-react) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
@@ -22,15 +22,20 @@ yarn add composh-react
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import React from 'react'
 
-import MyComponent from 'composh-react'
-import 'composh-react/dist/index.css'
+import {
+  Accordion,
+} from 'composh-react'
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+
+
+const ScreenName: React.FC = () => {
+  return (
+    
+    <Accordion />
+
+  )
 }
 ```
 
