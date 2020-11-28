@@ -1,20 +1,20 @@
-# react-composh
+# composh-react
 
 > React + Component + Osh = A React Component Library
 
 
-[![NPM](https://img.shields.io/npm/v/react-composh.svg)](https://www.npmjs.com/package/react-composh) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/composh-react.svg)](https://www.npmjs.com/package/composh-react) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 
 
 ## Install
 
 ```bash
-npm install --save react-composh
+npm install --save composh-react
 ```
 
 ```bash
-yarn add react-composh
+yarn add composh-react
 ```
 
 
@@ -24,8 +24,8 @@ yarn add react-composh
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'react-composh'
-import 'react-composh/dist/index.css'
+import MyComponent from 'composh-react'
+import 'composh-react/dist/index.css'
 
 class Example extends Component {
   render() {
