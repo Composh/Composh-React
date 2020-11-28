@@ -1,5 +1,5 @@
 {
-  "name": "react-composh",
+  "name": "composh-react",
   "description": "React + Component + Osh = A React Native Component Library",
   "version": "1.0.1",
   "author": "Italo Sena",
@@ -7,10 +7,10 @@
   "homepage": "https://composh.io/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Composh/react-composh.git"
+    "url": "https://github.com/Composh/composh-react.git"
   },
   "bugs": {
-    "url": "https://github.com/Composh/react-composh/issues"
+    "url": "https://github.com/Composh/composh-react/issues"
   },
   "readmeFilename": "README.md",
   "private": false,
