@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import {
   StyleSheet,
@@ -96,9 +96,9 @@ const Card = (props) => {
 
 
 
-Card.propTypes = {
-  backgroundColor: PropTypes.string,
-};
+// Card.propTypes = {
+//   backgroundColor: PropTypes.string,
+// };
 
 
 

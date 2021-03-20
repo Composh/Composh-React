@@ -1,9 +1,9 @@
 import React from 'react';
 
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import {
-  Platform,
+  // Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -12,12 +12,7 @@ import {
 
 // Application Configs Import
 import {
-  inputLayout,
-} from '../../theme/Layout';
-
-import {
   Colors,
-  Sizes,
 } from '../../constants';
 
 import CheckBoxIcon from './CheckBoxIcon';
@@ -66,8 +61,13 @@ const CheckBox = props => {
       height: size + 5 || 24,
       // backgroundColor: 'red',
     },
-    !right && inputLayout.inputLeftIcon,
-    right && inputLayout.inputRightIcon,
+    !right && {
+      marginLeft: 2,
+      marginRight: 8,
+    },
+    right && {
+      marginLeft: 8,
+    },
   ];
 
 
@@ -141,22 +141,22 @@ const CheckBox = props => {
 
 
 
-CheckBox.propTypes = {
-  ...CheckBoxIcon.propTypes,
-  // Component: PropTypes.elementType,
-  iconRight: PropTypes.bool,
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  titleProps: PropTypes.object,
-  center: PropTypes.bool,
-  right: PropTypes.bool,
-  containerStyle: PropTypes.object,
-  wrapperStyle: PropTypes.object,
-  textStyle: PropTypes.object,
-  onPress: PropTypes.func,
-  onLongPress: PropTypes.func,
-  checkedTitle: PropTypes.string,
-  fontFamily: PropTypes.string,
-};
+// CheckBox.propTypes = {
+//   ...CheckBoxIcon.propTypes,
+//   // Component: PropTypes.elementType,
+//   iconRight: PropTypes.bool,
+//   title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+//   titleProps: PropTypes.object,
+//   center: PropTypes.bool,
+//   right: PropTypes.bool,
+//   containerStyle: PropTypes.object,
+//   wrapperStyle: PropTypes.object,
+//   textStyle: PropTypes.object,
+//   onPress: PropTypes.func,
+//   onLongPress: PropTypes.func,
+//   checkedTitle: PropTypes.string,
+//   fontFamily: PropTypes.string,
+// };
 
 
 

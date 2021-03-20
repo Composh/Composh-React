@@ -1,27 +1,27 @@
 // React Components Import
 import React,
 {
-  useEffect,
+  // useEffect,
   useState,
 } from 'react';
 
 import {
   Animated,
-  StyleSheet,
+  // StyleSheet,
 } from 'react-native';
+
+// Lib Configs Import
+import StatusViewBar from '../StatusViewBar';
 
 import {
   TouchableOpacityStyle,
 } from './styled';
 
-// Lib Configs Import
-import StatusViewBar from '../../base/StatusViewBar';
-
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacityStyle);
 
 
 
-export interface Props {
+interface IProps {
   visible?: boolean;
   onOverlayPress?: Function;
   noPress?: boolean;
@@ -33,7 +33,7 @@ export interface Props {
 
 
 
-const Overlay: React.FC<Props> = (props: any) => {
+const Overlay: React.FC<IProps> = (props) => {
   const [opacity] = useState(new Animated.Value(1));
 
 
@@ -76,7 +76,7 @@ const Overlay: React.FC<Props> = (props: any) => {
               opacity: opacity,
               backgroundColor: props.showBackground
                 ? props.overlayColor || 'rgba(0, 0, 0, 0.5)'
-                : 'transparent'
+                : 'transparent',
             },
           ]}
           onPress={onPressOverlayFunction}>

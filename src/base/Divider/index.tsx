@@ -7,7 +7,7 @@ import {
 
 
 
-interface Props {
+interface IProps {
   height?: any; // number or string
   width?: any; // number or string
   color?: string;
@@ -16,7 +16,7 @@ interface Props {
 
 
 
-const Divider: React.FC<Props> = (props: any) => {
+const Divider: React.FC<IProps> = (props) => {
   return (
     <View
       style={([

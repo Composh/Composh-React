@@ -1,147 +1,109 @@
 import React from 'react';
 
-import PropTypes from 'prop-types';
-
 import {
   Platform,
   StyleSheet,
-  Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 
 import {
   Colors,
-  Metrics,
+  Sizes,
 } from '../../constants';
 
-
-
-const BadgeCircle = (props) => {
-
-  const {
-
-    value,
-
-    color,
-    containerStyle,
-
-    block,
-    round,
-    badgeStyle,
-
-    textStyle,
-
-    onPress,
-    Component = onPress ? TouchableOpacity : View,
-
-    ...attributes
-
-  } = props;
+import {
+  BadgeContainer,
+  BadgeButtonContainer,
+  BadgeViewContainer,
+  TextBadge,
+} from './styled';
 
 
 
-  const isString = value && typeof value === 'string';
+interface IProps {
+  value?: any;
+
+  backgroundColor?: string;
+  containerStyle?: any;
+  badgeStyle?: any;
+  textStyle?: any;
+
+  block?: any;
+  round?: any;
+  onPress?: any;
+}
+
+
+
+const BadgeCircle: React.FC<IProps> = (props: any) => {
+  const Component = props.onPress ? BadgeButtonContainer : BadgeViewContainer;
+  const isString = props.value && typeof props.value === 'string';
+
+
 
   return (
-    <View
+
+    <BadgeContainer
       style={[
-        styles.noContainerStyle,
-        containerStyle && containerStyle,
+        props.containerStyle && props.containerStyle,
       ]}>
 
       <Component
-        {...attributes}
         style={[
-          { backgroundColor: color },
-          styles.badge,
+          { backgroundColor: props.backgroundColor },
           !isString && styles.miniBadge,
-          badgeStyle && badgeStyle,
-          block && !round && styles.badgeBlock,
-          !block && round && styles.badgeRound,
-          !block && !round && Platform.select({ android: styles.badgeBlock, ios: styles.badgeRound }),
+          props.badgeStyle && props.badgeStyle,
+          props.block && !props.round && styles.badgeBlock,
+          !props.block && props.round && styles.badgeRound,
+          !props.block && !props.round && Platform.select({ android: styles.badgeBlock, ios: styles.badgeRound }),
         ]}
-        onPress={onPress}>
+        onPress={props.onPress}>
 
         {isString
           ? (
-            <Text
+            <TextBadge
               style={[
-                styles.text,
-                textStyle && textStyle,
+                props.textStyle && props.textStyle,
               ]}>
-              {value}
-            </Text>
+              {props.value}
+            </TextBadge>
           )
-          : value
-            ? value
+          : props.value
+            ? props.value
             : <View />
         }
 
       </Component>
 
-    </View >
+    </BadgeContainer>
+
   );
 };
 
 
 
-BadgeCircle.propTypes = {
-  color: PropTypes.string,
-  onPress: PropTypes.func,
-  //   badgeStyle: ViewPropTypes.style,
-  //   containerStyle: ViewPropTypes.style,
-  //   textStyle: Text.propTypes.style,
-  //   value: PropTypes.node,
-  //   Component: PropTypes.func,
-};
-
-
-
 BadgeCircle.defaultProps = {
-  color: Colors.PRIMARY,
+  backgroundColor: Colors.PRIMARY,
 };
 
 
 
 const styles = StyleSheet.create({
 
-  noContainerStyle: {
-    alignSelf: 'flex-start',
-  },
-
-  badge: {
-    alignSelf: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-    minWidth: Metrics.BADGE_CIRCLE_SIZE,
-    height: Metrics.BADGE_CIRCLE_SIZE + 1,
-    paddingBottom: 2,
-    paddingHorizontal: 5,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: Colors.WHITE,
-  },
-
   badgeRound: {
-    borderRadius: Metrics.BADGE_CIRCLE_SIZE / 2,
+    borderRadius: Sizes.BADGE_CIRCLE_SIZE * 2,
   },
 
   badgeBlock: {
-    borderRadius: Metrics.BADGE_CIRCLE_SIZE / 4,
+    borderRadius: Sizes.BADGE_CIRCLE_SIZE / 4,
   },
 
   miniBadge: {
     paddingHorizontal: 0,
     paddingVertical: 0,
-    minWidth: Metrics.BADGE_MINI_CIRCLE_SIZE,
-    height: Metrics.BADGE_MINI_CIRCLE_SIZE,
-    borderRadius: Metrics.BADGE_MINI_CIRCLE_SIZE / 2,
-  },
-
-  text: {
-    fontSize: 12,
-    color: 'white',
-    paddingHorizontal: 4,
+    minWidth: Sizes.BADGE_MINI_CIRCLE_SIZE,
+    height: Sizes.BADGE_MINI_CIRCLE_SIZE,
+    borderRadius: Sizes.BADGE_MINI_CIRCLE_SIZE / 2,
   },
 
 });

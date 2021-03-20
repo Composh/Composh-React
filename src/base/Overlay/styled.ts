@@ -1,10 +1,5 @@
 import styled from 'styled-components/native';
 
-import {
-  Colors,
-  Metrics,
-} from '~/common/constants';
-
 
 
 // Common Styles

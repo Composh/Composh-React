@@ -11,7 +11,6 @@ import {
 
 import {
   Colors,
-  Sizes,
 } from '../../constants';
 
 import Icon from '../Icon';

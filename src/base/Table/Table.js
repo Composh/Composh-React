@@ -5,6 +5,8 @@ import {
   ViewPropTypes,
 } from 'react-native';
 
+
+
 export class Table extends React.Component {
 
   static propTypes = {
@@ -30,14 +32,13 @@ export class Table extends React.Component {
     return (
       <View
         style={[
-          this.props.style,
           {
             borderLeftWidth,
             borderBottomWidth,
             borderColor
-          }
-        ]}
-      >
+          },
+          this.props.style,
+        ]}>
         {this._renderChildren(this.props)}
       </View>
     );
@@ -47,7 +48,7 @@ export class Table extends React.Component {
 
 
 export class TableWrapper extends Component {
-  
+
   static propTypes = {
     style: ViewPropTypes.style
   };
@@ -60,6 +61,12 @@ export class TableWrapper extends Component {
 
   render() {
     const { style } = this.props;
-    return <View style={style}>{this._renderChildren(this.props)}</View>;
+    return (
+
+      <View style={style}>
+        {this._renderChildren(this.props)}
+      </View>
+
+    );
   }
 }

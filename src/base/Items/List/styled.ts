@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 
 // List Item Component
 
-export const ItemContainer = styled.View`
+export const ItemContainer = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
   min-height: 55px;

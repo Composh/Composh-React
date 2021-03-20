@@ -17,7 +17,7 @@ const sum = arr => arr.reduce((acc, n) => acc + n, 0);
 
 
 export class Col extends React.Component {
- 
+
   static propTypes = {
     width: PropTypes.number,
     style: ViewPropTypes.style,
@@ -28,11 +28,29 @@ export class Col extends React.Component {
     const { data, style, width, heightArr, flex, textStyle, ...props } = this.props;
 
     return data ? (
-      <View style={[width ? { width: width } : { flex: 1 }, flex && { flex: flex }, style]}>
+      <View
+        style={[
+          width ? { width: width } : { flex: 1 },
+          flex && { flex: flex },
+          style,
+        ]}>
+
         {data.map((item, i) => {
           const height = heightArr && heightArr[i];
-          return <Cell key={i} data={item} width={width} height={height} textStyle={textStyle} {...props} />;
+          return (
+
+            <Cell
+              key={i}
+              data={item}
+              width={width}
+              height={height}
+              textStyle={textStyle}
+              {...props}
+            />
+
+          );
         })}
+
       </View>
     ) : null;
   }
@@ -41,7 +59,7 @@ export class Col extends React.Component {
 
 
 export class Cols extends Component {
-  
+
   static propTypes = {
     style: ViewPropTypes.style,
     textStyle: Text.propTypes.style

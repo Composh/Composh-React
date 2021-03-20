@@ -1,13 +1,13 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 
-import PropTypes from 'prop-types';
-
 import {
   Platform,
   StyleSheet,
   Text,
 } from 'react-native';
+
+// import PropTypes from 'prop-types';
 
 import {
   Colors,
@@ -35,14 +35,14 @@ const Subtitle = (props) => {
 
 
 
-Subtitle.propTypes = {
-  ...Text.propTypes,
-  style: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.number,
-    PropTypes.array,
-  ]),
-};
+// Subtitle.propTypes = {
+//   ...Text.propTypes,
+//   style: PropTypes.oneOfType([
+//     PropTypes.object,
+//     PropTypes.number,
+//     PropTypes.array,
+//   ]),
+// };
 
 
 

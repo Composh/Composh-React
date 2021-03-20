@@ -1,7 +1,8 @@
-import { Row, Rows } from './Rows';
-import { Col, Cols } from './Cols';
-import { Table, TableWrapper } from './Table';
 import { Cell } from './Cell';
+import { Col, Cols } from './Cols';
+import { Row, Rows } from './Rows';
+import { Table, TableWrapper } from './Table';
+
 
 
 export default {
@@ -13,5 +14,3 @@ export default {
   TableWrapper: TableWrapper,
   Cell: Cell,
 };
-
-

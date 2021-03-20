@@ -11,7 +11,7 @@ import {
 // Application Configs Import
 import {
   Colors,
-} from '~/common/constants';
+} from '../../constants';
 
 
 
@@ -96,8 +96,11 @@ class Toggle extends PureComponent {
       disabled,
 
       // Toggle Style
-      flexToggle,
       style,
+
+      height,
+      width,
+      flexToggle,
 
       // Props Value
       value,
@@ -137,8 +140,9 @@ class Toggle extends PureComponent {
             {
               flex: flexToggle ? 1 : 0,
               alignSelf: flexToggle ? 'auto' : 'flex-start',
-              //   width: this.props.highlightStyle.widthButton,
-              borderWidth: borderWidth || 1,
+              height: height || 35,
+              width: flexToggle ? flexToggle : width,
+              borderWidth: borderWidth ? borderWidth : borderColor ? 1 : 0,
               borderRadius: borderRadius || 4,
               borderColor: this.state.selected ? borderTintColor : borderColor || Colors.GREY,
               backgroundColor: this.state.selected ? backgroundTintColor : backgroundColor || Colors.WHITE,

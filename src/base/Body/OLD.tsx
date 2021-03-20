@@ -1,13 +1,14 @@
 import React from 'react';
 
-import PropTypes from 'prop-types';
-
 import {
   // Platform,
   StyleSheet,
   View,
-  ViewPropTypes,
+  // ViewPropTypes,
 } from 'react-native';
+
+// import PropTypes from 'prop-types';
+
 
 // import Sizes from '../../theme/Sizes';
 

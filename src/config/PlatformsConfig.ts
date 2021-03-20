@@ -1,12 +1,11 @@
 import {
   Dimensions,
   Platform,
-} from "react-native";
+} from 'react-native';
 
 
 
 export function isIphoneX() {
-
   const X_WIDTH = 375;
   const X_HEIGHT = 812;
 

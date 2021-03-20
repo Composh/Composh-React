@@ -13,7 +13,11 @@ import {
 
 
 
-interface Props {
+interface IProps {
+  disabled?: boolean;
+  activeOpacity?: number;
+  onPress?: any;
+
   itemBorder?: boolean;
 
   itemTypeIcon?: object;
@@ -32,10 +36,19 @@ interface Props {
 
 
 
-const ListItem: React.FC<Props> = (props: any) => {
+const ListItem: React.FC<IProps> = (props: any) => {
   return (
 
     <ItemContainer
+      disabled={
+        props.disabled
+          ? props.disabled
+          : props.onPress
+            ? false
+            : true
+      }
+      activeOpacity={props.activeOpacity}
+      onPress={props.onPress}
       style={[
         {
           borderBottomColor: props.itemBorder ? '#878787' : 'transparent',

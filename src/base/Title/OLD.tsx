@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import {
   Platform,
@@ -16,14 +16,23 @@ import {
 
 
 
-interface Props {
+interface IProps {
   color?: string;
   style?: any;
 }
 
+// Title.propTypes = {
+//   ...Text.propTypes,
+//   style: PropTypes.oneOfType([
+//     PropTypes.object,
+//     PropTypes.number,
+//     PropTypes.array,
+//   ]),
+// };
 
 
-const Title: React.FC<Props> = (props: any) => {
+
+const Title: React.FC<IProps> = (props: any) => {
   return (
     <Text
       {...props}
@@ -40,23 +49,12 @@ const Title: React.FC<Props> = (props: any) => {
 
 
 
-Title.propTypes = {
-  ...Text.propTypes,
-  style: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.number,
-    PropTypes.array,
-  ]),
-};
-
-
-
 const styles = StyleSheet.create({
 
   titleStyles: {
     marginTop: Platform.OS === 'ios' ? 1 : -2, // It Was Just 1
     fontSize: Platform.OS === 'ios' ? Metrics.TITLE_IOS : Metrics.TITLE_ANDROID,
-    fontWeight: Platform.OS === 'ios' ? '700' : undefined,
+    fontWeight: Platform.OS === 'ios' ? '700' : '500',
 
     // fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto_medium', //Don't Work
     // textAlign: Platform.OS === 'ios' ? 'center' : 'left',

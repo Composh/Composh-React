@@ -7,14 +7,14 @@ import {
 
 
 
-export interface Props {
+interface IProps {
   group?: string;
   children?: object;
 }
 
 
 
-const ToolbarGroup: React.FC<Props> = (props) => {
+const ToolbarGroup: React.FC<IProps> = (props) => {
   function alignByGroup() {
     if (props.group === 'left') {
       return styles.leftAlign;

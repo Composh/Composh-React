@@ -4,9 +4,9 @@
 // https://callstack.github.io/react-native-paper/fab.html
 
 
-import React, { Component } from "react"; // eslint-disable-line
+import React, { Component } from 'react';
 
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 import {
   Animated,
@@ -16,45 +16,44 @@ import {
   Platform,
   StyleSheet,
   TouchableOpacity,
-} from "react-native";
+} from 'react-native';
 
 // Lib Configs Import
 import {
   Colors,
-  Sizes,
+  Metrics,
 } from '../../constants';
 
 // Utils
-import { isIphoneX } from "../../utils/PlatformsConfig";
+import { isIphoneX } from '../../config/PlatformsConfig';
 
 // Components
 // import FloatingActionItem from "./FloatingActionItem";
-import Overlay from "../Overlay";
+import Overlay from '../Overlay';
 
 // Imports
 import LinearGradient from 'react-native-linear-gradient';
 
-const DEVICE_WIDTH = Dimensions.get("window").width;
+const DEVICE_WIDTH = Dimensions.get('window').width;
 
 const DEFAULT_SHADOW_PROPS = {
   shadowOpacity: 0.35,
   shadowOffset: {
     width: 0,
-    height: 5
+    height: 5,
   },
-  shadowColor: "#000000",
-  shadowRadius: 3
+  shadowColor: '#000000',
+  shadowRadius: 3,
 };
 
 
 
 class FAB extends Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
-      active: false
+      active: false,
     };
 
     this.mainBottomAnimation = new Animated.Value(
@@ -87,9 +86,9 @@ class FAB extends Component {
 
     if (listenKeyboard) {
       const showEvent =
-        Platform.OS === "ios" ? "keyboardWillShow" : "keyboardDidShow";
+        Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow';
       const hideEvent =
-        Platform.OS === "ios" ? "keyboardWillHide" : "keyboardDidHide";
+        Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide';
       this.keyboardWillShowListener = Keyboard.addListener(
         showEvent,
         this.onKeyboardShow
@@ -108,13 +107,13 @@ class FAB extends Component {
       if (visible) {
         Animated.parallel([
           Animated.spring(this.visibleAnimation, { toValue: 0, useNativeDriver: false }),
-          Animated.spring(this.fadeAnimation, { toValue: 1, useNativeDriver: false })
+          Animated.spring(this.fadeAnimation, { toValue: 1, useNativeDriver: false }),
         ]).start();
       }
       if (!visible) {
         Animated.parallel([
           Animated.spring(this.visibleAnimation, { toValue: 1, useNativeDriver: false }),
-          Animated.spring(this.fadeAnimation, { toValue: 0, useNativeDriver: false })
+          Animated.spring(this.fadeAnimation, { toValue: 0, useNativeDriver: false }),
         ]).start();
       }
     }
@@ -150,7 +149,7 @@ class FAB extends Component {
 
 
   //#region Keyboard Show And Hide
-  onKeyboardShow = e => {
+  onKeyboardShow = (e) => {
     const { buttonSize, actionsPaddingTopBottom } = this.props;
     const { height } = e.endCoordinates;
 
@@ -171,7 +170,7 @@ class FAB extends Component {
         toValue: this.distanceToVerticalEdge + height - (isIphoneX() ? 40 : 0),
         duration: 250,
         useNativeDriver: false,
-      })
+      }),
     ]).start();
   };
 
@@ -191,7 +190,7 @@ class FAB extends Component {
         toValue: this.distanceToVerticalEdge,
         duration: 250,
         useNativeDriver: false,
-      })
+      }),
     ]).start();
   };
   //#endregion
@@ -203,7 +202,7 @@ class FAB extends Component {
 
     return {
       ...DEFAULT_SHADOW_PROPS,
-      ...shadow
+      ...shadow,
     };
   };
 
@@ -212,12 +211,20 @@ class FAB extends Component {
     const { animated, onClose } = this.props;
 
     if (animated) {
-      Animated.spring(this.animation, { toValue: 0, useNativeDriver: false }).start();
-      Animated.spring(this.actionsAnimation, { toValue: 0, useNativeDriver: false }).start();
+      Animated.spring(this.animation, {
+        toValue: 0,
+        useNativeDriver: false,
+      }).start();
+
+      Animated.spring(this.actionsAnimation, {
+        toValue: 0,
+        useNativeDriver: false,
+      }).start();
     }
+
     this.updateState(
       {
-        active: false
+        active: false,
       },
       () => {
         if (onClose) {
@@ -264,8 +271,8 @@ class FAB extends Component {
       // console.log('FAB With Action');
       onPress();
       return;
-
-    } else if (children) {
+    }
+    else if (children) {
       // console.log('FAB With Children');
 
       if (!active) {
@@ -293,14 +300,14 @@ class FAB extends Component {
             duration: 180,
             create: {
               type: LayoutAnimation.Types.easeInEaseOut,
-              property: LayoutAnimation.Properties.opacity
-            }
+              property: LayoutAnimation.Properties.opacity,
+            },
           });
         }
 
         this.updateState(
           {
-            active: true
+            active: true,
           },
           () => {
             if (onOpen) {
@@ -308,11 +315,12 @@ class FAB extends Component {
             }
           }
         );
-      } else {
+      }
+      else {
         this.handlePressBackdrop();
       }
-
-    } else {
+    }
+    else {
       this.reset();
     }
   };
@@ -328,7 +336,7 @@ class FAB extends Component {
       }
       if (onStateChange) {
         onStateChange({
-          isActive: active
+          isActive: active,
         });
       }
     });
@@ -392,21 +400,21 @@ class FAB extends Component {
           {
             rotate: this.visibleAnimation.interpolate({
               inputRange: [0, 1],
-              outputRange: ["0deg", "90deg"]
-            })
+              outputRange: ['0deg', '90deg'],
+            }),
           },
           {
             scale: this.visibleAnimation.interpolate({
               inputRange: [0, 1],
-              outputRange: [1, 0]
-            })
-          }
-        ]
+              outputRange: [1, 0],
+            }),
+          },
+        ],
       };
 
       animatedViewStyle = {};
 
-      let deg = deg180 ? "180deg" : "45deg";
+      let deg = deg180 ? '180deg' : '45deg';
 
       if (children) {
         animatedViewStyle = {
@@ -414,51 +422,53 @@ class FAB extends Component {
             {
               rotate: this.animation.interpolate({
                 inputRange: [0, 1],
-                outputRange: ["0deg", deg]
-              })
-            }
-          ]
+                outputRange: ['0deg', deg],
+              }),
+            },
+          ],
         };
       }
-    } else if (active) {
+    }
+    else if (active) {
       animatedVisibleView = {};
 
       animatedViewStyle = {
         transform: [
           {
-            rotate: "45deg"
-          }
-        ]
+            rotate: '45deg',
+          },
+        ],
       };
-    } else {
+    }
+    else {
       animatedVisibleView = {};
 
       animatedViewStyle = {
         transform: [
           {
-            rotate: "0deg"
-          }
-        ]
+            rotate: '0deg',
+          },
+        ],
       };
     }
 
     const propStyles = {
       backgroundColor: mainButtonColor,
-      bottom: this.mainBottomAnimation // I need to imporove this to run on native thread and not on JS thread
+      bottom: this.mainBottomAnimation, // I need to imporove this to run on native thread and not on JS thread
     };
 
-    if (["left", "right"].indexOf(position) > -1) {
+    if (['left', 'right'].indexOf(position) > -1) {
       propStyles[position] = this.distanceToHorizontalEdge;
     }
 
 
 
-    const buttonSize = Sizes.FAB_WIDTH;
+    const buttonSize = 56; // Metrics.FAB_WIDTH;
 
     const sizeStyle = {
       width: buttonSize,
       height: buttonSize,
-      borderRadius: buttonSize / 2
+      borderRadius: buttonSize / 2,
     };
 
 
@@ -517,7 +527,8 @@ class FAB extends Component {
         </TouchableOpacity>
 
       );
-    } else {
+    }
+    else {
       objectToButton = (
 
         <TouchableOpacity
@@ -544,12 +555,11 @@ class FAB extends Component {
           styles[`${position}Button`],
           propStyles,
           animatedVisibleView,
-          this.getShadow()
+          this.getShadow(),
         ]}>
         {objectToButton}
       </Animated.View>
     );
-
   }
 
 
@@ -585,10 +595,11 @@ class FAB extends Component {
       animatedActionsStyle = {
         opacity: this.actionsAnimation.interpolate({
           inputRange: [0, 1],
-          outputRange: [0, 1]
-        })
+          outputRange: [0, 1],
+        }),
       };
-    } else {
+    }
+    else {
       animatedActionsStyle = { opacity: active ? 1 : 0 };
     }
 
@@ -597,8 +608,8 @@ class FAB extends Component {
       styles[`${position}Actions`],
       animatedActionsStyle,
       {
-        bottom: this.actionsBottomAnimation
-      }
+        bottom: this.actionsBottomAnimation,
+      },
     ];
 
     if (active) {
@@ -610,7 +621,7 @@ class FAB extends Component {
     return (
       <Animated.View style={actionsStyles} pointerEvents="box-none">
         {
-          React.Children.map(children, child => (
+          React.Children.map(children, (child) => (
             React.cloneElement(child,
               {
                 position: position,
@@ -631,7 +642,6 @@ class FAB extends Component {
       </Animated.View>
     );
   }
-
 
 
 
@@ -712,8 +722,6 @@ class FAB extends Component {
 
 
 
-
-
   // renderTappableBackground() {
   //   const { overlayColor } = this.props;
 
@@ -732,13 +740,13 @@ class FAB extends Component {
 
 
 
-
   render() {
     const { active } = this.state;
 
     const {
       showBackground,
       overlayColor,
+      noPressOverlay,
     } = this.props;
 
     return (
@@ -753,7 +761,7 @@ class FAB extends Component {
           visible={active}
           showBackground={showBackground}
           overlayColor={overlayColor || Colors.OVERLAY_BACKGROUND}
-          onPress={this.handlePressBackdrop}
+          onOverlayPress={noPressOverlay ? null : this.handlePressBackdrop}
         />
 
         {/* {active && showBackground && this.renderTappableBackground()} */}
@@ -766,60 +774,59 @@ class FAB extends Component {
 
 
 
-
-FAB.propTypes = {
-  actions: PropTypes.arrayOf(
-    PropTypes.shape({
-      color: PropTypes.string,
-      icon: PropTypes.any,
-      name: PropTypes.string.isRequired,
-      buttonSize: PropTypes.number,
-      text: PropTypes.string,
-      textBackground: PropTypes.string,
-      textColor: PropTypes.string,
-      component: PropTypes.func,
-      animated: PropTypes.bool
-    })
-  ),
-  animated: PropTypes.bool,
-  color: PropTypes.string,
-  distanceToEdge: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.shape({
-      vertical: PropTypes.number,
-      horizontal: PropTypes.number
-    })
-  ]),
-  mainVerticalDistance: PropTypes.number,
-  visible: PropTypes.bool,
-  overlayColor: PropTypes.string,
-  position: PropTypes.oneOf(["right", "left", "center"]),
-  overrideWithAction: PropTypes.bool, // replace mainAction with first action from actions
-  floatingIcon: PropTypes.any,
-  showBackground: PropTypes.bool,
-  openOnMount: PropTypes.bool,
-  actionsPaddingTopBottom: PropTypes.number,
-  buttonSize: PropTypes.number,
-  iconHeight: PropTypes.number,
-  iconWidth: PropTypes.number,
-  listenKeyboard: PropTypes.bool,
-  dismissKeyboardOnPress: PropTypes.bool,
-  shadow: PropTypes.shape({
-    shadowOpacity: PropTypes.number,
-    shadowOffset: PropTypes.shape({
-      width: PropTypes.number,
-      height: PropTypes.number
-    }),
-    shadowColor: PropTypes.string,
-    shadowRadius: PropTypes.number
-  }),
-  onPressItem: PropTypes.func,
-  onPressMain: PropTypes.func,
-  onClose: PropTypes.func,
-  onOpen: PropTypes.func,
-  onPressBackdrop: PropTypes.func,
-  onStateChange: PropTypes.func
-};
+// FAB.propTypes = {
+//   actions: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       color: PropTypes.string,
+//       icon: PropTypes.any,
+//       name: PropTypes.string.isRequired,
+//       buttonSize: PropTypes.number,
+//       text: PropTypes.string,
+//       textBackground: PropTypes.string,
+//       textColor: PropTypes.string,
+//       component: PropTypes.func,
+//       animated: PropTypes.bool
+//     })
+//   ),
+//   animated: PropTypes.bool,
+//   color: PropTypes.string,
+//   distanceToEdge: PropTypes.oneOfType([
+//     PropTypes.number,
+//     PropTypes.shape({
+//       vertical: PropTypes.number,
+//       horizontal: PropTypes.number
+//     })
+//   ]),
+//   mainVerticalDistance: PropTypes.number,
+//   visible: PropTypes.bool,
+//   overlayColor: PropTypes.string,
+//   position: PropTypes.oneOf(["right", "left", "center"]),
+//   overrideWithAction: PropTypes.bool, // replace mainAction with first action from actions
+//   floatingIcon: PropTypes.any,
+//   showBackground: PropTypes.bool,
+//   openOnMount: PropTypes.bool,
+//   actionsPaddingTopBottom: PropTypes.number,
+//   buttonSize: PropTypes.number,
+//   iconHeight: PropTypes.number,
+//   iconWidth: PropTypes.number,
+//   listenKeyboard: PropTypes.bool,
+//   dismissKeyboardOnPress: PropTypes.bool,
+//   shadow: PropTypes.shape({
+//     shadowOpacity: PropTypes.number,
+//     shadowOffset: PropTypes.shape({
+//       width: PropTypes.number,
+//       height: PropTypes.number
+//     }),
+//     shadowColor: PropTypes.string,
+//     shadowRadius: PropTypes.number
+//   }),
+//   onPressItem: PropTypes.func,
+//   onPressMain: PropTypes.func,
+//   onClose: PropTypes.func,
+//   onOpen: PropTypes.func,
+//   onPressBackdrop: PropTypes.func,
+//   onStateChange: PropTypes.func
+// };
 
 
 
@@ -829,9 +836,9 @@ FAB.defaultProps = {
   actionsPaddingTopBottom: 8,
   overrideWithAction: false,
   visible: true,
-  color: "#1253bc",
-  overlayColor: "rgba(68, 68, 68, 0.6)",
-  position: "right",
+  color: '#1253bc',
+  overlayColor: 'rgba(68, 68, 68, 0.6)',
+  position: 'right',
   distanceToEdge: 30,
   openOnMount: false,
   showBackground: true,
@@ -841,7 +848,7 @@ FAB.defaultProps = {
   iconColor: '#fff',
   mainVerticalDistance: 0,
   animated: true,
-  shadow: {}
+  shadow: {},
 };
 
 
@@ -849,18 +856,18 @@ FAB.defaultProps = {
 const styles = StyleSheet.create({
 
   actions: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 85,
     zIndex: 10,
   },
 
   rightActions: {
-    alignItems: "flex-end",
+    alignItems: 'flex-end',
     right: -1000, // this magic number will make always disspear the text from screen
   },
 
   leftActions: {
-    alignItems: "flex-start",
+    alignItems: 'flex-start',
     left: -1000, // this magic number will make always disspear the text from screen
   },
 
@@ -883,7 +890,7 @@ const styles = StyleSheet.create({
 
 
   overlay: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 0,
     left: 0,
     right: 0,
@@ -894,18 +901,18 @@ const styles = StyleSheet.create({
 
   buttonContainer: {
     // overflow: Platform.OS === "ios" ? "visible" : "hidden",
-    overflow: "hidden",
+    overflow: 'hidden',
     zIndex: 2,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     elevation: 5,
-    position: "absolute",
+    position: 'absolute',
   },
 
   button: {
     zIndex: 3,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   centerButton: {
@@ -914,19 +921,13 @@ const styles = StyleSheet.create({
 
   buttonTextContainer: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   // rightButton: {},
 
   // leftButton: {},
-
-
-
-
-
-
 
 
 
@@ -959,7 +960,6 @@ const styles = StyleSheet.create({
   // position: 'relative',
   // zIndex: 10,
   // },
-
 
 
 

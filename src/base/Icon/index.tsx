@@ -2,13 +2,14 @@ import React from 'react';
 
 import {
   StyleSheet,
+  View,
 } from 'react-native';
 
-import GetIconType from '../../utils/IconsType';
+import GetIconType from '../../config/IconsType';
 
 
 
-export interface Props {
+interface IProps {
   type?: string;
   name?: string;
   size?: number;
@@ -19,33 +20,7 @@ export interface Props {
   solid?: boolean;
   brand?: boolean;
   style?: object;
-};
-
-
-
-const Icon: React.FC<Props> = (props: any) => {
-  const IconComponent = GetIconType(props.type);
-
-
-
-  return (
-
-    <IconComponent
-      testID="iconIcon"
-      style={StyleSheet.flatten([
-        { backgroundColor: 'transparent' },
-        props.style && props.style,
-      ])}
-      size={props.size}
-      name={props.name}
-      color={props.reverse ? props.reverseColor : props.color}
-      solid={props.solid}
-      brand={props.brand}
-    />
-
-  );
-};
-
+}
 
 
 // Icon.defaultProps = {
@@ -59,7 +34,37 @@ const Icon: React.FC<Props> = (props: any) => {
 //   type: 'material',
 //   solid: false,
 //   brand: false,
+//   backgroundColor: '#D1D5D8',
 // };
+
+
+
+const Icon: React.FC<IProps> = (props) => {
+  const IconComponent = GetIconType(props.type);
+
+
+
+  return (
+
+    <View style={
+      props.style && props.style
+    }>
+
+      <IconComponent
+        testID="iconIcon"
+        style={StyleSheet.flatten([
+          { backgroundColor: 'transparent' },
+        ])}
+        size={props.size}
+        name={props.name}
+        color={props.reverse ? props.reverseColor : props.color}
+        solid={props.solid}
+        brand={props.brand}
+      />
+    </View>
+
+  );
+};
 
 
 

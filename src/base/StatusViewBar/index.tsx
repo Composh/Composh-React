@@ -2,7 +2,6 @@
 import React from 'react';
 
 import {
-  Platform,
   StatusBar,
   StyleSheet,
   View,
@@ -14,13 +13,9 @@ import {
   Metrics,
 } from '../../constants';
 
-import {
-  isIphoneX,
-} from '../../utils/PlatformsConfig';
 
 
-
-export interface Props {
+interface IProps {
   hidden?: boolean;
   noHeight?: boolean;
   barStyle?: any;
@@ -29,7 +24,7 @@ export interface Props {
 
 
 
-const StatusViewBar: React.FC<Props> = (props: any) => {
+const StatusViewBar: React.FC<IProps> = (props) => {
   return (
 
     <View style={[
@@ -37,10 +32,7 @@ const StatusViewBar: React.FC<Props> = (props: any) => {
       {
         height: props.noHeight
           ? 0
-          : Platform.select({
-            android: StatusBar.currentHeight,
-            ios: isIphoneX() ? Metrics.STATUSBAR_IOS_IPHONE_X : Metrics.STATUSBAR_IOS,
-          }),
+          : Metrics.StatusBar,
         backgroundColor: props.backgroundColor || 'gray',
       },
     ]}>

@@ -5,12 +5,11 @@ import {
   View,
 } from 'react-native';
 
-import Badge from './BadgeCircle';
+import Badge from './index';
 
 
 
 const BadgeIndicator = (value, options = {}) => WrappedComponent => {
-
   const WithBadge = props => {
     const {
       bottom,

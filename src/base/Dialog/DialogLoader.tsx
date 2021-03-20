@@ -10,18 +10,18 @@ import {
 } from 'react-native';
 
 // Lib Configs Import
-import {
-  Colors,
-  Sizes,
-} from '../../constants';
+// import {
+//   Colors,
+//   Sizes,
+// } from '../../constants';
 
 
 
-const DialogLoader = (props) => {
+const DialogLoader = (props: any) => {
   const {
     visible,
-    heightLoader,
-    widthLoader,
+    // heightLoader,
+    // widthLoader,
     overlayBackground,
     backgroundLoader,
     borderRadiusLoader,
