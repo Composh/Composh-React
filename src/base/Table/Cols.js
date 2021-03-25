@@ -1,27 +1,26 @@
 import React, { Component } from 'react';
 
-import PropTypes from 'prop-types';
-
 import {
   View,
   ViewPropTypes,
   Text,
   StyleSheet,
 } from 'react-native';
+import PropTypes from 'prop-types';
+
 
 import { Cell } from './Cell';
 // import { sum } from '../utils';
 
-const sum = arr => arr.reduce((acc, n) => acc + n, 0);
+const sum = (arr) => arr.reduce((acc, n) => acc + n, 0);
 
 
 
 export class Col extends React.Component {
-
   static propTypes = {
     width: PropTypes.number,
     style: ViewPropTypes.style,
-    textStyle: Text.propTypes.style
+    textStyle: Text.propTypes.style,
   };
 
   render() {
@@ -59,10 +58,9 @@ export class Col extends React.Component {
 
 
 export class Cols extends Component {
-
   static propTypes = {
     style: ViewPropTypes.style,
-    textStyle: Text.propTypes.style
+    textStyle: Text.propTypes.style,
   };
 
   render() {
@@ -95,5 +93,5 @@ export class Cols extends Component {
 
 
 const styles = StyleSheet.create({
-  cols: { flexDirection: 'row' }
+  cols: { flexDirection: 'row' },
 });

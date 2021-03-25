@@ -1,6 +1,4 @@
-import React, { Component } from "react";
-
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
 
 import {
   Animated,
@@ -9,14 +7,15 @@ import {
   Text,
   TouchableOpacity,
   View,
-} from "react-native";
+} from 'react-native';
+import PropTypes from 'prop-types';
+
 
 // import { getTouchableComponent } from "./utils/touchable";
 
 
 
 class FABItem extends Component {
-
   constructor(props) {
     super(props);
     this.animation = new Animated.Value(0);
@@ -31,7 +30,7 @@ class FABItem extends Component {
         {
           toValue: active ? 1 : 0,
           useNativeDriver: false,
-        }
+        },
       ).start();
     }
   }
@@ -70,12 +69,12 @@ class FABItem extends Component {
       textStyle,
       textProps,
       textContainerStyle,
-      shadow
+      shadow,
     } = this.props;
 
     if (elevation !== undefined) {
       console.warn(
-        'FloatingActionItem: "elevation" property was deprecated. Please use "textElevation"'
+        'FloatingActionItem: "elevation" property was deprecated. Please use "textElevation"',
       );
     }
 
@@ -90,20 +89,20 @@ class FABItem extends Component {
               backgroundColor: textBackground,
               elevation: textElevation || elevation,
               shadowOffset: {
-                height: textElevation || elevation
-              }
+                height: textElevation || elevation,
+              },
             },
             shadow,
-            textContainerStyle
+            textContainerStyle,
           ]}
         >
           <Text
             style={[
               styles.text,
               {
-                color: textColor
+                color: textColor,
               },
-              textStyle
+              textStyle,
             ]}
             {...textProps}
           >
@@ -129,7 +128,8 @@ class FABItem extends Component {
 
     if (icon && icon.uri) {
       iconStyle = styles.iconLogo;
-    } else {
+    }
+    else {
       iconStyle = styles.icon;
     }
 
@@ -138,7 +138,7 @@ class FABItem extends Component {
       backgroundColor: color,
       width: buttonSize,
       height: buttonSize,
-      borderRadius: buttonSize / 2
+      borderRadius: buttonSize / 2,
     };
 
 
@@ -156,14 +156,14 @@ class FABItem extends Component {
         {React.isValidElement(icon) ? (
           icon
         ) : (
-            <Image
-              style={[
-                iconStyle,
-                { tintColor: tintColor },
-              ]}
-              source={icon}
-            />
-          )}
+          <Image
+            style={[
+              iconStyle,
+              { tintColor: tintColor },
+            ]}
+            source={icon}
+          />
+        )}
 
       </View>
 
@@ -190,17 +190,18 @@ class FABItem extends Component {
       animatedActionContainerStyle = {
         marginBottom: this.animation.interpolate({
           inputRange: [0, 1],
-          outputRange: [5, 10]
-        })
+          outputRange: [5, 10],
+        }),
       };
-    } else {
+    }
+    else {
       animatedActionContainerStyle = { marginBottom: 10 };
     }
 
     const components = [];
     const distanceToEdgeActionContainer = {};
 
-    if (position === "left") {
+    if (position === 'left') {
       // if (render) {
       //   components.push(render({ key: name }));
       // } else {
@@ -208,7 +209,8 @@ class FABItem extends Component {
       components.push(this.renderText());
       // }
       distanceToEdgeActionContainer.paddingLeft = this.distanceToHorizontalEdge + margin;
-    } else if (position === "right") {
+    }
+    else if (position === 'right') {
       // if (render) {
       // components.push(render({ key: name }));
       // } else {
@@ -218,7 +220,8 @@ class FABItem extends Component {
       distanceToEdgeActionContainer.paddingRight = this.distanceToHorizontalEdge + margin;
       // } else if (render) {
       //   components.push(render({ key: name }));
-    } else {
+    }
+    else {
       components.push(this.renderButton());
     }
 
@@ -238,8 +241,8 @@ class FABItem extends Component {
             distanceToEdgeActionContainer,
             {
               paddingTop: paddingTopBottom,
-              paddingBottom: paddingTopBottom
-            }
+              paddingBottom: paddingTopBottom,
+            },
           ]}>
 
           {components}
@@ -269,50 +272,50 @@ FABItem.propTypes = {
     shadowOpacity: PropTypes.number,
     shadowOffset: PropTypes.shape({
       width: PropTypes.number,
-      height: PropTypes.number
+      height: PropTypes.number,
     }),
     shadowColor: PropTypes.string,
-    shadowRadius: PropTypes.number
+    shadowRadius: PropTypes.number,
   }),
   // not on doc
   textElevation: PropTypes.number,
   // not modified by user
-  position: PropTypes.oneOf(["left", "right", "center"]),
+  position: PropTypes.oneOf(['left', 'right', 'center']),
   active: PropTypes.bool,
   distanceToEdge: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.shape({
       vertical: PropTypes.number,
-      horizontal: PropTypes.number
-    })
+      horizontal: PropTypes.number,
+    }),
   ]),
   paddingTopBottom: PropTypes.number, // modified by parent property "actionsPaddingTopBottom"
   onPress: PropTypes.func,
   // render: PropTypes.func,
   margin: PropTypes.number,
-  animated: PropTypes.bool
+  animated: PropTypes.bool,
 };
 
 
 
 FABItem.defaultProps = {
   tintColor: '#fff',
-  color: "#1253bc",
+  color: '#1253bc',
   distanceToEdge: 30,
   buttonSize: 40,
   textElevation: 5,
-  textColor: "#444444",
-  textBackground: "#ffffff",
+  textColor: '#444444',
+  textBackground: '#ffffff',
   margin: 8,
   shadow: {
     shadowOpacity: 0.35,
     shadowOffset: {
       width: 0,
-      height: 5
+      height: 5,
     },
-    shadowColor: "#000000",
-    shadowRadius: 3
-  }
+    shadowColor: '#000000',
+    shadowRadius: 3,
+  },
 };
 
 
@@ -322,13 +325,13 @@ const styles = StyleSheet.create({
   container: {
     elevation: 0,
     flex: 1,
-    flexDirection: "column",
+    flexDirection: 'column',
   },
 
   actionContainer: {
     elevation: 0,
     flex: 1,
-    flexDirection: "row",
+    flexDirection: 'row',
     alignItems: 'center',
     paddingLeft: 0,
     paddingRight: 0,
@@ -355,20 +358,20 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     elevation: 5,
   },
 
   iconLogo: {
-    resizeMode: "cover",
+    resizeMode: 'cover',
     width: 40,
     height: 40,
     borderRadius: 20,
   },
 
   icon: {
-    resizeMode: "contain",
+    resizeMode: 'contain',
     width: 20,
     height: 20,
   },

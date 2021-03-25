@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { Platform, StyleSheet, Text } from 'react-native';
+import PropTypes from 'prop-types';
 
 export default class DialogTitle extends React.PureComponent {
   static propTypes = {

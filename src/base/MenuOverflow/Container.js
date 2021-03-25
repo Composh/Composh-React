@@ -174,7 +174,8 @@ class MenuContainer extends React.Component {
       });
 
       left = Math.min(windowWidth - SCREEN_INDENT, left + buttonWidth);
-    } else if (left < SCREEN_INDENT) {
+    }
+    else if (left < SCREEN_INDENT) {
       left = SCREEN_INDENT;
     }
 
@@ -186,7 +187,8 @@ class MenuContainer extends React.Component {
 
       top = windowHeight - SCREEN_INDENT;
       top = Math.min(windowHeight - SCREEN_INDENT, top + buttonHeight);
-    } else if (top < SCREEN_INDENT) {
+    }
+    else if (top < SCREEN_INDENT) {
       top = SCREEN_INDENT;
     }
 

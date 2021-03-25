@@ -8,18 +8,17 @@ import {
 
 
 export class Table extends React.Component {
-
   static propTypes = {
     style: ViewPropTypes.style,
-    borderStyle: ViewPropTypes.style
+    borderStyle: ViewPropTypes.style,
   };
 
   _renderChildren(props) {
-    return React.Children.map(props.children, child =>
+    return React.Children.map(props.children, (child) =>
       React.cloneElement(
         child,
-        props.borderStyle && child.type.displayName !== 'ScrollView' ? { borderStyle: props.borderStyle } : {}
-      )
+        props.borderStyle && child.type.displayName !== 'ScrollView' ? { borderStyle: props.borderStyle } : {},
+      ),
     );
   }
 
@@ -35,7 +34,7 @@ export class Table extends React.Component {
           {
             borderLeftWidth,
             borderBottomWidth,
-            borderColor
+            borderColor,
           },
           this.props.style,
         ]}>
@@ -48,14 +47,13 @@ export class Table extends React.Component {
 
 
 export class TableWrapper extends Component {
-
   static propTypes = {
-    style: ViewPropTypes.style
+    style: ViewPropTypes.style,
   };
 
   _renderChildren(props) {
-    return React.Children.map(props.children, child =>
-      React.cloneElement(child, props.borderStyle ? { borderStyle: props.borderStyle } : {})
+    return React.Children.map(props.children, (child) =>
+      React.cloneElement(child, props.borderStyle ? { borderStyle: props.borderStyle } : {}),
     );
   }
 

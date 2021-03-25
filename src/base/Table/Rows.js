@@ -10,15 +10,14 @@ import {
 import { Cell } from './Cell';
 
 // import { sum } from '../utils';
-const sum = arr => arr.reduce((acc, n) => acc + n, 0);
+const sum = (arr) => arr.reduce((acc, n) => acc + n, 0);
 
 
 
 export class Row extends React.Component {
-
   static propTypes = {
     style: ViewPropTypes.style,
-    textStyle: Text.propTypes.style
+    textStyle: Text.propTypes.style,
   };
 
   render() {
@@ -40,10 +39,9 @@ export class Row extends React.Component {
 
 
 export class Rows extends Component {
-
   static propTypes = {
     style: ViewPropTypes.style,
-    textStyle: Text.propTypes.style
+    textStyle: Text.propTypes.style,
   };
 
   render() {
@@ -79,7 +77,7 @@ const styles = StyleSheet.create({
 
   row: {
     flexDirection: 'row',
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
 
 });

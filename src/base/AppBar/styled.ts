@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 export const ShadowToolbar = styled.View`
   elevation: 12;
   
-  shadow-offset: 0px 0px;
+  shadow-offset: 0 0;
   shadow-color: black;
   shadow-opacity: 0.75;
   shadow-radius: 5px;

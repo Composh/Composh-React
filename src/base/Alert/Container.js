@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import {
   Modal,
   KeyboardAvoidingView,
@@ -10,6 +8,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import PropTypes from 'prop-types';
+
 
 const IOS_MODAL_ANIMATION = {
   from: { opacity: 0, scale: 1.2 },
@@ -72,7 +72,8 @@ export default class DialogContainer extends React.PureComponent {
         || child.type.displayName === 'DialogTitle'
       ) {
         titleChildrens.push(child);
-      } else if (
+      }
+      else if (
         child.type.name === 'DialogDescription'
         || child.type.displayName === 'DialogDescription'
       ) {
@@ -96,7 +97,8 @@ export default class DialogContainer extends React.PureComponent {
           );
         }
         buttonChildrens.push(child);
-      } else {
+      }
+      else {
         otherChildrens.push(child);
       }
     });

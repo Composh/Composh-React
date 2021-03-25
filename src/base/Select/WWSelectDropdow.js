@@ -2,8 +2,6 @@
 
 import React from 'react';
 
-import PropTypes from 'prop-types';
-
 import {
   View,
   Text,
@@ -14,16 +12,18 @@ import {
   Easing,
   StyleSheet,
 } from 'react-native';
+import PropTypes from 'prop-types';
+
 
 // Application Configs Import
-import {
-  inputLayout,
-} from '../../theme/Layout';
-
 import {
   Colors,
   Sizes,
 } from '../../constants';
+import {
+  inputLayout,
+} from '../../theme/Layout';
+
 
 import Icon from '../Icon';
 import Input from '../Input';
@@ -34,8 +34,6 @@ const marginRightItem = 5;
 
 
 class DropdownMenu extends React.Component {
-
-
   constructor(props, context) {
     super(props, context);
 
@@ -46,7 +44,7 @@ class DropdownMenu extends React.Component {
     this.state = {
       activityIndex: -1,
       selectIndex: selectIndex,
-      rotationAnims: props.data.map(() => new Animated.Value(0))
+      rotationAnims: props.data.map(() => new Animated.Value(0)),
     };
 
     this.defaultConfig = {
@@ -56,13 +54,11 @@ class DropdownMenu extends React.Component {
       // arrowImg: require('./img/dropdown_arrow.png'),
       // checkImage: require('./img/menu_check.png')
     };
-
   }
 
 
 
   openOrClosePanel(index) {
-
     // var toValue = 0.5;
 
     if (this.state.activityIndex == index) {
@@ -71,7 +67,8 @@ class DropdownMenu extends React.Component {
         activityIndex: -1,
       });
       // toValue = 0;
-    } else {
+    }
+    else {
       if (this.state.activityIndex > -1) {
         this.closePanel(this.state.activityIndex);
       }
@@ -91,7 +88,6 @@ class DropdownMenu extends React.Component {
     //     easing: Easing.linear
     //   }
     // ).start();
-
   }
 
 
@@ -103,7 +99,7 @@ class DropdownMenu extends React.Component {
         duration: 300,
         useNativeDriver: false,
         easing: Easing.linear,
-      }
+      },
     ).start();
   }
 
@@ -116,7 +112,7 @@ class DropdownMenu extends React.Component {
         duration: 300,
         useNativeDriver: false,
         easing: Easing.linear,
-      }
+      },
     ).start();
   }
 
@@ -126,7 +122,7 @@ class DropdownMenu extends React.Component {
       var selectIndex = this.state.selectIndex;
       selectIndex[this.state.activityIndex] = index;
       this.setState({
-        selectIndex: selectIndex
+        selectIndex: selectIndex,
       });
       if (this.props.handler) {
         this.props.handler(this.state.activityIndex, index);
@@ -139,7 +135,6 @@ class DropdownMenu extends React.Component {
 
   renderActivityPanel() {
     if (this.state.activityIndex >= 0) {
-
       var currentTitles = this.props.data[this.state.activityIndex];
 
       var heightStyle = {};
@@ -209,14 +204,15 @@ class DropdownMenu extends React.Component {
                     }}
                     />
                   )}
-                </TouchableOpacity>
+                </TouchableOpacity>,
               )
             }
           </ScrollView>
         </View>
 
       );
-    } else {
+    }
+    else {
       return (null);
     }
   }
@@ -228,20 +224,21 @@ class DropdownMenu extends React.Component {
     const colorSelectedRow = [
       this.state.selectIndex[activityIndex] == index
         ? this.props.inputTextColor || Colors.BLACK
-        : this.props.placeholderTextColor || Colors.PLACEHOLDER
+        : this.props.placeholderTextColor || Colors.PLACEHOLDER,
     ];
 
 
     if (this.props.componentList) {
       return componentList;
-    } else {
+    }
+    else {
       return (
 
         <View
           style={{
             flex: 1,
             justifyContent: 'space-between',
-            alignItems: "center",
+            alignItems: 'center',
             paddingHorizontal: marginLeftItem,
             flexDirection: 'row',
           }}>
@@ -271,11 +268,10 @@ class DropdownMenu extends React.Component {
 
 
   renderDropDownArrow(index) {
-
     const colorSelectedComponent = [
       index === this.state.activityIndex
         ? this.props.tintColor || Colors.BLACK
-        : this.props.placeholderTextColor || Colors.PLACEHOLDER
+        : this.props.placeholderTextColor || Colors.PLACEHOLDER,
     ];
 
     return (
@@ -286,9 +282,9 @@ class DropdownMenu extends React.Component {
           transform: [{
             rotateZ: this.state.rotationAnims[index].interpolate({
               inputRange: [0, 1],
-              outputRange: ['0deg', '360deg']
-            })
-          }]
+              outputRange: ['0deg', '360deg'],
+            }),
+          }],
         }}>
         <Icon
           type="ionicon"
@@ -303,11 +299,10 @@ class DropdownMenu extends React.Component {
 
 
   renderItemSelect(rows, index) {
-
     const colorSelectedComponent = [
       index === this.state.activityIndex
         ? this.props.tintColor || Colors.BLACK
-        : this.props.placeholderTextColor || Colors.PLACEHOLDER
+        : this.props.placeholderTextColor || Colors.PLACEHOLDER,
     ];
 
     return (
@@ -346,7 +341,6 @@ class DropdownMenu extends React.Component {
 
 
   render() {
-
     const inputComponentContainer = [
       {
         flex: 1,
@@ -367,7 +361,7 @@ class DropdownMenu extends React.Component {
         }} >
           {
             this.props.data.map((rows, index) =>
-              this.renderItemSelect(rows, index)
+              this.renderItemSelect(rows, index),
             )
           }
         </View>
@@ -378,7 +372,6 @@ class DropdownMenu extends React.Component {
 
     );
   }
-
 }
 
 
@@ -401,13 +394,13 @@ const styles = StyleSheet.create({
 
   titleSelectStyle: {
     flex: 1,
-    fontSize: 14
+    fontSize: 14,
   },
 
   item_text_style: {
     // color: '#333333',
-    fontSize: 14
-  }
+    fontSize: 14,
+  },
 
 });
 

@@ -9,8 +9,8 @@ import Badge from './index';
 
 
 
-const BadgeIndicator = (value, options = {}) => WrappedComponent => {
-  const WithBadge = props => {
+const BadgeIndicator = (value, options = {}) => (WrappedComponent) => {
+  const WithBadge = (props) => {
     const {
       bottom,
       hidden = false,

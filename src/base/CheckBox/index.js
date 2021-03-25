@@ -19,7 +19,7 @@ import CheckBoxIcon from './CheckBoxIcon';
 
 
 
-const CheckBox = props => {
+const CheckBox = (props) => {
   const { ...rest } = props;
 
   const {
@@ -80,10 +80,10 @@ const CheckBox = props => {
       />
     </View>
   ) : (
-      <View style={iconContainerStyle}>
-        {iconContent}
-      </View>
-    );
+    <View style={iconContainerStyle}>
+      {iconContent}
+    </View>
+  );
 
 
 
@@ -118,17 +118,17 @@ const CheckBox = props => {
         {React.isValidElement(title) ? (
           title
         ) : (
-            <Text
-              testID="checkboxTitle"
-              style={StyleSheet.flatten([
-                styles.textCheckBoxStyle,
-                textStyle && textStyle,
-                fontFamily && { fontFamily },
-              ])}
-              {...props}>
-              {checked ? checkedTitle || title : title}
-            </Text>
-          )}
+          <Text
+            testID="checkboxTitle"
+            style={StyleSheet.flatten([
+              styles.textCheckBoxStyle,
+              textStyle && textStyle,
+              fontFamily && { fontFamily },
+            ])}
+            {...props}>
+            {checked ? checkedTitle || title : title}
+          </Text>
+        )}
 
         {iconRight && iconInstance}
 

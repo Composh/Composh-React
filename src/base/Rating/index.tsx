@@ -9,6 +9,6 @@ const Rating: React.FC = () => {
     <View />
 
   );
-}
+};
 
 export default Rating;

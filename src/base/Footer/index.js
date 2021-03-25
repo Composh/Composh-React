@@ -1,8 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 
-import PropTypes from 'prop-types';
-
 import {
   Dimensions,
   PixelRatio,
@@ -12,6 +10,8 @@ import {
   View,
   // ViewPropTypes,
 } from 'react-native';
+import PropTypes from 'prop-types';
+
 
 // Lib Configs Import
 import {
@@ -51,35 +51,35 @@ const Footer = (props) => {
     </SafeAreaView>
 
 
-    // <View style={[
-    //   styles.containerFooterStyles,
-    //   style,
-    // ]} {...props}>
-    //   {children}
-    // </View>
+  // <View style={[
+  //   styles.containerFooterStyles,
+  //   style,
+  // ]} {...props}>
+  //   {children}
+  // </View>
 
 
-    // <View
-    //   style={[
-    //     styles.paddingIphoneX,
-    //   ]}>
+  // <View
+  //   style={[
+  //     styles.paddingIphoneX,
+  //   ]}>
 
-    //   <View
-    //     {...props}
-    //     style={[
-    //       styles.containerFooterStyles,
-    //       style,
-    //     ]}>
+  //   <View
+  //     {...props}
+  //     style={[
+  //       styles.containerFooterStyles,
+  //       style,
+  //     ]}>
 
-    //     <View style={[
-    //       styles.viewFooterStyle,
-    //     ]}>
-    //       {children}
-    //     </View>
+  //     <View style={[
+  //       styles.viewFooterStyle,
+  //     ]}>
+  //       {children}
+  //     </View>
 
-    //   </View>
+  //   </View>
 
-    // </View>
+  // </View>
 
   );
 };

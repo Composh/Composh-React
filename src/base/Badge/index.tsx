@@ -12,7 +12,6 @@ import {
 } from '../../constants';
 
 import {
-  BadgeContainer,
   BadgeButtonContainer,
   BadgeViewContainer,
   TextBadge,
@@ -24,6 +23,7 @@ interface IProps {
   value?: any;
 
   backgroundColor?: string;
+  borderColor?: string;
   containerStyle?: any;
   badgeStyle?: any;
   textStyle?: any;
@@ -31,6 +31,8 @@ interface IProps {
   block?: any;
   round?: any;
   onPress?: any;
+
+  style?: any;
 }
 
 
@@ -43,39 +45,38 @@ const BadgeCircle: React.FC<IProps> = (props: any) => {
 
   return (
 
-    <BadgeContainer
+    <Component
       style={[
-        props.containerStyle && props.containerStyle,
-      ]}>
+        props.style,
+        { backgroundColor: props.backgroundColor },
+        isString && { alignSelf: 'flex-start' },
+        !isString && styles.miniBadge,
+        props.badgeStyle && props.badgeStyle,
+        props.block && !props.round && styles.badgeBlock,
+        !props.block && props.round && styles.badgeRound,
+        !props.block && !props.round && Platform.select({ android: styles.badgeBlock, ios: styles.badgeRound }),
+        props.borderColor && {
+          borderWidth: StyleSheet.hairlineWidth,
+          borderColor: props.borderColor,
+        },
+      ]}
+      onPress={props.onPress}>
 
-      <Component
-        style={[
-          { backgroundColor: props.backgroundColor },
-          !isString && styles.miniBadge,
-          props.badgeStyle && props.badgeStyle,
-          props.block && !props.round && styles.badgeBlock,
-          !props.block && props.round && styles.badgeRound,
-          !props.block && !props.round && Platform.select({ android: styles.badgeBlock, ios: styles.badgeRound }),
-        ]}
-        onPress={props.onPress}>
+      {isString
+        ? (
+          <TextBadge
+            style={[
+              props.textStyle && props.textStyle,
+            ]}>
+            {props.value}
+          </TextBadge>
+        )
+        : props.value
+          ? props.value
+          : <View />
+      }
 
-        {isString
-          ? (
-            <TextBadge
-              style={[
-                props.textStyle && props.textStyle,
-              ]}>
-              {props.value}
-            </TextBadge>
-          )
-          : props.value
-            ? props.value
-            : <View />
-        }
-
-      </Component>
-
-    </BadgeContainer>
+    </Component>
 
   );
 };
@@ -99,11 +100,13 @@ const styles = StyleSheet.create({
   },
 
   miniBadge: {
-    paddingHorizontal: 0,
-    paddingVertical: 0,
-    minWidth: Sizes.BADGE_MINI_CIRCLE_SIZE,
-    height: Sizes.BADGE_MINI_CIRCLE_SIZE,
-    borderRadius: Sizes.BADGE_MINI_CIRCLE_SIZE / 2,
+    paddingLeft: 0,
+    paddingRight: 0,
+    paddingTop: 0,
+    paddingBottom: 0,
+    width: Sizes.BADGE_MINI_CIRCLE_SIZE + 3,
+    height: Sizes.BADGE_MINI_CIRCLE_SIZE + 3,
+    borderRadius: Sizes.BADGE_MINI_CIRCLE_SIZE * 2,
   },
 
 });

@@ -74,12 +74,12 @@ const Chip: React.FC<Props> = (props: any) => {
 
 
   function borderColor() {
-    let bdrColor =
+    const bdrColor =
       props.mode === 'outlined'
         ? color(
           props.selected
             ? props.selectedColor
-            : props.backgroundColor
+            : props.backgroundColor,
         )
           .alpha(0.29)
         : props.backgroundColor;
@@ -89,10 +89,10 @@ const Chip: React.FC<Props> = (props: any) => {
 
 
   function textColor() {
-    let txColor = color(
+    const txColor = color(
       props.selected
         ? props.selectedColor
-        : props.unselectedColor
+        : props.unselectedColor,
     ).alpha(0.87);
 
     return String(txColor);
@@ -100,7 +100,7 @@ const Chip: React.FC<Props> = (props: any) => {
 
 
   function iconColor() {
-    let iconCloseColor = (props.selected
+    const iconCloseColor = (props.selected
       ? color(props.selectedColor).darken(props.mode === 'outlined' ? 0.08 : 0.45)
       : props.selectedColor
     );
@@ -110,7 +110,7 @@ const Chip: React.FC<Props> = (props: any) => {
 
 
   function selectedBackgroundColor() {
-    let bgColor = (props.selected
+    const bgColor = (props.selected
       ? color(props.backgroundColor).darken(props.mode === 'outlined' ? 0.08 : 0.3)
       : props.backgroundColor
     );

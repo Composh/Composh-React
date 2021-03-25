@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 // import PropTypes from "prop-types";
 
@@ -9,18 +9,18 @@ import {
   TouchableOpacity,
   Animated,
   PanResponder,
-  Platform
-} from "react-native";
-import Overlay from "../Overlay";
+  Platform,
+} from 'react-native';
+import Overlay from '../Overlay';
 
-import styles from "./styled";
+import styles from './styled';
 
 const SUPPORTED_ORIENTATIONS = [
-  "portrait",
-  "portrait-upside-down",
-  "landscape",
-  "landscape-left",
-  "landscape-right"
+  'portrait',
+  'portrait-upside-down',
+  'landscape',
+  'landscape-left',
+  'landscape-right',
 ];
 
 
@@ -50,7 +50,7 @@ class ActionSheet extends Component {
     this.state = {
       modalVisible: false,
       animatedHeight: new Animated.Value(0),
-      pan: new Animated.ValueXY()
+      pan: new Animated.ValueXY(),
     };
 
     this.createPanResponder(props);
@@ -61,25 +61,26 @@ class ActionSheet extends Component {
     const { animatedHeight, pan } = this.state;
     if (visible) {
       this.setState({ modalVisible: visible });
-      if (typeof onOpen === "function") onOpen(props);
+      if (typeof onOpen === 'function') onOpen(props);
       Animated.timing(animatedHeight, {
         useNativeDriver: false,
         toValue: height,
-        duration: openDuration
+        duration: openDuration,
       }).start();
-    } else {
+    }
+    else {
       Animated.timing(animatedHeight, {
         useNativeDriver: false,
         toValue: minClosingHeight,
-        duration: closeDuration
+        duration: closeDuration,
       }).start(() => {
         pan.setValue({ x: 0, y: 0 });
         this.setState({
           modalVisible: visible,
-          animatedHeight: new Animated.Value(0)
+          animatedHeight: new Animated.Value(0),
         });
 
-        if (typeof onClose === "function") onClose(props);
+        if (typeof onClose === 'function') onClose(props);
       });
     }
   }
@@ -97,10 +98,11 @@ class ActionSheet extends Component {
       onPanResponderRelease: (e, gestureState) => {
         if (height / 4 - gestureState.dy < 0) {
           this.setModalVisible(false);
-        } else {
+        }
+        else {
           Animated.spring(pan, { toValue: { x: 0, y: 0 }, useNativeDriver: false }).start();
         }
-      }
+      },
     });
   }
 
@@ -121,11 +123,11 @@ class ActionSheet extends Component {
       closeOnPressBack,
       children,
       customStyles,
-      keyboardAvoidingViewEnabled
+      keyboardAvoidingViewEnabled,
     } = this.props;
     const { animatedHeight, pan, modalVisible } = this.state;
     const panStyle = {
-      transform: pan.getTranslateTransform()
+      transform: pan.getTranslateTransform(),
     };
 
 
@@ -199,7 +201,7 @@ class ActionSheet extends Component {
 
 
 ActionSheet.defaultProps = {
-  animationType: "none",
+  animationType: 'none',
   height: 260,
   minClosingHeight: 0,
   openDuration: 300,
@@ -208,11 +210,11 @@ ActionSheet.defaultProps = {
   dragFromTopOnly: false,
   closeOnPressMask: true,
   closeOnPressBack: true,
-  keyboardAvoidingViewEnabled: Platform.OS === "ios",
+  keyboardAvoidingViewEnabled: Platform.OS === 'ios',
   customStyles: {},
   onClose: null,
   onOpen: null,
-  children: <View />
+  children: <View />,
 };
 
 

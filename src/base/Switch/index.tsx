@@ -5,6 +5,6 @@ import { View } from 'react-native';
 
 const Switch: React.FC = () => {
   return <View />;
-}
+};
 
 export default Switch;

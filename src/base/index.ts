@@ -31,12 +31,15 @@ import Screen from './Screen';
 // import SearchBar from './SearchBar';
 // import Select from './Select';
 // import Shapes from './Shapes';
+// import SnackBar from './SnackBar';
 import StatusViewBar from './StatusViewBar';
 import SubTitle from './SubTitle';
 import SubToolbar from './SubToolbar';
 // import Switch from './Switch';
 import Table from './Table';
-// import Tabs from './Tabs';
+import Tab from './Tabs/Tab';
+import TabBar from './Tabs/TabBar';
+import TabView from './Tabs/TabView';
 import Title from './Title';
 // import Toast from './Toast';
 import Toggle from './Toggle';
@@ -75,7 +78,9 @@ export {
   SubTitle,
   SubToolbar,
   Table,
-  // Tabs,
+  Tab,
+  TabBar,
+  TabView,
   Title,
   Toggle,
   Toolbar,

@@ -5,7 +5,7 @@ export class Cell extends Component {
   static propTypes = {
     style: ViewPropTypes.style,
     textStyle: Text.propTypes.style,
-    borderStyle: ViewPropTypes.style
+    borderStyle: ViewPropTypes.style,
   };
 
   render() {
@@ -27,14 +27,14 @@ export class Cell extends Component {
           {
             borderTopWidth,
             borderRightWidth,
-            borderColor
+            borderColor,
           },
           styles.cell,
           width && { width },
           height && { height },
           flex && { flex },
           !width && !flex && !height && !style && { flex: 1 },
-          style
+          style,
         ]}
       >
         {textDom}
@@ -45,5 +45,5 @@ export class Cell extends Component {
 
 const styles = StyleSheet.create({
   cell: { justifyContent: 'center' },
-  text: { backgroundColor: 'transparent' }
+  text: { backgroundColor: 'transparent' },
 });

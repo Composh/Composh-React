@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import {
   Platform, StyleSheet, Text, TextInput, View,
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 export default class DialogInput extends React.PureComponent {
   static propTypes = {

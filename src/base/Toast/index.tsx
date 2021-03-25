@@ -5,6 +5,6 @@ import { View } from 'react-native';
 
 const Toast: React.FC = () => {
   return <View />;
-}
+};
 
 export default Toast;

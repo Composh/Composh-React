@@ -8,16 +8,16 @@ import {
 } from 'react-native';
 
 // Lib Configs Import
+import LinearGradient from 'react-native-linear-gradient';
+import {
+  Colors,
+} from '../../constants';
 import {
   shadowStyles,
 } from '../../theme/Layout';
 
-import {
-  Colors,
-} from '../../constants';
 
 // Plugins Import
-import LinearGradient from 'react-native-linear-gradient';
 
 
 
@@ -69,7 +69,8 @@ const Card = (props) => {
           {props.children}
         </LinearGradient>
       );
-    } else {
+    }
+    else {
       return (
         <View style={[
           styles.cardStyles,
@@ -91,8 +92,7 @@ const Card = (props) => {
   return (
     renderButtonHL()
   );
-
-}
+};
 
 
 

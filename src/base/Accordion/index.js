@@ -44,7 +44,7 @@ class DefaultHeader extends React.Component {
       <View
         style={[
           styles.defaultHeader,
-          headerStyle || { backgroundColor: Colors.GREY }
+          headerStyle || { backgroundColor: Colors.GREY },
         ]}>
 
         <Text style={styles.headerTextStyle}>
@@ -94,7 +94,7 @@ class DefaultContent extends React.Component {
       <Text
         style={[
           { padding: 16 },
-          contentStyle || { backgroundColor: Colors.WHITE }
+          contentStyle || { backgroundColor: Colors.WHITE },
         ]}>
 
         {content}
@@ -107,16 +107,15 @@ class DefaultContent extends React.Component {
 
 
 class AccordionSubItem extends React.Component {
-
   state = {
-    fadeAnim: new Animated.Value(0.3)
+    fadeAnim: new Animated.Value(0.3),
   };
 
   componentDidMount() {
     Animated.timing(this.state.fadeAnim, {
       toValue: 1,
       duration: 500,
-      useNativeDriver: true
+      useNativeDriver: true,
     }).start();
   }
 
@@ -158,7 +157,7 @@ class AccordionItem extends React.Component {
       onAccordionOpen,
       renderContent,
       renderHeader,
-      setSelected
+      setSelected,
     } = this.props;
 
 
@@ -175,16 +174,16 @@ class AccordionItem extends React.Component {
             {renderHeader ? (
               renderHeader(item, expanded)
             ) : (
-                <DefaultHeader
-                  expanded={expanded}
-                  expandedIcon={expandedIcon}
-                  expandedIconStyle={expandedIconStyle}
-                  headerStyle={headerStyle}
-                  icon={icon}
-                  iconStyle={iconStyle}
-                  title={item.title}
-                />
-              )}
+              <DefaultHeader
+                expanded={expanded}
+                expandedIcon={expandedIcon}
+                expandedIconStyle={expandedIconStyle}
+                headerStyle={headerStyle}
+                icon={icon}
+                iconStyle={iconStyle}
+                title={item.title}
+              />
+            )}
           </View>
         </TouchableWithoutFeedback>
         {expanded ? (
@@ -192,11 +191,11 @@ class AccordionItem extends React.Component {
             {renderContent ? (
               renderContent(item)
             ) : (
-                <DefaultContent
-                  content={item.content}
-                  contentStyle={contentStyle}
-                />
-              )}
+              <DefaultContent
+                content={item.content}
+                contentStyle={contentStyle}
+              />
+            )}
           </AccordionSubItem>
         ) : null}
       </View>
@@ -206,22 +205,19 @@ class AccordionItem extends React.Component {
 
 
 
-
-
-
 class Accordion extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      selected: props.expanded
+      selected: props.expanded,
     };
   }
 
   setSelected(index) {
     if (this.state.selected === index) {
       this.setState({ selected: undefined });
-    } else {
+    }
+    else {
       this.setState({ selected: index });
     }
   }
@@ -239,7 +235,7 @@ class Accordion extends React.Component {
       onAccordionOpen,
       renderContent,
       renderHeader,
-      style
+      style,
     } = this.props;
 
 
@@ -253,7 +249,7 @@ class Accordion extends React.Component {
             borderWidth: 1,
             flexGrow: 0,
           },
-          style
+          style,
         ]}
         keyExtractor={(item, index) => String(index)}
         renderItem={({ item, index }) => (

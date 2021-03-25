@@ -42,4 +42,10 @@ const SubToolbar: React.FC<IProps> = (props: any) => {
 
 
 
+SubToolbar.defaultProps = {
+  backgroundColor: 'gray',
+};
+
+
+
 export default SubToolbar;

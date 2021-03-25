@@ -1,12 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import {
   Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
 } from 'react-native';
+import PropTypes from 'prop-types';
+
 
 const COLOR = Platform.OS === 'ios' ? '#007ff9' : '#32CD32';
 

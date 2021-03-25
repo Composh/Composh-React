@@ -24,6 +24,7 @@ const AnimatedTitleIconHeader = Animated.createAnimatedComponent(IconContentView
 
 
 interface IProps {
+  backgroundColor?: string;
   colors?: any;
   start?: any;
   end?: any;
@@ -34,10 +35,6 @@ interface IProps {
   text?: string;
   textColor?: string;
   textSize?: number;
-
-  noBorderBottom?: boolean;
-  borderBottomColor?: string;
-  borderBottomWidth?: number;
 
   icon?: any;
 
@@ -88,10 +85,10 @@ const ListHeader: React.FC<IProps> = (props) => {
               {
                 rotate: animation.interpolate({
                   inputRange: [0, 1],
-                  outputRange: ["0deg", "180deg"]
-                })
-              }
-            ]
+                  outputRange: ['0deg', '180deg'],
+                }),
+              },
+            ],
           }}>
           {props.icon}
         </AnimatedTitleIconHeader>
@@ -114,12 +111,15 @@ const ListHeader: React.FC<IProps> = (props) => {
       </ContainerLinearHeader>
 
     );
-
-  } else {
+  }
+  else {
     return (
 
       <ContainerBackgroundHeader
-        style={props.style}>
+        style={[
+          props.style,
+          { backgroundColor: props.backgroundColor },
+        ]}>
         {renderHeaderChildren()}
       </ContainerBackgroundHeader>
 

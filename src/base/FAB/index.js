@@ -19,20 +19,20 @@ import {
 } from 'react-native';
 
 // Lib Configs Import
+import LinearGradient from 'react-native-linear-gradient';
+import { isIphoneX } from '../../config/PlatformsConfig';
 import {
   Colors,
   Metrics,
 } from '../../constants';
 
 // Utils
-import { isIphoneX } from '../../config/PlatformsConfig';
 
 // Components
 // import FloatingActionItem from "./FloatingActionItem";
 import Overlay from '../Overlay';
 
 // Imports
-import LinearGradient from 'react-native-linear-gradient';
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
 
@@ -57,13 +57,13 @@ class FAB extends Component {
     };
 
     this.mainBottomAnimation = new Animated.Value(
-      this.distanceToVerticalEdge + props.mainVerticalDistance
+      this.distanceToVerticalEdge + props.mainVerticalDistance,
     );
     this.actionsBottomAnimation = new Animated.Value(
       props.buttonSize +
       this.distanceToVerticalEdge +
       props.actionsPaddingTopBottom +
-      props.mainVerticalDistance
+      props.mainVerticalDistance,
     );
     this.animation = new Animated.Value(0);
     this.actionsAnimation = new Animated.Value(0);
@@ -91,11 +91,11 @@ class FAB extends Component {
         Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide';
       this.keyboardWillShowListener = Keyboard.addListener(
         showEvent,
-        this.onKeyboardShow
+        this.onKeyboardShow,
       );
       this.keyboardWillHideListener = Keyboard.addListener(
         hideEvent,
-        this.onKeyboardHide
+        this.onKeyboardHide,
       );
     }
   }
@@ -230,7 +230,7 @@ class FAB extends Component {
         if (onClose) {
           onClose();
         }
-      }
+      },
     );
   };
 
@@ -313,7 +313,7 @@ class FAB extends Component {
             if (onOpen) {
               onOpen();
             }
-          }
+          },
         );
       }
       else {
@@ -634,7 +634,7 @@ class FAB extends Component {
 
                 shadow: this.getShadow(),
                 // style: { ...child.props.style, opacity: 0.5 }
-              }
+              },
             )
           ))
         }

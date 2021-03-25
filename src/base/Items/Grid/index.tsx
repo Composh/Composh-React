@@ -18,6 +18,8 @@ export interface IProps {
 
   iconGridColor?: string;
   iconGridLabel?: string;
+
+  style?: any;
 }
 
 
@@ -35,7 +37,10 @@ const GridIcon: React.FC<IProps> = (props) => {
       }
       activeOpacity={props.activeOpacity}
       onPress={props.onPress}
-      style={styles.gridIconContent}>
+      style={[
+        styles.gridIconContent,
+        props.style,
+      ]}>
 
       {props.icon}
 
@@ -58,6 +63,8 @@ const GridIcon: React.FC<IProps> = (props) => {
 const styles = StyleSheet.create({
   gridIconContent: {
     alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 4,
   },
 
   availableText: {
@@ -67,7 +74,7 @@ const styles = StyleSheet.create({
   },
 
   gridIconMargin: {
-    marginVertical: 8,
+    marginTop: 6,
   },
 });
 

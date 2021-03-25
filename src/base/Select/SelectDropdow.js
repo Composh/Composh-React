@@ -6,8 +6,6 @@
 
 import React from 'react';
 
-import PropTypes from 'prop-types';
-
 import {
   Animated,
   Easing,
@@ -19,28 +17,29 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import color from 'color';
+import PropTypes from 'prop-types';
+
 
 // Application Configs Import
-import {
-  inputLayout,
-} from '../../theme/Layout';
-
 import {
   Colors,
   Sizes,
 } from '../../constants';
+import {
+  inputLayout,
+} from '../../theme/Layout';
+
 
 import Icon from '../Icon';
 import Input from '../Input';
 
-import color from 'color';
 
 // import Feather from 'react-native-vector-icons/Feather';
 
 
 
 class DropDownPicker extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -49,20 +48,24 @@ class DropDownPicker extends React.Component {
 
     if (!props.multiple) {
       if (props.defaultValue) {
-        choice = props.items.find(item => item.value === props.defaultValue);
-      } else if (props.items.filter(item => item.hasOwnProperty('selected') && item.selected === true).length > 0) {
-        choice = props.items.filter(item => item.hasOwnProperty('selected') && item.selected === true)[0];
-      } else {
+        choice = props.items.find((item) => item.value === props.defaultValue);
+      }
+      else if (props.items.filter((item) => item.hasOwnProperty('selected') && item.selected === true).length > 0) {
+        choice = props.items.filter((item) => item.hasOwnProperty('selected') && item.selected === true)[0];
+      }
+      else {
         choice = this.null();
       }
-    } else {
+    }
+    else {
       if (props.defaultValue && Array.isArray(props.defaultValue) && props.defaultValue.length > 0) {
         props.defaultValue.forEach((value, index) => {
           items.push(
-            props.items.find(item => item.value === value)
+            props.items.find((item) => item.value === value),
           );
         });
-      } else if (props.items.filter(item => item.hasOwnProperty('selected') && item.selected === true).length > 0) {
+      }
+      else if (props.items.filter((item) => item.hasOwnProperty('selected') && item.selected === true).length > 0) {
         items = props.items.filter((item, index) => item.hasOwnProperty('selected') && item.selected === true);
       }
     }
@@ -91,7 +94,7 @@ class DropDownPicker extends React.Component {
       const { label, value } = props.defaultValue === null ? {
         label: null,
         value: null,
-      } : props.items.find(item => item.value === props.defaultValue);
+      } : props.items.find((item) => item.value === props.defaultValue);
       return {
         choice: {
           label, value,
@@ -109,7 +112,7 @@ class DropDownPicker extends React.Component {
       if (props.defaultValue && Array.isArray(props.defaultValue) && props.defaultValue.length > 0) {
         props.defaultValue.forEach((value, index) => {
           items.push(
-            props.items.find(item => item.value === value)
+            props.items.find((item) => item.value === value),
           );
         });
       }
@@ -165,7 +168,8 @@ class DropDownPicker extends React.Component {
       if (isVisible) {
         this.props.onOpen();
         this.openPanel();
-      } else {
+      }
+      else {
         this.props.onClose();
         this.closePanel();
       }
@@ -181,7 +185,7 @@ class DropDownPicker extends React.Component {
         duration: 300,
         useNativeDriver: false,
         easing: Easing.linear,
-      }
+      },
     ).start();
   }
 
@@ -194,7 +198,7 @@ class DropDownPicker extends React.Component {
         duration: 300,
         useNativeDriver: false,
         easing: Easing.linear,
-      }
+      },
     ).start();
   }
 
@@ -219,13 +223,15 @@ class DropDownPicker extends React.Component {
 
       // onChangeItem callback
       this.props.onChangeItem(item, index);
-    } else {
+    }
+    else {
       let choice = [...this.state.choice];
-      const exists = choice.findIndex(i => i.label === item.label && i.value === item.value);
+      const exists = choice.findIndex((i) => i.label === item.label && i.value === item.value);
 
       if (exists > -1 && choice.length > this.props.min) {
-        choice = choice.filter(i => i.label !== item.label && i.value !== item.value);
-      } else if (exists === -1 && choice.length < this.props.max) {
+        choice = choice.filter((i) => i.label !== item.label && i.value !== item.value);
+      }
+      else if (exists === -1 && choice.length < this.props.max) {
         choice.push(item);
       }
 
@@ -234,7 +240,7 @@ class DropDownPicker extends React.Component {
       });
 
       // onChangeItem callback
-      this.props.onChangeItem(choice.map(i => i.value));
+      this.props.onChangeItem(choice.map((i) => i.value));
     }
 
     // onClose callback (!multiple)
@@ -298,7 +304,7 @@ class DropDownPicker extends React.Component {
           }],
         }}>
         <Icon
-          type={family || "ionicon"}
+          type={family || 'ionicon'}
           name={icon || Platform.select({ android: 'md-arrow-dropdown', ios: 'ios-arrow-down' })}
           size={iconSize || 19}
           color={String(colorSelectedComponent)}
@@ -313,24 +319,20 @@ class DropDownPicker extends React.Component {
     let colorPlaceholder;
 
     if (!this.state.choice.value) {
-      colorPlaceholder = color(this.props.placeholderTextColor || Colors.PLACEHOLDER).alpha(0.5)
-
-    } else {
-
+      colorPlaceholder = color(this.props.placeholderTextColor || Colors.PLACEHOLDER).alpha(0.5);
+    }
+    else {
       if (this.state.choice.value && this.state.isVisible) {
-        colorPlaceholder = this.props.tintColor || Colors.BLACK
-
-      } else {
-
-        if (this.props.inputTextColor) {
-          colorPlaceholder = this.props.inputTextColor || Colors.PRIMARY
-
-        } else {
-          colorPlaceholder = this.props.placeholderTextColor || Colors.PLACEHOLDER
-        }
-
+        colorPlaceholder = this.props.tintColor || Colors.BLACK;
       }
-
+      else {
+        if (this.props.inputTextColor) {
+          colorPlaceholder = this.props.inputTextColor || Colors.PRIMARY;
+        }
+        else {
+          colorPlaceholder = this.props.placeholderTextColor || Colors.PLACEHOLDER;
+        }
+      }
     }
 
     return colorPlaceholder;
@@ -523,7 +525,7 @@ class DropDownPicker extends React.Component {
                     )} */}
 
                     {
-                      multiple && this.state.choice.findIndex(i => i.label === item.label && i.value === item.value) > -1 && (
+                      multiple && this.state.choice.findIndex((i) => i.label === item.label && i.value === item.value) > -1 && (
                         this.props.customTickIcon()
                       )
                     }

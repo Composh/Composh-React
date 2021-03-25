@@ -25,7 +25,6 @@ function MenuItem({
   textStyle,
   ...props
 }) {
-
   const touchableProps =
     Platform.OS === 'android'
       ? { background: TouchableNativeFeedback.SelectableBackground() }
@@ -62,7 +61,7 @@ MenuItem.defaultProps = {
 const styles = StyleSheet.create({
   
   container: {
-    overflow: "hidden", // Verify iOS
+    overflow: 'hidden', // Verify iOS
     height: 48,
     justifyContent: 'center',
     maxWidth: 248,
