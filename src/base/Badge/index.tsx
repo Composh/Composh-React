@@ -50,7 +50,7 @@ const BadgeCircle: React.FC<IProps> = (props: any) => {
         props.style,
         { backgroundColor: props.backgroundColor },
         isString && { alignSelf: 'flex-start' },
-        !isString && styles.miniBadge,
+        !isString && !props.value && styles.miniBadge,
         props.badgeStyle && props.badgeStyle,
         props.block && !props.round && styles.badgeBlock,
         !props.block && props.round && styles.badgeRound,

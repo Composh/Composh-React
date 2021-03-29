@@ -31,7 +31,7 @@ import Screen from './Screen';
 // import SearchBar from './SearchBar';
 // import Select from './Select';
 // import Shapes from './Shapes';
-// import SnackBar from './SnackBar';
+import SnackBar from './SnackBar';
 import StatusViewBar from './StatusViewBar';
 import SubTitle from './SubTitle';
 import SubToolbar from './SubToolbar';
@@ -74,6 +74,7 @@ export {
   Overlay,
   Screen,
   // Select,
+  SnackBar,
   StatusViewBar,
   SubTitle,
   SubToolbar,

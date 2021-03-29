@@ -11,6 +11,7 @@ interface IProps {
   transparent?: boolean;
   absolute?: boolean;
 
+  backgroundColor?: string;
   borderBottomColor?: string;
   style?: any;
 
@@ -26,6 +27,7 @@ const AppBar: React.FC<IProps> = (props: any) => {
   return (
 
     <Component
+      backgroundColor={props.backgroundColor}
       style={[
         props.style,
         props.absolute && {
@@ -46,6 +48,12 @@ const AppBar: React.FC<IProps> = (props: any) => {
     </Component>
 
   );
+};
+
+
+
+AppBar.defaultProps = {
+  backgroundColor: 'black',
 };
 
 

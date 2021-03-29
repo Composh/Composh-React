@@ -1,5 +1,13 @@
 import styled from 'styled-components/native';
 
+
+
+interface IProps {
+  backgroundColor?: string;
+}
+
+
+
 // TODO: VERIFICAR SHADOW - ANDROID E IOS [FICA SUMINDO E APARECENDO NO ANDROID]
 export const ShadowToolbar = styled.View`
   elevation: 12;
@@ -11,7 +19,7 @@ export const ShadowToolbar = styled.View`
 `;
 
 export const HeaderContainer = styled(ShadowToolbar)`
-  background-color: black;
+  background-color: ${(props: IProps) => props.backgroundColor};
 `;
 
 export const HeaderTransparent = styled.View`
