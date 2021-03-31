@@ -1,67 +1,30 @@
-import React, { PureComponent } from "react";
+import React,
+{
+  useState,
+} from 'react';
 
-import { Animated, Platform, StyleSheet, View } from "react-native";
+import {
+  Animated,
+  StyleSheet,
+  View,
+} from 'react-native';
 
-const getOutputRange = (width, isReversed) => isReversed ? [width, -width] : [-width, width]
-
-
-
-class ShimmerPlaceholder extends PureComponent {
-  state = {
-    beginShimmerPosition: new Animated.Value(-1)
-  }
-
-
-
-  /*
-  * To create ShimmerPlaceholder by Linear Gradient. Only useful when you use 3rd party,
-  * For example: react-native-linear-gradient
-  * @param {Linear Gradient Component} LinearGradient - 'expo-linear-gradient' by default
-  *
-  * @example
-  *
-  * import LinearGradient from 'react-native-linear-gradient';
-  * import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder'
-  *
-  * const ShimmerPlaceHolder = createShimmerPlaceholder(LinearGradient)
-  *
-  * ...
-  *
-  * <ShimmerPlaceHolder />
-  */
-
-  static createShimmerPlaceholder = (LinearGradient = global.Expo
-    ? global.Expo.LinearGradient
-    : View) => React.forwardRef((props, ref) => <ShimmerPlaceholder LinearGradient={LinearGradient} ref={ref} {...props} />)
+const getOutputRange = (width: number, isReversed: boolean) => isReversed ? [width, -width] : [-width, width]
 
 
 
-  getAnimated = () => {
-    const { delay, duration, isInteraction } = this.props
-    return Animated.loop(Animated.timing(this.state.beginShimmerPosition, {
-      toValue: 1,
-      delay,
-      duration,
-      useNativeDriver: true,
-      isInteraction
-    }))
-  }
-  animatedValue = this.getAnimated()
-
-  render() {
-    return (
-      <BasedShimmerPlaceholder {...this.props} animatedValue={this.animatedValue} beginShimmerPosition={this.state.beginShimmerPosition} />
-    )
-  }
+interface IProps {
+  delay?: number;
+  duration?: number;
+  isInteraction?: boolean;
 }
 
-ShimmerPlaceholder.defaultProps = {
-  delay: 0,
-  duration: 1000,
-  isInteraction: true
-}
 
-const BasedShimmerPlaceholder = (props) => {
+
+
+
+
+const BasedShimmerPlaceholder = (props: any) => {
   const {
     width = 200,
     height = 15,
@@ -151,16 +114,93 @@ const BasedShimmerPlaceholder = (props) => {
   )
 }
 
+
+
+
+
+const ShimmerPlaceholder: React.FC<IProps> = (props) => {
+  // class ShimmerPlaceholder extends PureComponent {
+
+  const [beginShimmerPosition] = useState(new Animated.Value(-1))
+
+
+
+
+  // static const createShimmerPlaceholder = (LinearGradient = global.Expo
+  //   ? global.Expo.LinearGradient
+  //   : View) => React.forwardRef((props, ref) => <ShimmerPlaceholder LinearGradient={LinearGradient} ref={ref} {...props} />)
+
+
+  const getAnimated = () => {
+    return Animated.loop(Animated.timing(beginShimmerPosition, {
+      toValue: 1,
+      delay: props.delay,
+      duration: props.duration,
+      useNativeDriver: true,
+      isInteraction: props.isInteraction
+    }))
+  }
+  const animatedValue = getAnimated()
+
+
+
+  return (
+    <BasedShimmerPlaceholder
+      {...props}
+      animatedValue={animatedValue}
+      beginShimmerPosition={beginShimmerPosition}
+    />
+  )
+}
+
+
+
 const styles = StyleSheet.create({
   container: {
     overflow: "hidden"
   },
-
 });
 
 
-// export const createShimmerPlaceholder = (LinearGradient = global.Expo
-//   ? global.Expo.LinearGradient
-//   : View) => React.forwardRef((props, ref) => <ShimmerPlaceholder LinearGradient={LinearGradient} ref={ref} {...props} />)
 
-export default ShimmerPlaceholder
+ShimmerPlaceholder.defaultProps = {
+  delay: 0,
+  duration: 1000,
+  isInteraction: true
+}
+
+
+
+/*
+* To create ShimmerPlaceholder by Linear Gradient. Only useful when you use 3rd party,
+* For example: react-native-linear-gradient
+* @param {Linear Gradient Component} LinearGradient - 'expo-linear-gradient' by default
+*
+* @example
+*
+* import LinearGradient from 'react-native-linear-gradient';
+* import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder'
+*
+* const ShimmerPlaceHolder = createShimmerPlaceholder(LinearGradient)
+*
+* ...
+*
+* <ShimmerPlaceHolder />
+*/
+
+const createShimmerPlaceholder = (LinearGradient = global.Expo
+  ? global.Expo.LinearGradient
+  : View
+) => React.forwardRef((props, ref) =>
+  <ShimmerPlaceholder
+    LinearGradient={LinearGradient}
+    ref={ref} {...props}
+  />
+);
+
+
+
+export default {
+  ShimmerPlaceholder,
+  createShimmer: createShimmerPlaceholder
+};
