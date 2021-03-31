@@ -22,6 +22,7 @@ interface IProps {
   location?: any; // = [0.3, 0.5, 0.7],
   shimmerWidthPercent?: number;
   opacity?: number;
+  borderRadius?: number;
 
   visible?: boolean;
   duration?: number;
@@ -108,7 +109,10 @@ const ShimmerPlaceholder: React.FC<IProps> = (props: any) => {
       {...props.containerProps}
       style={[
         !props.visible && { height: props.height, width: props.width },
-        { overflow: "hidden" },
+        {
+          overflow: "hidden",
+          borderRadius: props.borderRadius,
+        },
         !props.visible && props.shimmerStyle,
         props.style,
       ]}>
@@ -176,6 +180,7 @@ ShimmerPlaceholder.defaultProps = {
   location: [0.3, 0.5, 0.7],
   shimmerWidthPercent: 1,
   opacity: 1,
+  borderRadius: 0,
 
   visible: false,
   duration: 1000,
