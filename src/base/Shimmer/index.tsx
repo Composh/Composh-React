@@ -1,135 +1,59 @@
 import React,
 {
+  useEffect,
   useState,
 } from 'react';
 
 import {
   Animated,
-  StyleSheet,
   View,
 } from 'react-native';
+
+import LinearGradient from 'react-native-linear-gradient';
 
 const getOutputRange = (width: number, isReversed: boolean) => isReversed ? [width, -width] : [-width, width]
 
 
 
 interface IProps {
-  delay?: number;
+  width?: number;
+  height?: number;
+  shimmerColors?: any; // = ["#ebebeb", "#c5c5c5", "#ebebeb"],
+  location?: any; // = [0.3, 0.5, 0.7],
+  shimmerWidthPercent?: number;
+  opacity?: number;
+
+  visible?: boolean;
   duration?: number;
+  delay?: number;
+  isReversed?: boolean;
+  stopAutoRun?: boolean;
   isInteraction?: boolean;
+
+  //   LinearGradient = global.Expo
+  // ? global.Expo.LinearGradient
+  // : View,
+
+  contentStyle?: any;
+  shimmerStyle?: any;
+  containerProps?: any;
+  shimmerContainerProps?: any;
+  childrenContainerProps?: any;
+  style?: any;
+
+  children?: any;
 }
 
 
 
-
-
-
-const BasedShimmerPlaceholder = (props: any) => {
-  const {
-    width = 200,
-    height = 15,
-    duration = 1000,
-    delay = 0,
-    shimmerColors = ["#ebebeb", "#c5c5c5", "#ebebeb"],
-    isReversed = false,
-    stopAutoRun = false,
-    visible,
-    location = [0.3, 0.5, 0.7],
-    style,
-    contentStyle,
-    shimmerStyle,
-    isInteraction = true,
-    LinearGradient = global.Expo
-      ? global.Expo.LinearGradient
-      : View,
-    children,
-    animatedValue,
-    beginShimmerPosition,
-    shimmerWidthPercent = 1,
-    containerProps,
-    shimmerContainerProps,
-    childrenContainerProps
-  } = props
-
-  const linearTranslate = beginShimmerPosition.interpolate({
-    inputRange: [-1, 1],
-    outputRange: getOutputRange(width, isReversed)
-  });
-
-  React.useEffect(() => {
-    if (!stopAutoRun) {
-      animatedValue.start()
-    }
-    return () => {
-      animatedValue.stop()
-    }
-  }, [stopAutoRun])
-
-  React.useEffect(() => {
-    if (visible) {
-      animatedValue.stop()
-    }
-    if (!visible && !stopAutoRun) {
-      animatedValue.start()
-    }
-  }, [visible, stopAutoRun])
-
-  return (
-    <View
-      style={[!visible && { height, width }, styles.container, !visible && shimmerStyle, style]}
-      {...containerProps}
-    >
-      {/* Force render children to restrict rendering twice */}
-      <View
-        style={[!visible && { width: 0, height: 0, opacity: 0 }, visible && contentStyle]}
-        {...childrenContainerProps}
-      >
-        {children}
-      </View>
-      {
-        !visible && (
-          <View style={{ flex: 1, backgroundColor: shimmerColors[0] }} {...shimmerContainerProps}>
-            <Animated.View
-              style={{ flex: 1, transform: [{ translateX: linearTranslate }] }}
-            >
-              <LinearGradient
-                colors={shimmerColors}
-                style={{ flex: 1, width: width * shimmerWidthPercent }}
-                start={{
-                  x: -1,
-                  y: 0.5
-                }}
-                end={{
-                  x: 2,
-                  y: 0.5
-                }}
-                locations={location}
-              />
-            </Animated.View>
-
-          </View>
-        )
-      }
-    </View>
-  )
-}
-
-
-
-
-
-const ShimmerPlaceholder: React.FC<IProps> = (props) => {
-  // class ShimmerPlaceholder extends PureComponent {
-
+const ShimmerPlaceholder: React.FC<IProps> = (props: any) => {
   const [beginShimmerPosition] = useState(new Animated.Value(-1))
 
 
-
-
-  // static const createShimmerPlaceholder = (LinearGradient = global.Expo
-  //   ? global.Expo.LinearGradient
-  //   : View) => React.forwardRef((props, ref) => <ShimmerPlaceholder LinearGradient={LinearGradient} ref={ref} {...props} />)
-
+  const linearTranslate = beginShimmerPosition.interpolate({
+    inputRange: [-1, 1],
+    outputRange: getOutputRange(props.width, props.isReversed)
+  });
 
   const getAnimated = () => {
     return Animated.loop(Animated.timing(beginShimmerPosition, {
@@ -139,35 +63,140 @@ const ShimmerPlaceholder: React.FC<IProps> = (props) => {
       useNativeDriver: true,
       isInteraction: props.isInteraction
     }))
-  }
-  const animatedValue = getAnimated()
+  };
+
+  const animatedValue = getAnimated();
+
+
+
+  useEffect(() => {
+    if (!props.stopAutoRun) {
+      animatedValue.start()
+    }
+    return () => {
+      animatedValue.stop()
+    }
+  }, [props.stopAutoRun])
+
+
+  useEffect(() => {
+    if (props.visible) {
+      animatedValue.stop()
+    }
+    if (!props.visible && !props.stopAutoRun) {
+      animatedValue.start()
+    }
+  }, [props.visible, props.stopAutoRun])
 
 
 
   return (
-    <BasedShimmerPlaceholder
-      {...props}
-      animatedValue={animatedValue}
-      beginShimmerPosition={beginShimmerPosition}
-    />
+    // <BasedShimmerPlaceholder
+    //   {...props}
+    //   animatedValue={animatedValue}
+    //   beginShimmerPosition={beginShimmerPosition}
+    // />
+
+
+
+    // <View style={{ backgroundColor: 'red', height: 40, width: 40 }}>
+
+    // </View>
+
+
+    <View
+      {...props.containerProps}
+      style={[
+        !props.visible && { height: props.height, width: props.width },
+        { overflow: "hidden" },
+        !props.visible && props.shimmerStyle,
+        props.style,
+      ]}>
+
+      {/* Force render children to restrict rendering twice */}
+      <View
+        {...props.childrenContainerProps}
+        style={[
+          !props.visible && { width: 0, height: 0, opacity: 0 },
+          props.visible && props.contentStyle,
+        ]}>
+
+        {props.children}
+
+      </View>
+
+
+
+      {!props.visible && (
+        <View
+          {...props.shimmerContainerProps}
+          style={{
+            opacity: props.opacity,
+            flex: 1,
+            backgroundColor: props.shimmerColors[0],
+          }}>
+
+          <Animated.View
+            style={{
+              flex: 1,
+              transform: [{
+                translateX: linearTranslate,
+              }],
+            }}>
+            <LinearGradient
+              colors={props.shimmerColors}
+              style={{
+                flex: 1,
+                width: props.width * props.shimmerWidthPercent,
+              }}
+              start={{
+                x: -1,
+                y: 0.5
+              }}
+              end={{
+                x: 2,
+                y: 0.5
+              }}
+              locations={props.location}
+            />
+          </Animated.View>
+
+        </View>
+      )}
+    </View>
   )
 }
 
 
 
-const styles = StyleSheet.create({
-  container: {
-    overflow: "hidden"
-  },
-});
-
-
-
 ShimmerPlaceholder.defaultProps = {
-  delay: 0,
+  width: 200,
+  height: 15,
+  shimmerColors: ["#ebebeb", "#c5c5c5", "#ebebeb"],
+  location: [0.3, 0.5, 0.7],
+  shimmerWidthPercent: 1,
+  opacity: 1,
+
+  visible: false,
   duration: 1000,
-  isInteraction: true
-}
+  delay: 0,
+  isReversed: false,
+  stopAutoRun: false,
+  isInteraction: true,
+
+  // LinearGradient = global.Expo
+  //   ? global.Expo.LinearGradient
+  //   : View,
+
+  // contentStyle,
+  // shimmerStyle,
+  // containerProps,
+  // shimmerContainerProps,
+  // childrenContainerProps
+  // style,
+
+  // children,
+};
 
 
 
@@ -188,19 +217,18 @@ ShimmerPlaceholder.defaultProps = {
 * <ShimmerPlaceHolder />
 */
 
-const createShimmerPlaceholder = (LinearGradient = global.Expo
-  ? global.Expo.LinearGradient
-  : View
-) => React.forwardRef((props, ref) =>
-  <ShimmerPlaceholder
-    LinearGradient={LinearGradient}
-    ref={ref} {...props}
-  />
-);
+
+
+// const createShimmerPlaceholder = (LinearGradient = global.Expo
+//   ? global.Expo.LinearGradient
+//   : View
+// ) => React.forwardRef((props, ref) =>
+//   <ShimmerPlaceholder
+//     LinearGradient={LinearGradient}
+//     ref={ref} {...props}
+//   />
+// );
 
 
 
-export default {
-  ShimmerPlaceholder,
-  createShimmer: createShimmerPlaceholder
-};
+export default ShimmerPlaceholder;
