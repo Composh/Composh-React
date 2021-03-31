@@ -28,6 +28,7 @@ import List from './List';
 import Overlay from './Overlay';
 // import Rating from './Rating';
 import Screen from './Screen';
+import Shimmer from './Shimmer';
 // import SearchBar from './SearchBar';
 // import Select from './Select';
 // import Shapes from './Shapes';
@@ -73,6 +74,7 @@ export {
   // MenuOverflow,
   Overlay,
   Screen,
+  Shimmer,
   // Select,
   SnackBar,
   StatusViewBar,
