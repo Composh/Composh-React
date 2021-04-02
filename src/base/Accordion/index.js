@@ -224,6 +224,7 @@ class Accordion extends React.Component {
 
   render() {
     const {
+      borderColor,
       contentStyle,
       dataArray,
       expandedIcon,
@@ -244,8 +245,8 @@ class Accordion extends React.Component {
         data={dataArray}
         extraData={this.state}
         style={[
-          {
-            borderColor: Colors.HERDER_BORDER,
+          borderColor && {
+            borderColor: borderColor || Colors.HERDER_BORDER,
             borderWidth: 1,
             flexGrow: 0,
           },
@@ -268,7 +269,7 @@ class Accordion extends React.Component {
             renderHeader={renderHeader}
             onAccordionOpen={onAccordionOpen}
             onAccordionClose={onAccordionClose}
-            setSelected={(i) => this.setSelected(i)}
+            setSelected={(i: any) => this.setSelected(i)}
           />
         )}
         {...this.props}

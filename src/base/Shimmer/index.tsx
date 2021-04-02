@@ -5,11 +5,16 @@ import React,
 } from 'react';
 
 import {
+  Dimensions,
   Animated,
   View,
 } from 'react-native';
 
 import LinearGradient from 'react-native-linear-gradient';
+
+const {
+  width,
+} = Dimensions.get('window');
 
 const getOutputRange = (width: number, isReversed: boolean) => isReversed ? [width, -width] : [-width, width]
 
@@ -18,6 +23,8 @@ const getOutputRange = (width: number, isReversed: boolean) => isReversed ? [wid
 interface IProps {
   width?: number;
   height?: number;
+  widthFull?: boolean;
+
   shimmerColors?: any; // = ["#ebebeb", "#c5c5c5", "#ebebeb"],
   location?: any; // = [0.3, 0.5, 0.7],
   shimmerWidthPercent?: number;
@@ -53,7 +60,10 @@ const ShimmerPlaceholder: React.FC<IProps> = (props: any) => {
 
   const linearTranslate = beginShimmerPosition.interpolate({
     inputRange: [-1, 1],
-    outputRange: getOutputRange(props.width, props.isReversed)
+    outputRange: getOutputRange(
+      props.widthFull ? width : props.width,
+      props.isReversed,
+    )
   });
 
   const getAnimated = () => {
@@ -108,13 +118,16 @@ const ShimmerPlaceholder: React.FC<IProps> = (props: any) => {
     <View
       {...props.containerProps}
       style={[
-        !props.visible && { height: props.height, width: props.width },
+        props.style,
+        !props.visible && {
+          height: props.height,
+          width: props.widthFull ? '100%' : props.width,
+        },
         {
-          overflow: "hidden",
+          overflow: 'hidden',
           borderRadius: props.borderRadius,
         },
         !props.visible && props.shimmerStyle,
-        props.style,
       ]}>
 
       {/* Force render children to restrict rendering twice */}
@@ -151,7 +164,8 @@ const ShimmerPlaceholder: React.FC<IProps> = (props: any) => {
               colors={props.shimmerColors}
               style={{
                 flex: 1,
-                width: props.width * props.shimmerWidthPercent,
+                // width: props.width * props.shimmerWidthPercent,
+                width: props.widthFull ? '100%' : props.width * props.shimmerWidthPercent,
               }}
               start={{
                 x: -1,
@@ -176,6 +190,8 @@ const ShimmerPlaceholder: React.FC<IProps> = (props: any) => {
 ShimmerPlaceholder.defaultProps = {
   width: 200,
   height: 15,
+  widthFull: false,
+
   shimmerColors: ["#ebebeb", "#c5c5c5", "#ebebeb"],
   location: [0.3, 0.5, 0.7],
   shimmerWidthPercent: 1,
