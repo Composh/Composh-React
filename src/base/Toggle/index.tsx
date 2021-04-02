@@ -20,6 +20,7 @@ import {
 
 interface IProps {
   disabled?: boolean;
+  selected?: boolean;
   flexToggle?: number;
 
   height?: number;
@@ -48,12 +49,12 @@ interface IProps {
 
 
 const Toggle: React.FC<IProps> = (props: any) => {
-  const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useState(props.selected);
 
 
   useEffect(() => {
     setSelected(selected);
-  }, [])
+  }, []);
 
 
   // componentWillReceiveProps(nextProps) {
@@ -132,12 +133,13 @@ const Toggle: React.FC<IProps> = (props: any) => {
     </TouchableWithoutFeedback>
 
   );
-}
+};
 
 
 
 Toggle.defaultProps = {
   disabled: false,
+  selected: false,
   flexToggle: 0,
 
   height: 35,

@@ -26,7 +26,7 @@ import Items from './Items';
 import List from './List';
 // import MenuOverflow from './MenuOverflow';
 import Overlay from './Overlay';
-// import Rating from './Rating';
+import Rating from './Rating';
 import Screen from './Screen';
 import Shimmer from './Shimmer';
 // import SearchBar from './SearchBar';
@@ -73,6 +73,7 @@ export {
   List,
   // MenuOverflow,
   Overlay,
+  Rating,
   Screen,
   Shimmer,
   // Select,
