@@ -1,4 +1,3 @@
-// React Components Import
 import React,
 {
   // useEffect,
@@ -7,34 +6,39 @@ import React,
 
 import {
   Animated,
-  // StyleSheet,
 } from 'react-native';
 
-// Lib Configs Import
 import StatusViewBar from '../StatusViewBar';
 
 import {
-  TouchableOpacityStyle,
+  OverlayTouchable,
+  OverlayView,
 } from './styled';
 
-const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacityStyle);
+const AnimatedTouchableOpacity = Animated.createAnimatedComponent(OverlayTouchable);
+const AnimatedView = Animated.createAnimatedComponent(OverlayView);
 
 
 
 interface IProps {
   visible?: boolean;
+
   onOverlayPress?: Function;
   noPress?: boolean;
   overlayColor?: string;
   showBackground?: boolean;
-  children?: any;
+
   style?: any;
+
+  children?: any;
 }
 
 
 
 const Overlay: React.FC<IProps> = (props) => {
   const [opacity] = useState(new Animated.Value(1));
+
+  // const [visible, setVisible] = useState(props.visible)
 
 
   // useEffect(() => {
@@ -67,30 +71,33 @@ const Overlay: React.FC<IProps> = (props) => {
     <>
       {props.visible && (
 
-        <AnimatedTouchableOpacity
-          activeOpacity={1}
-          disabled={props.noPress}
-          style={[
-            props.style,
-            {
-              opacity: opacity,
-              backgroundColor: props.showBackground
-                ? props.overlayColor || 'rgba(0, 0, 0, 0.5)'
-                : 'transparent',
-            },
-          ]}
-          onPress={onPressOverlayFunction}>
+        <AnimatedView>
 
           {props.showBackground && (
             <StatusViewBar
               noHeight
-              barStyle="light-content"
+              barStyle={'light-content'}
             />
           )}
 
+          <AnimatedTouchableOpacity
+            activeOpacity={1}
+            disabled={props.noPress}
+            style={[
+              props.style,
+              {
+                opacity: opacity,
+                backgroundColor: props.showBackground
+                  ? props.overlayColor
+                  : 'transparent',
+              },
+            ]}
+            onPress={onPressOverlayFunction}
+          />
+
           {props.children}
 
-        </AnimatedTouchableOpacity>
+        </AnimatedView>
 
       )}
     </>
@@ -101,7 +108,11 @@ const Overlay: React.FC<IProps> = (props) => {
 
 
 Overlay.defaultProps = {
+  visible: false,
+
   noPress: false,
+
+  overlayColor: 'rgba(0, 0, 0, 0.5)',
   showBackground: true,
 };
 

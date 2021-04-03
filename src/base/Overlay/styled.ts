@@ -1,10 +1,11 @@
-import styled from 'styled-components/native';
+import styled,
+{
+  css,
+} from 'styled-components/native';
 
 
 
-// Common Styles
-
-export const TouchableOpacityStyle = styled.TouchableOpacity`
+export const OverlayStyle = css`
   position: absolute;
   top: 0;
   bottom: 0;
@@ -15,4 +16,14 @@ export const TouchableOpacityStyle = styled.TouchableOpacity`
   
   justify-content: center;
   align-items: center;
+`;
+
+
+export const OverlayTouchable = styled.TouchableOpacity`
+  ${OverlayStyle};
+`;
+
+
+export const OverlayView = styled.View`
+  ${OverlayStyle};
 `;
