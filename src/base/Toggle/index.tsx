@@ -26,24 +26,25 @@ interface IProps {
   height?: number;
   width?: number;
 
-  backgroundColor?: string,
-  backgroundTintColor?: string,
+  backgroundColor?: string;
+  backgroundTintColor?: string;
 
-  textColor?: string,
-  textTintColor?: string,
+  textColor?: string;
+  textTintColor?: string;
 
   value?: any; // PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   displayValue?: string; // PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
-  borderColor?: string,
-  borderTintColor?: string,
+  borderColor?: string;
+  borderTintColor?: string;
   borderRadius?: number;
   borderWidth?: number;
 
-  iconContent?: any,
+  iconContent?: any;
+  onPress?: any;
 
-  textStyle?: any,
-  style?: any,
+  textStyle?: any;
+  style?: any;
 }
 
 
