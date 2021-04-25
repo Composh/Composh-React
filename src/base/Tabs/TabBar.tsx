@@ -34,6 +34,7 @@ export interface ITabBarProps extends ViewProps {
   indicatorStyle?: StyleProp<ViewStyle>;
 
   height?: number;
+  backgroundColor?: string;
   style?: any;
 }
 
@@ -108,8 +109,12 @@ class TabBar extends React.Component<ITabBarProps> {
   public render(): React.ReactElement<ViewProps> {
     const {
       // eva,
+      selectedIndex,
       height,
-      style, indicatorStyle, selectedIndex, children,
+      backgroundColor,
+      style,
+      indicatorStyle,
+      children,
       ...viewProps
     } = this.props;
 
@@ -122,7 +127,7 @@ class TabBar extends React.Component<ITabBarProps> {
           flex: 1,
           // width: '100%',
           height: height, // '100%',
-          backgroundColor: 'white',
+          backgroundColor: this.props.backgroundColor || 'white',
         },
         style,
       ]}>
@@ -170,5 +175,3 @@ const styles = StyleSheet.create({
 
 
 export default TabBar;
-
-
