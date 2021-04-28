@@ -110,8 +110,6 @@ class TabBar extends React.Component<ITabBarProps> {
     const {
       // eva,
       selectedIndex,
-      height,
-      backgroundColor,
       style,
       indicatorStyle,
       children,
@@ -126,7 +124,7 @@ class TabBar extends React.Component<ITabBarProps> {
         {
           flex: 1,
           // width: '100%',
-          height: height, // '100%',
+          height: this.props.height, // '100%',
           backgroundColor: this.props.backgroundColor || 'white',
         },
         style,

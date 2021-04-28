@@ -1,6 +1,6 @@
 import React,
 {
-  // useEffect,
+  useEffect,
   useState,
 } from 'react';
 
@@ -13,17 +13,19 @@ import StatusViewBar from '../StatusViewBar';
 import {
   OverlayTouchable,
   OverlayView,
+  OverlayChildren,
 } from './styled';
 
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(OverlayTouchable);
 const AnimatedView = Animated.createAnimatedComponent(OverlayView);
+const AnimatedChildren = Animated.createAnimatedComponent(OverlayChildren);
 
 
 
 interface IProps {
   visible?: boolean;
 
-  onOverlayPress?: Function;
+  onOverlayPress?: any; // Function;
   noPress?: boolean;
   overlayColor?: string;
   showBackground?: boolean;
@@ -36,25 +38,34 @@ interface IProps {
 
 
 const Overlay: React.FC<IProps> = (props) => {
-  const [opacity] = useState(new Animated.Value(1));
+  const animateTime = 200;
 
-  // const [visible, setVisible] = useState(props.visible)
+  const [opacity] = useState(new Animated.Value(0));
+  const [visibleOverlay, setVisibleOverlay] = useState(false);
 
 
-  // useEffect(() => {
-  //   if (props.visible) {
-  //     Animated.spring(opacity, {
-  //       toValue: 1,
-  //       useNativeDriver: false,
-  //     }).start();
-  //   }
-  //   else if (!props.visible) {
-  //     Animated.spring(opacity, {
-  //       toValue: 0,
-  //       useNativeDriver: false,
-  //     }).start();
-  //   }
-  // }, [props.visible]);
+  useEffect(() => {
+    if (props.visible) {
+      setVisibleOverlay(true);
+
+      Animated.timing(opacity, {
+        toValue: 1,
+        duration: animateTime,
+        useNativeDriver: false,
+      }).start();
+    }
+    else if (!props.visible) {
+      Animated.timing(opacity, {
+        toValue: 0,
+        duration: animateTime,
+        useNativeDriver: false,
+      }).start();
+
+      setTimeout(() => {
+        setVisibleOverlay(false);
+      }, animateTime);
+    }
+  }, [props.visible]);
 
 
 
@@ -69,7 +80,7 @@ const Overlay: React.FC<IProps> = (props) => {
   return (
 
     <>
-      {props.visible && (
+      {visibleOverlay && (
 
         <AnimatedView>
 
@@ -95,7 +106,12 @@ const Overlay: React.FC<IProps> = (props) => {
             onPress={onPressOverlayFunction}
           />
 
-          {props.children}
+          <AnimatedChildren
+            style={{
+              opacity: opacity,
+            }}>
+            {props.children}
+          </AnimatedChildren>
 
         </AnimatedView>
 

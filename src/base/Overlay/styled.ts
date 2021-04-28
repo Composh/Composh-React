@@ -27,3 +27,7 @@ export const OverlayTouchable = styled.TouchableOpacity`
 export const OverlayView = styled.View`
   ${OverlayStyle};
 `;
+
+
+export const OverlayChildren = styled.View`
+`;

@@ -1,7 +1,7 @@
 // Components Imports
 
 import Accordion from './Accordion';
-// import ActionSheet from './ActionSheet';
+import ActionSheet from './ActionSheet';
 // import Alert from './Alert';
 import AppBar from './AppBar';
 // import Avatar from './Avatar';
@@ -51,6 +51,7 @@ import ToolbarGroup from './ToolbarGroup';
 
 export {
   Accordion,
+  ActionSheet,
   // Alert,
   AppBar,
   Badge,
