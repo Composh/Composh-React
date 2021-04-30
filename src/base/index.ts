@@ -46,6 +46,7 @@ import Title from './Title';
 import Toggle from './Toggle';
 import Toolbar from './Toolbar';
 import ToolbarGroup from './ToolbarGroup';
+import Tooltip from './Tooltip';
 
 
 
@@ -90,4 +91,5 @@ export {
   Toggle,
   Toolbar,
   ToolbarGroup,
+  Tooltip,
 };
