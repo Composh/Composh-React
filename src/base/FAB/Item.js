@@ -50,10 +50,16 @@ class FABItem extends Component {
   }
 
   handleOnPress = () => {
-    const { onPress } = this.props;
+    const {
+      onPress,
+      resetClick,
+    } = this.props;
 
     if (onPress) {
       onPress();
+      setTimeout(() => {
+        resetClick();
+      }, 400);
     }
   };
 

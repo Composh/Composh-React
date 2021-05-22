@@ -629,8 +629,9 @@ class FAB extends Component {
                 distanceToEdge: distanceToEdge,
                 active: active,
                 animated: animated,
-
-                // onPress: () => { onPress; this.reset(); },
+                resetClick: () => {
+                  this.reset();
+                },
 
                 shadow: this.getShadow(),
                 // style: { ...child.props.style, opacity: 0.5 }
