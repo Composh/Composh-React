@@ -1,4 +1,3 @@
-// React Components Import
 import React from 'react';
 
 import {
@@ -8,6 +7,8 @@ import {
   Text,
   View,
 } from 'react-native';
+
+import Overlay from '../Overlay';
 
 // Lib Configs Import
 // import {
@@ -34,48 +35,48 @@ const DialogLoader = (props: any) => {
 
   return (
 
-    <>
-      {visible && (
-        <View style={[
-          { backgroundColor: overlayBackground || 'rgba(0, 0, 0, 0.5)' },
-          styles.modalBackground,
-        ]}>
+    <Overlay
+      noPress
+      visible={visible}
+      showBackground={true}
+      overlayColor={overlayBackground || 'rgba(0, 0, 0, 0.5)'}>
 
-          <StatusBar
-            translucent
-            barStyle="light-content"
-          />
+      <StatusBar
+        translucent
+        barStyle="light-content"
+      />
 
-          <View style={[
-            {
-              height: 95,
-              width: 95,
-              backgroundColor: backgroundLoader || 'white',
-              borderRadius: borderRadiusLoader || 0,
-            },
-            styles.activityIndicatorWrapper,
+
+      <View style={[
+        {
+          height: 95,
+          width: 95,
+          backgroundColor: backgroundLoader || 'white',
+          borderRadius: borderRadiusLoader || 0,
+        },
+        styles.activityIndicatorWrapper,
+      ]}>
+
+
+        <ActivityIndicator
+          animating={visible}
+          size="large"
+          color={indicatorColor || 'blue'}
+        />
+
+
+        {textLoader && (
+          <Text style={[
+            { color: textColorLoader || 'black' },
+            styles.textWait,
           ]}>
+            {textLoader}
+          </Text>
+        )}
 
-            <ActivityIndicator
-              animating={visible}
-              size="large"
-              color={indicatorColor || 'blue'}
-            />
+      </View>
 
-            {textLoader && (
-              <Text style={[
-                { color: textColorLoader || 'black' },
-                styles.textWait,
-              ]}>
-                {textLoader}
-              </Text>
-            )}
-
-          </View>
-
-        </View>
-      )}
-    </>
+    </Overlay>
 
   );
 };
@@ -83,18 +84,6 @@ const DialogLoader = (props: any) => {
 
 
 const styles = StyleSheet.create({
-
-  modalBackground: {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    flex: 1,
-    alignItems: 'center',
-    flexDirection: 'column',
-    justifyContent: 'center',
-  },
 
   activityIndicatorWrapper: {
     display: 'flex',
