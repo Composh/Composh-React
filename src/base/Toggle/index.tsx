@@ -11,7 +11,6 @@ import {
   View,
 } from 'react-native';
 
-// Application Configs Import
 import {
   Colors,
 } from '../../constants';
@@ -45,6 +44,8 @@ interface IProps {
 
   textStyle?: any;
   style?: any;
+
+  externalValue?: any;
 }
 
 
@@ -100,8 +101,12 @@ const Toggle: React.FC<IProps> = (props: any) => {
             width: props.flexToggle ? props.flexToggle : props.width,
             borderWidth: props.borderWidth,
             borderRadius: props.borderRadius,
-            borderColor: selected ? props.borderTintColor : props.borderColor,
-            backgroundColor: selected ? props.backgroundTintColor : props.backgroundColor,
+            borderColor: (props.externalValue
+              ? props.externalValue() : selected)
+              ? props.borderTintColor : props.borderColor,
+            backgroundColor: (props.externalValue
+              ? props.externalValue() : selected)
+              ? props.backgroundTintColor : props.backgroundColor,
           },
           props.iconContent ? styles.buttonIconPadding : styles.buttonNoIconPadding,
         ]}>
@@ -114,7 +119,7 @@ const Toggle: React.FC<IProps> = (props: any) => {
           style={[
             styles.text,
             {
-              color: selected
+              color: (props.externalValue ? props.externalValue() : selected)
                 ? props.textTintColor
                 : props.textColor,
               marginLeft: props.iconContent ? 5 : 0,

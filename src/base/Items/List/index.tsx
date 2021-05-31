@@ -1,6 +1,5 @@
 import React from 'react';
 
-// Styled Component Common Import
 import {
   IconContent,
   ItemContainer,
@@ -23,12 +22,15 @@ interface IProps {
   itemTypeIcon?: object;
 
   itemTitle?: string;
+  itemSizeTitle?: string;
   itemColorTitle?: string;
 
   itemSubtitle?: string;
+  itemSizeSubtitle?: string;
   itemColorSubtitle?: string;
 
   itemThirtTitle?: string;
+  itemSizeThirtTitle?: string;
   itemColorThirtTitle?: string;
 
   itemOptions?: object;
@@ -65,28 +67,31 @@ const ListItem: React.FC<IProps> = (props: any) => {
 
       <InfoContainer>
 
-        {props.itemColorTitle !== null && props.itemColorTitle !== '' && (
+        {props.itemColorTitle && (
           <ItemTitle
             style={{
               color: props.itemColorTitle,
+              fontSize: props.itemSizeTitle,
             }}>
             {props.itemTitle}
           </ItemTitle>
         )}
 
-        {props.itemSubtitle !== null && props.itemSubtitle !== '' && (
+        {props.itemSubtitle && (
           <ItemSubtitle
             style={{
               color: props.itemColorSubtitle,
+              fontSize: props.itemSizeSubtitle,
             }}>
             {props.itemSubtitle}
           </ItemSubtitle>
         )}
 
-        {props.itemThirtTitle !== null && props.itemThirtTitle !== '' && (
+        {props.itemThirtTitle && (
           <ItemLastTitle
             style={{
               color: props.itemColorThirtTitle,
+              fontSize: props.itemSizeThirtTitle,
               fontStyle: 'italic',
             }}>
             {props.itemThirtTitle}

@@ -30,21 +30,26 @@ interface IProps {
   data: any; //PropTypes.array,
   initial?: number;
 
-  box?: boolean;
-  boxStyle?: object;
-
-  textStyle?: object;
-  circleSize?: number;
-  duration?: number;
   animationTypes?: any; //PropTypes.array,
-  boxDirection?: string;
+  duration?: number;
+
   activeColor?: string;
-  icon?: any;
   deactiveColor?: string;
-  // textActiveColor: PropTypes.string,
-  // textDeactiveColor: PropTypes.string,
+  direction?: string;
+
+  box?: boolean;
+  boxDirection?: string;
   boxActiveBgColor?: string;
   boxDeactiveBgColor?: string;
+  boxStyle?: object;
+
+  // textActiveColor: PropTypes.string,
+  // textDeactiveColor: PropTypes.string,
+  textStyle?: object;
+
+  circleSize?: number;
+
+  icon?: any;
 
   onPress?: any; //PropTypes.func,
 
@@ -191,7 +196,7 @@ const Radio: React.FC<IProps> = (props) => {
     <ButtonRadioContainer
       style={[
         {
-          flexDirection: 'row',
+          flexDirection: props.direction,
           flex: 1,
         },
         props.style,
@@ -300,19 +305,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 
-  leftProductBox: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  centerProductBox: {
-    flex: 6,
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    paddingHorizontal: 4,
-  },
-
   circle: {
     borderWidth: 1,
     borderRadius: 10000,
@@ -325,11 +317,6 @@ const styles = StyleSheet.create({
     borderRadius: 10000,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-
-  circleFill: {
-    borderWidth: 1,
-    borderRadius: 10000,
   },
 
 });
@@ -351,6 +338,7 @@ Radio.defaultProps = {
   boxActiveBgColor: '#e1f5fe33',
   boxDeactiveBgColor: '#fff',
   box: false,
+  direction: 'row',
   boxDirection: 'row',
 };
 

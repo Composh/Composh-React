@@ -374,6 +374,7 @@ class FAB extends Component {
       fabColorTop,
       fabColorBottom,
       gradientLinear,
+      disabled,
 
       // overrideWithAction,
 
@@ -489,6 +490,7 @@ class FAB extends Component {
       objectToButton = (
 
         <TouchableOpacity
+          disabled={disabled}
           activeOpacity={0.3}
           style={sizeStyle}
           onPress={this.animateButton}>
@@ -532,11 +534,12 @@ class FAB extends Component {
       objectToButton = (
 
         <TouchableOpacity
+          disabled={disabled}
+          activeOpacity={0.3}
           style={[
             styles.button,
             sizeStyle,
           ]}
-          activeOpacity={0.3}
           onPress={this.animateButton}>
 
           {fabContentObject}
