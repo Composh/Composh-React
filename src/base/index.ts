@@ -1,5 +1,3 @@
-// Components Imports
-
 import Accordion from './Accordion';
 import ActionSheet from './ActionSheet';
 // import Alert from './Alert';
