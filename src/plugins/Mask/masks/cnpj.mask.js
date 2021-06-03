@@ -1,9 +1,20 @@
 import BaseMask from './_base.mask';
 import CustomMask from './custom.mask';
 
-
-
 export const CNPJ_MASK = '99.999.999/9999-99';
+// export const CNPJ_MASK = {
+//   regular: '99.999.999/9999-99',
+//   obfuscated: '**.***.***/9999-99',
+// };
+
+// const CNPJ_SETTINGS = {
+//   obfuscated: false,
+// };
+
+// const MASK_TRANSLATION = {
+//   '*': (val) => null,
+// };
+
 
 
 export const validateCnpj = (cnpj) => {
@@ -36,20 +47,49 @@ export default class CnpjMask extends BaseMask {
     return 'cnpj';
   }
 
+
+
   getValue(value, settings) {
     return CustomMask.shared.getValue(value, customMaskOptions);
   }
+  // getValue(value, settings) {
+  //   let selectedMask = this.getMask(value, settings);
+  //   return CustomMask.shared.getValue(value, {
+  //     mask: selectedMask,
+  //     translation: MASK_TRANSLATION,
+  //   });
+  // }
 
-  getRawValue(maskedValue, settings) {
-    return super.removeNotNumbers(maskedValue);
-  }
+
 
   validate(value, settings) {
     var isEmpty = (value || '').trim().length === 0;
     return !isEmpty && validateCnpj(value);
   }
 
+
+
+  getRawValue(maskedValue, settings) {
+    return super.removeNotNumbers(maskedValue);
+  }
+
+
+
   getMask(value, settings) {
     return CNPJ_MASK;
   }
+  // getMask(value, settings) {
+  //   let mergedSettings = super.mergeSettings(CNPJ_SETTINGS, settings);
+  //   const selectedMask = this._selectMask(mergedSettings.obfuscated);
+
+  //   return selectedMask;
+  // }
+
+
+
+  // _selectMask(obfuscated) {
+  //   const maskType = obfuscated ? 'obfuscated' : 'regular';
+
+  //   return CNPJ_MASK[maskType];
+  // }
 }

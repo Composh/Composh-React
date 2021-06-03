@@ -32,6 +32,8 @@ export default class CreditCardMask extends BaseMask {
     return 'credit-card';
   }
 
+
+
   getValue(value, settings) {
     let selectedMask = this.getMask(value, settings);
     return CustomMask.shared.getValue(value, {
@@ -39,6 +41,8 @@ export default class CreditCardMask extends BaseMask {
       translation: MASK_TRANSLATION,
     });
   }
+
+
 
   validate(value, settings) {
     if (!!value) {
@@ -48,6 +52,8 @@ export default class CreditCardMask extends BaseMask {
 
     return true;
   }
+
+
 
   getRawValue(maskedValue, settings) {
     if (!maskedValue) return [];
@@ -59,12 +65,16 @@ export default class CreditCardMask extends BaseMask {
     });
   }
 
+
+
   getMask(value, settings) {
     let mergedSettings = super.mergeSettings(CREDIT_CARD_SETTINGS, settings);
     const selectedMask = this._selectMask(mergedSettings.issuer, mergedSettings.obfuscated);
 
     return selectedMask;
   }
+
+
 
   _selectMask(issuer, obfuscated) {
     const maskType = obfuscated ? 'obfuscated' : 'regular';
