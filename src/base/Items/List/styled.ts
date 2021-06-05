@@ -1,8 +1,6 @@
 import styled from 'styled-components/native';
 
 
-// List Item Component
-
 export const ItemContainer = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
@@ -15,20 +13,17 @@ export const ItemContainer = styled.TouchableOpacity`
   padding-bottom: 4px;
 `;
 
+
+
 export const IconContent = styled.View`
   min-width: 35px;
   min-height: 40px;
   margin-right: 17px;
   align-items: center;
   justify-content: center;
-},
 `;
 
-export const InfoOptions = styled.View`
-  min-height: 50px;
-  align-items: center;
-  justify-content: center;
-`;
+
 
 export const InfoContainer = styled.View`
   flex: 1;
@@ -47,4 +42,12 @@ export const ItemSubtitle = styled.Text`
 export const ItemLastTitle = styled.Text`
   margin-top: 4px;
   font-size: 12px;
+`;
+
+
+
+export const InfoOptions = styled.View`
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
 `;

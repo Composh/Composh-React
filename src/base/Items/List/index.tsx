@@ -17,23 +17,22 @@ interface IProps {
   activeOpacity?: number;
   onPress?: any;
 
-  itemBorder?: boolean;
+  border?: boolean;
 
-  itemTypeIcon?: object;
+  iconLeft?: object;
+  iconRight?: object;
 
-  itemTitle?: string;
-  itemSizeTitle?: string;
-  itemColorTitle?: string;
+  title?: string;
+  titleSize?: string;
+  titleColor?: string;
 
-  itemSubtitle?: string;
-  itemSizeSubtitle?: string;
-  itemColorSubtitle?: string;
+  subtitle?: string;
+  subtitleSize?: string;
+  subtitleColor?: string;
 
-  itemThirtTitle?: string;
-  itemSizeThirtTitle?: string;
-  itemColorThirtTitle?: string;
-
-  itemOptions?: object;
+  thirdtitle?: string;
+  thirdtitleSize?: string;
+  thirdtitleColor?: string;
 }
 
 
@@ -53,57 +52,57 @@ const ListItem: React.FC<IProps> = (props: any) => {
       onPress={props.onPress}
       style={[
         {
-          borderBottomColor: props.itemBorder ? '#878787' : 'transparent',
+          borderBottomColor: props.border ? '#878787' : 'transparent',
           borderBottomWidth: 0.5,
         },
       ]}>
 
-      {props.itemTypeIcon && (
+      {props.iconLeft && (
         <IconContent>
-          {props.itemTypeIcon}
+          {props.iconLeft}
         </IconContent>
       )}
 
 
       <InfoContainer>
 
-        {props.itemColorTitle && (
+        {props.title && (
           <ItemTitle
             style={{
-              color: props.itemColorTitle,
-              fontSize: props.itemSizeTitle,
+              color: props.titleColor,
+              fontSize: props.titleSize,
             }}>
-            {props.itemTitle}
+            {props.title}
           </ItemTitle>
         )}
 
-        {props.itemSubtitle && (
+        {props.subtitle && (
           <ItemSubtitle
             style={{
-              color: props.itemColorSubtitle,
-              fontSize: props.itemSizeSubtitle,
+              color: props.subtitleColor,
+              fontSize: props.subtitleSize,
             }}>
-            {props.itemSubtitle}
+            {props.subtitle}
           </ItemSubtitle>
         )}
 
-        {props.itemThirtTitle && (
+        {props.thirdtitle && (
           <ItemLastTitle
             style={{
-              color: props.itemColorThirtTitle,
-              fontSize: props.itemSizeThirtTitle,
+              color: props.thirdtitleColor,
+              fontSize: props.thirdtitleSize,
               fontStyle: 'italic',
             }}>
-            {props.itemThirtTitle}
+            {props.thirdtitle}
           </ItemLastTitle>
         )}
 
       </InfoContainer>
 
 
-      {props.itemOptions && (
+      {props.iconRight && (
         <InfoOptions>
-          {props.itemOptions}
+          {props.iconRight}
         </InfoOptions>
       )}
 
