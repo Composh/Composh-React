@@ -6,8 +6,6 @@
 
 import React, { Component } from 'react';
 
-// import PropTypes from "prop-types";
-
 import {
   Animated,
   Dimensions,
@@ -18,21 +16,18 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-// Lib Configs Import
 import LinearGradient from 'react-native-linear-gradient';
-import { isIphoneX } from '../../config/PlatformsConfig';
+
+import {
+  isIphoneX,
+} from '../../config/PlatformsConfig';
+
 import {
   Colors,
   Metrics,
 } from '../../constants';
 
-// Utils
-
-// Components
-// import FloatingActionItem from "./FloatingActionItem";
 import Overlay from '../Overlay';
-
-// Imports
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
 
@@ -45,6 +40,62 @@ const DEFAULT_SHADOW_PROPS = {
   shadowColor: '#000000',
   shadowRadius: 3,
 };
+
+
+
+// FAB.propTypes = {
+//   actions: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       color: PropTypes.string,
+//       icon: PropTypes.any,
+//       name: PropTypes.string.isRequired,
+//       buttonSize: PropTypes.number,
+//       text: PropTypes.string,
+//       textBackground: PropTypes.string,
+//       textColor: PropTypes.string,
+//       component: PropTypes.func,
+//       animated: PropTypes.bool
+//     })
+//   ),
+//   animated: PropTypes.bool,
+//   color: PropTypes.string,
+//   distanceToEdge: PropTypes.oneOfType([
+//     PropTypes.number,
+//     PropTypes.shape({
+//       vertical: PropTypes.number,
+//       horizontal: PropTypes.number
+//     })
+//   ]),
+//   mainVerticalDistance: PropTypes.number,
+//   visible: PropTypes.bool,
+//   overlayColor: PropTypes.string,
+//   position: PropTypes.oneOf(["right", "left", "center"]),
+//   overrideWithAction: PropTypes.bool, // replace mainAction with first action from actions
+//   floatingIcon: PropTypes.any,
+//   showBackground: PropTypes.bool,
+//   openOnMount: PropTypes.bool,
+//   actionsPaddingTopBottom: PropTypes.number,
+//   buttonSize: PropTypes.number,
+//   iconHeight: PropTypes.number,
+//   iconWidth: PropTypes.number,
+//   listenKeyboard: PropTypes.bool,
+//   dismissKeyboardOnPress: PropTypes.bool,
+//   shadow: PropTypes.shape({
+//     shadowOpacity: PropTypes.number,
+//     shadowOffset: PropTypes.shape({
+//       width: PropTypes.number,
+//       height: PropTypes.number
+//     }),
+//     shadowColor: PropTypes.string,
+//     shadowRadius: PropTypes.number
+//   }),
+//   onPressItem: PropTypes.func,
+//   onPressMain: PropTypes.func,
+//   onClose: PropTypes.func,
+//   onOpen: PropTypes.func,
+//   onPressBackdrop: PropTypes.func,
+//   onStateChange: PropTypes.func
+// };
 
 
 
@@ -245,6 +296,8 @@ class FAB extends Component {
       onPressMain,
       onOpen,
 
+      freeze,
+
       children,
       onPress,
     } = this.props;
@@ -267,7 +320,7 @@ class FAB extends Component {
     }
 
 
-    if (onPress && !children) {
+    if ((onPress && !children) || (onPress && children && freeze)) {
       // console.log('FAB With Action');
       onPress();
       return;
@@ -381,6 +434,8 @@ class FAB extends Component {
 
       // relativePosition,
 
+      freeze,
+
       deg180,
 
       children,
@@ -418,7 +473,7 @@ class FAB extends Component {
 
       let deg = deg180 ? '180deg' : '45deg';
 
-      if (children) {
+      if (children || (children && freeze)) {
         animatedViewStyle = {
           transform: [
             {
@@ -579,21 +634,26 @@ class FAB extends Component {
 
       onPress,
 
+      freeze,
+
       children,
     } = this.props;
 
     const { active } = this.state;
+
+    let animatedActionsStyle;
+
 
 
     if (!children || children.length === 0) {
       return undefined;
     }
 
+
     //   if (overrideWithAction) {
     //     return null;
     //   }
 
-    let animatedActionsStyle;
 
     if (animated) {
       animatedActionsStyle = {
@@ -607,6 +667,7 @@ class FAB extends Component {
       animatedActionsStyle = { opacity: active ? 1 : 0 };
     }
 
+
     const actionsStyles = [
       styles.actions,
       styles[`${position}Actions`],
@@ -616,132 +677,54 @@ class FAB extends Component {
       },
     ];
 
+
     if (active) {
       actionsStyles.push(styles[`${position}ActionsVisible`]);
     }
 
-    //   const sortedActions = actions.sort((a, b) => a.position - b.position);
 
-    return (
-      <Animated.View style={actionsStyles} pointerEvents="box-none">
+    const itemFabArray = React.Children.map(children, (child) => (
+      React.cloneElement(child,
         {
-          React.Children.map(children, (child) => (
-            React.cloneElement(child,
-              {
-                position: position,
-                paddingTopBottom: actionsPaddingTopBottom,
-                distanceToEdge: distanceToEdge,
-                active: active,
-                animated: animated,
-                resetClick: () => {
-                  this.reset();
-                },
+          position: position,
+          paddingTopBottom: actionsPaddingTopBottom,
+          distanceToEdge: distanceToEdge - 5, // -5 fix to same distance
+          active: active,
+          animated: animated,
+          resetClick: () => {
+            this.reset();
+          },
 
-                shadow: this.getShadow(),
-                // style: { ...child.props.style, opacity: 0.5 }
-              },
-            )
-          ))
-        }
+          shadow: this.getShadow(),
+          // style: { ...child.props.style, opacity: 0.5 }
+        },
+      )
+    ));
 
-      </Animated.View>
-    );
+
+
+    if (freeze) {
+      return (
+        <Animated.View
+          style={[
+            styles.actions,
+            styles[`${position}ActionsVisible`]
+          ]}
+          pointerEvents={"box-none"}>
+          {itemFabArray}
+        </Animated.View>
+      );
+    }
+    else {
+      return (
+        <Animated.View
+          style={actionsStyles}
+          pointerEvents={"box-none"}>
+          {itemFabArray}
+        </Animated.View>
+      );
+    }
   }
-
-
-
-  // renderActions() {
-  //   const {
-  //     actions,
-  //     position,
-  //     overrideWithAction,
-  //     distanceToEdge,
-  //     actionsPaddingTopBottom,
-  //     animated
-  //   } = this.props;
-
-  //   const { active } = this.state;
-
-  //   if (!actions || actions.length === 0) {
-  //     return undefined;
-  //   }
-
-  //   if (overrideWithAction) {
-  //     return null;
-  //   }
-
-  //   let animatedActionsStyle;
-
-  //   if (animated) {
-  //     animatedActionsStyle = {
-  //       opacity: this.actionsAnimation.interpolate({
-  //         inputRange: [0, 1],
-  //         outputRange: [0, 1]
-  //       })
-  //     };
-  //   } else {
-  //     animatedActionsStyle = { opacity: active ? 1 : 0 };
-  //   }
-
-  //   const actionsStyles = [
-  //     styles.actions,
-  //     styles[`${position}Actions`],
-  //     animatedActionsStyle,
-  //     {
-  //       bottom: this.actionsBottomAnimation
-  //     }
-  //   ];
-
-  //   if (active) {
-  //     actionsStyles.push(styles[`${position}ActionsVisible`]);
-  //   }
-
-  //   const sortedActions = actions.sort((a, b) => a.position - b.position);
-
-  //   return (
-  //     <Animated.View style={actionsStyles} pointerEvents="box-none">
-  //       {sortedActions.map(action => {
-  //         const textColor = action.textColor || action.actionsTextColor;
-  //         const textBackground =
-  //           action.textBackground || action.actionsTextBackground;
-
-  //         return (
-  //           <FloatingActionItem
-  //             paddingTopBottom={actionsPaddingTopBottom}
-  //             distanceToEdge={distanceToEdge}
-  //             key={action.name}
-  //             textColor={textColor}
-  //             textBackground={textBackground}
-  //             shadow={this.getShadow()}
-  //             {...action}
-  //             position={position}
-  //             active={active}
-  //             onPress={this.handlePressItem}
-  //             animated={animated}
-  //           />
-  //         );
-  //       })}
-  //     </Animated.View>
-  //   );
-  // }
-
-
-
-  // renderTappableBackground() {
-  //   const { overlayColor } = this.props;
-
-  //   // TouchableOpacity don't require a child
-  //   return (
-  //     <TouchableOpacity
-  //       activeOpacity={1}
-  //       style={[
-  //         { backgroundColor: overlayColor },
-  //         styles.overlay,
-  //       ]}
-  //       onPress={this.handlePressBackdrop}
-  //     />
-  //   );
-  // }
 
 
 
@@ -752,18 +735,19 @@ class FAB extends Component {
       showBackground,
       overlayColor,
       noPressOverlay,
+      freeze,
     } = this.props;
 
     return (
       <Animated.View
-        pointerEvents="box-none"
+        pointerEvents={"box-none"}
         style={[
           styles.overlay,
           { backgroundColor: Colors.TRANSPARENT },
         ]}>
 
         <Overlay
-          visible={active}
+          visible={active && !freeze}
           showBackground={showBackground}
           overlayColor={overlayColor || Colors.OVERLAY_BACKGROUND}
           onOverlayPress={noPressOverlay ? null : this.handlePressBackdrop}
@@ -779,63 +763,8 @@ class FAB extends Component {
 
 
 
-// FAB.propTypes = {
-//   actions: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       color: PropTypes.string,
-//       icon: PropTypes.any,
-//       name: PropTypes.string.isRequired,
-//       buttonSize: PropTypes.number,
-//       text: PropTypes.string,
-//       textBackground: PropTypes.string,
-//       textColor: PropTypes.string,
-//       component: PropTypes.func,
-//       animated: PropTypes.bool
-//     })
-//   ),
-//   animated: PropTypes.bool,
-//   color: PropTypes.string,
-//   distanceToEdge: PropTypes.oneOfType([
-//     PropTypes.number,
-//     PropTypes.shape({
-//       vertical: PropTypes.number,
-//       horizontal: PropTypes.number
-//     })
-//   ]),
-//   mainVerticalDistance: PropTypes.number,
-//   visible: PropTypes.bool,
-//   overlayColor: PropTypes.string,
-//   position: PropTypes.oneOf(["right", "left", "center"]),
-//   overrideWithAction: PropTypes.bool, // replace mainAction with first action from actions
-//   floatingIcon: PropTypes.any,
-//   showBackground: PropTypes.bool,
-//   openOnMount: PropTypes.bool,
-//   actionsPaddingTopBottom: PropTypes.number,
-//   buttonSize: PropTypes.number,
-//   iconHeight: PropTypes.number,
-//   iconWidth: PropTypes.number,
-//   listenKeyboard: PropTypes.bool,
-//   dismissKeyboardOnPress: PropTypes.bool,
-//   shadow: PropTypes.shape({
-//     shadowOpacity: PropTypes.number,
-//     shadowOffset: PropTypes.shape({
-//       width: PropTypes.number,
-//       height: PropTypes.number
-//     }),
-//     shadowColor: PropTypes.string,
-//     shadowRadius: PropTypes.number
-//   }),
-//   onPressItem: PropTypes.func,
-//   onPressMain: PropTypes.func,
-//   onClose: PropTypes.func,
-//   onOpen: PropTypes.func,
-//   onPressBackdrop: PropTypes.func,
-//   onStateChange: PropTypes.func
-// };
-
-
-
 FAB.defaultProps = {
+  freeze: false,
   activeOpacity: 0.5,
   dismissKeyboardOnPress: false,
   listenKeyboard: false,
