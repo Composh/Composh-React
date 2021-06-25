@@ -134,7 +134,7 @@ class FAB extends Component {
   get distanceToHorizontalEdge() {
     const { distanceToEdge } = this.props;
     return typeof distanceToEdge === 'number'
-      ? distanceToEdge
+      ? distanceToEdge - 5 // -5 fix to same distance
       : distanceToEdge.horizontal;
   }
 
@@ -377,6 +377,7 @@ class FAB extends Component {
       disabled,
 
       // overrideWithAction,
+      activeOpacity,
 
       // relativePosition,
 
@@ -491,7 +492,7 @@ class FAB extends Component {
 
         <TouchableOpacity
           disabled={disabled}
-          activeOpacity={0.3}
+          activeOpacity={activeOpacity}
           style={sizeStyle}
           onPress={this.animateButton}>
 
@@ -535,7 +536,7 @@ class FAB extends Component {
 
         <TouchableOpacity
           disabled={disabled}
-          activeOpacity={0.3}
+          activeOpacity={activeOpacity}
           style={[
             styles.button,
             sizeStyle,
@@ -835,6 +836,7 @@ class FAB extends Component {
 
 
 FAB.defaultProps = {
+  activeOpacity: 0.5,
   dismissKeyboardOnPress: false,
   listenKeyboard: false,
   actionsPaddingTopBottom: 8,

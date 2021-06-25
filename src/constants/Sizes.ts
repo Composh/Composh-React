@@ -85,11 +85,20 @@ export const TITLES = {
 };
 
 
+export const TOGGLE = {
+
+  TOOGLE_HEIGHT:                    40, // 42,
+
+};
+
+
 export const TOOLBARS = {
   
+  TOOLBAR_WEB:                      64,
   TOOLBAR_ANDROID:                  56,
   TOOLBAR_IOS:                      44,
 
+  SUBTOOLBAR_WEB:                   54,
   SUBTOOLBAR_ANDROID:               46, // 42,
   SUBTOOLBAR_IOS:                   34, // 32,
 
@@ -111,6 +120,7 @@ const Sizes = {
   ...FAB,
   ...FOOTER,
   ...STATUSBAR,
+  ...TOGGLE,
   ...TITLES,
   ...TOOLBARS,
 
