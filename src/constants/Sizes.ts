@@ -16,6 +16,13 @@ export const BADGE = {
 };
 
 
+export const BOTTOM_BAR = {
+
+  BOTTOM_BAR_IOS:                   34,
+
+};
+
+
 export const BUTTON = {
 
   BUTTON_WIDTH:                     16 * 9,
@@ -58,9 +65,9 @@ export const FAB = {
 
 export const FOOTER = {
 
-  FOOTER_HEIGHT_IOS:                 50,
-  FOOTER_HEIGHT_ANDROID:             54,
-  FOOTER_IPHONEX_PADDING_BOTTOM:     34,
+  FOOTER_HEIGHT_IOS:                50,
+  FOOTER_HEIGHT_ANDROID:            54,
+  FOOTER_IPHONEX_PADDING_BOTTOM:    34,
 
 };
 
@@ -114,6 +121,7 @@ const Sizes = {
   BORDER_WIDTH:                     0.8,
 
   ...BADGE,
+  ...BOTTOM_BAR,
   ...BUTTON,
   ...CONFIGS,
   ...INPUT,

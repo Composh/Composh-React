@@ -3,7 +3,6 @@ import {
   StatusBar,
 } from 'react-native';
 
-// Application Configs Import
 import {
   isIphoneX,
 } from '../config/PlatformsConfig';
@@ -33,8 +32,16 @@ const SubToolbarValue = Platform.select({
 
 
 
+const BottomBarValue = Platform.select({
+  android: 0,
+  ios: isIphoneX() ? Sizes.BOTTOM_BAR_IOS : 0,
+});
+
+
+
 export default {
   StatusBar: StatusBarValue,
   Toolbar: ToolbarValue,
   SubToolbar: SubToolbarValue,
+  BottomBar: BottomBarValue,
 };
