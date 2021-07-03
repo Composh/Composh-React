@@ -18,7 +18,7 @@ export const BADGE = {
 
 export const BOTTOM_BAR = {
 
-  BOTTOM_BAR_IOS:                   34,
+  BOTTOM_BAR_IOS:                   32,
 
 };
 
@@ -103,11 +103,11 @@ export const TOOLBARS = {
   
   TOOLBAR_WEB:                      64,
   TOOLBAR_ANDROID:                  56,
-  TOOLBAR_IOS:                      44,
+  TOOLBAR_IOS:                      46,
 
   SUBTOOLBAR_WEB:                   54,
   SUBTOOLBAR_ANDROID:               46, // 42,
-  SUBTOOLBAR_IOS:                   34, // 32,
+  SUBTOOLBAR_IOS:                   36, // 32,
 
 };
 
