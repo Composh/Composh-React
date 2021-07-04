@@ -39,9 +39,17 @@ const BottomBarValue = Platform.select({
 
 
 
+const BottomContentValue = Platform.select({
+  android: 0,
+  ios: isIphoneX() ? Sizes.PADDING_FOOTER_CONTENT : 0,
+});
+
+
+
 export default {
   StatusBar: StatusBarValue,
   Toolbar: ToolbarValue,
   SubToolbar: SubToolbarValue,
   BottomBar: BottomBarValue,
+  BottomContentPadding: BottomContentValue,
 };

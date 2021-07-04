@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { View } from 'react-native';
+
 import {
   HeaderContainer,
   HeaderTransparent,
@@ -26,26 +28,31 @@ const AppBar: React.FC<IProps> = (props: any) => {
 
   return (
 
-    <Component
-      backgroundColor={props.backgroundColor}
-      style={[
-        props.style,
-        props.absolute && {
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 5,
-        },
-        props.borderBottomColor && {
-          borderBottomColor: props.borderBottomColor || 'transparent',
-          borderBottomWidth: 1,
-        },
-      ]}>
+    <View style={{
+      backgroundColor: 'transparent',
+      zIndex: 40,
+    }}>
+      <Component
+        backgroundColor={props.backgroundColor}
+        style={[
+          props.style,
+          props.absolute && {
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            zIndex: 5,
+          },
+          props.borderBottomColor && {
+            borderBottomColor: props.borderBottomColor || 'transparent',
+            borderBottomWidth: 1,
+          },
+        ]}>
 
-      {props.children}
+        {props.children}
 
-    </Component>
+      </Component>
+    </View>
 
   );
 };

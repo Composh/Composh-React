@@ -72,6 +72,14 @@ export const FOOTER = {
 };
 
 
+export const PADDINGS = {
+
+  PADDING_CONTENT:                  16,
+  PADDING_FOOTER_CONTENT:           15,
+
+};
+
+
 export const STATUSBAR = {
 
   STATUSBAR_ANDROID:                StatusBar.currentHeight,
@@ -127,6 +135,7 @@ const Sizes = {
   ...INPUT,
   ...FAB,
   ...FOOTER,
+  ...PADDINGS,
   ...STATUSBAR,
   ...TOGGLE,
   ...TITLES,

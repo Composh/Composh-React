@@ -1,7 +1,4 @@
-/* eslint-disable prettier/prettier */
 import React from 'react';
-
-// import PropTypes from 'prop-types';
 
 import {
   ScrollView,
@@ -9,67 +6,94 @@ import {
   View,
 } from 'react-native';
 
-// Lib Configs Import
+import {
+  Sizes,
+  Metrics,
+} from '../../constants';
 
 
 
-const Content = (props) => {
-  const {
+export interface IProps {
+  scroll?: boolean;
+  showsVerticalScrollIndicator?: boolean;
 
-    withScroll,
+  padding?: number;
+  paddingTop?: number;
+  paddingLeft?: number;
+  paddingRight?: number;
+  paddingBottom?: number;
+  backgroundColor?: string;
 
-    style,
+  style?: any;
+  contentStyle?: any;
 
-    children,
-
-  } = props;
-
+  children?: any; // PropTypes.node,
+}
 
 
-  return (
 
-    <View style={styles.contentStyle}>
+const Content = (props: IProps) => {
+  // const Content: React.FC<IProps> = (props) => {
+  // const padd = props.paddinKCg !==0 !! props.padding !== null
 
-      {withScroll
-        ? (
-          <ScrollView
-            {...props}
-            contentContainerStyle={styles.contentGrowFlex}
-            style={[
-              styles.contentFlex,
-              style,
-            ]}>
+  const paddingStyle = {
+    paddingTop: props.padding ? props.padding : (props.paddingTop || 0),
+    paddingLeft: props.padding ? props.padding : (props.paddingLeft || 0),
+    paddingRight: props.padding ? props.padding : (props.paddingRight || 0),
+    paddingBottom: (props.padding ? props.padding : (props.paddingBottom || 0)) + Metrics.BottomContentPadding,
+  }
 
-            {children}
 
-          </ScrollView>
-        )
-        : (
-          <View style={[
-            styles.contentFlex,
-            style,
-          ]}>
 
-            {children}
+  if (props.scroll) {
+    return (
 
-          </View>
-        )
-      }
+      <ScrollView
+        // {...props}
+        showsVerticalScrollIndicator={props.showsVerticalScrollIndicator}
+        contentContainerStyle={[
+          paddingStyle,
+          props.contentStyle,
+          styles.contentGrowFlex,
+        ]}
+        style={[
+          {
+            backgroundColor: props.backgroundColor,
+          },
+          props.style,
+          styles.contentFlex,
+        ]}>
 
-    </View>
+        {props.children}
 
-  );
+      </ScrollView>
+
+    );
+  }
+  else {
+    return (
+
+      <View style={[
+        {
+          backgroundColor: props.backgroundColor,
+        },
+        paddingStyle,
+        props.style,
+        styles.contentFlex,
+      ]}>
+
+        {props.children}
+
+      </View>
+
+    );
+  }
+
 };
 
 
 
 const styles = StyleSheet.create({
-
-  contentStyle: {
-    // marginTop: -7,
-    flex: 1,
-    zIndex: -1,
-  },
 
   contentFlex: {
     flex: 1,
@@ -80,6 +104,15 @@ const styles = StyleSheet.create({
   },
 
 });
+
+
+
+Content.defaultProps = {
+  scroll: true,
+  showsVerticalScrollIndicator: true,
+
+  backgroundColor: 'transparent',
+}
 
 
 

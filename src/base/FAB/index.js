@@ -836,18 +836,21 @@ const styles = StyleSheet.create({
 
   buttonContainer: {
     // overflow: Platform.OS === "ios" ? "visible" : "hidden",
-    overflow: 'hidden',
-    zIndex: 2,
+    // overflow: 'hidden',
+    position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
+
     elevation: 5,
-    position: 'absolute',
+
+    zIndex: 2,
   },
 
   button: {
     zIndex: 3,
     alignItems: 'center',
     justifyContent: 'center',
+    borderRadius: 50,
   },
 
   centerButton: {
