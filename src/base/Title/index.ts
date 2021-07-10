@@ -1,9 +1,8 @@
-// React Components Import
+import styled from 'styled-components/native';
+
 import {
   Platform,
 } from 'react-native';
-
-import styled from 'styled-components/native';
 
 
 
