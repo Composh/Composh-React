@@ -4,7 +4,7 @@
 
 
 [![NPM](https://img.shields.io/npm/v/composh-react.svg)](https://www.npmjs.com/package/composh-react) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-
+[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/organization/repository)
 
 
 ## Install
