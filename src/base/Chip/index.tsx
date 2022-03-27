@@ -13,7 +13,7 @@ import Icon from '../Icon';
 
 
 
-interface Props {
+interface IProps {
   // Button Props,
   activeOpacity?: number;
   disabled?: boolean;
@@ -23,7 +23,7 @@ interface Props {
   selected?: boolean;
 
   // Container Chip
-  style?: object;
+  style?: any;
   backgroundColor?: string;
   selectedColor?: string;
   unselectedColor?: string;
@@ -43,7 +43,7 @@ interface Props {
 
 
 
-const Chip: React.FC<Props> = (props: any) => {
+const Chip: React.FC<IProps> = (props: any) => {
   // const [elevation, setElevation] = useState(new Animated.Value(0));
 
   // const scale = 2;
@@ -196,9 +196,7 @@ const Chip: React.FC<Props> = (props: any) => {
         {props.selected && (
           <TouchableOpacity
             activeOpacity={props.activeOpacity}
-            onPress={props.onClose}
-            accessibilityTraits="button"
-            accessibilityComponentType="button">
+            onPress={props.onClose}>
             <View style={styles.icon}>
               <Icon
                 type="material-community"

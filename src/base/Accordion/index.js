@@ -269,7 +269,7 @@ class Accordion extends React.Component {
             renderHeader={renderHeader}
             onAccordionOpen={onAccordionOpen}
             onAccordionClose={onAccordionClose}
-            setSelected={(i: any) => this.setSelected(i)}
+            setSelected={(i) => this.setSelected(i)}
           />
         )}
         {...this.props}

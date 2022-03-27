@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 
 
 
-interface Props {
+interface IProps {
   textSize?: number;
   textColor?: string;
 }
@@ -54,8 +54,8 @@ export const IconView = styled.View`
 
 export const TitleComponent = styled.Text`
   flex: 1;
-  color: ${(props: Props) => props.textColor || 'green'};
-  font-size: ${(props: Props) => props.textSize || 15}px;
+  color: ${(props: IProps) => props.textColor || 'green'};
+  font-size: ${(props: IProps) => props.textSize || 15}px;
   font-weight: 200;
   letter-spacing: 0.5px;
 `;

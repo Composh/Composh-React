@@ -19,6 +19,7 @@ import {
 
 interface IProps {
   disabled?: boolean;
+  noToggle?: boolean;
   selected?: boolean;
   flexToggle?: number;
 
@@ -31,8 +32,8 @@ interface IProps {
   textColor?: string;
   textTintColor?: string;
 
-  value?: any; // PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  displayValue?: string; // PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  value?: string | number;
+  displayValue?: string | number;
 
   borderColor?: string;
   borderTintColor?: string;
@@ -44,18 +45,20 @@ interface IProps {
 
   textStyle?: any;
   style?: any;
-
-  externalValue?: any;
 }
 
 
 
 const Toggle: React.FC<IProps> = (props: any) => {
-  const [selected, setSelected] = useState(props.selected);
+  const selectedProp = props.selected;
+
+  const [selectedState, setSelectedState] = useState(selectedProp);
 
 
   useEffect(() => {
-    setSelected(selected);
+    if (!props.noToggle) {
+      setSelectedState(selectedState);
+    }
   }, []);
 
 
@@ -77,7 +80,9 @@ const Toggle: React.FC<IProps> = (props: any) => {
       props.onPress();
     }
 
-    setSelected(!selected);
+    if (!props.noToggle) {
+      setSelectedState(!selectedState);
+    }
   }
 
 
@@ -101,33 +106,29 @@ const Toggle: React.FC<IProps> = (props: any) => {
             width: props.flexToggle ? props.flexToggle : props.width,
             borderWidth: props.borderWidth,
             borderRadius: props.borderRadius,
-            borderColor: (props.externalValue
-              ? props.externalValue() : selected)
-              ? props.borderTintColor : props.borderColor,
-            backgroundColor: (props.externalValue
-              ? props.externalValue() : selected)
-              ? props.backgroundTintColor : props.backgroundColor,
+            borderColor: (!props.noToggle ? selectedState : selectedProp) ? props.borderTintColor : props.borderColor,
+            backgroundColor: (!props.noToggle ? selectedState : selectedProp) ? props.backgroundTintColor : props.backgroundColor,
           },
           props.iconContent ? styles.buttonIconPadding : styles.buttonNoIconPadding,
         ]}>
 
 
-        {props.iconContent}
+        <View style={styles.icon}>
+          {props.iconContent}
+        </View>
 
 
         <Text
           style={[
             styles.text,
             {
-              color: (props.externalValue ? props.externalValue() : selected)
-                ? props.textTintColor
-                : props.textColor,
+              color: (!props.noToggle ? selectedState : selectedProp) ? props.textTintColor : props.textColor,
               marginLeft: props.iconContent ? 5 : 0,
             },
             props.textStyle,
           ]}>
 
-          {props.displayValue === undefined
+          {props.displayValue === '' || props.displayValue === null || props.displayValue === undefined
             ? props.value
             : props.displayValue
           }
@@ -145,6 +146,7 @@ const Toggle: React.FC<IProps> = (props: any) => {
 
 Toggle.defaultProps = {
   disabled: false,
+  noToggle: false,
   selected: false,
   flexToggle: 0,
 
@@ -172,18 +174,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginHorizontal: 6,
-    marginVertical: 6,
-    paddingVertical: 8,
+    marginTop: 6,
+    marginLeft: 6,
+    marginRight: 6,
+    marginBottom: 6,
+    paddingTop: 8,
+    paddingBottom: 8,
   },
 
   buttonIconPadding: {
-    paddingLeft: 5,
+    paddingLeft: 10,
     paddingRight: 15,
   },
 
   buttonNoIconPadding: {
-    paddingHorizontal: 15,
+    paddingLeft: 15,
+    paddingRight: 15,
   },
 
   imageStyle: {
@@ -193,10 +199,15 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
 
+  icon: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 2,
+  },
+
   text: {
     fontSize: 14,
     textAlign: 'center',
-    // marginVertical: 5,
   },
 
 });

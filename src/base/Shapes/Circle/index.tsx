@@ -10,7 +10,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 
 
-interface Props {
+interface IProps {
   backgroundColor?: string;
 
   backgroundColorTop?: string;
@@ -27,7 +27,7 @@ interface Props {
 
 
 
-const Circle: React.FC<Props> = (props) => {
+const Circle: React.FC<IProps> = (props) => {
   const circleStyle = [
     {
       width: props.diameter,

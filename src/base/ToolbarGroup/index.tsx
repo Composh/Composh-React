@@ -14,13 +14,15 @@ interface IProps {
 
 
 
-const ToolbarGroup: React.FC<IProps> = (props) => {
+const ToolbarGroup: React.FC<IProps> = (props: IProps) => {
   function alignByGroup() {
     if (props.group === 'left') {
       return styles.leftAlign;
     }
     else if (props.group === 'right') {
       return styles.rightAlign;
+    } else {
+      return null;
     }
   }
 
