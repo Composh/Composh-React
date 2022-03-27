@@ -1,7 +1,5 @@
 // React Components Import
 import {
-  Platform,
-  StatusBar,
   StyleSheet,
 } from 'react-native';
 
@@ -9,7 +7,7 @@ import {
 import {
   Colors,
   Sizes,
-} from '../constants';
+} from '../../constants';
 
 
 

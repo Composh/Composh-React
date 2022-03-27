@@ -10,7 +10,7 @@ import {
 
 import {
   ChildrenWithProps,
-} from '../../config/Typings';
+} from '../../core/config/Typings';
 
 import {
   Metrics,

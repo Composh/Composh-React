@@ -14,7 +14,7 @@ import {
 } from '../../constants';
 import {
   shadowStyles,
-} from '../../theme/Layout';
+} from '../../core/theme/Layout';
 
 
 // Plugins Import

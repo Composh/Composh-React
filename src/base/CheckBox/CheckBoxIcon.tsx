@@ -4,7 +4,7 @@ import React from 'react';
 
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 
-import GetIconType from '../../config/IconsType';
+import GetIconType from '../../core/config/IconsType';
 
 
 

@@ -17,7 +17,7 @@ import {
 
 import {
   RTLService,
-} from '../../services/Rlt.service';
+} from '../../core/services/Rlt.service';
 
 
 

@@ -24,11 +24,11 @@ import {
 
 import {
   ChildrenWithProps,
-} from '../../config/Typings';
+} from '../../core/config/Typings';
 
 import {
   RTLService,
-} from '../../services/Rlt.service';
+} from '../../core/services/Rlt.service';
 
 
 

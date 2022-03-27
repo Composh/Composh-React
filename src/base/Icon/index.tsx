@@ -5,7 +5,7 @@ import {
   View,
 } from 'react-native';
 
-import GetIconType from '../../config/IconsType';
+import GetIconType from '../../core/config/IconsType';
 
 
 
@@ -19,7 +19,7 @@ interface IProps {
   // disabled?: boolean;
   solid?: boolean;
   brand?: boolean;
-  style?: object;
+  style?: any;
 }
 
 
@@ -40,7 +40,9 @@ interface IProps {
 
 
 const Icon: React.FC<IProps> = (props) => {
-  const IconComponent = GetIconType(props.type);
+  const typeIcon = props.type || 'material';
+
+  const IconComponent = GetIconType(typeIcon);
 
 
 

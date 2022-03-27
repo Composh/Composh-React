@@ -4,9 +4,9 @@ import React,
   useState,
 } from 'react';
 
-import {
-  Colors,
-} from '../../constants';
+// import {
+//   Colors,
+// } from '../../constants';
 
 import {
   ToggleButtonContent,
@@ -90,25 +90,21 @@ const Toggle: React.FC<IProps> = (props: any) => {
   return (
 
     <ToggleButtonStyle
-      disabled={props.disabled}
-      onPress={() => {
+      // disabled={props.disabled}
+      onClick={() => {
         onPressToggle();
       }}>
 
       <ToggleButtonContent
-        style={[
-          props.style,
-          {
-            flex: props.flexToggle ? 1 : 0,
-            alignSelf: props.flexToggle ? 'auto' : 'flex-start',
-            width: props.flexToggle ? props.flexToggle : props.width,
-            height: props.height,
-            borderColor: (!props.noToggle ? selectedState : selectedProp) ? props.borderTintColor : props.borderColor,
-            borderWidth: props.borderWidth,
-            borderRadius: props.borderRadius,
-            backgroundColor: (!props.noToggle ? selectedState : selectedProp) ? props.backgroundTintColor : props.backgroundColor,
-          },
-        ]}
+        // props.style,
+        flexContent={props.flexToggle ? 1 : 0}
+        alignSelf={props.flexToggle ? 'auto' : 'flex-start'}
+        width={props.flexToggle ? props.flexToggle : props.width}
+        height={props.height}
+        borderColor={(!props.noToggle ? selectedState : selectedProp) ? props.borderTintColor : props.borderColor}
+        borderWidth={props.borderWidth}
+        borderRadius={props.borderRadius}
+        backgroundColor={(!props.noToggle ? selectedState : selectedProp) ? props.backgroundTintColor : props.backgroundColor}
         iconContent={props.iconContent}>
 
 
@@ -118,13 +114,9 @@ const Toggle: React.FC<IProps> = (props: any) => {
 
 
         <ToggleText
-          style={[
-            {
-              color: (!props.noToggle ? selectedState : selectedProp) ? props.textTintColor : props.textColor,
-              marginLeft: props.iconContent ? 5 : 0,
-            },
-            props.textStyle,
-          ]}>
+          // props.textStyle,
+          colorText={(!props.noToggle ? selectedState : selectedProp) ? props.textTintColor : props.textColor}
+          marginLeftText={props.iconContent ? 5 : 0}>
 
           {props.displayValue === '' || props.displayValue === null || props.displayValue === undefined
             ? props.value
@@ -150,16 +142,16 @@ Toggle.defaultProps = {
 
   height: 35,
 
-  backgroundColor: Colors.WHITE,
-  backgroundTintColor: Colors.PRIMARY,
+  backgroundColor: 'white', // Colors.WHITE,
+  backgroundTintColor: 'darkblue', // Colors.PRIMARY,
 
-  textColor: Colors.PRIMARY,
-  textTintColor: Colors.WHITE,
+  textColor: 'darkblue', // Colors.PRIMARY,
+  textTintColor: 'white', // Colors.WHITE,
 
   displayValue: 'Toggle',
 
-  borderColor: Colors.GREY,
-  borderTintColor: Colors.SECONDARY,
+  borderColor: 'gray', // Colors.GREY,
+  borderTintColor: 'darkred', // Colors.SECONDARY,
   borderRadius: 4,
   borderWidth: 0,
 };

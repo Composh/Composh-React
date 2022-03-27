@@ -5,7 +5,7 @@ import {
 
 import {
   isIphoneX,
-} from '../config/PlatformsConfig';
+} from '../core/config/PlatformsConfig';
 
 import Sizes from './Sizes';
 
