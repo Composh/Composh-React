@@ -9,13 +9,13 @@ interface IProps {
 
 
 const Container = styled.div`
+  overflow: hidden;
   position: relative;
   display: flex;
-  flex: 1;
   flex-direction: column;
-  width: 100%;
+  flex: 1;
+  background-color: ${(props: IProps) => props.backgroundColor || 'transparent'};
 `;
-// background-color: ${(props: IProps) => props.backgroundColor || 'gray'};
 
 
 
