@@ -3,16 +3,16 @@ import styled from 'styled-components';
 
 
 interface IProps {
-  height?: any; // number or string
-  width?: any; // number or string
+  height?: number | string;
+  width?: number | string;
   color?: string;
 }
 
 
 
 const Divider = styled.div`
-  height: ${(props: IProps) => props.height || 0.5};
-  width: ${(props: IProps) => props.width || '50%'};
+  height: ${(props: IProps) => (typeof props.height === 'number' ? props.width + 'px' : props.width) || '0.5px'};
+  width: ${(props: IProps) => (typeof props.width === 'number' ? props.width + 'px' : props.width) || '50%'};
   background-color: ${(props: IProps) => props.color || 'gray'};
 `;
 

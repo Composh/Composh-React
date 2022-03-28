@@ -25,6 +25,7 @@ interface ITextProps {
 
 
 export const ToggleButtonStyle = styled.a`
+  cursor: pointer;
 `;
 
 
@@ -68,7 +69,7 @@ export const ToggleIconView = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-right: 2px;
+  margin-right: 4px;
 `;
 
 
