@@ -21,6 +21,7 @@ import FABItem from './FAB/Item';
 import Icon from './Icon';
 // import Input from './Input';
 import Items from './Items';
+// import LinearGradient from './LinearGradient';
 import List from './List';
 // import MenuOverflow from './MenuOverflow';
 import Overlay from './Overlay';
@@ -71,6 +72,7 @@ export {
   Icon,
   // Input,
   Items,
+  // LinearGradient,
   List,
   // MenuOverflow,
   Overlay,

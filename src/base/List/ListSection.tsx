@@ -1,4 +1,3 @@
-// React Components Import
 import React,
 {
   useEffect,
@@ -9,7 +8,6 @@ import {
   Animated,
 } from 'react-native';
 
-// Styled Component Common Import
 import {
   ContainerSection,
   TitleSectionView,
@@ -18,7 +16,6 @@ import {
   IconContentView,
 } from './styled';
 
-// Constants Import
 const AnimatedTitleIconHeader = Animated.createAnimatedComponent(IconContentView);
 
 
@@ -31,7 +28,7 @@ interface IProps {
   expanded?: boolean;
   // elipsing?: boolean;
 
-  text?: string;
+  text: string;
   textColor?: string;
   textSize?: number;
 
@@ -73,17 +70,10 @@ const ListSection: React.FC<IProps> = (props) => {
   return (
 
     <ContainerSection
-      style={[
-        props.style,
-        !props.noBorderBottom && {
-          borderBottomColor: props.borderBottomColor || 'green',
-          borderBottomWidth: props.borderBottomWidth || 2,
-        },
-        props.noBorderBottom && {
-          borderBottomColor: 'transparent',
-          borderBottomWidth: 0,
-        },
-      ]}>
+      noBorderBottom={props.noBorderBottom}
+      borderBottomColor={props.borderBottomColor}
+      borderBottomWidth={props.borderBottomWidth}
+      style={props.style}>
 
 
       <TitleSectionView>

@@ -5,18 +5,12 @@ import React,
 } from 'react';
 
 import {
-  Animated,
-} from 'react-native';
-
-import {
   ContainerLinearHeader,
   ContainerBackgroundHeader,
   ContentFlexComponent,
   TitleComponent,
   IconContentView,
 } from './styled';
-
-const AnimatedTitleIconHeader = Animated.createAnimatedComponent(IconContentView);
 
 
 
@@ -29,7 +23,7 @@ interface IProps {
   expanded?: boolean;
   // elipsing?: boolean;
 
-  text: string;
+  text?: string;
   textColor?: string;
   textSize?: number;
 
@@ -43,22 +37,22 @@ interface IProps {
 const ListHeader: React.FC<IProps> = (props) => {
   const [expandedState, setExpandedState] = useState(props.expanded);
 
-  const animation = new Animated.Value(0);
+  // const animation = new Animated.Value(0);
 
 
   useEffect(() => {
-    if (props.expanded) {
-      Animated.spring(animation, {
-        toValue: 1,
-        useNativeDriver: false,
-      }).start();
-    }
-    else {
-      Animated.spring(animation, {
-        toValue: 0,
-        useNativeDriver: false,
-      }).start();
-    }
+    // if (props.expanded) {
+    //   Animated.spring(animation, {
+    //     toValue: 1,
+    //     useNativeDriver: false,
+    //   }).start();
+    // }
+    // else {
+    //   Animated.spring(animation, {
+    //     toValue: 0,
+    //     useNativeDriver: false,
+    //   }).start();
+    // }
   }, []);
 
 
@@ -69,26 +63,25 @@ const ListHeader: React.FC<IProps> = (props) => {
       <ContentFlexComponent>
         <TitleComponent
           textColor={props.textColor}
-          textSize={props.textSize}
-          numberOfLines={1}
-          ellipsizeMode="tail">
-          {props.text.toUpperCase()}
+          textSize={props.textSize}>
+          {props.text?.toUpperCase()}
         </TitleComponent>
 
 
-        <AnimatedTitleIconHeader
-          style={{
-            transform: [
-              {
-                rotate: animation.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: ['0deg', '180deg'],
-                }),
-              },
-            ],
-          }}>
+        <IconContentView
+        // style={{
+        //   transform: [
+        //     {
+        //       rotate: animation.interpolate({
+        //         inputRange: [0, 1],
+        //         outputRange: ['0deg', '180deg'],
+        //       }),
+        //     },
+        //   ],
+        // }}
+        >
           {props.icon}
-        </AnimatedTitleIconHeader>
+        </IconContentView>
       </ContentFlexComponent>
 
     );
@@ -101,9 +94,10 @@ const ListHeader: React.FC<IProps> = (props) => {
 
       <ContainerLinearHeader
         colors={props.colors}
-        start={props.start}
-        end={props.end}
-        style={props.style}>
+      // start={props.start}
+      // end={props.end}
+      // style={props.style}
+      >
         {renderHeaderChildren()}
       </ContainerLinearHeader>
 
@@ -113,8 +107,11 @@ const ListHeader: React.FC<IProps> = (props) => {
     return (
 
       <ContainerBackgroundHeader
-        backgroundColor={props.backgroundColor}
-        style={props.style}>
+      // style={[
+      //   props.style,
+      //   { backgroundColor: props.backgroundColor },
+      // ]}
+      >
         {renderHeaderChildren()}
       </ContainerBackgroundHeader>
 
