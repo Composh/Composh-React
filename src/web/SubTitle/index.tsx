@@ -1,10 +1,20 @@
 import styled from 'styled-components';
 
+
+
+interface IProps {
+  color?: string;
+}
+
+
+
 const SubTitle = styled.h2`
-  color: #6b6f82;
+  margin-top: 1px;
+  color: ${(props: IProps) => props.color || 'gray'};
   font-size: 13.5px;
-  margin-top: 3px;
-  margin-bottom: 0;
+  font-weight: 500;
 `;
+
+
 
 export default SubTitle;
