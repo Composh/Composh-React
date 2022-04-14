@@ -27,16 +27,15 @@ const GridIcon: React.FC<IProps> = (props) => {
   return (
 
     <GridIconContent
-      disabled={
-        props.disabled
-          ? props.disabled
-          : props.onPress
-            ? false
-            : true
-      }
-      activeOpacity={props.activeOpacity}
+      // disabled={
+      //   props.disabled
+      //     ? props.disabled
+      //     : props.onPress
+      //       ? false
+      //       : true
+      // }
       style={props.style}
-      onPress={(!props.disabled || !props.onPress) && props.onPress}>
+      onClick={(!props.disabled || !props.onPress) && props.onPress}>
 
       <IconContent>
         {props.icon}
@@ -44,8 +43,6 @@ const GridIcon: React.FC<IProps> = (props) => {
 
 
       <AvailableText
-        numberOfLines={2}
-        ellipsizeMode="tail"
         style={{ color: props.iconGridColor }}>
         {props.iconGridLabel}
       </AvailableText>

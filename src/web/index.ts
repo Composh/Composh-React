@@ -20,7 +20,7 @@ import Divider from './Divider';
 // import Grid from './Grid';
 import Icon from './Icon';
 // import Input from './Input';
-// import Items from './Items';
+import Items from './Items';
 import LinearGradient from './LinearGradient';
 import List from './List';
 import ListSection from './ListSection';
@@ -38,7 +38,7 @@ import Screen from './Screen';
 import SubTitle from './SubTitle';
 // import SubToolbar from './SubToolbar';
 // import Switch from './Switch';
-// import Table from './Table';
+import Table from './Table';
 // import Tab from './Tabs/Tab';
 // import TabBar from './Tabs/TabBar';
 // import TabView from './Tabs/TabView';
@@ -72,7 +72,7 @@ export {
   // Footer,
   Icon,
   // Input,
-  // Items,
+  Items,
   LinearGradient,
   List,
   ListSection,
@@ -87,7 +87,7 @@ export {
   // StatusViewBar,
   SubTitle,
   // SubToolbar,
-  // Table,
+  Table,
   // Tab,
   // TabBar,
   // TabView,

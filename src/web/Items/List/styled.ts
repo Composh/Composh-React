@@ -1,4 +1,4 @@
-import styled from 'styled-components/native';
+import styled from 'styled-components';
 
 
 
@@ -8,7 +8,7 @@ interface IProps {
 }
 
 
-export const ItemContainer = styled.TouchableOpacity`
+export const ItemContainer = styled.a`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -21,12 +21,15 @@ export const ItemContainer = styled.TouchableOpacity`
   padding-right: 5px;
   padding-bottom: 4px;
   border-bottom-color: ${(props: IProps) => props.borderBottomColor};
+  border-bottom-style: solid;
   border-bottom-width: ${(props: IProps) => props.borderBottomColor ? props.borderBottomWidth : 0}px;
+  cursor: pointer;
 `;
 
 
 
-export const IconContent = styled.View`
+export const IconContent = styled.div`
+  display: flex;
   min-width: 35px;
   min-height: 40px;
   margin-right: 17px;
@@ -36,30 +39,30 @@ export const IconContent = styled.View`
 
 
 
-export const InfoContainer = styled.View`
+export const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
   justify-content: center;
 `;
 
-export const ItemTitle = styled.Text`
+export const ItemTitle = styled.h3`
   margin-bottom: 2px;
   font-size: 15px;
 `;
 
-export const ItemSubtitle = styled.Text`
+export const ItemSubtitle = styled.h4`
   font-size: 12px;
 `;
 
-export const ItemLastTitle = styled.Text`
+export const ItemLastTitle = styled.h4`
   margin-top: 4px;
   font-size: 12px;
 `;
 
 
 
-export const InfoOptions = styled.View`
+export const InfoOptions = styled.div`
   display: flex;
   min-height: 50px;
   align-items: center;

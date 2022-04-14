@@ -6,8 +6,8 @@ import styled,
 
 
 interface IButtonProps {
+  disabled?: boolean;
   flexContent?: number;
-  alignSelf?: string;
   height?: any;
   width?: any;
   borderWidth?: any;
@@ -25,7 +25,9 @@ interface ITextProps {
 
 
 export const ToggleButtonStyle = styled.a`
-  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  cursor: ${(props: IButtonProps) => props.disabled ? 'default' : 'pointer'};
 `;
 
 
@@ -51,16 +53,16 @@ export const ToggleButtonContent = styled.div`
   padding-top: 8px;
   padding-bottom: 8px;
 
-  flex: ${(props: IButtonProps) => props.flexContent};
-  align-self: ${(props: IButtonProps) => props.alignSelf};
-  width: ${(props: IButtonProps) => props.width}px;
-  height: ${(props: IButtonProps) => props.height}px;
+  ${(props: IButtonProps) => props.flexContent && `flex: ${props.flexContent ? props.flexContent : 0}`};
+  align-self: ${(props: IButtonProps) => props.flexContent ? 'auto' : 'flex-start'};
+  ${(props: IButtonProps) => props.width && `width: ${props.width || 0}px`};
+  ${(props: IButtonProps) => props.height && `height: ${props.height || 0}px`};
   border-color: ${(props: IButtonProps) => props.borderColor};
-  border-style: ${(props: IButtonProps) => props.borderWidth ? 'solid' : 'none'};
-  border-width: ${(props: IButtonProps) => props.borderWidth}px;
-  border-radius: ${(props: IButtonProps) => props.borderRadius}px;
+  ${(props: IButtonProps) => props.borderWidth && 'border-style: solid'};
+  ${(props: IButtonProps) => props.borderWidth && `border-width: ${props.borderWidth || 0}px`};
+  ${(props: IButtonProps) => props.borderRadius && `border-radius: ${props.borderRadius || 0}px`};
   background-color: ${(props: IButtonProps) => props.backgroundColor};
-  ${(props: IButtonProps) => props.iconContent ? ButtonIconPadding : ButtonNoIconPadding}
+  ${(props: IButtonProps) => props.iconContent ? ButtonIconPadding : ButtonNoIconPadding};
 `;
 
 
@@ -77,7 +79,8 @@ export const ToggleText = styled.p`
   margin: 0;
   font-size: 14px;
   text-align: center;
+  white-space: nowrap;
 
   color: ${(props: ITextProps) => props.colorText};
-  margin-left: ${(props: ITextProps) => props.marginLeftText}px;
+  ${(props: ITextProps) => props.marginLeftText && `margin-left: ${props.marginLeftText || 0}px`};
 `;

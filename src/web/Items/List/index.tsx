@@ -41,17 +41,16 @@ const ListItem: React.FC<IProps> = (props: any) => {
   return (
 
     <ItemContainer
-      disabled={
-        props.disabled
-          ? props.disabled
-          : props.onPress
-            ? false
-            : true
-      }
-      activeOpacity={props.activeOpacity}
+      // disabled={
+      //   props.disabled
+      //     ? props.disabled
+      //     : props.onPress
+      //       ? false
+      //       : true
+      // }
       borderBottomColor={props.border ? '#878787' : 'transparent'}
       borderBottomWidth={0.5}
-      onPress={(!props.disabled || !props.onPress) && props.onPress}>
+      onClick={(!props.disabled || !props.onPress) && props.onPress}>
 
       {props.iconLeft && (
         <IconContent>
