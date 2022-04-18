@@ -5,7 +5,7 @@ import styled,
 
 
 
-interface IButtonProps {
+export interface IButtonProps {
   disabled?: boolean;
   flexContent?: number;
   height?: any;
@@ -17,7 +17,7 @@ interface IButtonProps {
   iconContent?: any;
 }
 
-interface ITextProps {
+export interface ITextProps {
   colorText?: any;
   marginLeftText?: number;
 }

@@ -17,7 +17,7 @@ import {
 
 
 
-interface IProps {
+export interface IProps {
   disabled?: boolean;
   noToggle?: boolean;
   selected?: boolean;

@@ -3,7 +3,7 @@ import './styled.css';
 
 
 
-interface IProps {
+export interface IProps {
   className?: any;
   style?: any;
   renderItem?: any;

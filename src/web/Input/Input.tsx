@@ -3,7 +3,7 @@ import React from 'react';
 import { Container } from './styled';
 
 
-interface IProps {
+export interface IProps {
   name?: string;
   label?: string;
 

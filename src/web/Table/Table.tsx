@@ -21,6 +21,7 @@ export interface IProps {
   widthArr?: any;
   flexArr?: any;
   borderStyle?: any;
+  children?: any;
 }
 
 

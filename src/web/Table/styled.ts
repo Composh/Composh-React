@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 
 
-interface IProps {
+export interface IProps {
   borderTopWidth?: any;
   borderLeftWidth?: any;
   borderRightWidth?: any;

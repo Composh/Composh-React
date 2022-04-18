@@ -12,7 +12,7 @@ import {
 
 
 
-interface IProps {
+export interface IProps {
   visible?: boolean;
 
   onOverlayPress?: any; // Function;

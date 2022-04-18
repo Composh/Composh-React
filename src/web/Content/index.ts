@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 
 
-interface IProps {
+export interface IProps {
   backgroundColor?: string;
 }
 

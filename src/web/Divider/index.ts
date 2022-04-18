@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 
 
-interface IProps {
+export interface IProps {
   height?: number | string;
   width?: number | string;
   color?: string;

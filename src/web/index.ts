@@ -14,6 +14,7 @@ import Container from './Container';
 import Content from './Content';
 // import Dialog from './Dialog';
 import Divider from './Divider';
+import Epigraph from './Epigraph';
 // import FAB from './FAB';
 // import FABItem from './FAB/Item';
 // import Footer from './Footer';
@@ -22,7 +23,6 @@ import Icon from './Icon';
 // import Input from './Input';
 import Items from './Items';
 import LinearGradient from './LinearGradient';
-import List from './List';
 import ListSection from './ListSection';
 // import MenuOverflow from './MenuOverflow';
 import Overlay from './Overlay';
@@ -67,6 +67,7 @@ export {
   Content,
   // Dialog,
   Divider,
+  Epigraph,
   // FAB,
   // FABItem,
   // Footer,
@@ -74,7 +75,6 @@ export {
   // Input,
   Items,
   LinearGradient,
-  List,
   ListSection,
   // MenuOverflow,
   Overlay,
