@@ -1,4 +1,3 @@
-// React Components Import
 import React,
 {
   useEffect,
@@ -21,7 +20,7 @@ import {
 
 
 
-export interface IProps {
+interface IProps {
   colors?: any;
   start?: any;
   end?: any;
@@ -29,7 +28,7 @@ export interface IProps {
   expanded?: boolean;
   // elipsing?: boolean;
 
-  text?: string;
+  text: string;
   textColor?: string;
   textSize?: number;
 
@@ -71,18 +70,10 @@ const ListSection: React.FC<IProps> = (props) => {
   return (
 
     <ContainerSection
-    // style={[
-    //   props.style,
-    //   !props.noBorderBottom && {
-    //     borderBottomColor: props.borderBottomColor || 'green',
-    //     borderBottomWidth: props.borderBottomWidth || 2,
-    //   },
-    //   props.noBorderBottom && {
-    //     borderBottomColor: 'transparent',
-    //     borderBottomWidth: 0,
-    //   },
-    // ]}
-    >
+      noBorderBottom={props.noBorderBottom}
+      borderBottomColor={props.borderBottomColor}
+      borderBottomWidth={props.borderBottomWidth}
+      style={props.style}>
 
 
       <TitleSectionView>

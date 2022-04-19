@@ -7,9 +7,22 @@ export const GridIconContent = styled.a`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 70px;
   padding-top: 4px;
   padding-bottom: 4px;
   cursor: pointer;
+
+  @media (max-width: 480px){
+    width: 32%;
+  }
+
+  @media (min-width: 481px) and (max-width: 661px){
+    width: 24%;
+  }
+
+  @media (min-width: 662px){
+    width: 120px;
+  }
 `;
 
 export const IconContent = styled.div`

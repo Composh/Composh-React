@@ -14,7 +14,7 @@ import {
 
 
 
-export interface IProps {
+interface IProps {
   backgroundColor?: string;
   colors?: any;
   start?: any;
@@ -23,7 +23,7 @@ export interface IProps {
   expanded?: boolean;
   // elipsing?: boolean;
 
-  text?: string;
+  text: string;
   textColor?: string;
   textSize?: number;
 
@@ -107,11 +107,8 @@ const ListHeader: React.FC<IProps> = (props) => {
     return (
 
       <ContainerBackgroundHeader
-      // style={[
-      //   props.style,
-      //   { backgroundColor: props.backgroundColor },
-      // ]}
-      >
+        backgroundColor={props.backgroundColor}
+        style={props.style}>
         {renderHeaderChildren()}
       </ContainerBackgroundHeader>
 

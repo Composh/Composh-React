@@ -5,6 +5,8 @@
     "jest": true
   },
   "extends": [
+    "plugin:react/recommended",
+    "standard",
     "plugin:@typescript-eslint/recommended",
     "prettier",
     "plugin:prettier/recommended"
@@ -20,8 +22,9 @@
   },
   "plugins": [
     "@typescript-eslint",
+    "eslint-plugin-import-helpers",
     "prettier",
-    "eslint-plugin-import-helpers"
+    "react"
   ],
   "rules": {
     "prettier/prettier": 0,
@@ -40,19 +43,7 @@
       "error",
       "always"
     ],
-    "max-len": [
-      "error",
-      {
-        "code": 150,
-        "ignoreUrls": true,
-        "ignoreComments": true,
-        "ignoreTrailingComments": true,
-        "ignoreStrings": true,
-        "ignoreTemplateLiterals": true,
-        "ignoreRegExpLiterals": true,
-        "ignorePattern": "^\\s*var\\s.+=\\s*require\\s*\\("
-      }
-    ],
+    "max-len": "off",
     "comma-dangle": [
       "error",
       "always-multiline"
@@ -67,6 +58,7 @@
       "error",
       "never"
     ],
+    "no-unneeded-ternary": "off",
     "global-require": "off",
     "import/prefer-default-export": "off",
     "import/order": "off",
@@ -79,13 +71,18 @@
           "/^styled-components/",
           "/^react/",
           "/^@react/",
+          "/^accounting/",
+          "/^axios/",
           "/^composh-react/",
+          "/^@material-ui/",
           "module",
+          "/^@noitada/",
           "/^@databases/",
           "/^@modules/",
           "/^@config/",
           "/^@core/",
           "/^~/common/",
+          "/^~/screens/",
           "/^~/components/",
           "/^~/models/",
           "/^~/utils/",
@@ -103,13 +100,15 @@
         }
       }
     ],
+    "array-callback-return": "off",
     "no-new": "off",
     "no-prototype-builtins": "off",
     "no-restricted-syntax": "off",
-    "max-classes-per-file": "off",
     "no-useless-constructor": "off",
     "no-underscore-dangle": "off",
+    "max-classes-per-file": "off",
     "class-methods-use-this": "off",
+    "react/jsx-key": "off",
     "@typescript-eslint/indent": [
       "error",
       2,
@@ -133,7 +132,11 @@
       "error",
       "stroustrup"
     ],
+    "no-constant-condition": "off",
+    "no-useless-escape": "off",
+    "camelcase": "off",
     "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/naming-convention": [
       "error",
       {
@@ -147,6 +150,8 @@
         }
       }
     ],
+    "react/prop-types": "off",
+    "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": [
       "error",
       {
@@ -154,7 +159,7 @@
       }
     ],
     "@typescript-eslint/no-unused-vars": [
-      "error",
+      "warn",
       {
         "argsIgnorePattern": "_"
       }
