@@ -9,7 +9,7 @@ import Body from './Body';
 // import Button from './Button';
 // import Card from './Card';
 // import CheckBox from './CheckBox';
-// import Chip from './Chip';
+import Chip from './Chip';
 import Container from './Container';
 import Content from './Content';
 // import Dialog from './Dialog';
@@ -62,7 +62,7 @@ export {
   // Button,
   // Card,
   // CheckBox,
-  // Chip,
+  Chip,
   Container,
   Content,
   // Dialog,

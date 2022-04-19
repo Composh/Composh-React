@@ -7,6 +7,7 @@ export const GridIconContent = styled.TouchableOpacity`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-width: 32%;
   min-height: 70px;
   padding-top: 4px;
   padding-bottom: 4px;

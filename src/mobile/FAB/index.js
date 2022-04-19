@@ -19,13 +19,13 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 
 import {
-  isIphoneX,
-} from '../../config/PlatformsConfig';
-
-import {
   Colors,
   Metrics,
 } from '../../constants';
+
+import {
+  isIphoneX,
+} from '../../core/config/PlatformsConfig';
 
 import Overlay from '../Overlay';
 
@@ -181,7 +181,7 @@ class FAB extends Component {
 
 
 
-  //#region Distance from button to edge
+  // #region Distance from button to edge
   get distanceToHorizontalEdge() {
     const { distanceToEdge } = this.props;
     return typeof distanceToEdge === 'number'
@@ -195,11 +195,11 @@ class FAB extends Component {
       ? distanceToEdge
       : distanceToEdge.vertical;
   }
-  //#endregion
+  // #endregion
 
 
 
-  //#region Keyboard Show And Hide
+  // #region Keyboard Show And Hide
   onKeyboardShow = (e) => {
     const { buttonSize, actionsPaddingTopBottom } = this.props;
     const { height } = e.endCoordinates;
@@ -244,7 +244,7 @@ class FAB extends Component {
       }),
     ]).start();
   };
-  //#endregion
+  // #endregion
 
 
 
@@ -323,7 +323,6 @@ class FAB extends Component {
     if ((onPress && !children) || (onPress && children && freeze)) {
       // console.log('FAB With Action');
       onPress();
-      return;
     }
     else if (children) {
       // console.log('FAB With Children');
@@ -471,7 +470,7 @@ class FAB extends Component {
 
       animatedViewStyle = {};
 
-      let deg = deg180 ? '180deg' : '45deg';
+      const deg = deg180 ? '180deg' : '45deg';
 
       if (children || (children && freeze)) {
         animatedViewStyle = {
@@ -529,7 +528,7 @@ class FAB extends Component {
     };
 
 
-    let fabContentObject = (
+    const fabContentObject = (
       <Animated.View
         style={[
           styles.buttonTextContainer,
@@ -708,9 +707,9 @@ class FAB extends Component {
         <Animated.View
           style={[
             styles.actions,
-            styles[`${position}ActionsVisible`]
+            styles[`${position}ActionsVisible`],
           ]}
-          pointerEvents={"box-none"}>
+          pointerEvents={'box-none'}>
           {itemFabArray}
         </Animated.View>
       );
@@ -719,7 +718,7 @@ class FAB extends Component {
       return (
         <Animated.View
           style={actionsStyles}
-          pointerEvents={"box-none"}>
+          pointerEvents={'box-none'}>
           {itemFabArray}
         </Animated.View>
       );
@@ -740,7 +739,7 @@ class FAB extends Component {
 
     return (
       <Animated.View
-        pointerEvents={"box-none"}
+        pointerEvents={'box-none'}
         style={[
           styles.overlay,
           { backgroundColor: Colors.TRANSPARENT },

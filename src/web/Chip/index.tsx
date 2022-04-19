@@ -156,9 +156,9 @@ const Chip: React.FC<IProps> = (props: any) => {
   return (
 
     <ChipContainer
-      activeOpacity={props.activeOpacity || 0.75}
-      disabled={props.disabled}
-      onPress={!props.disabled && props.onPress}
+      // activeOpacity={props.activeOpacity || 0.75}
+      // disabled={props.disabled}
+      onClick={!props.disabled && props.onPress}
       backgroundColor={selectedBackgroundColor()}
       borderColor={borderColor()}
       borderRadius={16}
@@ -196,7 +196,8 @@ const Chip: React.FC<IProps> = (props: any) => {
 
 
         <ChipIcon
-          onPress={props.onClose}>
+          // activeOpacity={props.activeOpacity}
+          onClick={props.onClose}>
           {props.icon || (props.selected
             ? (
               <Icon
