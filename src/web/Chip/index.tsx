@@ -43,6 +43,8 @@ export interface IProps {
   // Button Press Props
   onPress?: any;
   onLongPress?: any;
+
+  onCloseDisabled?: boolean;
   onClose?: any;
 
 
@@ -197,7 +199,8 @@ const Chip: React.FC<IProps> = (props: any) => {
 
         <ChipIcon
           // activeOpacity={props.activeOpacity}
-          onClick={props.onClose}>
+          // disabled={props.onCloseDisabled}
+          onClick={!props.onCloseDisabled && props.onClose}>
           {props.icon || (props.selected
             ? (
               <Icon

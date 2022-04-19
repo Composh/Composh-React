@@ -18,7 +18,10 @@ export const ChipContainer = styled.TouchableOpacity`
   height: 35px;
   padding-left: 15px;
   padding-right: 15px;
-  margin: 2px;
+  margin-top: 4px;
+  margin-left: 2px;
+  margin-right: 2px;
+  margin-bottom: 4px;
   background-color: ${(props: IProps) => props.backgroundColor};
   border-color: ${(props: IProps) => props.borderColor};
   border-width: 1px;
@@ -40,7 +43,7 @@ export const ChipThumb = styled.View`
 
 
 export const ChipText = styled.Text`
-  font-size: 15px;
+  font-size: 14px;
   color: ${(props: IProps) => props.color};
 `;
 
