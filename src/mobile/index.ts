@@ -25,6 +25,7 @@ import Items from './Items';
 // import LinearGradient from './LinearGradient';
 // import MenuOverflow from './MenuOverflow';
 import Overlay from './Overlay';
+import ProgressBar from './ProgressBar';
 import Radio from './Radio';
 import Rating from './Rating';
 import Screen from './Screen';
@@ -76,6 +77,7 @@ export {
   // LinearGradient,
   // MenuOverflow,
   Overlay,
+  ProgressBar,
   Radio,
   Rating,
   Screen,

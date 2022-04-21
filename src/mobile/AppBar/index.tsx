@@ -1,17 +1,15 @@
 import React from 'react';
 
-import { View } from 'react-native';
-
 import {
+  HeaderAppContainer,
   HeaderContainer,
-  HeaderTransparent,
 } from './styled';
 
 
 
 export interface IProps {
-  transparent?: boolean;
   absolute?: boolean;
+  transparent?: boolean;
 
   backgroundColor?: string;
   borderBottomColor?: string;
@@ -23,36 +21,20 @@ export interface IProps {
 
 
 const AppBar: React.FC<IProps> = (props: any) => {
-  const Component = props.transparent ? HeaderTransparent : HeaderContainer;
-
-
   return (
 
-    <View style={{
-      backgroundColor: 'transparent',
-      zIndex: 40,
-    }}>
-      <Component
+    <HeaderAppContainer>
+      <HeaderContainer
+        absolute={props.absolute}
+        transparent={props.transparent}
         backgroundColor={props.backgroundColor}
-        style={[
-          props.style,
-          props.absolute && {
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            zIndex: 5,
-          },
-          props.borderBottomColor && {
-            borderBottomColor: props.borderBottomColor || 'transparent',
-            borderBottomWidth: 1,
-          },
-        ]}>
+        borderBottomColor={props.borderBottomColor}
+        style={props.style}>
 
         {props.children}
 
-      </Component>
-    </View>
+      </HeaderContainer>
+    </HeaderAppContainer>
 
   );
 };
