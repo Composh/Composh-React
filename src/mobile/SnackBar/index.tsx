@@ -40,9 +40,9 @@ export interface IProps {
   textMessage?: any; // PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   position?: any; // PropTypes.oneOf(['bottom', 'top']), // bottom (default), top
   autoHidingTime?: number; // How long (in milliseconds) the snack bar will be hidden.
-  containerStyle?: any; //ViewPropTypes.style,
-  messageStyle?: any; //Text.propTypes.style,
-  actionStyle?: any; //Text.propTypes.style,
+  containerStyle?: any; // ViewPropTypes.style,
+  messageStyle?: any; // Text.propTypes.style,
+  actionStyle?: any; // Text.propTypes.style,
 };
 
 

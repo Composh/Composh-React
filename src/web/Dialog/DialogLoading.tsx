@@ -1,9 +1,8 @@
 import React from 'react';
 
 import {
-  ActivityIndicator,
-  StatusBar,
-} from 'react-native';
+  CircularProgress,
+} from '@material-ui/core';
 
 import {
   ActivityIndicatorWrapper,
@@ -26,7 +25,7 @@ const DialogLoading = (props: any) => {
     textColorLoader,
   } = props;
 
-  const sizeLoad = 'large';
+  const sizeLoad = 40;
 
 
 
@@ -38,9 +37,8 @@ const DialogLoading = (props: any) => {
           backgroundColor: overlayBackground || 'rgba(0, 0, 0, 0.5)',
         }}>
 
-          <StatusBar
-            translucent
-            barStyle={'light-content'}
+          <CircularProgress
+            size={sizeLoad}
           />
 
           <ActivityIndicatorWrapper style={{
@@ -50,10 +48,9 @@ const DialogLoading = (props: any) => {
             borderRadius: borderRadiusLoader || 0,
           }}>
 
-            <ActivityIndicator
-              animating={visible}
+            <CircularProgress
+              color={indicatorColor}
               size={sizeLoad}
-              color={indicatorColor || 'blue'}
             />
 
             {textLoader && (

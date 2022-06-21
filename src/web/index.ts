@@ -26,7 +26,7 @@ import LinearGradient from './LinearGradient';
 import ListSection from './ListSection';
 // import MenuOverflow from './MenuOverflow';
 import Overlay from './Overlay';
-// import Radio from './Radio';
+import Radio from './Radio';
 // import Rating from './Rating';
 import Screen from './Screen';
 // import Shimmer from './Shimmer';
@@ -78,7 +78,7 @@ export {
   ListSection,
   // MenuOverflow,
   Overlay,
-  // Radio,
+  Radio,
   // Rating,
   Screen,
   // Shimmer,
