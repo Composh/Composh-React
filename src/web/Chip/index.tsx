@@ -2,8 +2,6 @@ import React from 'react';
 
 import color from 'color';
 
-import Icon from '../Icon';
-
 import {
   ChipContainer,
   ChipContent,
@@ -85,27 +83,9 @@ const Chip: React.FC<IProps> = (props: any) => {
 
 
   function textColor() {
-    const txColor = color(
-      props.selected
-        ? props.selectedTextColor || props.textColor
-        : props.textColor,
-    ).alpha(0.87);
-
-    return String(txColor);
-  }
-
-
-  function iconColor() {
-    const iconCloseColor = props.mode === 'outlined'
-      ? color(
-        props.selected
-          ? props.selectedIconColor
-          : props.iconColor,
-      )
-        .darken(props.mode === 'outlined' ? 0.08 : 0.45)
-      : textColor();
-
-    return String(iconCloseColor);
+    return props.selected
+      ? props.selectedTextColor || props.textColor
+      : props.textColor;
   }
 
 
@@ -197,29 +177,15 @@ const Chip: React.FC<IProps> = (props: any) => {
         </ChipText>
 
 
-        <ChipIcon
-          // activeOpacity={props.activeOpacity}
-          // disabled={props.onCloseDisabled}
-          onClick={!props.onCloseDisabled && props.onClose}>
-          {props.icon || (props.selected
-            ? (
-              <Icon
-                type="material-community"
-                name="close-circle"
-                size={18}
-                color={iconColor()}
-              />
-            )
-            : (
-              <Icon
-                type="material-community"
-                name="close-circle"
-                size={18}
-                color={iconColor()}
-              />
-            )
-          )}
-        </ChipIcon>
+        {props.icon && (
+          <ChipIcon
+            // activeOpacity={props.activeOpacity}
+            // disabled={props.onCloseDisabled}
+            onClick={!props.onCloseDisabled && props.onClose}>
+            {props.icon}
+          </ChipIcon>
+        )}
+
       </ChipContent>
 
     </ChipContainer>

@@ -34,7 +34,7 @@ export default class DialogContainer extends React.PureComponent {
   };
 
   _hide = () => {
-    if (visible == true) {
+    if (visible === true) {
       this.setState({
         visible: !visible,
       });

@@ -1,4 +1,4 @@
-//https://github.com/galio-org/galio/tree/master/src/theme
+// https://github.com/galio-org/galio/tree/master/src/theme
 /* eslint-disable prettier/prettier */
 /* eslint-disable key-spacing */
 
@@ -35,7 +35,7 @@ export const HEADER = {
 
 export const INPUT = {
 
-  INPUT:                            '#CAD1D7', //'#808080',
+  INPUT:                            '#CAD1D7', // '#808080',
   PLACEHOLDER:                      '#9FA5AA',
   INPUT_ERROR:                      '#FCB3A4',
   INPUT_SUCCESS:                    '#7BDEB2',

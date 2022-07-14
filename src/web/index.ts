@@ -1,6 +1,6 @@
-// import Accordion from './Accordion';
+import Accordion from './Accordion';
 import ActionSheet from './ActionSheet';
-// import Alert from './Alert';
+import Alert from './Alert';
 // import AppBar from './AppBar';
 // import Avatar from './Avatar';
 // import Badge from './Badge/';
@@ -37,7 +37,7 @@ import Screen from './Screen';
 // import StatusViewBar from './StatusViewBar';
 import SubTitle from './SubTitle';
 // import SubToolbar from './SubToolbar';
-// import Switch from './Switch';
+import Switch from './Switch';
 import Table from './Table';
 // import Tab from './Tabs/Tab';
 // import TabBar from './Tabs/TabBar';
@@ -52,9 +52,9 @@ import ToolbarGroup from './ToolbarGroup';
 
 
 export {
-  // Accordion,
+  Accordion,
   ActionSheet,
-  // Alert,
+  Alert,
   // AppBar,
   // Badge,
   // BadgeIndicator,
@@ -87,6 +87,7 @@ export {
   // StatusViewBar,
   SubTitle,
   // SubToolbar,
+  Switch,
   Table,
   // Tab,
   // TabBar,
