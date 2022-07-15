@@ -3,6 +3,7 @@ import DialogContainer from './Container';
 import DialogContent from './Content';
 import DialogDescription from './Description';
 import DialogFooter from './Footer';
+import DialogText from './Text';
 // import DialogInput from './Input';
 // import DialogSwitch from './Switch';
 import DialogTitle from './Title';
@@ -15,5 +16,6 @@ export default {
   Footer: DialogFooter,
   // Input: DialogInput,
   // Switch: DialogSwitch,
+  Text: DialogText,
   Title: DialogTitle,
 };

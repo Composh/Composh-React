@@ -1,18 +1,18 @@
 import Accordion from './Accordion';
 import ActionSheet from './ActionSheet';
 import Alert from './Alert';
-// import AppBar from './AppBar';
+import AppBar from './AppBar';
 // import Avatar from './Avatar';
 // import Badge from './Badge/';
 // import BadgeIndicator from './BadgeIndicator';
 import Body from './Body';
-// import Button from './Button';
+import Button from './Button';
 // import Card from './Card';
-// import CheckBox from './CheckBox';
+import CheckBox from './CheckBox';
 import Chip from './Chip';
 import Container from './Container';
 import Content from './Content';
-// import Dialog from './Dialog';
+import Dialog from './Dialog';
 import Divider from './Divider';
 import Epigraph from './Epigraph';
 // import FAB from './FAB';
@@ -36,7 +36,7 @@ import Screen from './Screen';
 // import SnackBar from './SnackBar';
 // import StatusViewBar from './StatusViewBar';
 import SubTitle from './SubTitle';
-// import SubToolbar from './SubToolbar';
+import SubToolbar from './SubToolbar';
 import Switch from './Switch';
 import Table from './Table';
 // import Tab from './Tabs/Tab';
@@ -45,7 +45,7 @@ import Table from './Table';
 import Title from './Title';
 // import Toast from './Toast';
 import Toggle from './Toggle';
-// import Toolbar from './Toolbar';
+import Toolbar from './Toolbar';
 import ToolbarGroup from './ToolbarGroup';
 // import Tooltip from './Tooltip';
 
@@ -55,17 +55,17 @@ export {
   Accordion,
   ActionSheet,
   Alert,
-  // AppBar,
+  AppBar,
   // Badge,
   // BadgeIndicator,
   Body,
-  // Button,
+  Button,
   // Card,
-  // CheckBox,
+  CheckBox,
   Chip,
   Container,
   Content,
-  // Dialog,
+  Dialog,
   Divider,
   Epigraph,
   // FAB,
@@ -86,7 +86,7 @@ export {
   // SnackBar,
   // StatusViewBar,
   SubTitle,
-  // SubToolbar,
+  SubToolbar,
   Switch,
   Table,
   // Tab,
@@ -94,7 +94,7 @@ export {
   // TabView,
   Title,
   Toggle,
-  // Toolbar,
+  Toolbar,
   ToolbarGroup,
   // Tooltip,
 };
