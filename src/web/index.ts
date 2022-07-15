@@ -35,6 +35,7 @@ import Screen from './Screen';
 // import Shapes from './Shapes';
 // import SnackBar from './SnackBar';
 // import StatusViewBar from './StatusViewBar';
+import StepIndicator from './StepIndicator';
 import SubTitle from './SubTitle';
 import SubToolbar from './SubToolbar';
 import Switch from './Switch';
@@ -85,6 +86,7 @@ export {
   // Select,
   // SnackBar,
   // StatusViewBar,
+  StepIndicator,
   SubTitle,
   SubToolbar,
   Switch,
