@@ -9,13 +9,12 @@ import {
 } from 'react-native';
 
 import {
-  ChildrenWithProps,
-} from '../../core/config/Typings';
-
-import {
   Metrics,
 } from '../../constants';
 
+import {
+  ChildrenWithProps,
+} from '../../core/config/Typings';
 
 import {
   TabElement,
@@ -100,7 +99,7 @@ class TabBar extends React.Component<ITabBarProps> {
   };
 
 
-  private renderTabElements = (source: ChildrenWithProps<TabProps>): TabElement[] => {
+  private renderTabElements = (source: ChildrenWithProps<ITabProps>): TabElement[] => {
     return React.Children.map(source, this.renderTabElement);
   };
 
