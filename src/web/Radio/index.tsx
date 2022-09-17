@@ -4,18 +4,17 @@ import React,
   useState,
 } from 'react';
 
+import ButtonCircle from '../Button/ButtonCircle';
+
 import {
   ButtonRadioContainer,
   ButtonRadioTouchable,
-  LeftProductBox,
   // ProductBox,
   // ProductBoxLess,
   // CircleRadioView,
   // IconView,
-  CircleFill,
   CenterProductBox,
   TextRadio,
-  IconCircleView,
 } from './styled';
 
 
@@ -87,50 +86,28 @@ const Radio: React.FC<IProps> = (props: any) => {
               _changeRadio(item, index);
             }}
             direction={props.boxDirection}
-            borderColor={activeIndex === index ? props.activeColor : props.deactiveColor}
             style={props.boxStyle}>
 
 
-            <LeftProductBox>
-              <IconCircleView
-                width={props.circleSize + 8}
-                height={props.circleSize + 8}
-                borderColor={
-                  props.icon
-                    ? activeIndex === index ? 'transparent' : props.deactiveColor
-                    : activeIndex === index ? props.activeColor : props.deactiveColor
-                }>
-
-                <div style={{
-                  opacity: activeIndex === index ? 1 : 0,
-                }}>
-                  <div>
-                    {props.icon ?
-                      props.icon
-                      :
-                      <CircleFill
-                        style={{
-                          backgroundColor: activeIndex === index ? props.activeColor : props.deactiveColor,
-                          borderColor: activeIndex === index ? props.activeColor : props.deactiveColor,
-                          width: props.circleSize,
-                          height: props.circleSize,
-                        }}
-                      />
-                    }
-                  </div>
-                </div>
-              </IconCircleView>
-
-            </LeftProductBox>
+            <ButtonCircle
+              active={activeIndex === index}
+              size={props.circleSize}
+              deactiveColor={props.deactiveColor}
+              activeColor={props.activeColor}
+            />
 
 
 
             <CenterProductBox>
-              <TextRadio
-                color={activeIndex === index ? props.activeColor : props.deactiveColor}
-                style={props.textStyle}>
-                {item.label}
-              </TextRadio>
+              {React.isValidElement(item.label)
+                ? item.label
+                : (
+                  <TextRadio
+                    color={activeIndex === index ? props.activeColor : props.deactiveColor}
+                    style={props.textStyle}>
+                    {item.label}
+                  </TextRadio>
+                )}
             </CenterProductBox>
 
           </ButtonRadioTouchable>

@@ -7,6 +7,7 @@ import {
 
 
 export interface IProps {
+  center?: boolean;
   label?: any;
   color?: any;
   disabled?: any;
@@ -21,34 +22,21 @@ export interface IProps {
 
 
 const DialogButton: React.FC<IProps> = (props) => {
-  const {
-    label,
-    color,
-    disabled,
-    bold,
-    uppercase,
-    onPress,
-    // activeOpacity,
-    style,
-    styleText,
-    ...otherProps
-  } = props;
-
-
-
   return (
 
     <ButtonComponent
       // disabled={disabled}
       // activeOpacity={activeOpacityDialog || 0.2}
-      style={style}
-      onClick={onPress}>
+      center={props.center}
+      style={props.style}
+      onClick={!props.disabled && props.onPress}>
 
       <ButtonComponentText
-        fontWeight={bold}
-        style={styleText}
-        {...otherProps}>
-        {uppercase ? label.toUpperCase() : label}
+        {...props}
+        color={props.color}
+        fontWeight={props.bold}
+        style={props.styleText}>
+        {props.uppercase ? props.label.toUpperCase() : props.label}
       </ButtonComponentText>
 
     </ButtonComponent>

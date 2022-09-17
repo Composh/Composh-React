@@ -14,7 +14,7 @@ export const OverlayStyle = css`
   left: 0;
   right: 0;
   elevation: 0;
-  
+
   justify-content: center;
   align-items: center;
   z-index: 9998;
@@ -23,6 +23,7 @@ export const OverlayStyle = css`
 
 export const OverlayTouchable = styled.a`
   ${OverlayStyle};
+  cursor: pointer;
 `;
 
 

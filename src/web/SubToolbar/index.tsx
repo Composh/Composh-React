@@ -1,7 +1,7 @@
 import React from 'react';
 
 // import {
-//   Metrics,
+//   Sizes,
 // } from '../../constants';
 
 import {
@@ -27,7 +27,7 @@ const SubToolbar: React.FC<IProps> = (props: any) => {
     <ToolbarContainer
       style={{
         justifyContent: 'center',
-        height: 46, // Metrics.SubToolbar,
+        height: 46, // Sizes.SubToolbar,
         paddingLeft: props.noSubToolbarPadding ? 0 : 8,
         paddingRight: props.noSubToolbarPadding ? 0 : 8,
         backgroundColor: props.backgroundColor,

@@ -1,10 +1,11 @@
+import ButtonCheck from './ButtonCheck';
+import ButtonCircle from './ButtonCircle';
 import ButtonControl from './ButtonControl';
-// import ButtonHighlight from './ButtonHighlight';
-// import ButtonRipple from './ButtonRipple';
+
+
 
 export default {
   Control: ButtonControl,
-  // Highlight: ButtonHighlight,
-  // Ripple: ButtonRipple,
+  Check: ButtonCheck,
+  Circle: ButtonCircle,
 };
-

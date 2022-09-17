@@ -1,7 +1,7 @@
 import React from 'react';
 
 // import {
-//   Metrics,
+//   Sizes,
 // } from '../../constants';
 
 import {
@@ -12,6 +12,8 @@ import {
 
 
 export interface IProps {
+  height?: number;
+
   leftIcon?: object;
   rightIcon?: object;
   centerContent?: object;
@@ -29,7 +31,7 @@ const Toolbar: React.FC<IProps> = (props: any) => {
 
     <ToolbarContainer
       style={{
-        height: 56, // Metrics.Toolbar,
+        height: props.height || 56, // Sizes.Toolbar,
         backgroundColor: props.backgroundColor,
       }}>
 

@@ -12,7 +12,7 @@ export const ItemContainer = styled.a`
   display: flex;
   flex-direction: row;
   align-items: center;
-  min-height: 55px;
+  min-height: 47px;
   margin-top: 6px;
   margin-left: 8px;
   margin-right: 4px;

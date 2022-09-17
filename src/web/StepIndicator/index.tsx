@@ -93,7 +93,7 @@ const StepIndicator: React.FC<IProps> = (props: any) => {
             borderWidth: 1,
           }}>
 
-          {/* 
+          {/*
           <Text>
             {i + 1}
           </Text>

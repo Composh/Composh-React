@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export interface IProps {
+
+
+interface IProps {
   color?: string;
 
   left?: number;
@@ -10,6 +12,8 @@ export interface IProps {
   height?: number;
 }
 
+
+
 const Pointer = styled.div`
   background-color: ${(props: IProps) => (props.color ? props.color : '#04a9f5')};
   position: absolute;
@@ -18,5 +22,7 @@ const Pointer = styled.div`
   width: ${(props: IProps) => (props.width ? props.width : 5)}px;
   height: ${(props: IProps) => (props.height ? props.height : 20)}px;
 `;
+
+
 
 export default Pointer;

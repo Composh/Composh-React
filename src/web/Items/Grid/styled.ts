@@ -13,15 +13,18 @@ export const GridIconContent = styled.a`
   cursor: pointer;
 
   @media (max-width: 480px){
-    width: 32%;
+    flex: 1;
+    max-width: 32%;
   }
 
   @media (min-width: 481px) and (max-width: 661px){
-    width: 24%;
+    flex: 1;
+    max-width: 24%;
   }
 
   @media (min-width: 662px){
-    width: 120px;
+    flex: 1;
+    max-width: 120px;
   }
 `;
 

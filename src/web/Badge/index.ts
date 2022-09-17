@@ -6,6 +6,6 @@ import {
 
 
 export default {
-  BadgeView: BadgeView,
-  BadgeText: BadgeText,
+  View: BadgeView,
+  Text: BadgeText,
 };

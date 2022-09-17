@@ -41,8 +41,8 @@ const DialogLoader = (props: any) => {
 
     <Overlay
       noPress
+      showBackground
       visible={visible}
-      showBackground={true}
       overlayColor={overlayBackground || 'rgba(0, 0, 0, 0.5)'}>
 
       <ActivityIndicatorWrapper style={{

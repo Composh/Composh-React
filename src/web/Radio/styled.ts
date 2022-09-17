@@ -31,33 +31,14 @@ export const ButtonRadioContainer = styled.div`
 export const ButtonRadioTouchable = styled.a`
   display: flex;
   flex-direction: ${(props: IProps) => props.direction};
-  flex: 1;
-  align-items: center;
-  border-color: ${(props: IProps) => props.borderColor};
+  align-items: ${(props: IProps) => props.direction === 'row' ? 'flex-start' : 'center'};
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   cursor: pointer;
 `;
 
-export const LeftProductBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-`;
-
-
-export const IconCircleView = styled.div`
-  display: flex;
-  flex-direction: column;
-  border-radius: 10000px;
-  align-items: center;
-  justify-content: center;
-  width: ${(props: IProps) => props.width}px;
-  height: ${(props: IProps) => props.height}px;
-  border-color: ${(props: IProps) => props.borderColor};
-  border-style: solid;
-  border-width: 1px;
-`;
 
 
 // export const ProductBox = styled.div`
@@ -90,21 +71,10 @@ export const IconCircleView = styled.div`
 //   justify-content: center;
 // `;
 
-export const CircleFill = styled.div`
-  display: flex;
-  flex-direction: column;
-  border-width: 1px;
-  border-radius: 1000px;
-`;
-
 export const CenterProductBox = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 6;
-  justify-content: center;
-  align-items: flex-start;
-  padding-left: 4px;
-  padding-right: 4px;
+  align-self: center;
 `;
 
 export const TextRadio = styled.p`

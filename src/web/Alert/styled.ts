@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 
 export interface IProps {
+  center?: boolean;
+  color?: string;
   fontWeight?: boolean;
 }
 
@@ -31,8 +33,8 @@ export const AlertContent = styled.div`
 export const AlertHeaderContent = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 12px;
 `;
+// margin: 12px;
 
 export const BlurModal = styled.div`
   display: flex;
@@ -64,11 +66,15 @@ export const ButtonComponent = styled.a`
   justify-content: center;
   padding: 8px 12px;
   cursor: pointer;
+
+  ${(props: IProps) => props.center && `
+    flex: 1;
+  `}
 `;
 
 export const ButtonComponentText = styled.p`
-  color: #000000;
+  color: ${(props: IProps) => props.color || '#000000'};
   font-size: 14px;
-  font-weight: ${(props: IProps) => props.fontWeight ? '600' : 'normal'}
+  font-weight: ${(props: IProps) => props.fontWeight ? '600' : 'normal'};
   text-align: center;
 `;

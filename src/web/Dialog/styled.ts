@@ -1,8 +1,8 @@
-import styled from 'styled-components/native';
+import styled from 'styled-components';
 
 
 
-export const ActivityIndicatorWrapper = styled.View`
+export const ActivityIndicatorWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +15,7 @@ export const ActivityIndicatorWrapper = styled.View`
   elevation: 5;
 `;
 
-export const TextWait = styled.Text`
+export const TextWait = styled.p`
   margin-top: 8px;
   font-size: 12.5px;
   text-align: center;
@@ -23,7 +23,7 @@ export const TextWait = styled.Text`
 
 
 
-export const ModalBackground = styled.View`
+export const ModalBackground = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;

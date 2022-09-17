@@ -33,6 +33,7 @@ const DialogLoading = (props: any) => {
 
     <>
       {visible && (
+
         <ModalBackground style={{
           backgroundColor: overlayBackground || 'rgba(0, 0, 0, 0.5)',
         }}>
@@ -64,6 +65,7 @@ const DialogLoading = (props: any) => {
           </ActivityIndicatorWrapper>
 
         </ModalBackground>
+
       )}
     </>
 

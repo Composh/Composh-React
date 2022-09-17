@@ -14,7 +14,7 @@ import {
 
 
 
-interface IProps {
+export interface IProps {
   backgroundColor?: string;
   colors?: any;
   start?: any;

@@ -20,7 +20,7 @@ import {
 
 
 
-interface IProps {
+export interface IProps {
   colors?: any;
   start?: any;
   end?: any;

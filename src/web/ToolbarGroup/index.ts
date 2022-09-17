@@ -2,14 +2,14 @@ import styled from 'styled-components';
 
 
 
-interface IProps {
-  group?: string;
-}
+// export interface IProps {
+//   group?: string;
+// }
 
 
 
+// margin: ${(props: IProps) => (props.group ? 0 : 0)}px;
 const ToolbarGroup = styled.div`
-  margin: ${(props: IProps) => (props.group ? 0 : 0)}px;
   display: flex;
   flex-direction: row;
   align-items: center;

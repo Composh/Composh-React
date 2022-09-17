@@ -21,37 +21,37 @@ export const CenterContainer = styled.div`
 
 
 // export const ToolbarContainer = styled(Toolbar)`
-//   height: ${Metrics.TOOLBAR_WEB}px !important;
-//   min-height: ${Metrics.TOOLBAR_WEB}px !important;
+//   height: ${Sizes.TOOLBAR_WEB}px !important;
+//   min-height: ${Sizes.TOOLBAR_WEB}px !important;
 //   background-color: ${(props: IToolbarProps) => props.backgroundColor || 'transparent'};
 
 //   @media (min-width:320px) {
-//     height: ${Metrics.TOOLBAR_ANDROID}px !important;
-//     min-height: ${Metrics.TOOLBAR_ANDROID}px !important;
+//     height: ${Sizes.TOOLBAR_ANDROID}px !important;
+//     min-height: ${Sizes.TOOLBAR_ANDROID}px !important;
 //   }
 
 //   @media (min-width:480px) {
-//     height: ${Metrics.TOOLBAR_ANDROID}px !important;
-//     min-height: ${Metrics.TOOLBAR_ANDROID}px !important;
+//     height: ${Sizes.TOOLBAR_ANDROID}px !important;
+//     min-height: ${Sizes.TOOLBAR_ANDROID}px !important;
 //   }
 
 //   @media (min-width:600px) {
-//     height: ${Metrics.TOOLBAR_WEB}px !important;
-//     min-height: ${Metrics.TOOLBAR_WEB}px !important;
+//     height: ${Sizes.TOOLBAR_WEB}px !important;
+//     min-height: ${Sizes.TOOLBAR_WEB}px !important;
 //   }
 
 //   @media (min-width:801px) {
-//     height: ${Metrics.TOOLBAR_WEB}px !important;
-//     min-height: ${Metrics.TOOLBAR_WEB}px !important;
+//     height: ${Sizes.TOOLBAR_WEB}px !important;
+//     min-height: ${Sizes.TOOLBAR_WEB}px !important;
 //   }
 
 //   @media (min-width:1025px) {
-//     height: ${Metrics.TOOLBAR_WEB}px !important;
-//     min-height: ${Metrics.TOOLBAR_WEB}px !important;
+//     height: ${Sizes.TOOLBAR_WEB}px !important;
+//     min-height: ${Sizes.TOOLBAR_WEB}px !important;
 //   }
 
 //   @media (min-width:1281px) {
-//     height: ${Metrics.TOOLBAR_WEB}px !important;
-//     min-height: ${Metrics.TOOLBAR_WEB}px !important;
+//     height: ${Sizes.TOOLBAR_WEB}px !important;
+//     min-height: ${Sizes.TOOLBAR_WEB}px !important;
 //   }
 // `;

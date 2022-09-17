@@ -1,14 +1,11 @@
 import React from 'react';
 
+import ButtonCheck from '../Button/ButtonCheck';
+
 import {
   CheckBoxButton,
   CheckBoxWrapper,
-  CheckBoxContainer,
-  CheckBoxItemContent,
-  CheckBoxContent,
-  CheckmarkContent,
-  CheckmarkStem,
-  CheckmarkCkick,
+  CheckboxFlexText,
   CheckboxText,
 } from './styled';
 
@@ -18,8 +15,9 @@ export interface IProps {
   activeOpacity?: any;
   center?: any;
   checked?: any;
+  disabled?: any;
 
-  title?: string;
+  title?: string | object;
   checkedTitle?: any;
   uncheckedTitle?: any;
   checkedIcon?: Element;
@@ -46,75 +44,44 @@ export interface IProps {
 
 
 const CheckBox: React.FC<IProps> = (props) => {
-  const haveIcon = props.checkedIcon && props.uncheckedIcon;
-  const checkboxBackgroundColor = props.checked ? props.checkedColor : props.uncheckedColor;
-
-
   function renderIconInstance() {
-    if (haveIcon) {
-      if (props.checked && React.isValidElement(props.checkedIcon)) {
-        return (
-          <CheckBoxContainer>
-            {props.checkedIcon}
-          </CheckBoxContainer>
-        );
-      }
+    return (
 
-      if (!props.checked && React.isValidElement(props.uncheckedIcon)) {
-        return (
-          <CheckBoxContainer>
-            {props.uncheckedIcon}
-          </CheckBoxContainer>
-        );
-      }
-    }
-    else {
-      return (
+      <ButtonCheck
+        active={props.checked}
+        size={props.size}
+        activeColor={props.checkedColor}
+        deactiveColor={props.uncheckedColor}
+        activeIcon={props.checkedIcon}
+        deactiveIcon={props.uncheckedIcon}
+      />
 
-        <CheckBoxContainer
-          border={!haveIcon}
-          onClick={props.onPress}>
-
-          {props.checked && (
-            <CheckBoxItemContent
-              backgroundColor={checkboxBackgroundColor}>
-
-              <CheckBoxContent>
-                <CheckmarkContent
-                  backgroundColor={checkboxBackgroundColor} />
-                <CheckmarkStem />
-                <CheckmarkCkick />
-              </CheckBoxContent>
-
-            </CheckBoxItemContent>
-          )}
-
-        </CheckBoxContainer>
-
-      );
-    }
+    );
   }
 
 
 
   return (
 
-    <CheckBoxButton>
+    <CheckBoxButton
+      onClick={!props.disabled && props.onPress}>
 
       <CheckBoxWrapper>
 
         {props.direction === 'LEFT' && renderIconInstance()}
 
-        {React.isValidElement(props.title) ? (
-          props.title
-        ) : (
-          <CheckboxText>
-            {props.checked
-              ? props.checkedTitle || props.title
-              : props.uncheckedTitle || props.title
-            }
-          </CheckboxText>
-        )}
+        <CheckboxFlexText>
+          {React.isValidElement(props.title)
+            ? props.title
+            : (
+              <CheckboxText>
+                {props.checked
+                  ? props.checkedTitle || props.title
+                  : props.uncheckedTitle || props.title
+                }
+              </CheckboxText>
+            )}
+        </CheckboxFlexText>
 
         {props.direction === 'RIGHT' && renderIconInstance()}
 
@@ -133,7 +100,7 @@ CheckBox.defaultProps = {
   direction: 'LEFT',
   checkedColor: '#107e1f',
   uncheckedColor: '#bfbfbf',
-  size: 24,
+  size: 18,
   // Component: TouchableOpacity,
   // titleProps: {},
 };

@@ -12,7 +12,7 @@ import {
 
 
 
-export interface IProps {
+interface IProps {
   visible?: boolean;
 
   onOverlayPress?: any; // Function;
@@ -27,7 +27,7 @@ export interface IProps {
 
 
 
-const Overlay: React.FC<IProps> = (props) => {
+const Overlay: React.FC<IProps> = (props: any) => {
   const visibleOverlay = props.visible;
 
 
