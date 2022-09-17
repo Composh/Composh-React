@@ -40,8 +40,8 @@ import SubTitle from './SubTitle';
 import SubToolbar from './SubToolbar';
 import Switch from './Switch';
 import Table from './Table';
-// import Tab from './Tabs/Tab';
-// import TabBar from './Tabs/TabBar';
+import Tab from './Tabs/Tab';
+import TabBar from './Tabs/TabBar';
 // import TabView from './Tabs/TabView';
 import Title from './Title';
 // import Toast from './Toast';
@@ -91,8 +91,8 @@ export {
   SubToolbar,
   Switch,
   Table,
-  // Tab,
-  // TabBar,
+  Tab,
+  TabBar,
   // TabView,
   Title,
   Toggle,
