@@ -106,6 +106,7 @@ const Input: React.FC<IProps> = (props: any) => {
 
   const viewPassElement = props.password && props.viewPass && (
     <ShowPasswordStyle
+      // disabled={props.disabled}
       onClick={() => !props.disabled && setIsPassword(!isPassword)}>
       {isPassword
         ? props.iconPasswordOn || (
@@ -122,7 +123,6 @@ const Input: React.FC<IProps> = (props: any) => {
         )}
     </ShowPasswordStyle>
   );
-
 
 
   // function returnEditable() {
@@ -192,6 +192,61 @@ const Input: React.FC<IProps> = (props: any) => {
     // underlineColorAndroid={'transparent'}
     />
   );
+
+
+  // const textInputMaskContent = (
+  //   <TextInputMaskStyle
+  //     // {...props}
+  //     // returnKeyType={'next'}
+  //     editable={returnEditable()}
+  //     autoCorrect={props.autoCorrect}
+  //     autoCapitalize={props.autoCapitalize}
+
+  //     style={[
+  //       {
+  //         height: Math.max(28, height),
+  //         color: props.inputTextColor,
+  //         opacity: opacityValue,
+  //         borderRadius: 5,
+  //       },
+  //       props.inputTextCenter && {
+  //         textAlign: 'center',
+  //       },
+  //     ]}
+
+  //     maxLength={isNaN(props.countLimit)
+  //       ? null
+  //       : props.countLimit
+  //     }
+
+  //     multiline={props.password ? false : props.multiline}
+
+  //     onChangeText={(changeText, extracted) => {
+  //       const newText = changeText;
+
+  //       if (props?.onChange && props.onlyDisplay)
+  //         props.onChange(extracted);
+  //       else if (props?.onChange)
+  //         props.onChange(changeText);
+
+  //       setText(newText);
+  //     }}
+
+  //     onBlur={props.onBlur}
+
+  //     onContentSizeChange={(event) => {
+  //       setHeight(event.nativeEvent.contentSize.height);
+  //     }}
+  //     // value={displayWithMask ? props.mask(text) : text}
+  //     value={text}
+  //     mask={props.maskDisplay}
+  //     placeholder={props.placeholderText}
+  //     keyboardType={props.password ? 'default' : props.keyboardType}
+  //     secureTextEntry={isPassword}
+  //     placeholderTextColor={props.placeholderColor}
+  //     underlineColorAndroid={'transparent'}
+  //   />
+  // );
 
 
 

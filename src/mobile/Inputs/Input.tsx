@@ -4,9 +4,8 @@ import React,
   useEffect,
 } from 'react';
 
-import {
-  IconViewPassword,
-} from '../Icons';
+import EyeOffImage from './eye_off_black.png';
+import EyeOnImage from './eye_on_black.png';
 
 import InputHelp from './InputHelp';
 import InputLabel from './InputLabel';
@@ -18,12 +17,12 @@ import {
   TextInputStyle,
   ShowPasswordStyle,
   TextInputMaskStyle,
+  IconEye,
 } from './styled';
 
 
 
-interface IProps {
-
+export interface IProps {
   // Props Input State
   editable?: boolean;
   disabled?: boolean;
@@ -50,6 +49,9 @@ interface IProps {
   // Props Icon
   iconLeft?: object;
   iconRight?: object;
+
+  iconPasswordOn?: object;
+  iconPasswordOff?: object;
 
 
   // Props Help
@@ -78,11 +80,9 @@ interface IProps {
   // style?: any;
 
 
-  onChange?(e): any;
-  onBlur?(e): any;
-  mask?(e): any;
-  onlyDisplay?: boolean
-  maskDisplay?: string;
+  onChange?(event: any): any;
+  onBlur?(event: any): any;
+  mask?(event: any): any;
 
   lowercase?: boolean;
 }
@@ -95,8 +95,8 @@ const Input: React.FC<IProps> = (props: any) => {
   const [isPassword, setIsPassword] = useState(false);
 
   const [text, setText] = useState(props.value ? props.value : '');
-  const [displayWithMask, setDisplayWithMask] = useState(!!props.mask);
   const [height, setHeight] = useState(0);
+  const [displayWithMask, setDisplayWithMask] = useState(!!props.mask);
 
 
 
@@ -109,14 +109,22 @@ const Input: React.FC<IProps> = (props: any) => {
   const viewPassElement = props.password && props.viewPass && (
     <ShowPasswordStyle
       disabled={props.disabled}
-      onPress={() => setIsPassword(!isPassword)}>
-      <IconViewPassword
-        isPassword={isPassword}
-        color={props.placeholderColor}
-      />
+      onPress={() => !props.disabled && setIsPassword(!isPassword)}>
+      {isPassword
+        ? props.iconPasswordOn || (
+          <IconEye
+            // alt={'eye'}
+            source={EyeOnImage}
+          />
+        )
+        : props.iconPasswordOff || (
+          <IconEye
+            // alt={'eye'}
+            source={EyeOffImage}
+          />
+        )}
     </ShowPasswordStyle>
   );
-
 
 
   function returnEditable() {
@@ -134,6 +142,7 @@ const Input: React.FC<IProps> = (props: any) => {
 
     return booleanDisabled;
   }
+
 
   const textInputContent = (
     <TextInputStyle
@@ -214,7 +223,7 @@ const Input: React.FC<IProps> = (props: any) => {
 
       multiline={props.password ? false : props.multiline}
 
-      onChangeText={(changeText, extracted) => {
+      onChangeText={(changeText: any, extracted: any) => {
         const newText = changeText;
 
         if (props?.onChange && props.onlyDisplay)
@@ -227,7 +236,7 @@ const Input: React.FC<IProps> = (props: any) => {
 
       onBlur={props.onBlur}
 
-      onContentSizeChange={(event) => {
+      onContentSizeChange={(event: any) => {
         setHeight(event.nativeEvent.contentSize.height);
       }}
       // value={displayWithMask ? props.mask(text) : text}
@@ -260,39 +269,16 @@ const Input: React.FC<IProps> = (props: any) => {
 
 
       <InputViewStyle
-        style={[
-          props.multiline && {
-            paddingTop: 4,
-            paddingBottom: 4,
-          },
-          {
-            backgroundColor: props.backgroundColor,
-            opacity: opacityValue,
-          },
-          props.children && !props.noWrap && {
-            flexWrap: 'wrap',
-          },
-          props.borderColor && {
-            borderColor: props.borderColor,
-            borderWidth: props.borderWidth,
-          },
-          !props.noShadow && {
-            elevation: 2,
-
-            shadowOffset: { width: 2, height: 2 },
-            shadowColor: 'gray',
-            shadowRadius: 2,
-            shadowOpacity: 0.3,
-          },
-        ]}>
+        wrap={props.children && !props.noWrap}
+        multiline={props.multiline}
+        backgroundColor={props.backgroundColor}
+        borderColor={props.borderColor}
+        borderWidth={props.borderWidth}
+        opacity={opacityValue}>
 
 
         {props.iconLeft && (
-          <IconContent
-            style={{
-              marginLeft: 6,
-              marginRight: 6,
-            }}>
+          <IconContent>
             {props.iconLeft}
           </IconContent>
         )}
@@ -305,11 +291,7 @@ const Input: React.FC<IProps> = (props: any) => {
 
 
         {props.iconRight && !props.viewPass && (
-          <IconContent
-            style={{
-              marginLeft: 6,
-              marginRight: 6,
-            }}>
+          <IconContent>
             {props.iconRight}
           </IconContent>
         )}

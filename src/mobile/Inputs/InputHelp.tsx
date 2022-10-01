@@ -8,8 +8,7 @@ import {
 
 
 
-interface IProps {
-
+export interface IProps {
   // Props Help
   noHelp?: boolean;
   helpText?: string;

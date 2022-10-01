@@ -6,7 +6,7 @@ import {
 
 
 
-interface IProps {
+export interface IProps {
   labelText?: string;
   labelColor?: string;
   labelStyle?: any;
@@ -18,12 +18,8 @@ const InputLabel: React.FC<IProps> = (props: any) => {
   return (
 
     <LabelStyle
-      style={[
-        {
-          color: props.labelColor,
-        },
-        props.labelStyle,
-      ]}>
+      color={props.labelColor}
+      style={props.labelStyle}>
       {props.labelText}
     </LabelStyle>
 

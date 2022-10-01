@@ -1,10 +1,31 @@
-import styled from 'styled-components/native';
+import styled,
+{
+  css,
+} from 'styled-components/native';
+
 import TextInputMask from 'react-native-text-input-mask';
+
+
+
+export interface IProps {
+  wrap?: boolean;
+  inputTextCenter?: boolean;
+  multiline?: boolean;
+  backgroundColor?: string;
+  color?: string;
+  borderColor?: string;
+  borderWidth?: number;
+  opacity?: number;
+  noShadow?: boolean;
+}
+
 
 
 // Input Component Container Style
 
 export const InputsContainer = styled.View`
+  display: flex;
+  flex-direction: column;
   align-content: center;
   margin-top: 4px;
   margin-bottom: 4px;
@@ -16,8 +37,12 @@ export const InputsContainer = styled.View`
 // Icon Styles
 
 export const IconContent = styled.View`
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-left: 6px;
+  margin-right: 6px;
   min-height: 30px;
   min-width: 30px;
 `;
@@ -30,6 +55,7 @@ export const LabelStyle = styled.Text`
   margin-top: 1px;
   margin-bottom: 5px;
   margin-left: 6px;
+  color: ${(props: IProps) => props.color || '#000'};
   font-weight: 500;
   font-size: 14px;
 `;
@@ -38,22 +64,57 @@ export const LabelStyle = styled.Text`
 
 // Input View Style
 
+export const MultilineStyle = css`
+  padding-top: 4px;
+  padding-bottom: 4px;
+`;
+
+export const BackgroundStyle = css`
+  background-color: ${(props: IProps) => props.backgroundColor || '#ffffff'};
+`;
+
+export const BorderStyle = css`
+  border-color: ${(props: IProps) => props.borderColor};
+  border-width: ${(props: IProps) => props.borderWidth || 0}px;
+`;
+
+export const WrapStyle = css`
+  flex-wrap: wrap;
+`;
+
+export const ShadowStyle = css`
+  box-shadow: 0 2px 18px 1px rgb(49 53 72 / 10%);
+`;
+
 export const InputViewStyle = styled.View`
+  display: flex;
   flex-direction: row;
+  overflow: hidden;
   align-items: center;
   justify-content: center;
   min-height: 42px;
   margin-top: 4px;
   margin-bottom: 3px;
   border-radius: 5px;
+  opacity: ${(props: IProps) => props.opacity};
+
+  ${(props: IProps) => props.wrap && WrapStyle};
+  ${(props: IProps) => props.multiline && MultilineStyle};
+  ${(props: IProps) => props.backgroundColor && BackgroundStyle};
+  ${(props: IProps) => props.borderColor && BorderStyle};
+  ${(props: IProps) => !props.noShadow && ShadowStyle};
 `;
 
 
 
 // TextInput Component Style
 
+export const TextAlignStyle = css`
+  text-align: center;
+`;
 
 export const TextInputMaskStyle = styled(TextInputMask)`
+  display: flex;
   flex: 1;
   padding-left: 10px;
   padding-right: 10px;
@@ -67,12 +128,14 @@ export const TextInputMaskStyle = styled(TextInputMask)`
 
 
 export const TextInputStyle = styled.TextInput`
+  display: flex;
   flex: 1;
+  width: 100%;
   padding-left: 10px;
   padding-right: 10px;
   background-color: transparent;
   font-size: 14px;
-  border-width: 0;
+  border: none;
 
   text-decoration-color: transparent;
   text-shadow-color: transparent;
@@ -83,6 +146,7 @@ export const TextInputStyle = styled.TextInput`
 // Help Contents
 
 export const HelpContainerViewStyle = styled.View`
+  display: flex;
   flex-direction: row;
   margin-top: 4px;
   margin-bottom: 4px;
@@ -91,6 +155,7 @@ export const HelpContainerViewStyle = styled.View`
 `;
 
 export const HelpTextComponentStyle = styled.Text`
+  display: flex;
   flex: 1;
   font-size: 12px;
   font-style: italic;
@@ -104,11 +169,19 @@ export const HelpCountTextStyle = styled.Text`
 
 
 // Show Password Component Style
+
 export const ShowPasswordStyle = styled.TouchableOpacity`
+  display: flex;
+  flex-direction: column;
   height: 35px;
   width: 35px;
   margin-left: 6px;
   margin-right: 6px;
   align-items: center;
   justify-content: center;
+`;
+
+export const IconEye = styled.Image`
+  width: 100%;
+  height: 100%;
 `;
