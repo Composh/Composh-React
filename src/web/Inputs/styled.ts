@@ -81,12 +81,7 @@ export const WrapStyle = css`
 `;
 
 export const ShadowStyle = css`
-  elevation: 2;
-
-  shadow-offset: 2px 2px;
-  shadow-color: gray;
-  shadow-radius: 2px;
-  shadow-opacity: 0.3;
+  box-shadow: 0 2px 18px 1px rgb(49 53 72 / 10%);
 `;
 
 export const InputViewStyle = styled.div`
@@ -117,6 +112,7 @@ export const TextAlignStyle = css`
 `;
 
 export const TextInputStyle = styled.input`
+  display: flex;
   flex: 1;
   width: 100%;
   padding-left: 10px;
@@ -127,6 +123,8 @@ export const TextInputStyle = styled.input`
 
   text-decoration-color: transparent;
   text-shadow-color: transparent;
+
+  outline: none;
 
   ${(props: IProps) => props.inputTextCenter && TextAlignStyle};
 `;
@@ -145,6 +143,7 @@ export const HelpContainerViewStyle = styled.div`
 `;
 
 export const HelpTextComponentStyle = styled.p`
+  display: flex;
   flex: 1;
   font-size: 12px;
   font-style: italic;
@@ -169,4 +168,10 @@ export const ShowPasswordStyle = styled.a`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+`;
+
+export const IconEye = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 `;

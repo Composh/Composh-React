@@ -4,10 +4,8 @@ import React,
   useEffect,
 } from 'react';
 
-import {
-  IconEyeOff,
-  IconEyeOn,
-} from '../../Icons';
+import EyeOffImage from './eye_off_black.png';
+import EyeOnImage from './eye_on_black.png';
 
 import InputHelp from './InputHelp';
 import InputLabel from './InputLabel';
@@ -18,6 +16,7 @@ import {
   InputViewStyle,
   TextInputStyle,
   ShowPasswordStyle,
+  IconEye,
 } from './styled';
 
 
@@ -49,6 +48,9 @@ export interface IProps {
   // Props Icon
   iconLeft?: object;
   iconRight?: object;
+
+  iconPasswordOn?: object;
+  iconPasswordOff?: object;
 
 
   // Props Help
@@ -106,16 +108,16 @@ const Input: React.FC<IProps> = (props: any) => {
     <ShowPasswordStyle
       onClick={() => !props.disabled && setIsPassword(!isPassword)}>
       {isPassword
-        ? (
-          <IconEyeOn
-            color={props.placeholderColor}
-            size={17}
+        ? props.iconPasswordOn || (
+          <IconEye
+            alt={'eye'}
+            src={EyeOnImage}
           />
         )
-        : (
-          <IconEyeOff
-            color={props.placeholderColor}
-            size={17}
+        : props.iconPasswordOff || (
+          <IconEye
+            alt={'eye'}
+            src={EyeOffImage}
           />
         )}
     </ShowPasswordStyle>
@@ -184,8 +186,8 @@ const Input: React.FC<IProps> = (props: any) => {
       // value={!!props.mask ? props.mask(text) : text}
 
       placeholder={props.placeholderText}
-    // keyboardType={props.password ? 'default' : props.keyboardType}
-    // secureTextEntry={isPassword}
+      // keyboardType={props.password ? 'default' : props.keyboardType}
+      type={isPassword ? 'password' : 'text'} // secureTextEntry={isPassword}
     // placeholderTextColor={props.placeholderColor}
     // underlineColorAndroid={'transparent'}
     />
