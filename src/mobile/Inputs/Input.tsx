@@ -157,7 +157,7 @@ const Input: React.FC<IProps> = (props: any) => {
           height: Math.max(28, height),
           color: props.inputTextColor,
           opacity: opacityValue,
-          borderRadius: 5,
+          // borderRadius: 5,
         },
         props.inputTextCenter && {
           textAlign: 'center',

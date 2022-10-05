@@ -14,8 +14,8 @@ import {
 export interface IProps {
   height?: number;
 
-  leftIcon?: object;
-  rightIcon?: object;
+  leftIcon?: object | null;
+  rightIcon?: object | null;
   centerContent?: object;
 
   backgroundColor?: string;

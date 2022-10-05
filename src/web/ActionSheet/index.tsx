@@ -32,33 +32,39 @@ export interface IProps {
 
 
 
-const ActionSheet: React.FC<IProps> = (props) => {
+const ActionSheet: React.FC<IProps> = (props: any) => {
   return (
 
-    <Overlay
-      visible={props.visible}
-      showBackground={true}
-      overlayColor={props.overlayColor}
-      onOverlayPress={props.onClose}
-    >
+
+    <>
+      {props.visible && (
+
+        <Container
+        // onClick={props.onClose}
+        >
+
+          <Overlay
+            visible={true}
+            showBackground={true}
+            overlayColor={props.overlayColor}
+            onOverlayPress={props.onClose}
+          >
+          </Overlay>
 
 
-      <Container
-        onClick={props.onClose}
-      >
+          <Wrapper style={{
+            overflowY: 'auto',
+          }}>
 
-        <Wrapper style={{
-          overflowX: 'scroll',
-        }}>
+            {props.children}
 
-          {props.children}
-
-        </Wrapper>
-
-      </Container>
+          </Wrapper>
 
 
-    </Overlay>
+        </Container>
+
+      )}
+    </>
 
   );
 };
