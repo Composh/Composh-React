@@ -70,8 +70,8 @@ export const ContainerSection = styled.View`
   padding-right: 5px;
   padding-bottom: 5px;
 
-  ${(props: IProps) => !props.noBorderBottom && ContainerBorderHaveStyle},
-  ${(props: IProps) => props.noBorderBottom && ContainerBorderNoHaveStyle},
+  ${(props: IProps) => !props.noBorderBottom && ContainerBorderHaveStyle};
+  ${(props: IProps) => props.noBorderBottom && ContainerBorderNoHaveStyle};
 `;
 
 

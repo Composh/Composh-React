@@ -7,7 +7,7 @@ import LinearGradient from '../LinearGradient';
 
 
 
-interface IProps {
+export interface IProps {
   textSize?: number;
   textColor?: string;
   backgroundColor?: string;
@@ -73,8 +73,8 @@ export const ContainerSection = styled.div`
   padding-right: 5px;
   padding-bottom: 5px;
 
-  ${(props: IProps) => !props.noBorderBottom && ContainerBorderHaveStyle},
-  ${(props: IProps) => props.noBorderBottom && ContainerBorderNoHaveStyle},
+  ${(props: IProps) => !props.noBorderBottom && ContainerBorderHaveStyle};
+  ${(props: IProps) => props.noBorderBottom && ContainerBorderNoHaveStyle};
 `;
 
 

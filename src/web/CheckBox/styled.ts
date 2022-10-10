@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 
 export interface IProps {
+  disabled?: boolean;
   backgroundColor?: string;
   border?: boolean;
   borderColor?: string;
@@ -17,7 +18,8 @@ export const CheckBoxButton = styled.a`
   margin-bottom: 5px;
   padding-top: 2px;
   padding-bottom: 2px;
-  cursor: pointer;
+  opacity: ${(props: IProps) => props.disabled ? 0.5 : 1};
+  cursor: ${(props: IProps) => props.disabled ? 'default' : 'pointer'};
 `;
 
 export const CheckBoxWrapper = styled.div`

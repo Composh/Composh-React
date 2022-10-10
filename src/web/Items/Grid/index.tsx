@@ -27,6 +27,7 @@ const GridIcon: React.FC<IProps> = (props) => {
   return (
 
     <GridIconContent
+      {...props}
       // disabled={
       //   props.disabled
       //     ? props.disabled
