@@ -17,27 +17,27 @@ export default class MoneyMask extends BaseMask {
   }
 
   getValue(value, settings, oldValue) {
-    let mergedSettings = super.mergeSettings(MONEY_MASK_SETTINGS, settings);
+    const mergedSettings = super.mergeSettings(MONEY_MASK_SETTINGS, settings);
 
     let sanitized = this._sanitize(value, mergedSettings);
 
     if (mergedSettings.suffixUnit && oldValue && sanitized) {
-      if (sanitized.length == oldValue.length - 1) {
-        let cleared = this.removeNotNumbers(sanitized);
+      if (sanitized.length === oldValue.length - 1) {
+        const cleared = this.removeNotNumbers(sanitized);
         sanitized = cleared.substr(0, cleared.length - 1);
       }
     }
 
-    let masked = VanillaMasker.toMoney(sanitized, mergedSettings);
+    const masked = VanillaMasker.toMoney(sanitized, mergedSettings);
 
     return masked;
   }
 
   getRawValue(maskedValue, settings) {
-    let mergedSettings = super.mergeSettings(MONEY_MASK_SETTINGS, settings);
+    const mergedSettings = super.mergeSettings(MONEY_MASK_SETTINGS, settings);
     let normalized = super.removeNotNumbers(maskedValue);
 
-    let dotPosition = normalized.length - mergedSettings.precision;
+    const dotPosition = normalized.length - mergedSettings.precision;
     normalized = this._insert(normalized, dotPosition, '.');
 
     return Number(normalized);

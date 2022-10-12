@@ -3,35 +3,34 @@ import CustomMask from './custom.mask';
 
 
 
-
 export const CPF_MASK = '999.999.999-99';
 
 
 export const validateCPF = (cpf) => {
-  if (cpf == '') {
+  if (cpf === '') {
     return true;
   }
 
   cpf = cpf.replace(/\./gi, '').replace(/-/gi, '');
-  var isValid = true;
-  var sum;
-  var rest;
-  var i;
+  let isValid = true;
+  let sum;
+  let rest;
+  let i;
   i = 0;
   sum = 0;
 
   if (
-    cpf.length != 11 ||
-        cpf == '00000000000' ||
-        cpf == '11111111111' ||
-        cpf == '22222222222' ||
-        cpf == '33333333333' ||
-        cpf == '44444444444' ||
-        cpf == '55555555555' ||
-        cpf == '66666666666' ||
-        cpf == '77777777777' ||
-        cpf == '88888888888' ||
-        cpf == '99999999999'
+    cpf.length !== 11 ||
+        cpf === '00000000000' ||
+        cpf === '11111111111' ||
+        cpf === '22222222222' ||
+        cpf === '33333333333' ||
+        cpf === '44444444444' ||
+        cpf === '55555555555' ||
+        cpf === '66666666666' ||
+        cpf === '77777777777' ||
+        cpf === '88888888888' ||
+        cpf === '99999999999'
   ) {
     isValid = false;
   }
@@ -42,11 +41,11 @@ export const validateCPF = (cpf) => {
 
   rest = (sum * 10) % 11;
 
-  if (rest == 10 || rest == 11) {
+  if (rest === 10 || rest === 11) {
     rest = 0;
   }
 
-  if (rest != parseInt(cpf.substring(9, 10))) {
+  if (rest !== parseInt(cpf.substring(9, 10))) {
     isValid = false;
   }
 
@@ -58,10 +57,10 @@ export const validateCPF = (cpf) => {
 
   rest = (sum * 10) % 11;
 
-  if (rest == 10 || rest == 11) {
+  if (rest === 10 || rest === 11) {
     rest = 0;
   }
-  if (rest != parseInt(cpf.substring(10, 11))) {
+  if (rest !== parseInt(cpf.substring(10, 11))) {
     isValid = false;
   }
 
@@ -87,7 +86,7 @@ export default class CpfMask extends BaseMask {
   }
 
   validate(value, settings) {
-    var isEmpty = (value || '').trim().length === 0;
+    const isEmpty = (value || '').trim().length === 0;
     return !isEmpty && validateCPF(value);
   }
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-var */
 import BaseMask from './_base.mask';
 import CustomMask from './custom.mask';
 
@@ -24,8 +25,8 @@ export default class CelPhoneMask extends BaseMask {
   }
 
   getValue(value, settings) {
-    let cleanedValue = super.removeNotNumbers(value);
-    let mask = this.getMask(cleanedValue, settings);
+    const cleanedValue = super.removeNotNumbers(value);
+    const mask = this.getMask(cleanedValue, settings);
     return CustomMask.shared.getValue(cleanedValue, { mask });
   }
 
@@ -37,25 +38,25 @@ export default class CelPhoneMask extends BaseMask {
     let valueToValidate = super.getDefaultValue(value);
     valueToValidate = this.getValue(value, settings);
 
-    let mask = this.getMask(value, settings);
+    const mask = this.getMask(value, settings);
 
     return valueToValidate.length === mask.length;
   }
 
   getMask(value, settings) {
-    let mergedSettings = super.mergeSettings(CEL_PHONE_SETTINGS, settings);
+    const mergedSettings = super.mergeSettings(CEL_PHONE_SETTINGS, settings);
 
     if (mergedSettings.maskType === MASK_TYPES.INTERNATIONAL) {
       return PHONE_INTERNATIONAL;
     }
 
-    let numbers = super.removeNotNumbers(value);
+    const numbers = super.removeNotNumbers(value);
     let mask = PHONE_8_MASK;
 
-    let use9DigitMask = (() => {
+    const use9DigitMask = (() => {
       if (mergedSettings.withDDD) {
-        let numbersDDD = super.removeNotNumbers(mergedSettings.dddMask);
-        let remainingValueNumbers = numbers.substr(numbersDDD.length);
+        const numbersDDD = super.removeNotNumbers(mergedSettings.dddMask);
+        const remainingValueNumbers = numbers.substr(numbersDDD.length);
         return remainingValueNumbers.length >= 9;
       }
       else {

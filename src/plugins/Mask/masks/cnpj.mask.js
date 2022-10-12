@@ -1,3 +1,6 @@
+/* eslint-disable no-eval */
+/* eslint-disable no-new-wrappers */
+/* eslint-disable no-var */
 import BaseMask from './_base.mask';
 import CustomMask from './custom.mask';
 
@@ -34,7 +37,7 @@ export const validateCnpj = (cnpj) => {
   dig1 = dig1 % 11 < 2 ? 0 : 11 - (dig1 % 11);
   dig2 = dig2 % 11 < 2 ? 0 : 11 - (dig2 % 11);
 
-  return dig1 * 10 + dig2 == digito;
+  return dig1 * 10 + dig2 === digito;
 };
 
 

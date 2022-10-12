@@ -23,7 +23,8 @@ export default class ZipCodeMask extends BaseMask {
   }
 
   validate(value, settings) {
-    if (!!value) {
+    // if (!!value) {
+    if (value) {
       return value.length === ZIP_CODE_MASK.length;
     }
 

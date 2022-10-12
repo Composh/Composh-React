@@ -14,21 +14,21 @@ export default class DatetimeMask extends BaseMask {
   }
 
   getValue(value, settings) {
-    let mergedSettings = this._getMergedSettings(settings);
-    let mask = this.getMask(value, mergedSettings);
+    const mergedSettings = this._getMergedSettings(settings);
+    const mask = this.getMask(value, mergedSettings);
 
     return CustomMask.shared.getValue(value, { mask });
   }
 
   getRawValue(maskedValue, settings) {
-    let mergedSettings = this._getMergedSettings(settings);
+    const mergedSettings = this._getMergedSettings(settings);
     return date.parse(maskedValue, mergedSettings.format);
   }
 
   validate(value, settings) {
-    let maskedValue = this.getValue(value, settings);
-    let mergedSettings = this._getMergedSettings(settings);
-    let isValid = date.isValid(maskedValue, mergedSettings.format);
+    const maskedValue = this.getValue(value, settings);
+    const mergedSettings = this._getMergedSettings(settings);
+    const isValid = date.isValid(maskedValue, mergedSettings.format);
     return isValid;
   }
 

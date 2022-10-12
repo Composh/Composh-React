@@ -1,3 +1,4 @@
+/* eslint-disable no-var */
 export default class BaseMask {
   getKeyboardType() {
     return 'numeric';
@@ -8,8 +9,8 @@ export default class BaseMask {
     for (var attrname in obj1) {
       obj3[attrname] = obj1[attrname];
     }
-    for (var attrname in obj2) {
-      obj3[attrname] = obj2[attrname];
+    for (var attrname1 in obj2) {
+      obj3[attrname1] = obj2[attrname1];
     }
     return obj3;
   }

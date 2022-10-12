@@ -35,7 +35,7 @@ export default class CreditCardMask extends BaseMask {
 
 
   getValue(value, settings) {
-    let selectedMask = this.getMask(value, settings);
+    const selectedMask = this.getMask(value, settings);
     return CustomMask.shared.getValue(value, {
       mask: selectedMask,
       translation: MASK_TRANSLATION,
@@ -45,8 +45,8 @@ export default class CreditCardMask extends BaseMask {
 
 
   validate(value, settings) {
-    if (!!value) {
-      let selectedMask = this.getMask(value, settings);
+    if (value) {
+      const selectedMask = this.getMask(value, settings);
       return value.length === selectedMask.length;
     }
 
@@ -68,7 +68,7 @@ export default class CreditCardMask extends BaseMask {
 
 
   getMask(value, settings) {
-    let mergedSettings = super.mergeSettings(CREDIT_CARD_SETTINGS, settings);
+    const mergedSettings = super.mergeSettings(CREDIT_CARD_SETTINGS, settings);
     const selectedMask = this._selectMask(mergedSettings.issuer, mergedSettings.obfuscated);
 
     return selectedMask;

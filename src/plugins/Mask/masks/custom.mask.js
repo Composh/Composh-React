@@ -38,8 +38,8 @@ function toPattern(value, mask, translation) {
       break;
     }
 
-    let maskChar = mask[maskCharIndex];
-    let valueChar = value[valueCharIndex];
+    const maskChar = mask[maskCharIndex];
+    const valueChar = value[valueCharIndex];
 
     // value equals mask, just set
     if (maskChar === valueChar) {
@@ -55,7 +55,7 @@ function toPattern(value, mask, translation) {
     if (translationHandler) {
       const resolverValue = translationHandler(valueChar || '');
       if (resolverValue === '') {
-        //valueChar replaced so don't add it to result, keep the mask at the same point and continue to next value char
+        // valueChar replaced so don't add it to result, keep the mask at the same point and continue to next value char
         valueCharIndex += 1;
         continue;
       }
@@ -102,13 +102,13 @@ export default class CustomMask extends BaseMask {
     if (value === '') {
       return value;
     }
-    let { mask } = settings;
-    let translation = this.mergeSettings(
+    const { mask } = settings;
+    const translation = this.mergeSettings(
       DEFAULT_TRANSLATION,
       settings.translation,
     );
 
-    var masked = toPattern(value, mask, translation);
+    const masked = toPattern(value, mask, translation);
     return masked;
   }
 
