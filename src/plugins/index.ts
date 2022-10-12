@@ -1,9 +1,9 @@
-// import Mask from './Mask';
 import useLongPress from './LongPress';
+import Mask from './Mask';
 
 
 
 export {
-  // Mask,
+  Mask,
   useLongPress,
 };
