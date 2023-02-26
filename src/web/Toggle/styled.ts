@@ -24,10 +24,13 @@ interface ITextProps {
 
 
 
-export const ToggleButtonStyle = styled.a`
+export const ToggleButtonStyle = styled.div`
   display: flex;
   flex-direction: column;
-  cursor: ${(props: IButtonProps) => props.disabled ? 'default' : 'pointer'};
+  margin-top: 6px;
+  margin-left: 6px;
+  margin-right: 6px;
+  margin-bottom: 6px;
 `;
 
 
@@ -41,15 +44,11 @@ export const ButtonNoIconPadding = css`
   padding-right: 15px;
 `;
 
-export const ToggleButtonContent = styled.div`
+export const ToggleButtonContent = styled.a`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: 6px;
-  margin-left: 6px;
-  margin-right: 6px;
-  margin-bottom: 6px;
   padding-top: 8px;
   padding-bottom: 8px;
 
@@ -63,6 +62,8 @@ export const ToggleButtonContent = styled.div`
   ${(props: IButtonProps) => props.borderRadius && `border-radius: ${props.borderRadius || 0}px`};
   background-color: ${(props: IButtonProps) => props.backgroundColor};
   ${(props: IButtonProps) => props.iconContent ? ButtonIconPadding : ButtonNoIconPadding};
+
+  cursor: ${(props: IButtonProps) => props.disabled ? 'default' : 'pointer'};
 `;
 
 

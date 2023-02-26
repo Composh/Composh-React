@@ -6,7 +6,7 @@ import {
 
 
 
-export interface IProps {
+interface IProps {
   labelText?: string;
   labelColor?: string;
   labelStyle?: any;

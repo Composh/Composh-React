@@ -1,18 +1,8 @@
+import {
+  TextInputMaskTypeProp,
+} from './input.types';
+
 import MaskResolver from './mask-resolver';
-
-
-
-// Type prop of TextInputMask.
-export type TextInputMaskTypeProp =
-  | 'credit-card'
-  | 'cpf'
-  | 'cnpj'
-  | 'zip-code'
-  | 'only-numbers'
-  | 'money'
-  | 'cel-phone'
-  | 'datetime'
-  | 'custom';
 
 
 

@@ -1,34 +1,44 @@
 import React,
 {
   useState,
-  useEffect,
 } from 'react';
 
-import EyeOffImage from './eye_off_black.png';
-import EyeOnImage from './eye_on_black.png';
 
 import InputHelp from './InputHelp';
 import InputLabel from './InputLabel';
+import InputText from './InputText';
 
 import {
   InputsContainer,
-  IconContent,
-  InputViewStyle,
-  TextInputStyle,
-  ShowPasswordStyle,
-  IconEye,
 } from './styled';
 
 
 
 export interface IProps {
   // Props Input State
-  editable?: boolean;
+  password?: boolean;
+
   disabled?: boolean;
+
   multiline?: boolean;
-  keyboardType?: any;
   autoCorrect?: boolean;
   autoCapitalize?: any;
+
+  type:
+  'NONE' |
+  'CNPJ' |
+  'CPF' |
+  'CREDITCARD' |
+  'CUSTOM' |
+  'DATETIME' |
+  'MONEY' |
+  'NUMBER' |
+  'PHONE' |
+  'TEXT' |
+  'ZIPCODE' |
+  'EMAIL' |
+  'PASSWORD' |
+  'URL';
 
   noShadow?: boolean;
   backgroundColor?: string;
@@ -70,18 +80,23 @@ export interface IProps {
   labelText?: string;
   labelColor?: string;
 
-  password?: boolean;
-  viewPass?: boolean;
-
 
   noWrap?: boolean;
   children?: any;
   // style?: any;
 
 
-  onChange?(event: any): any;
-  onBlur?(event: any): any;
-  mask?(event: any): any;
+  // onChange?(event: any): any;
+  // onBlur?(event: any): any;
+
+  // FIXME onChange, não está resetando ao usar a função de reset do formik
+  onChange?: any;
+  onBlur?: any;
+
+
+  // mask?(event: any): any;
+  mask?: any;
+  options?: any;
 
   lowercase?: boolean;
 }
@@ -91,106 +106,45 @@ export interface IProps {
 const Input: React.FC<IProps> = (props: any) => {
   const opacityValue = props.disabled ? 0.5 : 1;
 
-  const [isPassword, setIsPassword] = useState(false);
-
   const [text, setText] = useState(props.value ? props.value : '');
-  const [height, setHeight] = useState(0);
 
 
 
-  useEffect(() => {
-    setIsPassword(props.password);
-  }, [props.password]);
-
-
-
-  const viewPassElement = props.password && props.viewPass && (
-    <ShowPasswordStyle
-      onClick={() => !props.disabled && setIsPassword(!isPassword)}>
-      {isPassword
-        ? props.iconPasswordOn || (
-          <IconEye
-            alt={'eye'}
-            src={EyeOnImage}
-          />
-        )
-        : props.iconPasswordOff || (
-          <IconEye
-            alt={'eye'}
-            src={EyeOffImage}
-          />
-        )}
-    </ShowPasswordStyle>
-  );
-
-
-
-  // function returnEditable() {
-  //   let booleanDisabled: boolean;
-
-  //   if (props.disabled) {
-  //     booleanDisabled = !props.disabled;
-  //   }
-  //   else if (!props.disabled && (props.editable || !props.editable)) {
-  //     booleanDisabled = props.editable;
-  //   }
-  //   else {
-  //     booleanDisabled = true;
-  //   }
-
-  //   return booleanDisabled;
-  // }
-
-
-  const textInputContent = (
-    <TextInputStyle
-      // {...props}
-      // returnKeyType={'next'}
-      inputTextCenter={props.inputTextCenter}
-
+  const textInputComponent = (
+    <InputText
+      password={props.password}
       disabled={props.disabled}
-      // editable={returnEditable()}
+      multiline={props.multiline}
       autoCorrect={props.autoCorrect}
       autoCapitalize={props.autoCapitalize}
-
-      style={{
-        height: Math.max(28, height),
-        color: props.inputTextColor,
-        opacity: opacityValue,
-        // borderRadius: 5,
+      type={props.type}
+      noShadow={props.noShadow}
+      backgroundColor={props.backgroundColor}
+      borderColor={props.borderColor}
+      borderWidth={props.borderWidth}
+      inputTextCenter={props.inputTextCenter}
+      inputTextColor={props.inputTextColor}
+      placeholderText={props.placeholderText}
+      placeholderColor={props.placeholderColor}
+      placeholderTextColor={props.placeholderTextColor}
+      iconLeft={props.iconLeft}
+      iconRight={props.iconRight}
+      iconPasswordOn={props.iconPasswordOn}
+      iconPasswordOff={props.iconPasswordOff}
+      countLimit={props.countLimit}
+      value={props.value}
+      noWrap={props.noWrap}
+      onChange={props.onChange}
+      returnChange={(textReturned: string) => {
+        setText(textReturned);
       }}
-
-      maxLength={isNaN(props.countLimit)
-        ? null
-        : props.countLimit
-      }
-
-      multiline={props.password ? false : props.multiline}
-
-      onChange={(changeText) => {
-        const newText = changeText.target.value;
-
-        if (props?.onChange) {
-          props.onChange(newText);
-        }
-
-        setText(newText);
-      }}
-
       onBlur={props.onBlur}
+      mask={props.mask}
+      options={props.options}>
 
-      // onContentSizeChange={(event) => {
-      //   setHeight(event.nativeEvent.contentSize.height);
-      // }}
-      // eslint-disable-next-line no-extra-boolean-cast
-      value={text} // value={!!props.mask ? props.mask(text) : text}
+      {props.children}
 
-      placeholder={props.placeholderText}
-      // keyboardType={props.password ? 'default' : props.keyboardType}
-      type={isPassword ? 'password' : 'text'} // secureTextEntry={isPassword}
-    // placeholderTextColor={props.placeholderColor}
-    // underlineColorAndroid={'transparent'}
-    />
+    </InputText>
   );
 
 
@@ -210,41 +164,7 @@ const Input: React.FC<IProps> = (props: any) => {
       )}
 
 
-
-      <InputViewStyle
-        noShadow={props.noShadow}
-        wrap={props.children && !props.noWrap}
-        multiline={props.multiline}
-        backgroundColor={props.backgroundColor}
-        borderColor={props.borderColor}
-        borderWidth={props.borderWidth}
-        opacity={opacityValue}>
-
-
-        {props.iconLeft && (
-          <IconContent>
-            {props.iconLeft}
-          </IconContent>
-        )}
-
-
-        {props.children
-          ? props.children
-          : textInputContent
-        }
-
-
-        {props.iconRight && !props.viewPass && (
-          <IconContent>
-            {props.iconRight}
-          </IconContent>
-        )}
-
-
-        {viewPassElement}
-
-      </InputViewStyle>
-
+      {textInputComponent}
 
 
       {(props.helpText || props.countLimit) && (!props.noHelp || !props.noCount) && (
@@ -276,7 +196,6 @@ const Input: React.FC<IProps> = (props: any) => {
 
 
 Input.defaultProps = {
-  editable: true,
   autoCorrect: false,
   noShadow: false,
 

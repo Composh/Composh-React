@@ -89,13 +89,10 @@ const Toggle: React.FC<IProps> = (props: any) => {
 
   return (
 
-    <ToggleButtonStyle
-      disabled={props.disabled}
-      onClick={() => {
-        onPressToggle();
-      }}>
+    <ToggleButtonStyle>
 
       <ToggleButtonContent
+        disabled={props.disabled}
         flexContent={props.flexToggle}
         width={props.width}
         height={props.height}
@@ -104,7 +101,10 @@ const Toggle: React.FC<IProps> = (props: any) => {
         borderRadius={props.borderRadius}
         backgroundColor={((!props.disabled && !props.noToggle) ? selectedState : selectedProp) ? props.backgroundTintColor : props.backgroundColor}
         iconContent={props.iconContent}
-        style={props.style}>
+        style={props.style}
+        onClick={() => {
+          onPressToggle();
+        }}>
 
 
         {props.iconContent && (

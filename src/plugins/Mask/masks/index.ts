@@ -5,7 +5,7 @@ import CreditCardMask from './credit-card.mask';
 import CustomMask from './custom.mask';
 import DatetimeMask from './datetime.mask';
 import MoneyMask from './money.mask';
-import OnlyNumbersMask from './only-numbers.mask';
+// import OnlyNumbersMask from './only-numbers.mask';
 import ZipCodeMask from './zip-code.mask';
 
 export {
@@ -15,7 +15,7 @@ export {
   CustomMask,
   DatetimeMask,
   MoneyMask,
-  OnlyNumbersMask,
+  // OnlyNumbersMask,
   ZipCodeMask,
   CreditCardMask,
 };

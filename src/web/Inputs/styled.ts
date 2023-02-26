@@ -91,8 +91,8 @@ export const InputViewStyle = styled.div`
   align-items: center;
   justify-content: center;
   min-height: 42px;
-  margin-top: 4px;
-  margin-bottom: 3px;
+  margin-top: 5px;
+  margin-bottom: 4px;
   border-radius: 5px;
   opacity: ${(props: IProps) => props.opacity};
 
