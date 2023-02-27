@@ -97,12 +97,14 @@ const InputText: React.FC<IProps> = (props) => {
   const [hasMask, setHasMask] = useState(false);
 
   const [text, setText] = useState(props.value ? props.value : '');
-  const [typeMask, setTypeMask] = useState('');
   const [typeKeyboard, setTypeKeyboard] = useState('');
 
   const [height, setHeight] = useState(0);
 
   const [_maskHandler, _setmaskHandler] = useState<any>(null);
+
+  const enumTypesInput = ETypesInput();
+  const itemsTypeMas = ETypesMasks();
 
 
 
@@ -170,7 +172,19 @@ const InputText: React.FC<IProps> = (props) => {
       const { maskedText, rawText } = inputUpdateValue(newText);
       if (props?.onChange) {
         props.onChange(rawText, maskedText);
-        props.returnChange(rawText);
+
+        if (props.type === EEnumType.CREDITCARD) {
+          const rawNumberJoin = rawText.join('');
+          console.log(rawNumberJoin);
+          props.returnChange(rawNumberJoin);
+        }
+        else if (props.type === EEnumType.DATETIME) {
+          props.returnChange(rawText);
+        }
+        else {
+          const textWithoutSpecialChars = rawText.replace(/[^\w\s]/gi, '');
+          props.returnChange(textWithoutSpecialChars);
+        }
       }
     }
     else {
@@ -221,62 +235,57 @@ const InputText: React.FC<IProps> = (props) => {
       EEnumType.PHONE,
       EEnumType.ZIPCODE,
     ].includes(props.type)) {
-      const itemsTypeMas = ETypesMasks();
-
-      let asfasfsa = '';
+      let varTypeEnum = '';
       setHasMask(true);
 
       switch (props.type) {
         case EEnumType.CNPJ:
-          asfasfsa = itemsTypeMas.CNPJ;
+          varTypeEnum = itemsTypeMas.CNPJ;
           break;
 
         case EEnumType.CPF:
-          asfasfsa = itemsTypeMas.CPF;
+          varTypeEnum = itemsTypeMas.CPF;
           break;
 
         case EEnumType.CREDITCARD:
-          asfasfsa = itemsTypeMas.CREDIT_CARD;
+          varTypeEnum = itemsTypeMas.CREDIT_CARD;
           break;
 
         case EEnumType.CUSTOM:
-          asfasfsa = itemsTypeMas.CUSTOM;
+          varTypeEnum = itemsTypeMas.CUSTOM;
           break;
 
         case EEnumType.DATETIME:
-          asfasfsa = itemsTypeMas.DATE_TIME;
+          varTypeEnum = itemsTypeMas.DATE_TIME;
           break;
 
         case EEnumType.MONEY:
-          asfasfsa = itemsTypeMas.MONEY;
+          varTypeEnum = itemsTypeMas.MONEY;
           break;
 
         case EEnumType.PHONE:
-          asfasfsa = itemsTypeMas.PHONE;
+          varTypeEnum = itemsTypeMas.PHONE;
           break;
 
         case EEnumType.ZIPCODE:
-          asfasfsa = itemsTypeMas.ZIP_CODE;
+          varTypeEnum = itemsTypeMas.ZIP_CODE;
           break;
 
         default:
-          asfasfsa = 'none';
+          varTypeEnum = 'none';
           break;
       }
 
-      _setmaskHandler(MaskResolver.resolve(asfasfsa));
+      _setmaskHandler(MaskResolver.resolve(varTypeEnum));
     }
     else {
       setHasMask(false);
-      setTypeMask('none');
     }
   }
 
 
   function defineInputKeyboardType() {
-    const enumTypesInput = ETypesInput();
-
-    let bbbbbbb = '';
+    let varTypeInput = '';
 
     switch (props.type) {
       case EEnumType.CNPJ:
@@ -286,36 +295,36 @@ const InputText: React.FC<IProps> = (props) => {
       case EEnumType.DATETIME:
       case EEnumType.MONEY:
       case EEnumType.NUMBER:
-        bbbbbbb = enumTypesInput.NUMBER;
+        varTypeInput = enumTypesInput.NUMBER;
         break;
 
       case EEnumType.PHONE:
-        bbbbbbb = enumTypesInput.TEL_PHONE;
+        varTypeInput = enumTypesInput.TEL_PHONE;
         break;
 
       case EEnumType.TEXT:
       case EEnumType.ZIPCODE:
-        bbbbbbb = enumTypesInput.TEXT;
+        varTypeInput = enumTypesInput.TEXT;
         break;
 
       case EEnumType.EMAIL:
-        bbbbbbb = enumTypesInput.EMAIL;
+        varTypeInput = enumTypesInput.EMAIL;
         break;
 
       case EEnumType.PASSWORD:
-        bbbbbbb = enumTypesInput.PASSWORD;
+        varTypeInput = enumTypesInput.TEXT;
         break;
 
       case EEnumType.URL:
-        bbbbbbb = enumTypesInput.URL;
+        varTypeInput = enumTypesInput.URL;
         break;
 
       default:
-        bbbbbbb = 'default';
+        varTypeInput = 'default';
         break;
     }
 
-    setTypeKeyboard(bbbbbbb);
+    setTypeKeyboard(varTypeInput);
   }
 
 
@@ -370,7 +379,7 @@ const InputText: React.FC<IProps> = (props) => {
               // borderRadius: 5,
             }}
 
-            maxLength={isNaN(props.countLimit)
+            maxLength={isNaN(props.countLimit) || hasMask
               ? null
               : props.countLimit
             }
@@ -393,7 +402,7 @@ const InputText: React.FC<IProps> = (props) => {
             placeholder={props.placeholderText}
 
             // keyboardType={props.password ? 'default' : typeKeyboard}
-            type={isPassword ? 'password' : typeKeyboard} // secureTextEntry={isPassword}
+            type={isPassword ? enumTypesInput.PASSWORD : typeKeyboard} // secureTextEntry={isPassword}
 
           // placeholderTextColor={props.placeholderTextColor}
           // underlineColorAndroid={'transparent'}
