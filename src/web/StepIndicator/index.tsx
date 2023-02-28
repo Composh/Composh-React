@@ -14,11 +14,13 @@ export interface IProps {
 
   // onPress?: any;
   colorPassed?: string;
-  colorMoreStep?: string;
-  colorAccent?: string;
-  backgroundColor?: string;
+  textColorPassed?: string;
 
-  textColorAccept?: string;
+  colorAccent?: string;
+
+  colorMoreStep?: string;
+
+  backgroundColor?: string;
 }
 
 
@@ -69,10 +71,10 @@ const StepIndicator: React.FC<IProps> = (props: any) => {
       return props.colorMoreStep;
     }
     else if (index < stepCurrent) {
-      return props.textColorAccept;
+      return props.textColorPassed;
     }
     else if (index === stepCurrent) {
-      return props.textColorAccept;
+      return props.textColorPassed;
     }
     else {
       return 'red';
@@ -84,12 +86,12 @@ const StepIndicator: React.FC<IProps> = (props: any) => {
 
     <StepContainer>
 
-      {data.map((label: string, i) => (
+      {data.map((label: string, index: number) => (
         <StepIndicatorContainer
-          key={i}
+          key={index}
           style={{
-            backgroundColor: chooseBackgroundColor(i),
-            borderColor: chooseBorderColor(i),
+            backgroundColor: chooseBackgroundColor(index),
+            borderColor: chooseBorderColor(index),
             borderWidth: 1,
           }}>
 
@@ -101,7 +103,7 @@ const StepIndicator: React.FC<IProps> = (props: any) => {
 
           <StepText
             style={{
-              color: chooseTextColor(i),
+              color: chooseTextColor(index),
             }}>
             {label}
           </StepText>

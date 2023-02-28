@@ -173,11 +173,11 @@ const InputText: React.FC<IProps> = (props) => {
 
         if (props.type === EEnumType.CREDITCARD) {
           const rawNumberJoin = rawText.join('');
-          console.log(rawNumberJoin);
           props.returnChange(rawNumberJoin);
         }
         else if (props.type === EEnumType.DATETIME) {
-          props.returnChange(rawText);
+          const dateReturn = maskedText.replace(/[^\w\s]/gi, '');
+          props.returnChange(dateReturn);
         }
         else {
           const textWithoutSpecialChars = rawText.replace(/[^\w\s]/gi, '');
@@ -339,8 +339,10 @@ const InputText: React.FC<IProps> = (props) => {
 
 
   useEffect(() => {
-    // setText(props.value);
-    _onChangeText(props.value);
+    if (props.type !== EEnumType.DATETIME) {
+      setText(props.value);
+      _onChangeText(props.value);
+    }
   }, [props.value]);
 
 

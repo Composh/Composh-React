@@ -106,7 +106,7 @@ export interface IProps {
 const Input: React.FC<IProps> = (props: any) => {
   const opacityValue = props.disabled ? 0.5 : 1;
 
-  const [text, setText] = useState(props.value ? props.value : '');
+  const [text, setText] = useState(props.value || '');
 
 
 
@@ -149,7 +149,9 @@ const Input: React.FC<IProps> = (props: any) => {
 
 
   useEffect(() => {
-    setText(props.value);
+    if (props.value) {
+      setText(props.value);
+    }
   }, [props.value]);
 
 
