@@ -64,7 +64,7 @@ export interface IProps {
 
 
   // Props Label
-  value?: string;
+  value: string;
 
 
   noWrap?: boolean;
@@ -74,13 +74,11 @@ export interface IProps {
   // onChange?(event: any): any;
   // onBlur?(event: any): any;
 
-  // FIXME onChange, não está resetando ao usar a função de reset do formik
   onChange?: any;
   onBlur?: any;
 
 
   // mask?(event: any): any;
-  mask?: any;
   options?: any;
 
 
@@ -99,7 +97,7 @@ const InputText: React.FC<IProps> = (props) => {
   const [text, setText] = useState(props.value ? props.value : '');
   const [typeKeyboard, setTypeKeyboard] = useState('');
 
-  const [height, setHeight] = useState(0);
+  // const [height, setHeight] = useState(0);
 
   const [_maskHandler, _setmaskHandler] = useState<any>(null);
 
@@ -109,7 +107,7 @@ const InputText: React.FC<IProps> = (props) => {
 
 
   function _getDefaultValue(value: any) {
-    if (value === undefined || value === null) {
+    if (value === '' || value === null || value === undefined) {
       return '';
     }
 
@@ -165,8 +163,8 @@ const InputText: React.FC<IProps> = (props) => {
   }
 
 
-  function _onChangeText(text: any) {
-    const newText = text.target.value;
+  function _onChangeText(newText: string) {
+    // const newText = newText.target.value;
 
     if (hasMask) {
       const { maskedText, rawText } = inputUpdateValue(newText);
@@ -340,6 +338,12 @@ const InputText: React.FC<IProps> = (props) => {
   }, [props.type]);
 
 
+  useEffect(() => {
+    // setText(props.value);
+    _onChangeText(props.value);
+  }, [props.value]);
+
+
 
   return (
 
@@ -373,7 +377,7 @@ const InputText: React.FC<IProps> = (props) => {
             autoCapitalize={props.autoCapitalize}
 
             style={{
-              height: Math.max(28, height),
+              // height: Math.max(28, height),
               color: props.inputTextColor,
               opacity: opacityValue,
               // borderRadius: 5,
@@ -386,8 +390,8 @@ const InputText: React.FC<IProps> = (props) => {
 
             multiline={props.password ? false : props.multiline}
 
-            onChange={(changeText) => {
-              _onChangeText(changeText);
+            onChange={(event) => {
+              _onChangeText(event.target.value);
             }}
 
             onBlur={props.onBlur}

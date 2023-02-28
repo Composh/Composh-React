@@ -1,5 +1,6 @@
 import React,
 {
+  useEffect,
   useState,
 } from 'react';
 
@@ -89,7 +90,6 @@ export interface IProps {
   // onChange?(event: any): any;
   // onBlur?(event: any): any;
 
-  // FIXME onChange, não está resetando ao usar a função de reset do formik
   onChange?: any;
   onBlur?: any;
 
@@ -118,6 +118,7 @@ const Input: React.FC<IProps> = (props: any) => {
       autoCorrect={props.autoCorrect}
       autoCapitalize={props.autoCapitalize}
       type={props.type}
+      options={props.options}
       noShadow={props.noShadow}
       backgroundColor={props.backgroundColor}
       borderColor={props.borderColor}
@@ -132,20 +133,24 @@ const Input: React.FC<IProps> = (props: any) => {
       iconPasswordOn={props.iconPasswordOn}
       iconPasswordOff={props.iconPasswordOff}
       countLimit={props.countLimit}
-      value={props.value}
+      value={text}
       noWrap={props.noWrap}
       onChange={props.onChange}
       returnChange={(textReturned: string) => {
         setText(textReturned);
       }}
-      onBlur={props.onBlur}
-      mask={props.mask}
-      options={props.options}>
+      onBlur={props.onBlur}>
 
       {props.children}
 
     </InputText>
   );
+
+
+
+  useEffect(() => {
+    setText(props.value);
+  }, [props.value]);
 
 
 
