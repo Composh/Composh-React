@@ -11,6 +11,7 @@ import {
 
 export interface IProps {
   active: boolean;
+  margin?: boolean;
   size: number;
   activeColor?: string;
   deactiveColor?: string;
@@ -32,6 +33,7 @@ const ButtonCircle: React.FC<IProps> = (props) => {
   return (
 
     <LeftProductBox
+      margin={props.margin}
       size={width28}>
 
       <IconCircleView
@@ -64,6 +66,12 @@ const ButtonCircle: React.FC<IProps> = (props) => {
     </LeftProductBox>
 
   );
+};
+
+
+
+ButtonCircle.defaultProps = {
+  margin: true,
 };
 
 

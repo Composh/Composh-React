@@ -40,6 +40,7 @@ interface IProps {
   // textDeactiveColor: PropTypes.string,
   textStyle?: object;
 
+  circleMargin?: boolean;
   circleSize?: number;
 
   icon?: any;
@@ -90,6 +91,7 @@ const Radio: React.FC<IProps> = (props: any) => {
 
 
             <ButtonCircle
+              margin={props.circleMargin}
               active={activeIndex === index}
               size={props.circleSize}
               deactiveColor={props.deactiveColor}

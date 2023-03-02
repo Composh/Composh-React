@@ -31,7 +31,7 @@ export interface IProps {
   disabled?: boolean;
 
   multiline?: boolean;
-  autoCorrect?: string; // boolean
+  autoCorrect?: boolean;
   autoCapitalize?: any;
 
   type: EEnumType;
@@ -90,6 +90,8 @@ export interface IProps {
 const InputText: React.FC<IProps> = (props) => {
   const [isPassword, setIsPassword] = useState(false);
   const opacityValue = props.disabled ? 0.5 : 1;
+
+  const correctAutoProps = props.autoCorrect ? 'on' : 'off'; // Web: 'on' or 'off', mobile 'true' or 'false
 
 
   const [hasMask, setHasMask] = useState(false);
@@ -169,18 +171,19 @@ const InputText: React.FC<IProps> = (props) => {
     if (hasMask) {
       const { maskedText, rawText } = inputUpdateValue(newText);
       if (props?.onChange) {
-        props.onChange(rawText, maskedText);
-
         if (props.type === EEnumType.CREDITCARD) {
           const rawNumberJoin = rawText.join('');
+          props.onChange(rawNumberJoin, maskedText);
           props.returnChange(rawNumberJoin);
         }
         else if (props.type === EEnumType.DATETIME) {
           const dateReturn = maskedText.replace(/[^\w\s]/gi, '');
+          props.onChange(dateReturn, maskedText);
           props.returnChange(dateReturn);
         }
         else {
           const textWithoutSpecialChars = rawText.replace(/[^\w\s]/gi, '');
+          props.onChange(textWithoutSpecialChars, maskedText);
           props.returnChange(textWithoutSpecialChars);
         }
       }
@@ -339,10 +342,13 @@ const InputText: React.FC<IProps> = (props) => {
 
 
   useEffect(() => {
-    if (props.type !== EEnumType.DATETIME) {
-      setText(props.value);
-      _onChangeText(props.value);
-    }
+    // if (!([
+    //   EEnumType.DATETIME,
+    //   EEnumType.CREDITCARD,
+    // ].includes(props.type))) {
+    setText(props.value);
+    _onChangeText(props.value);
+    // }
   }, [props.value]);
 
 
@@ -351,7 +357,7 @@ const InputText: React.FC<IProps> = (props) => {
 
     <InputViewStyle
       noShadow={props.noShadow}
-      wrap={props.children && !props.noWrap}
+      wrap={props.children ? !props.noWrap : undefined}
       multiline={props.multiline}
       backgroundColor={props.backgroundColor}
       borderColor={props.borderColor}
@@ -375,7 +381,7 @@ const InputText: React.FC<IProps> = (props) => {
 
             disabled={props.disabled}
             // editable={returnEditable()}
-            autoCorrect={props.autoCorrect}
+            autoCorrect={correctAutoProps}
             autoCapitalize={props.autoCapitalize}
 
             style={{
@@ -434,7 +440,7 @@ const InputText: React.FC<IProps> = (props) => {
 
 
 InputText.defaultProps = {
-  autoCorrect: '', // false,
+  autoCorrect: false,
   noShadow: false,
 
   autoCapitalize: 'none',

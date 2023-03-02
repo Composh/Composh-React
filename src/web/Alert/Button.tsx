@@ -29,7 +29,7 @@ const DialogButton: React.FC<IProps> = (props) => {
       // activeOpacity={activeOpacityDialog || 0.2}
       center={props.center}
       style={props.style}
-      onClick={!props.disabled && props.onPress}>
+      onClick={!props.disabled ? props.onPress : null}>
 
       <ButtonComponentText
         {...props}

@@ -65,7 +65,7 @@ const CheckBox: React.FC<IProps> = (props) => {
 
     <CheckBoxButton
       disabled={props.disabled}
-      onClick={!props.disabled && props.onPress}>
+      onClick={!props.disabled ? props.onPress : null}>
 
       <CheckBoxWrapper>
 

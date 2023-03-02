@@ -6,6 +6,7 @@ import styled,
 
 
 export interface IProps {
+  margin?: boolean;
   direction?: string;
   size?: number;
   color?: string;
@@ -14,6 +15,11 @@ export interface IProps {
 
 
 
+export const LeftMarginProductStyle = css`
+  margin-left: 3px;
+  margin-right: 12px;
+`;
+
 export const LeftProductBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -21,8 +27,8 @@ export const LeftProductBox = styled.div`
   justify-content: center;
   width: ${(props: IProps) => props.size}px;
   height: ${(props: IProps) => props.size}px;
-  margin-left: 3px;
-  margin-right: 12px;
+
+  ${(props: IProps) => props.margin && LeftMarginProductStyle};
 `;
 
 
