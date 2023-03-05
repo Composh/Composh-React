@@ -1,51 +1,51 @@
 import React from 'react';
-import './styled.css';
+
+import {
+  SectionContainer,
+  SectionListContainer,
+  SectionHeader,
+  SectionItemContent,
+} from './styled';
 
 
 
-export interface IProps {
-  className?: any;
-  style?: any;
-  renderItem?: any;
-  renderSectionHeader?: any;
-  sections?: any;
+interface IProps {
   keyExtractor?: any;
+  sections?: any;
+  renderSectionHeader?: any;
+  renderItem?: any;
+  style?: any;
 }
 
 
 
 const ListSection: React.FC<IProps> = (props) => {
-  let _className = 'sectionlist-container';
-  if (props.className) {
-    _className += ' ' + props.className;
-  }
-
   return (
-    <div className={_className} style={props.style}>
-      {props?.sections.map((section: any, index: any) => {
+    <SectionContainer {...props} style={props.style}>
+      {props?.sections.map((section: any, index: number) => {
         return (
 
-          <div className="section-container" key={props.keyExtractor(section, index)}>
+          <SectionListContainer key={props.keyExtractor(index)}>
 
-            <div className="section-header">
+            <SectionHeader>
               {props?.renderSectionHeader(section)}
-            </div>
+            </SectionHeader>
 
 
-            <div className="section-item-container">
-              {section.data.map((item: any, index: any) => (
+            <SectionItemContent>
+              {section?.data?.map((item: any, index: number) => (
                 props?.renderItem(item, index)
               ))}
-            </div>
+            </SectionItemContent>
 
 
             {section.description && section.description}
 
-          </div>
+          </SectionListContainer>
 
         );
       })}
-    </div>
+    </SectionContainer>
   );
 };
 

@@ -23,15 +23,15 @@ export interface IProps {
   iconRight?: any;
 
   title?: string | null;
-  titleSize?: string;
+  titleSize?: string; // FIXME: SET DEFAULT AND PASS TO STYLED.TS
   titleColor?: string;
 
   subtitle?: string | null;
-  subtitleSize?: string;
+  subtitleSize?: string; // FIXME: SET DEFAULT AND PASS TO STYLED.TS
   subtitleColor?: string;
 
   thirdtitle?: string | null;
-  thirdtitleSize?: string;
+  thirdtitleSize?: string; // FIXME: SET DEFAULT AND PASS TO STYLED.TS
   thirdtitleColor?: string;
 }
 
