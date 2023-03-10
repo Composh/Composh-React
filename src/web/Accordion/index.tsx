@@ -22,6 +22,7 @@ export interface IProps {
   onAccordionOpen?: any;
   renderContent?: any;
   renderHeader?: any;
+  noPress?: boolean;
   style?: any;
 };
 
@@ -39,6 +40,7 @@ const Accordion: React.FC<IProps> = (props) => {
     onAccordionOpen,
     renderContent,
     renderHeader,
+    noPress,
   } = props;
 
   const [selected, setSelectedState] = useState(expanded);
@@ -83,11 +85,11 @@ const Accordion: React.FC<IProps> = (props) => {
           headerStyle={headerStyle}
           index={index}
           item={item}
-          renderContent={renderContent}
-          renderHeader={renderHeader}
+          renderContent={(item: any) => renderContent(item)}
+          renderHeader={(item: any, expanded: boolean) => renderHeader(item, expanded)}
           onAccordionOpen={onAccordionOpen}
           onAccordionClose={onAccordionClose}
-          setSelected={(index: any) => setSelected(index)}
+          setSelected={(index: any) => !noPress && setSelected(index)}
         />
       ))}
     </AccordionStyled>

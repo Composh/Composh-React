@@ -22,7 +22,7 @@ function returnBackground(props: IProps) {
 
   if (props.colors && props.colors?.length > 1) {
     colorArray = props.colors?.map((itemColor: string, index) => {
-      return `${itemColor} ${index}`;
+      return `${itemColor} ${index * 100}`;
     });
   }
   else if (props.colors && props.colors?.length === 1) {

@@ -7,4 +7,3 @@ export default {
   Help: InputHelp,
   // Input: InputText,
 };
-

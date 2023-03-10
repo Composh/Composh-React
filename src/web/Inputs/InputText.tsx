@@ -4,7 +4,7 @@ import React,
   useState,
 } from 'react';
 
-import MaskResolver from '../Mask/mask-resolver';
+import MaskResolver from '../../plugins/Mask/mask-resolver';
 
 import EyeOffImage from './eye_off_black.png';
 import EyeOnImage from './eye_on_black.png';
@@ -170,19 +170,28 @@ const InputText: React.FC<IProps> = (props) => {
 
     if (hasMask) {
       const { maskedText, rawText } = inputUpdateValue(newText);
+
       if (props?.onChange) {
         if (props.type === EEnumType.CREDITCARD) {
           const rawNumberJoin = rawText.join('');
           props.onChange(rawNumberJoin, maskedText);
           props.returnChange(rawNumberJoin);
         }
+
         else if (props.type === EEnumType.DATETIME) {
           const dateReturn = maskedText.replace(/[^\w\s]/gi, '');
           props.onChange(dateReturn, maskedText);
           props.returnChange(dateReturn);
         }
+
+        // else if (props.type === EEnumType.MONEY) {
+        //   const textWithoutSpecialChars = rawText.replace(/[^\w\s]/gi, '');
+        //   props.onChange(rawText, maskedText);
+        //   props.returnChange(textWithoutSpecialChars);
+        // }
+
         else {
-          const textWithoutSpecialChars = rawText.replace(/[^\w\s]/gi, '');
+          const textWithoutSpecialChars = String(rawText).replace(/[^\w\s]/gi, '');
           props.onChange(textWithoutSpecialChars, maskedText);
           props.returnChange(textWithoutSpecialChars);
         }

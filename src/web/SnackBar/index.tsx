@@ -7,19 +7,18 @@ import { Snackbar } from '@material-ui/core';
 
 
 export interface IProps {
-  visible?: boolean;
-  backgroundColor?: string | null;
-  textMessage?: any; // PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-
   accentColor?: string;
   messageColor?: string;
+  backgroundColor?: string | null;
   distanceCallback?: any; // PropTypes.func,
   actionHandler?: any; // PropTypes.func,
   left?: number;
   right?: number;
   top?: number;
   bottom?: number;
+  visible?: boolean;
   actionText?: string;
+  textMessage?: any; // PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   position?: any; // PropTypes.oneOf(['bottom', 'top']), // bottom (default), top
   autoHidingTime?: number; // How long (in milliseconds) the snack bar will be hidden.
   containerStyle?: any; // ViewPropTypes.style,
@@ -37,6 +36,9 @@ const SnackBar: React.FC<IProps> = (props: any) => {
   return (
 
     <Snackbar
+      style={{
+        zIndex: 9999,
+      }}
       open={props.visible}
       autoHideDuration={1800}
       onClose={props.onClose}
