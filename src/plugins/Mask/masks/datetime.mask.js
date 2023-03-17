@@ -22,7 +22,8 @@ export default class DatetimeMask extends BaseMask {
 
   getRawValue(maskedValue, settings) {
     const mergedSettings = this._getMergedSettings(settings);
-    return date.parse(maskedValue, mergedSettings.format);
+    const raw = date.parse(maskedValue, mergedSettings.format);
+    return raw;
   }
 
   validate(value, settings) {

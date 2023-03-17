@@ -8,7 +8,9 @@ import {
 
 
 
-interface IProps {
+export interface IProps {
+  // Props Text
+  helpTextValue?: string;
 
   // Props Help
   noHelp?: boolean;
@@ -17,15 +19,13 @@ interface IProps {
 
   // Props Count Letter
   noCount?: boolean;
-  countLimit?: any; // string || number;
+  countLimit?: string | number;
   helpCountStyle?: any;
-
-  text: string;
 }
 
 
 
-const InputHelp: React.FC<IProps> = (props: any) => {
+const InputHelp: React.FC<IProps> = (props: IProps) => {
   return (
 
     <HelpContainerViewStyle>
@@ -39,9 +39,9 @@ const InputHelp: React.FC<IProps> = (props: any) => {
 
       <HelpCountTextStyle
         style={props.helpCountStyle}>
-        {isNaN(props.countLimit)
-          ? props.countLimit
-          : props.text.length + ' / ' + props.countLimit || 20
+        {typeof props.countLimit === 'number'
+          ? props.helpTextValue?.length + ' / ' + props.countLimit
+          : props.countLimit
         }
       </HelpCountTextStyle>
 

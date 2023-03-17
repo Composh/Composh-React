@@ -4,14 +4,20 @@ import React,
   useState,
 } from 'react';
 
-import MaskResolver from '../../plugins/Mask/mask-resolver';
-
 import EyeOffImage from './eye_off_black.png';
 import EyeOnImage from './eye_on_black.png';
 
 import {
+  returnTypeMaskEnum,
+  returnTypeInput,
+  returnIfHasMask,
+  inputUpdateValue,
+} from './functions.config';
+
+import InputView from './InputView';
+
+import {
   IconContent,
-  InputViewStyle,
   TextInputStyle,
   ShowPasswordStyle,
   IconEye,
@@ -20,36 +26,39 @@ import {
 import {
   EEnumType,
   ETypesInput,
-  ETypesMasks,
 } from './types.enum';
 
 
 
 export interface IProps {
-  password: boolean;
-
   disabled?: boolean;
-
-  multiline?: boolean;
-  autoCorrect?: boolean;
-  autoCapitalize?: any;
-
-  type: EEnumType;
-
   noShadow?: boolean;
+  password?: boolean;
+
+  type:
+  'NONE' |
+  'CNPJ' |
+  'CPF' |
+  'CREDITCARD' |
+  'CUSTOM' |
+  'DATETIME' |
+  'MONEY' |
+  'NUMBER' |
+  'PHONE' |
+  'TEXT' |
+  'ZIPCODE' |
+  'EMAIL' |
+  'PASSWORD' |
+  'URL';
+
+  options?: any;
+
+  autoCapitalize?: any;
+  autoCorrect?: boolean;
+  noWrap?: boolean;
   backgroundColor?: string;
-  borderColor?: string;
+  borderColor?: string | null;
   borderWidth?: number;
-
-  inputTextCenter?: boolean;
-  inputTextColor?: string;
-
-
-  // Placeholder
-  placeholderText?: string;
-  placeholderColor?: string;
-  placeholderTextColor?: string;
-
 
   // Props Icon
   iconLeft?: any;
@@ -58,130 +67,80 @@ export interface IProps {
   iconPasswordOn?: any;
   iconPasswordOff?: any;
 
+  // Placeholder
+  placeholderText?: string;
+  placeholderColor?: string;
+  placeholderTextColor?: string;
+
+  inputTextCenter?: boolean;
+  inputTextColor?: string;
+
+  labelText?: string;
+  labelColor?: string;
+
+  value?: any;
+
+  noHelp?: boolean;
+  helpText?: any;
+  helpColor?: string;
 
   // Props Count Letter
-  countLimit?: any; // string || number;
+  noCount?: boolean;
+  countLimit?: any; // string | number;
+  countColor?: string;
+
+  onChange?: any; // onChange?(event: any): any;
+  onBlur?: any; // onBlur?(event: any): any;
 
 
-  // Props Label
-  value: string;
 
-
-  noWrap?: boolean;
+  lowercase?: boolean;
   children?: any;
-
-
-  // onChange?(event: any): any;
-  // onBlur?(event: any): any;
-
-  onChange?: any;
-  onBlur?: any;
-
-
-  // mask?(event: any): any;
-  options?: any;
-
-
-  returnChange?: any;
+  multiline?: boolean;
 }
 
 
 
-const InputText: React.FC<IProps> = (props) => {
-  const [isPassword, setIsPassword] = useState(false);
+const InputTextText: React.FC<IProps> = (props: IProps) => {
   const opacityValue = props.disabled ? 0.5 : 1;
+  const enumPasswordInput = ETypesInput().PASSWORD;
 
-  const correctAutoProps = props.autoCorrect ? 'on' : 'off'; // Web: 'on' or 'off', mobile 'true' or 'false
-
-
-  const [hasMask, setHasMask] = useState(false);
-
-  const [text, setText] = useState(props.value ? props.value : '');
-  const [typeKeyboard, setTypeKeyboard] = useState('');
-
-  // const [height, setHeight] = useState(0);
-
-  const [_maskHandler, _setmaskHandler] = useState<any>(null);
-
-  const enumTypesInput = ETypesInput();
-  const itemsTypeMas = ETypesMasks();
+  const correctAutoProps = props.autoCorrect ? 'on' : 'off'; // Web
+  // const correctAutoProps = props.autoCorrect ? true' : false; // Mobile
 
 
+  const [textValue, setTextValue] = useState<string>('');
+  const [rawValue, setRawValue] = useState<string>('');
 
-  function _getDefaultValue(value: any) {
-    if (value === '' || value === null || value === undefined) {
-      return '';
-    }
+  const [isPassword, setIsPassword] = useState<boolean>(false);
 
-    return value;
-  }
+  const [typeKeyboard, setTypeKeyboard] = useState<string>('');
 
-  function _getOptions() {
-    return props.options;
-  }
+  const [hasMask, setHasMask] = useState<boolean>(false);
+  const [typeMaskInput, setTypeMaskInput] = useState<any>(null);
 
-
-  function getRawValueFor(value: any) {
-    const rawValue = _maskHandler.getRawValue(
-      _getDefaultValue(value),
-      _getOptions(),
-    );
-    return rawValue;
-  }
-
-
-  function _getMaskedValue(value: any) {
-    if (hasMask) {
-      const defaultValue = _getDefaultValue(value);
-      if (defaultValue === '') {
-        return '';
-      }
-
-      const maskValue = _maskHandler.getValue(
-        defaultValue,
-        _getOptions());
-      return maskValue;
-    }
-    else {
-      return value;
-    }
-  }
-
-
-  function inputUpdateValue(text: any) {
-    if (hasMask) {
-      const maskedText = _getMaskedValue(text);
-      const rawText = getRawValueFor(maskedText);
-
-      const objectUpdateValue = {
-        maskedText,
-        rawText,
-      };
-      return objectUpdateValue;
-    }
-    else {
-      return text;
-    }
-  }
 
 
   function _onChangeText(newText: string) {
-    // const newText = newText.target.value;
-
     if (hasMask) {
-      const { maskedText, rawText } = inputUpdateValue(newText);
+      const masketToRawText = newText?.replace(/[\u0300-\u036f]/g, '').replaceAll(/\s/g, '').replace(/[^\w\s]/gi, '').trim();
+      setRawValue(masketToRawText);
 
-      if (props?.onChange) {
+      const { maskedText, rawText } = inputUpdateValue(hasMask, typeMaskInput, props.options, masketToRawText);
+
+      if (props.onChange) {
         if (props.type === EEnumType.CREDITCARD) {
           const rawNumberJoin = rawText.join('');
+          setRawValue(rawNumberJoin);
+          setTextValue(maskedText);
           props.onChange(rawNumberJoin, maskedText);
-          props.returnChange(rawNumberJoin);
         }
 
         else if (props.type === EEnumType.DATETIME) {
           const dateReturn = maskedText.replace(/[^\w\s]/gi, '');
+          setRawValue(dateReturn);
+          setTextValue(maskedText);
           props.onChange(dateReturn, maskedText);
-          props.returnChange(dateReturn);
         }
 
         // else if (props.type === EEnumType.MONEY) {
@@ -192,20 +151,36 @@ const InputText: React.FC<IProps> = (props) => {
 
         else {
           const textWithoutSpecialChars = String(rawText).replace(/[^\w\s]/gi, '');
+          setRawValue(textWithoutSpecialChars);
+          setTextValue(maskedText);
           props.onChange(textWithoutSpecialChars, maskedText);
-          props.returnChange(textWithoutSpecialChars);
         }
       }
     }
     else {
-      const itemToReturn = inputUpdateValue(newText);
-      if (props?.onChange) {
+      const itemToReturn = String(newText);
+
+      if (props.onChange) {
+        setRawValue(itemToReturn);
+        setTextValue(itemToReturn);
         props.onChange(itemToReturn);
-        props.returnChange(itemToReturn);
       }
     }
+  }
 
-    setText(newText);
+
+  function defineInputMask() {
+    const hasMaskReturn = returnIfHasMask(props.type);
+    setHasMask(hasMaskReturn);
+
+    const valueMask = returnTypeMaskEnum(props.type);
+    setTypeMaskInput(valueMask);
+  }
+
+
+  function defineInputKeyboardType() {
+    const varTypeInput = returnTypeInput(props.type);
+    setTypeKeyboard(varTypeInput);
   }
 
 
@@ -234,144 +209,50 @@ const InputText: React.FC<IProps> = (props) => {
   }
 
 
-  function defineIfHasMask() {
-    if ([
-      EEnumType.CNPJ,
-      EEnumType.CPF,
-      EEnumType.CREDITCARD,
-      EEnumType.CUSTOM,
-      EEnumType.DATETIME,
-      EEnumType.MONEY,
-      EEnumType.PHONE,
-      EEnumType.ZIPCODE,
-    ].includes(props.type)) {
-      let varTypeEnum = '';
-      setHasMask(true);
-
-      switch (props.type) {
-        case EEnumType.CNPJ:
-          varTypeEnum = itemsTypeMas.CNPJ;
-          break;
-
-        case EEnumType.CPF:
-          varTypeEnum = itemsTypeMas.CPF;
-          break;
-
-        case EEnumType.CREDITCARD:
-          varTypeEnum = itemsTypeMas.CREDIT_CARD;
-          break;
-
-        case EEnumType.CUSTOM:
-          varTypeEnum = itemsTypeMas.CUSTOM;
-          break;
-
-        case EEnumType.DATETIME:
-          varTypeEnum = itemsTypeMas.DATE_TIME;
-          break;
-
-        case EEnumType.MONEY:
-          varTypeEnum = itemsTypeMas.MONEY;
-          break;
-
-        case EEnumType.PHONE:
-          varTypeEnum = itemsTypeMas.PHONE;
-          break;
-
-        case EEnumType.ZIPCODE:
-          varTypeEnum = itemsTypeMas.ZIP_CODE;
-          break;
-
-        default:
-          varTypeEnum = 'none';
-          break;
-      }
-
-      _setmaskHandler(MaskResolver.resolve(varTypeEnum));
-    }
-    else {
-      setHasMask(false);
-    }
-  }
-
-
-  function defineInputKeyboardType() {
-    let varTypeInput = '';
-
-    switch (props.type) {
-      case EEnumType.CNPJ:
-      case EEnumType.CPF:
-      case EEnumType.CREDITCARD:
-      case EEnumType.CUSTOM:
-      case EEnumType.DATETIME:
-      case EEnumType.MONEY:
-      case EEnumType.NUMBER:
-        varTypeInput = enumTypesInput.NUMBER;
-        break;
-
-      case EEnumType.PHONE:
-        varTypeInput = enumTypesInput.TEL_PHONE;
-        break;
-
-      case EEnumType.TEXT:
-      case EEnumType.ZIPCODE:
-        varTypeInput = enumTypesInput.TEXT;
-        break;
-
-      case EEnumType.EMAIL:
-        varTypeInput = enumTypesInput.EMAIL;
-        break;
-
-      case EEnumType.PASSWORD:
-        varTypeInput = enumTypesInput.TEXT;
-        break;
-
-      case EEnumType.URL:
-        varTypeInput = enumTypesInput.URL;
-        break;
-
-      default:
-        varTypeInput = 'default';
-        break;
-    }
-
-    setTypeKeyboard(varTypeInput);
-  }
-
-
 
   useEffect(() => {
-    setIsPassword(props.password);
+    setIsPassword(props.password || false);
   }, [props.password]);
 
 
   useEffect(() => {
-    defineIfHasMask();
+    defineInputMask();
     defineInputKeyboardType();
   }, [props.type]);
 
 
   useEffect(() => {
-    // if (!([
-    //   EEnumType.DATETIME,
-    //   EEnumType.CREDITCARD,
-    // ].includes(props.type))) {
-    setText(props.value);
-    _onChangeText(props.value);
-    // }
-  }, [props.value]);
+    _onChangeText(props.value || textValue);
+  }, [props.value, rawValue]);
 
 
 
   return (
 
-    <InputViewStyle
+    <InputView
+      disabled={props.disabled}
       noShadow={props.noShadow}
-      wrap={props.children ? !props.noWrap : undefined}
-      multiline={props.multiline}
+
+      noWrap={props.noWrap}
       backgroundColor={props.backgroundColor}
       borderColor={props.borderColor}
       borderWidth={props.borderWidth}
-      opacity={opacityValue}>
+
+      labelText={props.labelText}
+      labelColor={props.labelColor}
+
+      // Props Text
+      countTextValue={rawValue}
+
+      // Props Help
+      noHelp={props.noHelp}
+      helpText={props.helpText}
+      helpColor={props.helpColor}
+
+      // Props Count Letter
+      noCount={props.noCount}
+      countLimit={props.countLimit}
+      countColor={props.countColor}>
 
 
       {props.iconLeft && (
@@ -380,56 +261,54 @@ const InputText: React.FC<IProps> = (props) => {
         </IconContent>
       )}
 
-      {props.children
-        ? props.children
-        : (
-          <TextInputStyle
-            // {...props}
-            // returnKeyType={'next'}
-            inputTextCenter={props.inputTextCenter}
 
-            disabled={props.disabled}
-            // editable={returnEditable()}
-            autoCorrect={correctAutoProps}
-            autoCapitalize={props.autoCapitalize}
 
-            style={{
-              // height: Math.max(28, height),
-              color: props.inputTextColor,
-              opacity: opacityValue,
-              // borderRadius: 5,
-            }}
+      <TextInputStyle
+        // {...props}
+        // returnKeyType={'next'}
+        inputTextCenter={props.inputTextCenter}
 
-            maxLength={isNaN(props.countLimit) || hasMask
-              ? null
-              : props.countLimit
-            }
+        disabled={props.disabled}
+        // editable={returnEditable()}
+        autoCorrect={correctAutoProps}
+        autoCapitalize={props.autoCapitalize}
 
-            multiline={props.password ? false : props.multiline}
+        style={{
+          // height: Math.max(28, height),
+          color: props.inputTextColor,
+          opacity: opacityValue,
+          // borderRadius: 5,
+        }}
 
-            onChange={(event) => {
-              _onChangeText(event.target.value);
-            }}
+        maxLength={typeof props.countLimit !== 'number' || hasMask
+          ? undefined
+          : props.countLimit
+        }
 
-            onBlur={props.onBlur}
+        multiline={props.password ? false : props.multiline}
 
-            // onContentSizeChange={(event) => {
-            //   setHeight(event.nativeEvent.contentSize.height);
-            // }}
-            // eslint-disable-next-line no-extra-boolean-cast
+        onChange={(event) => {
+          _onChangeText(event.target.value);
+        }}
 
-            value={_getMaskedValue(text)}
+        onBlur={props.onBlur}
 
-            placeholder={props.placeholderText}
+        // onContentSizeChange={(event) => {
+        //   setHeight(event.nativeEvent.contentSize.height);
+        // }}
+        // eslint-disable-next-line no-extra-boolean-cast
 
-            // keyboardType={props.password ? 'default' : typeKeyboard}
-            type={isPassword ? enumTypesInput.PASSWORD : typeKeyboard} // secureTextEntry={isPassword}
+        value={textValue}
 
-          // placeholderTextColor={props.placeholderTextColor}
-          // underlineColorAndroid={'transparent'}
-          />
-        )
-      }
+        placeholder={props.placeholderText}
+
+        // keyboardType={props.password ? 'default' : typeKeyboard}
+        type={isPassword ? enumPasswordInput : typeKeyboard} // secureTextEntry={isPassword}
+
+      // placeholderTextColor={props.placeholderTextColor}
+      // underlineColorAndroid={'transparent'}
+      />
+
 
 
       {props.iconRight && !props.password && (
@@ -439,16 +318,17 @@ const InputText: React.FC<IProps> = (props) => {
       )}
 
 
+
       {props.password && viewPassElement()}
 
-    </InputViewStyle>
+    </InputView>
 
   );
 };
 
 
 
-InputText.defaultProps = {
+InputTextText.defaultProps = {
   autoCorrect: false,
   noShadow: false,
 
@@ -461,4 +341,4 @@ InputText.defaultProps = {
 
 
 
-export default InputText;
+export default InputTextText;

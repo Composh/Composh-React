@@ -10,7 +10,7 @@ import React,
 
 import {
   ToggleButtonContent,
-  ToggleButtonStyle,
+  // ToggleButtonStyle,
   ToggleIconView,
   ToggleText,
 } from './styled';
@@ -89,47 +89,43 @@ const Toggle: React.FC<IProps> = (props: any) => {
 
   return (
 
-    <ToggleButtonStyle>
-
-      <ToggleButtonContent
-        disabled={props.disabled}
-        flexContent={props.flexToggle}
-        width={props.width}
-        height={props.height}
-        borderColor={((!props.disabled && !props.noToggle) ? selectedState : selectedProp) ? props.borderTintColor : props.borderColor}
-        borderWidth={props.borderWidth}
-        borderRadius={props.borderRadius}
-        backgroundColor={((!props.disabled && !props.noToggle) ? selectedState : selectedProp) ? props.backgroundTintColor : props.backgroundColor}
-        iconContent={props.iconContent}
-        style={props.style}
-        onClick={() => {
-          onPressToggle();
-        }}>
+    <ToggleButtonContent
+      disabled={props.disabled}
+      flexContent={props.flexToggle}
+      width={props.width}
+      height={props.height}
+      borderColor={((!props.disabled && !props.noToggle) ? selectedState : selectedProp) ? props.borderTintColor : props.borderColor}
+      borderWidth={props.borderWidth}
+      borderRadius={props.borderRadius}
+      backgroundColor={((!props.disabled && !props.noToggle) ? selectedState : selectedProp) ? props.backgroundTintColor : props.backgroundColor}
+      iconContent={props.iconContent}
+      style={props.style}
+      onClick={() => {
+        onPressToggle();
+      }}>
 
 
-        {props.iconContent && (
-          <ToggleIconView>
-            {props.iconContent}
-          </ToggleIconView>
-        )}
+      {props.iconContent && (
+        <ToggleIconView>
+          {props.iconContent}
+        </ToggleIconView>
+      )}
 
 
-        <ToggleText
-          colorText={((!props.disabled && !props.noToggle) ? selectedState : selectedProp) ? props.textTintColor : props.textColor}
-          marginLeftText={props.iconContent ? 5 : 0}
-          style={props.textStyle}>
+      <ToggleText
+        colorText={((!props.disabled && !props.noToggle) ? selectedState : selectedProp) ? props.textTintColor : props.textColor}
+        marginLeftText={props.iconContent ? 5 : 0}
+        style={props.textStyle}>
 
 
-          {props.displayValue === '' || props.displayValue === null || props.displayValue === undefined
-            ? props.value
-            : props.displayValue
-          }
+        {props.displayValue === '' || props.displayValue === null || props.displayValue === undefined
+          ? props.value
+          : props.displayValue
+        }
 
-        </ToggleText>
+      </ToggleText>
 
-      </ToggleButtonContent>
-
-    </ToggleButtonStyle>
+    </ToggleButtonContent>
 
   );
 };

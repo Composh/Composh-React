@@ -73,6 +73,7 @@ export const BackgroundStyle = css`
 
 export const BorderStyle = css`
   border-color: ${(props: IProps) => props.borderColor};
+  border-style: solid;
   border-width: ${(props: IProps) => props.borderWidth || 0}px;
 `;
 

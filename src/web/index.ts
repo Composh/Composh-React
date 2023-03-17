@@ -20,7 +20,7 @@ import Epigraph from './Epigraph';
 // import Footer from './Footer';
 // import Grid from './Grid';
 import Icon from './Icon';
-// import Inputs from './Inputs';
+import Input from './Inputs';
 import Items from './Items';
 import LinearGradient from './LinearGradient';
 import ListSection from './ListSection';
@@ -73,7 +73,7 @@ export {
   // FABItem,
   // Footer,
   Icon,
-  // Inputs,
+  Input,
   Items,
   LinearGradient,
   ListSection,

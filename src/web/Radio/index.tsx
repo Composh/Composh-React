@@ -20,6 +20,8 @@ import {
 
 
 interface IProps {
+  disabled?: boolean;
+
   data: any; // PropTypes.array,
   initial?: number;
 
@@ -40,7 +42,6 @@ interface IProps {
   // textDeactiveColor: PropTypes.string,
   textStyle?: object;
 
-  circleMargin?: boolean;
   circleSize?: number;
 
   icon?: any;
@@ -65,11 +66,11 @@ const Radio: React.FC<IProps> = (props: any) => {
 
 
   useEffect(() => {
-    if (activeIndex === -1 && props.initial > 0) {
+    if (props.initial > 0) {
       const initialActive = props.initial - 1;
       _changeRadio(props.data[initialActive], initialActive);
     }
-  });
+  }, [props.initial]);
 
 
 
@@ -91,7 +92,6 @@ const Radio: React.FC<IProps> = (props: any) => {
 
 
             <ButtonCircle
-              margin={props.circleMargin}
               active={activeIndex === index}
               size={props.circleSize}
               deactiveColor={props.deactiveColor}

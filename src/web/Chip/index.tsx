@@ -52,7 +52,7 @@ export interface IProps {
 
 
 
-const Chip: React.FC<IProps> = (props: any) => {
+const Chip: React.FC<IProps> = (props: IProps) => {
   // const [elevation, setElevation] = useState(new Animated.Value(0));
 
   // const scale = 2;
@@ -103,7 +103,7 @@ const Chip: React.FC<IProps> = (props: any) => {
     const bdrColor = props.mode === 'outlined'
       ? color(
         props.selected
-          ? props.selectedColor
+          ? props.selectedBackgroundColor
           : props.backgroundColor,
       )
         .alpha(0.29)

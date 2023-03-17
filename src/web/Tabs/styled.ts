@@ -49,7 +49,7 @@ export const TabBarContainer = styled.div`
   background-color: ${(props: IProps) => props.backgroundColor || '#636363'};
 `;
 
-export const TabBarContent = styled.a`
+export const TabBarContent = styled.div`
   display: flex;
   flex-direction: row;
   flex: 1;

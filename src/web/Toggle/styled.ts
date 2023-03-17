@@ -24,14 +24,14 @@ interface ITextProps {
 
 
 
-export const ToggleButtonStyle = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 6px;
-  margin-left: 6px;
-  margin-right: 6px;
-  margin-bottom: 6px;
-`;
+// export const ToggleButtonStyle = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   margin-top: 6px;
+//   margin-left: 6px;
+//   margin-right: 6px;
+//   margin-bottom: 6px;
+// `;
 
 
 export const ButtonIconPadding = css`
@@ -45,6 +45,10 @@ export const ButtonNoIconPadding = css`
 `;
 
 export const ToggleButtonContent = styled.a`
+  margin-left: 6px;
+  margin-right: 6px;
+
+
   display: flex;
   flex-direction: row;
   align-items: center;
