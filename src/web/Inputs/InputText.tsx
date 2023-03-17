@@ -222,7 +222,12 @@ const InputTextText: React.FC<IProps> = (props: IProps) => {
 
 
   useEffect(() => {
-    _onChangeText(props.value || textValue);
+    if (hasMask || props.value) {
+      _onChangeText(props.value || textValue);
+    }
+    else {
+      _onChangeText('');
+    }
   }, [props.value, rawValue]);
 
 
