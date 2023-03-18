@@ -64,25 +64,28 @@ const CheckBox: React.FC<IProps> = (props) => {
   return (
 
     <CheckBoxButton
-      disabled={props.disabled}
-      onClick={!props.disabled ? props.onPress : null}>
+      center={props.center}
+      onClick={!props.disabled && props.onPress}>
 
       <CheckBoxWrapper>
 
         {props.direction === 'LEFT' && renderIconInstance()}
 
-        <CheckboxFlexText>
-          {React.isValidElement(props.title)
-            ? props.title
-            : (
-              <CheckboxText>
-                {props.checked
-                  ? props.checkedTitle || props.title
-                  : props.uncheckedTitle || props.title
-                }
-              </CheckboxText>
-            )}
-        </CheckboxFlexText>
+        {(props.checkedTitle || props.uncheckedTitle || props.title) && (
+          <CheckboxFlexText
+            direction={props.direction}>
+            {React.isValidElement(props.title)
+              ? props.title
+              : (
+                <CheckboxText>
+                  {props.checked
+                    ? props.checkedTitle || props.title
+                    : props.uncheckedTitle || props.title
+                  }
+                </CheckboxText>
+              )}
+          </CheckboxFlexText>
+        )}
 
         {props.direction === 'RIGHT' && renderIconInstance()}
 

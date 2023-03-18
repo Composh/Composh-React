@@ -34,7 +34,7 @@ export const Cell: React.FC<IProps> = (props) => {
     ? (data)
     : (
       <TextCellStyled
-        // {...props}
+        {...props}
         style={textStyle}>
         {data}
       </TextCellStyled>
@@ -46,6 +46,7 @@ export const Cell: React.FC<IProps> = (props) => {
 
   return (
     <ViewCellStyled
+      {...props}
       id={'Cell'}
       borderTopWidth={borderTopWidth}
       borderRightWidth={borderRightWidth}

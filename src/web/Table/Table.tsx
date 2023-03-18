@@ -43,6 +43,7 @@ export const Table: React.FC<IProps> = (props) => {
 
   return (
     <ViewTableStyled
+      {...props}
       id={'Table'}
       borderLeftWidth={borderLeftWidth}
       borderBottomWidth={borderBottomWidth}
@@ -74,6 +75,7 @@ export const TableWrapper: React.FC<IProps> = (props) => {
   return (
 
     <ViewTableWrapperStyled
+      {...props}
       id={'TableWrapper'}
       style={style}>
       {_renderChildren(props)}

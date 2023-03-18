@@ -63,7 +63,7 @@ const InputView: React.FC<IProps> = (props: IProps) => {
 
       <InputViewStyle
         noShadow={props.noShadow}
-        wrap={props.children ? !props.noWrap : undefined}
+        wrapView={props.children ? !props.noWrap : undefined}
         // multiline={props.multiline}
         backgroundColor={props.backgroundColor}
         borderColor={props.borderColor ? props.borderColor : undefined}

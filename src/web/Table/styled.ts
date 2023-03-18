@@ -40,7 +40,8 @@ export const ViewColStyled = styled.div`
   display: flex;
   flex-direction: column;
   ${(props: IProps) => props.width && `width: ${(props: IProps) => props.width || 0}px`};
-  flex: ${(props: IProps) => !props.width ? 1 : (props.flex || 1)};
+  ${(props: IProps) => !props.width && 'flex: 1'};
+  ${(props: IProps) => props.flex && `flex: ${props.flex}`};
 `;
 
 export const ViewColsStyled = styled.div`
@@ -64,8 +65,8 @@ export const ViewRowStyled = styled.div`
 export const ViewRowsStyled = styled.div`
   display: flex;
   flex-direction: column;
-  flex: ${(props: IProps) => !props.width ? 1 : (props.flex || 1)};
   ${(props: IProps) => props.width && `width: ${(props: IProps) => props.width || 0}px`};
+  ${(props: IProps) => props.flex && `flex: ${props.flex}`};
 `;
 
 

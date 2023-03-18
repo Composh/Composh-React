@@ -40,6 +40,7 @@ export const Row: React.FC<IProps> = (props) => {
 
   return data ? (
     <ViewRowStyled
+      {...props}
       id={'Row'}
       height={height}
       width={width}
@@ -57,7 +58,6 @@ export const Row: React.FC<IProps> = (props) => {
             height={height}
             flex={flex}
             textStyle={textStyle}
-          // {...props}
           />
 
         );

@@ -90,6 +90,7 @@ const Toggle: React.FC<IProps> = (props: any) => {
   return (
 
     <ToggleButtonContent
+      {...props}
       disabled={props.disabled}
       flexContent={props.flexToggle}
       width={props.width}

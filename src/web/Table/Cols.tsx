@@ -39,6 +39,7 @@ export const Col: React.FC<IProps> = (props) => {
 
   return data ? (
     <ViewColStyled
+      {...props}
       id={'Col'}
       width={width}
       flex={flex}
@@ -80,6 +81,7 @@ export const Cols: React.FC<IProps> = (props) => {
 
   return data ? (
     <ViewColsStyled
+      {...props}
       id={'Cols'}
       width={width}>
 

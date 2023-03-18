@@ -25,7 +25,7 @@ export const CheckBoxContainer = styled.div`
   width: ${(props: IProps) => props.size}px;
   height: ${(props: IProps) => props.size}px;
   margin-left: 3px;
-  margin-right: 12px;
+  margin-right: 3px;
 `;
 
 

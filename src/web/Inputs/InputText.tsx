@@ -36,7 +36,6 @@ export interface IProps {
   password?: boolean;
 
   type:
-  'NONE' |
   'CNPJ' |
   'CPF' |
   'CREDITCARD' |

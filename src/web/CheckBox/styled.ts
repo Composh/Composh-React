@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 
 export interface IProps {
-  disabled?: boolean;
+  center?: boolean;
+  direction?: string;
   backgroundColor?: string;
   border?: boolean;
   borderColor?: string;
@@ -18,8 +19,9 @@ export const CheckBoxButton = styled.a`
   margin-bottom: 5px;
   padding-top: 2px;
   padding-bottom: 2px;
-  opacity: ${(props: IProps) => props.disabled ? 0.5 : 1};
-  cursor: ${(props: IProps) => props.disabled ? 'default' : 'pointer'};
+  cursor: pointer;
+
+  ${(props: IProps) => props.center && 'align-items: center'};
 `;
 
 export const CheckBoxWrapper = styled.div`
@@ -32,6 +34,9 @@ export const CheckboxFlexText = styled.div`
   display: flex;
   flex-direction: column;
   align-self: center;
+
+  ${(props: IProps) => props.direction === 'LEFT' && 'margin-left: 7px'};
+  ${(props: IProps) => props.direction === 'RIGHT' && 'margin-right: 7px'};
 `;
 
 export const CheckboxText = styled.p`

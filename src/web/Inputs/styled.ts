@@ -6,7 +6,7 @@ import styled,
 
 
 export interface IProps {
-  wrap?: boolean;
+  wrapView?: boolean;
   inputTextCenter?: boolean;
   multiline?: boolean;
   backgroundColor?: string;
@@ -97,7 +97,7 @@ export const InputViewStyle = styled.div`
   border-radius: 5px;
   opacity: ${(props: IProps) => props.opacity};
 
-  ${(props: IProps) => props.wrap && WrapStyle};
+  ${(props: IProps) => props.wrapView && WrapStyle};
   ${(props: IProps) => props.multiline && MultilineStyle};
   ${(props: IProps) => props.backgroundColor && BackgroundStyle};
   ${(props: IProps) => props.borderColor && BorderStyle};
