@@ -8,7 +8,7 @@ import {
 
 
 
-interface IProps {
+export interface IProps {
   // Currently active date index
   currentDateIndex?: number;
 
@@ -24,7 +24,7 @@ interface IProps {
 
 
 
-const DatesCalendar: React.FC<IProps> = (props: any) => {
+const DatesCalendar: React.FC<IProps> = (props: IProps) => {
   return (
 
     <DatesContainer>

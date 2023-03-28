@@ -92,6 +92,10 @@ export const SOCIAL = {
 
 
 const Colors = {
+  calendarColorLight:               'rgba(23, 214, 204, 0.14)',
+  calendarColor:                    'rgba(23, 214, 204, 0.35)',
+  accent: '#FE2472',
+
 
   BLACK:                            '#000000',
   WHITE:                            '#FFFFFF',

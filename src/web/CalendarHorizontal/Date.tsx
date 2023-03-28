@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Colors from '@noitada/shared/common/constants/Colors';
+import { Colors } from '../../constants';
 
 import {
   DateContainer,
@@ -12,7 +12,10 @@ import {
 
 
 
-interface IProps {
+export interface IProps {
+  // No press date
+  noPress?: boolean;
+
   // Date to render
   date: Date;
 
@@ -31,12 +34,7 @@ interface IProps {
 
 
 
-const DateCalendar: React.FC<IProps> = (props: any) => {
-  // Call 'onPress' passed from the parent component when date is pressed
-  const onPress = () => {
-    props.onPress(props.index);
-  };
-
+const DateCalendar: React.FC<IProps> = (props: IProps) => {
   const date = props.date;
 
   const weekday = [
@@ -49,9 +47,10 @@ const DateCalendar: React.FC<IProps> = (props: any) => {
     'Sábado',
   ];
 
+
   function convertToDate() {
-    let mm = date.getMonth() + 1; // Months start at 0!
-    let dd = date.getDate();
+    let dd: any = date.getDate();
+    let mm: any = date.getMonth() + 1; // Months start at 0!
 
     if (dd < 10) dd = '0' + dd;
     if (mm < 10) mm = '0' + mm;
@@ -61,17 +60,30 @@ const DateCalendar: React.FC<IProps> = (props: any) => {
   }
 
 
+  // Call 'onPress' passed from the parent component when date is pressed
+  const onPress = () => {
+    if (props.onPress) {
+      props.onPress(props.index);
+    }
+  };
+
+
+  function isDateActive() {
+    return props.isActive;
+  }
+
+
 
   return (
 
     <DateContainer
-      active={props.isActive}
+      active={isDateActive()}
       onClick={onPress}>
 
       <LinearDayGradient
         // locations={[0.3, 0.6, 0.99]}
         colors={
-          props.isActive
+          isDateActive()
             ? [
               'transparent',
               Colors.calendarColorLight,
@@ -85,19 +97,19 @@ const DateCalendar: React.FC<IProps> = (props: any) => {
         }>
 
         <DayItem
-          active={props.isActive}>
+          active={isDateActive()}>
           {weekday[date.getDay()]}
         </DayItem>
 
 
         <DateItem
-          active={props.isActive}>
+          active={isDateActive()}>
           {convertToDate()}
         </DateItem>
 
 
         <YearItem
-          active={props.isActive}>
+          active={isDateActive()}>
           {date.getFullYear()}
         </YearItem>
 

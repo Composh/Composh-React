@@ -140,7 +140,7 @@ const Chip: React.FC<IProps> = (props: IProps) => {
     <ChipContainer
       // activeOpacity={props.activeOpacity || 0.75}
       // disabled={props.disabled}
-      onClick={!props.disabled && props.onPress}
+      onClick={!props.disabled ? props.onPress : undefined}
       backgroundColor={selectedBackgroundColor()}
       borderColor={borderColor()}
       borderRadius={16}

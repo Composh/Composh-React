@@ -3,19 +3,15 @@ import styled,
   css,
 } from 'styled-components';
 
+import { Colors } from '../../constants';
+
 // import LinearGradient from 'react-native-linear-gradient';
 
-import {
-  Colors,
-} from '@noitada/shared/common/constants';
-
-import {
-  LinearGradient,
-} from '../Composh';
+import LinearGradient from '../LinearGradient';
 
 
 
-interface IProps {
+export interface IProps {
   active?: boolean;
 }
 

@@ -77,7 +77,8 @@ const CheckBox: React.FC<IProps> = (props) => {
             {React.isValidElement(props.title)
               ? props.title
               : (
-                <CheckboxText>
+                <CheckboxText
+                  style={props.titleStyle}>
                   {props.checked
                     ? props.checkedTitle || props.title
                     : props.uncheckedTitle || props.title

@@ -45,12 +45,19 @@ interface IProps {
 
   textStyle?: any;
   style?: any;
+
+  children?: any;
 }
 
 
 
-const Toggle: React.FC<IProps> = (props: any) => {
+const Toggle: React.FC<IProps> = (props: IProps) => {
+  const className: any = { ...props };
+
+
   const selectedProp = props.selected;
+
+  const opacityValue = props.disabled ? 0.5 : 1;
 
   const [selectedState, setSelectedState] = useState(selectedProp);
 
@@ -76,12 +83,12 @@ const Toggle: React.FC<IProps> = (props: any) => {
 
 
   function onPressToggle() {
-    if (props.onPress) {
+    if (!props.disabled && props.onPress) {
       props.onPress();
     }
 
     if (!props.noToggle) {
-      setSelectedState(!selectedState);
+      setSelectedState(!selectedProp);
     }
   }
 
@@ -90,7 +97,8 @@ const Toggle: React.FC<IProps> = (props: any) => {
   return (
 
     <ToggleButtonContent
-      {...props}
+      className={className?.className}
+
       disabled={props.disabled}
       flexContent={props.flexToggle}
       width={props.width}
@@ -100,31 +108,38 @@ const Toggle: React.FC<IProps> = (props: any) => {
       borderRadius={props.borderRadius}
       backgroundColor={((!props.disabled && !props.noToggle) ? selectedState : selectedProp) ? props.backgroundTintColor : props.backgroundColor}
       iconContent={props.iconContent}
-      style={props.style}
+      style={{
+        ...props.style,
+        opacity: opacityValue,
+      }}
       onClick={() => {
         onPressToggle();
       }}>
 
+      {props.children && props.children}
 
-      {props.iconContent && (
+
+      {!props.children && props.iconContent && (
         <ToggleIconView>
           {props.iconContent}
         </ToggleIconView>
       )}
 
 
-      <ToggleText
-        colorText={((!props.disabled && !props.noToggle) ? selectedState : selectedProp) ? props.textTintColor : props.textColor}
-        marginLeftText={props.iconContent ? 5 : 0}
-        style={props.textStyle}>
+      {!props.children && (
+        <ToggleText
+          colorText={((!props.disabled && !props.noToggle) ? selectedState : selectedProp) ? props.textTintColor : props.textColor}
+          marginLeftText={props.iconContent ? 5 : 0}
+          style={props.textStyle}>
 
 
-        {props.displayValue === '' || props.displayValue === null || props.displayValue === undefined
-          ? props.value
-          : props.displayValue
-        }
+          {props.displayValue === '' || props.displayValue === null || props.displayValue === undefined
+            ? props.value
+            : props.displayValue
+          }
 
-      </ToggleText>
+        </ToggleText>
+      )}
 
     </ToggleButtonContent>
 

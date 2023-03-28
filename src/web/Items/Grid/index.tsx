@@ -17,6 +17,7 @@ export interface IProps {
 
   iconGridColor?: string;
   iconGridLabel?: string;
+  labelStyle?: any;
 
   style?: any;
 }
@@ -24,10 +25,15 @@ export interface IProps {
 
 
 const GridIcon: React.FC<IProps> = (props) => {
+  const className: any = { ...props };
+
+
+
   return (
 
     <GridIconContent
-      {...props}
+      className={className?.className}
+
       // disabled={
       //   props.disabled
       //     ? props.disabled
@@ -38,7 +44,8 @@ const GridIcon: React.FC<IProps> = (props) => {
       style={props.style}
       onClick={(!props.disabled || !props.onPress) && props.onPress}>
 
-      <IconContent>
+      <IconContent
+        style={props.labelStyle}>
         {props.icon}
       </IconContent>
 

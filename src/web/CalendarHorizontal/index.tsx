@@ -14,7 +14,7 @@ import {
 
 
 
-interface IProps {
+export interface IProps {
   // Optional prop to pass a custom date to use instead of today
   currentDate?: Date;
   // Callback executed when user taps on a date
@@ -26,6 +26,7 @@ interface IProps {
 
   dates?: any;
 };
+
 
 
 const CalendarHorizontal: React.FC<IProps> = (props: any) => {
