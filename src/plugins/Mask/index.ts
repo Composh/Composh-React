@@ -1,5 +1,5 @@
 import {
-  TextInputMaskTypeProp,
+  TextInputMaskTypeProp, TextIssuerCrediCard,
 } from './input.types';
 
 import MaskResolver from './mask-resolver';
@@ -26,7 +26,7 @@ export interface ITextInputMaskOptionProp {
 
   // Credit card type.
   obfuscated?: boolean
-  issuer?: 'visa-or-mastercard' | 'diners' | 'amex'
+  issuer?: TextIssuerCrediCard
 
   // Custom type.
   mask?: string

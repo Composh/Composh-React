@@ -8,3 +8,20 @@ export type TextInputMaskTypeProp =
   | 'money'
   // | 'only-numbers'
   | 'zip-code';
+
+
+export type TextIssuerCrediCard =
+  | 'visa'
+  | 'mastercard'
+  | 'dinersclub'
+  | 'amex';
+
+
+
+export enum EIssuerCrediCard {
+  OTHER = 'other',
+  VISA = 'visa',
+  MASTERCARD = 'mastercard',
+  DINERSCLUB = 'dinersclub',
+  AMEX = 'amex',
+};

@@ -3,11 +3,11 @@ import ActionSheet from './ActionSheet';
 import Alert from './Alert';
 import AppBar from './AppBar';
 // import Avatar from './Avatar';
-// import Badge from './Badge/';
+import Badge from './Badge/';
 // import BadgeIndicator from './BadgeIndicator';
 import Body from './Body';
 import Button from './Button';
-// import Card from './Card';
+import Card from './Card';
 import CheckBox from './CheckBox';
 import Chip from './Chip';
 import Container from './Container';
@@ -15,12 +15,12 @@ import Content from './Content';
 import Dialog from './Dialog';
 import Divider from './Divider';
 import Epigraph from './Epigraph';
-// import FAB from './FAB';
-// import FABItem from './FAB/Item';
+import FAB from './FAB';
+import FABItem from './FAB/Item';
 // import Footer from './Footer';
 // import Grid from './Grid';
 import Icon from './Icon';
-import Input from './Inputs';
+import Input from './Inputs'; // import SearchBar
 import Items from './Items';
 import LinearGradient from './LinearGradient';
 import ListSection from './ListSection';
@@ -29,11 +29,10 @@ import Overlay from './Overlay';
 import Radio from './Radio';
 // import Rating from './Rating';
 import Screen from './Screen';
-// import Shimmer from './Shimmer';
-// import SearchBar from './SearchBar';
 // import Select from './Select';
 // import Shapes from './Shapes';
-// import SnackBar from './SnackBar';
+import Shimmer from './Shimmer';
+import SnackBar from './SnackBar';
 // import StatusViewBar from './StatusViewBar';
 import StepIndicator from './StepIndicator';
 import SubTitle from './SubTitle';
@@ -57,11 +56,11 @@ export {
   ActionSheet,
   Alert,
   AppBar,
-  // Badge,
+  Badge,
   // BadgeIndicator,
   Body,
   Button,
-  // Card,
+  Card,
   CheckBox,
   Chip,
   Container,
@@ -69,8 +68,8 @@ export {
   Dialog,
   Divider,
   Epigraph,
-  // FAB,
-  // FABItem,
+  FAB,
+  FABItem,
   // Footer,
   Icon,
   Input,
@@ -82,9 +81,10 @@ export {
   Radio,
   // Rating,
   Screen,
-  // Shimmer,
   // Select,
-  // SnackBar,
+  // Shapes,
+  Shimmer,
+  SnackBar,
   // StatusViewBar,
   StepIndicator,
   SubTitle,

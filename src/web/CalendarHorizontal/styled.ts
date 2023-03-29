@@ -3,8 +3,6 @@ import styled,
   css,
 } from 'styled-components';
 
-import { Colors } from '../../constants';
-
 // import LinearGradient from 'react-native-linear-gradient';
 
 import LinearGradient from '../LinearGradient';
@@ -49,7 +47,7 @@ export const CalendarArrowText = styled.p`
 // Date Style
 
 export const ContainerActive = css`
-  border-bottom-color: ${Colors.accent};
+  border-bottom-color: ${'#FE2472'};
 `;
 
 export const DateContainer = styled.a`
@@ -85,7 +83,7 @@ export const TextStyle = css`
 
 
 export const DayActive = css`
-  color: ${Colors.accent};
+  color: ${'#FE2472'};
   font-size: 9px;
 `;
 
@@ -97,7 +95,7 @@ export const DayItem = styled.p`
 
 
 export const DateActive = css`
-  color: ${Colors.accent};
+  color: ${'#FE2472'};
   font-size: 12px;
 `;
 
@@ -110,7 +108,7 @@ export const DateItem = styled.p`
 
 export const YearActive = css`
   margin-bottom: 3px;
-  color: ${Colors.accent};
+  color: ${'#FE2472'};
   font-size: 8px;
 `;
 

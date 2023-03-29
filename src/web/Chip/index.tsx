@@ -181,7 +181,7 @@ const Chip: React.FC<IProps> = (props: IProps) => {
           <ChipIcon
             // activeOpacity={props.activeOpacity}
             // disabled={props.onCloseDisabled}
-            onClick={!props.onCloseDisabled && props.onClose}>
+            onClick={!props.onCloseDisabled && props.onClose ? props.onClose : undefined}>
             {props.icon}
           </ChipIcon>
         )}

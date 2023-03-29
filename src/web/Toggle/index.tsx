@@ -19,6 +19,8 @@ import {
 
 interface IProps {
   disabled?: boolean;
+  noPress?: boolean;
+
   noToggle?: boolean;
   selected?: boolean;
   flexToggle?: number;
@@ -113,7 +115,9 @@ const Toggle: React.FC<IProps> = (props: IProps) => {
         opacity: opacityValue,
       }}
       onClick={() => {
-        onPressToggle();
+        if (!props.noPress) {
+          onPressToggle();
+        }
       }}>
 
       {props.children && props.children}

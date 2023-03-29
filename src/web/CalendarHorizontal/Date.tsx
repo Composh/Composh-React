@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { Colors } from '../../constants';
-
 import {
   DateContainer,
   LinearDayGradient,
@@ -86,8 +84,8 @@ const DateCalendar: React.FC<IProps> = (props: IProps) => {
           isDateActive()
             ? [
               'transparent',
-              Colors.calendarColorLight,
-              Colors.calendarColor,
+              '#FE2472',
+              '#FFFFFF',
             ]
             : [
               'transparent',

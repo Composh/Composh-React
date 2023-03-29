@@ -45,9 +45,10 @@ export const ButtonNoIconPadding = css`
 `;
 
 export const ToggleButtonContent = styled.a`
-  margin-left: 6px;
-  margin-right: 6px;
-
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
 
   display: flex;
   flex-direction: row;
