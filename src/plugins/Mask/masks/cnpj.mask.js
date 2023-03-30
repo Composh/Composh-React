@@ -22,13 +22,13 @@ export const CNPJ_MASK = '99.999.999/9999-99';
 
 export const validateCnpj = (cnpj) => {
   var valida = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
-  var dig1 = new Number();
-  var dig2 = new Number();
+  var dig1 = Number();
+  var dig2 = Number();
   var i = 0;
 
   var exp = /\.|\-|\//g;
   cnpj = cnpj.toString().replace(exp, '');
-  var digito = new Number(eval(cnpj.charAt(12) + cnpj.charAt(13)));
+  var digito = Number(eval(cnpj.charAt(12) + cnpj.charAt(13)));
 
   for (i = 0; i < valida.length; i++) {
     dig1 += i > 0 ? cnpj.charAt(i - 1) * valida[i] : 0;
@@ -66,8 +66,14 @@ export default class CnpjMask extends BaseMask {
 
 
   validate(value, settings) {
-    var isEmpty = (value || '').trim().length === 0;
-    return !isEmpty && validateCnpj(value);
+    if (value === '') return false;
+
+    if (value.length !== 14) return false;
+
+    // Eliminates known invalid CNPJs
+    if (/^(\d)\1+$/.test(value)) return false;
+
+    return validateCnpj(value);
   }
 
 

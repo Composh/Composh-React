@@ -100,7 +100,7 @@ export interface IProps {
 
 
 
-const InputTextText: React.FC<IProps> = (props: IProps) => {
+const InputText: React.FC<IProps> = (props: IProps) => {
   const opacityValue = props.disabled ? 0.5 : 1;
   const enumPasswordInput = ETypesInput().PASSWORD;
 
@@ -332,7 +332,7 @@ const InputTextText: React.FC<IProps> = (props: IProps) => {
 
 
 
-InputTextText.defaultProps = {
+InputText.defaultProps = {
   autoCorrect: false,
   noShadow: false,
 
@@ -345,4 +345,4 @@ InputTextText.defaultProps = {
 
 
 
-export default InputTextText;
+export default InputText;
