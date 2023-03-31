@@ -9,6 +9,10 @@ import {
 
 
 export interface IProps {
+  color?: string;
+
+  backgroundColor?: Array<string> | string;
+
   // Currently active date index
   currentDateIndex?: number;
 
@@ -32,6 +36,8 @@ const DatesCalendar: React.FC<IProps> = (props: IProps) => {
 
         <DateCalendar
           index={index}
+          color={props.color}
+          backgroundColor={props.backgroundColor}
           date={date}
           isActive={index === props.currentDateIndex}
           onPress={props.onSelectDay}

@@ -15,12 +15,19 @@ import {
 
 
 export interface IProps {
+  color?: string;
+
+  backgroundColor?: Array<string> | string;
+
   // Optional prop to pass a custom date to use instead of today
   currentDate?: Date;
+
   // Callback executed when user taps on a date
   onSelectDate?: any; // (date: Moment | Date) => any;
+
   // Number of days to show before today or custom current date
   showDaysAfterCurrent?: number;
+
   // Number of days to show after
   showDaysBeforeCurrent?: number;
 
@@ -109,6 +116,8 @@ const CalendarHorizontal: React.FC<IProps> = (props: any) => {
 
 
       <DatesCalendar
+        color={props.color}
+        backgroundColor={props.backgroundColor}
         dates={dates}
         currentDateIndex={currentDateIndex}
         onSelectDay={(index: number) => {

@@ -5,12 +5,18 @@ import styled,
 
 // import LinearGradient from 'react-native-linear-gradient';
 
-import LinearGradient from '../LinearGradient';
+import {
+  LinearGradient,
+} from '..';
+
+const accentColor = '#FE2472';
 
 
 
 export interface IProps {
   active?: boolean;
+  color?: string;
+  size?: number;
 }
 
 
@@ -34,7 +40,6 @@ export const CalendarArrowButton = styled.a`
   width: 40px;
   height: 100%;
   min-height: 50px;
-  cursor: pointer;
 `;
 
 export const CalendarArrowText = styled.p`
@@ -46,10 +51,6 @@ export const CalendarArrowText = styled.p`
 
 // Date Style
 
-export const ContainerActive = css`
-  border-bottom-color: ${'#FE2472'};
-`;
-
 export const DateContainer = styled.a`
   display: flex;
   flex-direction: column;
@@ -60,9 +61,10 @@ export const DateContainer = styled.a`
   border-bottom-color: transparent;
   border-bottom-style: solid;
   border-bottom-width: 2px;
-  cursor: pointer;
 
-  ${(props: IProps) => props.active && ContainerActive};
+  ${(props: IProps) => props.active && `
+    border-bottom-color: ${props.color || accentColor};
+  `};
 `;
 
 export const LinearDayGradient = styled(LinearGradient)`
@@ -75,48 +77,36 @@ export const LinearDayGradient = styled(LinearGradient)`
   justify-content: center;
 `;
 
-
-export const TextStyle = css`
-  color: rgba(255, 255, 255, 0.5);
-  text-align: center;
+export const DayView = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 
-export const DayActive = css`
-  color: ${'#FE2472'};
-  font-size: 9px;
+export const TextStyle = css`
+  color: ${(props: IProps) => props.active
+    ? props.color || accentColor
+    : 'rgba(255, 255, 255, 0.5)'};
+  text-align: center;
 `;
 
 export const DayItem = styled.p`
   ${TextStyle};
-  font-size: 8px;
-  ${(props: IProps) => props.active && DayActive};
-`;
-
-
-export const DateActive = css`
-  color: ${'#FE2472'};
-  font-size: 12px;
+  margin-bottom: 1px;
+  font-size: ${(props: IProps) => props.size ? `${props.size * 0.9}px` : '9px'};
 `;
 
 export const DateItem = styled.p`
   ${TextStyle};
-  font-size: 11px;
-  ${(props: IProps) => props.active && DateActive};
+  font-size: ${(props: IProps) => props.size ? `${props.size * 1.1}px` : '11px'};
 `;
 
-
-export const YearActive = css`
-  margin-bottom: 3px;
-  color: ${'#FE2472'};
-  font-size: 8px;
-`;
 
 export const YearItem = styled.p`
   ${TextStyle};
-  font-size: 7px;
+  font-size: ${(props: IProps) => props.size ? `${props.size * 0.8}px` : '8px'};
   letter-spacing: 1px;
-  ${(props: IProps) => props.active && YearActive};
+  margin-bottom: 2px;
 `;
 
 
