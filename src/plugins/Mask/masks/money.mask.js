@@ -1,7 +1,7 @@
 import VanillaMasker from '../internal-dependencies/vanilla-masker';
 import BaseMask from './_base.mask';
 
-const MONEY_MASK_SETTINGS = {
+const MASK_OPTIONS = {
   precision: 2,
   separator: ',',
   delimiter: '.',
@@ -17,7 +17,7 @@ export default class MoneyMask extends BaseMask {
   }
 
   getValue(value, settings, oldValue) {
-    const mergedSettings = super.mergeSettings(MONEY_MASK_SETTINGS, settings);
+    const mergedSettings = super.mergeSettings(MASK_OPTIONS, settings);
 
     let sanitized = this._sanitize(value, mergedSettings);
 
@@ -34,7 +34,7 @@ export default class MoneyMask extends BaseMask {
   }
 
   getRawValue(maskedValue, settings) {
-    const mergedSettings = super.mergeSettings(MONEY_MASK_SETTINGS, settings);
+    const mergedSettings = super.mergeSettings(MASK_OPTIONS, settings);
     let normalized = super.removeNotNumbers(maskedValue);
 
     const dotPosition = normalized.length - mergedSettings.precision;

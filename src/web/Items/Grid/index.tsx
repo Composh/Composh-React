@@ -15,6 +15,7 @@ export interface IProps {
 
   icon?: any;
 
+  iconStyle?: any;
   iconGridColor?: string;
   iconGridLabel?: string;
   labelStyle?: any;
@@ -24,7 +25,7 @@ export interface IProps {
 
 
 
-const GridIcon: React.FC<IProps> = (props) => {
+const GridIcon: React.FC<IProps> = (props: IProps) => {
   const className: any = { ...props };
 
 
@@ -45,13 +46,16 @@ const GridIcon: React.FC<IProps> = (props) => {
       onClick={(!props.disabled || !props.onPress) && props.onPress}>
 
       <IconContent
-        style={props.labelStyle}>
+        style={props.iconStyle}>
         {props.icon}
       </IconContent>
 
 
       <AvailableText
-        style={{ color: props.iconGridColor }}>
+        style={{
+          ...props.labelStyle,
+          color: props.iconGridColor,
+        }}>
         {props.iconGridLabel}
       </AvailableText>
 

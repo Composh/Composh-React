@@ -2,7 +2,7 @@ import date from 'date-and-time';
 import BaseMask from './_base.mask';
 import CustomMask from './custom.mask';
 
-const DATETIME_MASK_SETTINGS = {
+const MASK_OPTIONS = {
   format: 'DD/MM/YYYY HH:mm:ss',
 };
 
@@ -34,7 +34,7 @@ export default class DatetimeMask extends BaseMask {
   }
 
   _getMergedSettings(settings) {
-    return super.mergeSettings(DATETIME_MASK_SETTINGS, settings);
+    return super.mergeSettings(MASK_OPTIONS, settings);
   }
 
   getMask(value, settings) {

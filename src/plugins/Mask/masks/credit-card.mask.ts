@@ -34,9 +34,9 @@ const CREDIT_CARD_MASKS = [
   },
 ];
 
-const CREDIT_CARD_SETTINGS = {
-  obfuscated: false,
+const MASK_OPTIONS = {
   issuer: 'other',
+  obfuscated: false,
 };
 
 const MASK_TRANSLATION = {
@@ -86,7 +86,7 @@ export default class CreditCardMask extends BaseMask {
 
 
   getMask(value: any, settings: {}) {
-    const mergedSettings = super.mergeSettings(CREDIT_CARD_SETTINGS, settings) as typeof CREDIT_CARD_SETTINGS;
+    const mergedSettings = super.mergeSettings(MASK_OPTIONS, settings) as typeof MASK_OPTIONS;
     const selectedMask = this._selectMask(mergedSettings.issuer, mergedSettings.obfuscated);
 
     return selectedMask;

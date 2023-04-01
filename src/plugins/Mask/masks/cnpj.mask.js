@@ -18,6 +18,8 @@ export const CNPJ_MASK = '99.999.999/9999-99';
 //   '*': (val) => null,
 // };
 
+const MASK_OPTIONS = { mask: CNPJ_MASK };
+
 
 
 export const validateCnpj = (cnpj) => {
@@ -42,9 +44,6 @@ export const validateCnpj = (cnpj) => {
 
 
 
-const customMaskOptions = { mask: CNPJ_MASK };
-
-
 export default class CnpjMask extends BaseMask {
   static getType() {
     return 'cnpj';
@@ -53,7 +52,7 @@ export default class CnpjMask extends BaseMask {
 
 
   getValue(value, settings) {
-    return CustomMask.shared.getValue(value, customMaskOptions);
+    return CustomMask.shared.getValue(value, MASK_OPTIONS);
   }
   // getValue(value, settings) {
   //   let selectedMask = this.getMask(value, settings);

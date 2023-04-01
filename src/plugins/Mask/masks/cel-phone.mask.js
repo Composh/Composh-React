@@ -11,7 +11,7 @@ const MASK_TYPES = {
   INTERNATIONAL: 'INTERNATIONAL',
 };
 
-const CEL_PHONE_SETTINGS = {
+const MASK_OPTIONS = {
   maskType: MASK_TYPES.BRL,
   withDDD: true,
   dddMask: '(99) ',
@@ -44,7 +44,7 @@ export default class CelPhoneMask extends BaseMask {
   }
 
   getMask(value, settings) {
-    const mergedSettings = super.mergeSettings(CEL_PHONE_SETTINGS, settings);
+    const mergedSettings = super.mergeSettings(MASK_OPTIONS, settings);
 
     if (mergedSettings.maskType === MASK_TYPES.INTERNATIONAL) {
       return PHONE_INTERNATIONAL;
