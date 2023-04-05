@@ -27,7 +27,7 @@ const FAB: React.FC<IProps> = (props) => {
     <>
       {props.visible && (
         <FABContainer
-          backgroundColor={'#fe124f'}
+          backgroundColor={props.fabColorBottom}
           onClick={props.onPress}>
           {props.content}
         </FABContainer>

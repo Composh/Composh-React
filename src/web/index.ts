@@ -30,7 +30,7 @@ import Radio from './Radio';
 // import Rating from './Rating';
 import Screen from './Screen';
 // import Select from './Select';
-// import Shapes from './Shapes';
+import Shapes from './Shapes';
 import Shimmer from './Shimmer';
 import SnackBar from './SnackBar';
 // import StatusViewBar from './StatusViewBar';
@@ -82,7 +82,7 @@ export {
   // Rating,
   Screen,
   // Select,
-  // Shapes,
+  Shapes,
   Shimmer,
   SnackBar,
   // StatusViewBar,

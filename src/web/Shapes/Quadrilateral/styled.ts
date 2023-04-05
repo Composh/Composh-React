@@ -1,7 +1,7 @@
-import styled from 'styled-components/native';
+import styled from 'styled-components';
 
 
-export const QuadriShape = styled.View`
+export const QuadriShape = styled.div`
   position: absolute;
   top: 0;
   left: 0;
