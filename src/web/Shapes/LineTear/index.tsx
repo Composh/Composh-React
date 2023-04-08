@@ -33,6 +33,10 @@ export interface IProps {
 
 
 const LineTear: React.FC<IProps> = (props: IProps) => {
+  const className: any = { ...props };
+
+
+
   const [width, setWidth] = useState<number>(24);
 
   // // used to offset the tear lines halfway under
@@ -73,6 +77,7 @@ const LineTear: React.FC<IProps> = (props: IProps) => {
   return (
 
     <ShapeInfo
+      className={className?.className}
       style={props.style}>
 
       <ShapeTearComponent1
@@ -100,7 +105,7 @@ const LineTear: React.FC<IProps> = (props: IProps) => {
         marginLeft={-offset()}
       />
 
-    </ShapeInfo >
+    </ShapeInfo>
 
   );
 };
