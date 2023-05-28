@@ -26,7 +26,7 @@ export interface IProps {
   titleSize?: string; // FIXME: SET DEFAULT AND PASS TO STYLED.TS
   titleColor?: string;
 
-  subtitle?: string | null;
+  subtitle?: any | null; // string
   subtitleSize?: string; // FIXME: SET DEFAULT AND PASS TO STYLED.TS
   subtitleColor?: string;
 
@@ -38,9 +38,15 @@ export interface IProps {
 
 
 const ListItem: React.FC<IProps> = (props: any) => {
+  const className: any = { ...props };
+
+
+
   return (
 
     <ItemContainer
+      className={className?.className}
+
       // disabled={
       //   props.disabled
       //     ? props.disabled

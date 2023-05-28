@@ -1,8 +1,9 @@
 import React from 'react';
+
 import Overlay from '../Overlay';
 
 import {
-  Container,
+  ActionSheetContainer,
   Wrapper,
 } from './styled';
 
@@ -15,6 +16,7 @@ export interface IProps {
   // onOverlayPress?: any; // Function
 
   overlayColor?: string;
+  backgroundColor?: string;
   height?: number;
   minClosingHeight?: number;
   openDuration?: number;
@@ -32,39 +34,37 @@ export interface IProps {
 
 
 
-const ActionSheet: React.FC<IProps> = (props: any) => {
+const ActionSheet: React.FC<IProps> = (props: IProps) => {
+  const visibleModal = props.visible;
+  if (!visibleModal) {
+    return null;
+  }
+
+
+
   return (
 
 
-    <>
-      {props.visible && (
+    <ActionSheetContainer>
 
-        <Container
-        // onClick={props.onClose}
-        >
-
-          <Overlay
-            visible={true}
-            showBackground={true}
-            overlayColor={props.overlayColor}
-            onOverlayPress={props.onClose}
-          >
-          </Overlay>
+      <Overlay
+        visible={true}
+        showBackground={true}
+        overlayColor={props.overlayColor}
+        onOverlayPress={props.onClose}
+      />
 
 
-          <Wrapper style={{
-            overflowY: 'auto',
-          }}>
+      <Wrapper
+        height={props.height}
+        backgroundColor={props.backgroundColor}>
 
-            {props.children}
+        {props.children}
 
-          </Wrapper>
+      </Wrapper>
 
 
-        </Container>
-
-      )}
-    </>
+    </ActionSheetContainer>
 
   );
 };

@@ -33,11 +33,18 @@ export const BorderBottomToolbar = css`
 
 
 export const HeaderAppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   background-color: transparent;
   z-index: 40;
 `;
 
 export const HeaderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
   ${(props: IProps) => props.absolute && AbsoluteToolbar};
   ${(props: IProps) => !props.transparent && ShadowToolbar};
   ${(props: IProps) => props.borderBottomColor && BorderBottomToolbar};
