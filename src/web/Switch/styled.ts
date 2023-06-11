@@ -17,10 +17,11 @@ export interface IProps {
 
 
 
-export const SwitchContainer = styled.div`
+export const SwitchContainer = styled.a`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   position: relative;
 `;
 

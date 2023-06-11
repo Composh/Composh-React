@@ -32,7 +32,9 @@ const Switch: React.FC<IProps> = (props) => {
 
 
   return (
-    <SwitchContainer>
+
+    <SwitchContainer
+      onClick={props.onPress}>
 
       {!props.hideText && (
         <SwitchTextOn

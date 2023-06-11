@@ -123,7 +123,6 @@ const InputText: React.FC<IProps> = (props: IProps) => {
   function _onChangeText(newText: string) {
     if (hasMask) {
       const masketToRawText = newText?.replace(/[\u0300-\u036f]/g, '').replaceAll(/\s/g, '').replace(/[^\w\s]/gi, '').trim();
-      setRawValue(masketToRawText);
 
       const { maskedText, rawText } = inputUpdateValue(hasMask, typeMaskInput, props.options, masketToRawText);
 
@@ -142,11 +141,17 @@ const InputText: React.FC<IProps> = (props: IProps) => {
           props.onChange(dateReturn, maskedText);
         }
 
-        // else if (props.type === EEnumType.MONEY) {
-        //   const textWithoutSpecialChars = rawText.replace(/[^\w\s]/gi, '');
-        //   props.onChange(rawText, maskedText);
-        //   props.returnChange(textWithoutSpecialChars);
-        // }
+        else if (props.type === EEnumType.MONEY) {
+          const textWithoutSpecialChars = String(maskedText).replace(/\D/g, '');
+
+          if (props.countLimit && typeof props.countLimit === 'number' && textWithoutSpecialChars.length > props.countLimit) {
+            return;
+          }
+
+          setRawValue(textWithoutSpecialChars);
+          setTextValue(maskedText);
+          props.onChange(textWithoutSpecialChars, maskedText);
+        }
 
         else {
           const textWithoutSpecialChars = String(rawText).replace(/[^\w\s]/gi, '');
@@ -154,6 +159,9 @@ const InputText: React.FC<IProps> = (props: IProps) => {
           setTextValue(maskedText);
           props.onChange(textWithoutSpecialChars, maskedText);
         }
+      }
+      else {
+        setRawValue(masketToRawText);
       }
     }
     else {
