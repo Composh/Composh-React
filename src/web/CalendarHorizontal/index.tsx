@@ -31,6 +31,8 @@ export interface IProps {
   // Number of days to show after
   showDaysBeforeCurrent?: number;
 
+  hideArrows?: boolean;
+
   dates?: any;
 };
 
@@ -105,14 +107,16 @@ const CalendarHorizontal: React.FC<IProps> = (props: any) => {
 
     <CalendarContainer>
 
-      <CalendarArrowButton
-        onClick={() => {
-          onRenderPastWeek();
-        }}>
-        <CalendarArrowText>
-          {'<'}
-        </CalendarArrowText>
-      </CalendarArrowButton>
+      {!props.hideArrows && (
+        <CalendarArrowButton
+          onClick={() => {
+            onRenderPastWeek();
+          }}>
+          <CalendarArrowText>
+            {'<'}
+          </CalendarArrowText>
+        </CalendarArrowButton>
+      )}
 
 
       <DatesCalendar
@@ -127,14 +131,16 @@ const CalendarHorizontal: React.FC<IProps> = (props: any) => {
       />
 
 
-      <CalendarArrowButton
-        onClick={() => {
-          onRenderNextWeek();
-        }}>
-        <CalendarArrowText>
-          {'>'}
-        </CalendarArrowText>
-      </CalendarArrowButton>
+      {!props.hideArrows && (
+        <CalendarArrowButton
+          onClick={() => {
+            onRenderNextWeek();
+          }}>
+          <CalendarArrowText>
+            {'>'}
+          </CalendarArrowText>
+        </CalendarArrowButton>
+      )}
 
     </CalendarContainer>
 
