@@ -2,6 +2,12 @@ import styled from 'styled-components';
 
 
 
+export interface IProps {
+  disabled?: boolean;
+}
+
+
+
 export const GridIconContent = styled.a`
   display: flex;
   flex-direction: column;
@@ -10,7 +16,8 @@ export const GridIconContent = styled.a`
   min-height: 70px;
   padding-top: 4px;
   padding-bottom: 4px;
-  cursor: pointer;
+  opacity: ${(props: IProps) => props.disabled ? 0.9 : 1};
+  cursor: ${(props: IProps) => props.disabled ? 'default' : 'pointer'};
 
   @media (max-width: 480px){
     flex: 1;

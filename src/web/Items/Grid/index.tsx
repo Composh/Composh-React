@@ -30,20 +30,28 @@ const GridIcon: React.FC<IProps> = (props: IProps) => {
 
 
 
+  function onPressComponent() {
+    if (props.disabled) {
+      return;
+    }
+
+    if (!props.disabled || !props.onPress) {
+      props.onPress();
+    }
+  }
+
+
+
   return (
 
     <GridIconContent
       className={className?.className}
 
-      // disabled={
-      //   props.disabled
-      //     ? props.disabled
-      //     : props.onPress
-      //       ? false
-      //       : true
-      // }
+      disabled={props.disabled}
       style={props.style}
-      onClick={(!props.disabled || !props.onPress) && props.onPress}>
+      onClick={() => {
+        onPressComponent();
+      }}>
 
       <IconContent
         style={props.iconStyle}>
