@@ -50,7 +50,7 @@ export const BlurModal = styled.div`
 export const ButtonSeparator = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%,
+  height: 100%;
   background-color: #A9ADAE;
   width: 1px;
 `;
