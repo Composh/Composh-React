@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Snackbar } from '@material-ui/core';
-
-// import { Container } from './styles';
+import {
+  SnackbarMui,
+} from './styled';
 
 
 
@@ -32,18 +32,16 @@ export interface IProps {
 
 
 
-const SnackBar: React.FC<IProps> = (props: any) => {
+const SnackBar: React.FC<IProps> = (props: IProps) => {
   return (
 
-    <Snackbar
-      style={{
-        zIndex: 9999,
-      }}
+    <SnackbarMui
       open={props.visible}
       autoHideDuration={1800}
       onClose={props.onClose}
       message={props.textMessage}
       action={props.action}
+      backgroundColor={props.backgroundColor || '#666666'}
 
       anchorOrigin={{
         vertical: 'top',
