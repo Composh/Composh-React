@@ -17,6 +17,7 @@ import Divider from './Divider';
 import Epigraph from './Epigraph';
 import FAB from './FAB';
 import FABItem from './FAB/Item';
+import FlatList from './FlatList';
 // import Footer from './Footer';
 // import Grid from './Grid';
 import Icon from './Icon';
@@ -70,6 +71,7 @@ export {
   Epigraph,
   FAB,
   FABItem,
+  FlatList,
   // Footer,
   Icon,
   Input,
