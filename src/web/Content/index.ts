@@ -9,9 +9,9 @@ export interface IProps {
 
 
 const Content = styled.div`
-  overflow: auto;
   display: flex;
   flex-direction: column;
+  overflow: auto;
   flex: 1;
   background-color: ${(props: IProps) => props.backgroundColor || 'transparent'};
 `;

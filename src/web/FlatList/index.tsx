@@ -8,7 +8,7 @@ import {
 
 
 export interface IProps {
-  loading: boolean;
+  loading?: boolean;
 
   data: Array<any>;
   keyExtractor?: any;
@@ -20,9 +20,9 @@ export interface IProps {
 
   renderItem: any;
   listHeaderComponent?: any;
-  listLoadingComponent: any;
+  listLoadingComponent?: any;
   listFooterComponent?: any;
-  listEmptyComponent: any;
+  listEmptyComponent?: any;
 }
 
 
