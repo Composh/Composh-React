@@ -28,6 +28,7 @@ const RelativeStyle = css`
 const Screen = styled.div`
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   min-height: -webkit-fill-available;
   background-color: ${(props: IProps) => props.backgroundColor || 'gray'};
   ${(props: IProps) => !props.relative ? AbsoluteStyle : RelativeStyle};
