@@ -67,36 +67,47 @@ const ListItem: React.FC<IProps> = (props: any) => {
 
       <InfoContainer>
 
-        {props.title && (
-          <ItemTitle
-            style={{
-              color: props.titleColor,
-              fontSize: props.titleSize,
-            }}>
-            {props.title}
-          </ItemTitle>
-        )}
+        {props.title && typeof props.title !== 'string'
+          ? props.title
+          : (
+            <ItemTitle
+              style={{
+                color: props.titleColor,
+                fontSize: props.titleSize,
+              }}>
+              {props.title}
+            </ItemTitle>
+          )
+        }
 
-        {props.subtitle && (
-          <ItemSubtitle
-            style={{
-              color: props.subtitleColor,
-              fontSize: props.subtitleSize,
-            }}>
-            {props.subtitle}
-          </ItemSubtitle>
-        )}
 
-        {props.thirdtitle && (
-          <ItemLastTitle
-            style={{
-              color: props.thirdtitleColor,
-              fontSize: props.thirdtitleSize,
-              fontStyle: 'italic',
-            }}>
-            {props.thirdtitle}
-          </ItemLastTitle>
-        )}
+        {props.subtitle && typeof props.subtitle !== 'string'
+          ? props.subtitle
+          : (
+            <ItemSubtitle
+              style={{
+                color: props.subtitleColor,
+                fontSize: props.subtitleSize,
+              }}>
+              {props.subtitle}
+            </ItemSubtitle>
+          )
+        }
+
+
+        {props.thirdtitle && typeof props.thirdtitle !== 'string'
+          ? props.thirdtitle
+          : (
+            <ItemLastTitle
+              style={{
+                color: props.thirdtitleColor,
+                fontSize: props.thirdtitleSize,
+                fontStyle: 'italic',
+              }}>
+              {props.thirdtitle}
+            </ItemLastTitle>
+          )
+        }
 
       </InfoContainer>
 
