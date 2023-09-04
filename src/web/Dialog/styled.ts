@@ -2,6 +2,12 @@ import styled from 'styled-components';
 
 
 
+interface IProps {
+  color?: string;
+}
+
+
+
 export const ActivityIndicatorWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -13,6 +19,10 @@ export const ActivityIndicatorWrapper = styled.div`
   shadow-opacity: 0.7;
   shadow-radius: 10px;
   elevation: 5;
+
+  .MuiCircularProgress-root {
+    color: ${(props: IProps) => props.color ? props.color : 'blue'};
+  }
 `;
 
 export const TextWait = styled.p`
@@ -35,4 +45,8 @@ export const ModalBackground = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
+
+  .MuiCircularProgress-root {
+    color: ${(props: IProps) => props.color ? props.color : 'blue'};
+  }
 `;

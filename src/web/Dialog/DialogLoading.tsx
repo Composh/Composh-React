@@ -34,11 +34,14 @@ const DialogLoading = (props: any) => {
     <>
       {visible && (
 
-        <ModalBackground style={{
-          backgroundColor: overlayBackground || 'rgba(0, 0, 0, 0.5)',
-        }}>
+        <ModalBackground
+          color={indicatorColor}
+          style={{
+            backgroundColor: overlayBackground || 'rgba(0, 0, 0, 0.5)',
+          }}>
 
           <CircularProgress
+            // color={indicatorColor}
             size={sizeLoad}
           />
 
@@ -50,7 +53,7 @@ const DialogLoading = (props: any) => {
           }}>
 
             <CircularProgress
-              color={indicatorColor}
+              // color={indicatorColor}
               size={sizeLoad}
             />
 

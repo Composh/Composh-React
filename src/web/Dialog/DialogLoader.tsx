@@ -45,16 +45,18 @@ const DialogLoader = (props: any) => {
       visible={visible}
       overlayColor={overlayBackground || 'rgba(0, 0, 0, 0.5)'}>
 
-      <ActivityIndicatorWrapper style={{
-        height: 95,
-        width: 95,
-        backgroundColor: backgroundLoader || 'white',
-        borderRadius: borderRadiusLoader || 0,
-      }}>
+      <ActivityIndicatorWrapper
+        color={indicatorColor}
+        style={{
+          height: 95,
+          width: 95,
+          backgroundColor: backgroundLoader || 'white',
+          borderRadius: borderRadiusLoader || 0,
+        }}>
 
 
         <CircularProgress
-          color={indicatorColor}
+          // color={indicatorColor}
           size={sizeLoad}
         />
 
