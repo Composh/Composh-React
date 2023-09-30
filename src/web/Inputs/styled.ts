@@ -72,9 +72,15 @@ export const BackgroundStyle = css`
 `;
 
 export const BorderStyle = css`
-  border-color: ${(props: IProps) => props.borderColor};
+  border-color: ${(props: IProps) => props.borderColor || 'transparent'};
   border-style: solid;
   border-width: ${(props: IProps) => props.borderWidth || 0}px;
+`;
+
+export const BorderNone = css`
+  border-color: transparent;
+  border-style: solid;
+  border-width: 0;
 `;
 
 export const WrapStyle = css`
@@ -100,7 +106,7 @@ export const InputViewStyle = styled.div`
   ${(props: IProps) => props.wrapView && WrapStyle};
   ${(props: IProps) => props.multiline && MultilineStyle};
   ${(props: IProps) => props.backgroundColor && BackgroundStyle};
-  ${(props: IProps) => props.borderColor && BorderStyle};
+  ${(props: IProps) => props.borderColor ? BorderStyle : BorderNone};
   ${(props: IProps) => !props.noShadow && ShadowStyle};
 `;
 

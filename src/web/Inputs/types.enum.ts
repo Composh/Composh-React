@@ -54,8 +54,7 @@ export function ETypesMasks() {
 
 
 export function ETypesInput() {
-  const type = 'WEB';
-
+  // Web
   const objectJS: ETypesInputClass = {
     EMAIL: 'email',
     NUMBER: 'text', // number
@@ -65,14 +64,15 @@ export function ETypesInput() {
     URL: 'url',
   };
 
-  const objectNative: ETypesInputClass = {
-    EMAIL: 'email-address',
-    NUMBER: 'numeric',
-    PASSWORD: 'password', // FIXME
-    TEL_PHONE: 'phone-pad',
-    TEXT: 'default',
-    URL: 'url',
-  };
+  // // Mobile
+  // const objectNative: ETypesInputClass = {
+  //   EMAIL: 'email-address',
+  //   NUMBER: 'numeric',
+  //   PASSWORD: 'password', // FIXME
+  //   TEL_PHONE: 'phone-pad',
+  //   TEXT: 'default',
+  //   URL: 'url',
+  // };
 
-  return type === 'WEB' ? objectJS : objectNative;
+  return objectJS;
 }

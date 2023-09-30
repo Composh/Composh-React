@@ -105,7 +105,7 @@ const InputText: React.FC<IProps> = (props: IProps) => {
   const enumPasswordInput = ETypesInput().PASSWORD;
 
   const correctAutoProps = props.autoCorrect ? 'on' : 'off'; // Web
-  // const correctAutoProps = props.autoCorrect ? true' : false; // Mobile
+  // const correctAutoProps = props.autoCorrect ? true : false; // Mobile
 
 
   const [textValue, setTextValue] = useState<string>('');
@@ -113,7 +113,7 @@ const InputText: React.FC<IProps> = (props: IProps) => {
 
   const [isPassword, setIsPassword] = useState<boolean>(false);
 
-  const [typeKeyboard, setTypeKeyboard] = useState<string>('');
+  const [typeKeyboard, setTypeKeyboard] = useState<any | string>('');
 
   const [hasMask, setHasMask] = useState<boolean>(false);
   const [typeMaskInput, setTypeMaskInput] = useState<any>(null);
@@ -280,8 +280,10 @@ const InputText: React.FC<IProps> = (props: IProps) => {
         // returnKeyType={'next'}
         inputTextCenter={props.inputTextCenter}
 
-        disabled={props.disabled}
-        // editable={returnEditable()}
+        disabled={props.disabled} // Web
+        // editable={!props.disabled} // Mobile
+        // selectTextOnFocus={!props.disabled} // Mobile
+
         autoCorrect={correctAutoProps}
         autoCapitalize={props.autoCapitalize}
 
@@ -299,9 +301,12 @@ const InputText: React.FC<IProps> = (props: IProps) => {
 
         multiline={props.password ? false : props.multiline}
 
-        onChange={(event) => {
+        onChange={(event) => { // Web
           _onChangeText(event.target.value);
         }}
+        // onChangeText={(eventText) => { // Mobile
+        //   _onChangeText(eventText);
+        // }}
 
         onBlur={props.onBlur}
 
@@ -313,12 +318,13 @@ const InputText: React.FC<IProps> = (props: IProps) => {
         value={textValue}
 
         placeholder={props.placeholderText}
+        // placeholderTextColor={props.placeholderTextColor}
 
-        // keyboardType={props.password ? 'default' : typeKeyboard}
-        type={isPassword ? enumPasswordInput : typeKeyboard} // secureTextEntry={isPassword}
+        type={isPassword ? enumPasswordInput : typeKeyboard} // Web
+        // keyboardType={props.password ? 'default' : typeKeyboard} // Mobile
+        // secureTextEntry={isPassword} // Mobile
 
-      // placeholderTextColor={props.placeholderTextColor}
-      // underlineColorAndroid={'transparent'}
+      // underlineColorAndroid={'transparent'} // Mobile
       />
 
 

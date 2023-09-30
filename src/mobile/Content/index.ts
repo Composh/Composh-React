@@ -8,7 +8,13 @@ export interface IProps {
 
 
 
-const Content = styled.ScrollView`
+const Content = styled.ScrollView.attrs({
+  contentContainerStyle: {
+    flex: 1,
+  },
+})`
+  display: flex;
+  flex-direction: column;
   flex: 1;
   background-color: ${(props: IProps) => props.backgroundColor || 'transparent'};
 `;
