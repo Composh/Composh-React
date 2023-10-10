@@ -10,3 +10,8 @@ export const ComposhFlatListStyle = styled(Content)`
   justify-content: flex-start;
   flex: 1;
 `;
+
+export const ComposhFlatListContent = styled.div`
+  display: flex;
+  flex-direction: column;
+`;

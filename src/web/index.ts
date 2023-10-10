@@ -19,7 +19,7 @@ import FAB from './FAB';
 import FABItem from './FAB/Item';
 import FlatList from './FlatList';
 // import Footer from './Footer';
-// import Grid from './Grid';
+import Grid from './Grid';
 import Icon from './Icon';
 import Input from './Inputs'; // import SearchBar
 import Items from './Items';
@@ -73,6 +73,7 @@ export {
   FABItem,
   FlatList,
   // Footer,
+  Grid,
   Icon,
   Input,
   Items,

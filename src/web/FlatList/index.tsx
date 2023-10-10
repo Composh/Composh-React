@@ -3,6 +3,7 @@ import Container from '../Container';
 
 import {
   ComposhFlatListStyle,
+  ComposhFlatListContent,
 } from './styled';
 
 
@@ -14,6 +15,8 @@ export interface IProps {
   keyExtractor?: any;
 
   refreshControl?: any;
+
+  style?: any;
 
   contentContainerStyle?: any;
   onEndReachedThreshold?: any;
@@ -43,14 +46,16 @@ const FlatList: React.FC<IProps> = (props: IProps) => {
 
       {!props.loading && (props.data && props.data?.length !== 0) && (
         <ComposhFlatListStyle
-          style={props.contentContainerStyle}>
+          style={props.style}>
 
           {props.listHeaderComponent && props.listHeaderComponent}
 
-
-          {props.data?.length !== 0 && props.data?.map((item: any, index: any) => (
-            props.renderItem(item, index)
-          ))}
+          <ComposhFlatListContent
+            style={props.contentContainerStyle}>
+            {props.data?.length !== 0 && props.data?.map((item: any, index: any) => (
+              props.renderItem(item, index)
+            ))}
+          </ComposhFlatListContent>
 
         </ComposhFlatListStyle>
       )}
