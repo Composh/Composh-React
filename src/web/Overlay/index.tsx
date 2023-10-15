@@ -8,7 +8,7 @@ import {
 
 
 
-interface IProps {
+export interface IProps {
   visible?: boolean;
 
   onOverlayPress?: any; // Function;
@@ -17,6 +17,7 @@ interface IProps {
   showBackground?: boolean;
 
   style?: any;
+  containerStyle?: any; // ViewPropTypes.style,
 
   children?: any;
 }
@@ -53,7 +54,8 @@ const Overlay: React.FC<IProps> = (props: any) => {
             onClick={onPressOverlayFunction}
           />
 
-          <OverlayChildren>
+          <OverlayChildren
+            style={props.containerStyle}>
             {props.children}
           </OverlayChildren>
 

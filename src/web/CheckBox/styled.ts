@@ -3,8 +3,9 @@ import styled from 'styled-components';
 
 
 export interface IProps {
+  disabled?: boolean;
   center?: boolean;
-  direction?: string;
+  direction?: 'LEFT' | 'RIGHT';
   backgroundColor?: string;
   border?: boolean;
   borderColor?: string;
@@ -20,6 +21,8 @@ export const CheckBoxButton = styled.a`
   padding-top: 2px;
   padding-bottom: 2px;
   cursor: pointer;
+
+  opacity: ${(props: IProps) => props.disabled ? 0.5 : 1};
 
   ${(props: IProps) => props.center && 'align-items: center'};
 `;

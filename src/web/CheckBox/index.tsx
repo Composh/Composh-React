@@ -16,7 +16,7 @@ export interface IProps {
   center?: any;
   checked?: any;
   disabled?: any;
-
+  style?: any;
   title?: string | object;
   checkedTitle?: any;
   uncheckedTitle?: any;
@@ -44,6 +44,10 @@ export interface IProps {
 
 
 const CheckBox: React.FC<IProps> = (props) => {
+  const className: any = { ...props };
+
+
+
   function renderIconInstance() {
     return (
 
@@ -64,7 +68,10 @@ const CheckBox: React.FC<IProps> = (props) => {
   return (
 
     <CheckBoxButton
+      className={className?.className}
+      disabled={props.disabled}
       center={props.center}
+      style={props?.style}
       onClick={!props.disabled ? props.onPress : null}>
 
       <CheckBoxWrapper>

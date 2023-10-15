@@ -25,7 +25,11 @@ const ListSection: React.FC<IProps> = (props) => {
 
 
   return (
-    <SectionContainer className={className?.className} style={props.style}>
+
+    <SectionContainer
+      className={className?.className}
+      style={props.style}>
+
       {props?.sections.map((section: any, index: number) => {
         props.keyExtractor(section, index);
 
@@ -51,7 +55,9 @@ const ListSection: React.FC<IProps> = (props) => {
 
         );
       })}
+
     </SectionContainer>
+
   );
 };
 

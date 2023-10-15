@@ -31,6 +31,7 @@ export interface IProps {
   showBackground?: boolean;
 
   style?: any;
+  containerStyle?: any; // ViewPropTypes.style,
 
   children?: any;
 }
@@ -108,6 +109,7 @@ const Overlay: React.FC<IProps> = (props) => {
 
           <AnimatedChildren
             style={{
+              ...props.containerStyle,
               opacity: opacity,
             }}>
             {props.children}
