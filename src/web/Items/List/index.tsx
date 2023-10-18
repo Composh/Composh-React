@@ -22,16 +22,16 @@ export interface IProps {
   iconLeft?: any;
   iconRight?: any;
 
-  title?: string | null;
-  titleSize?: string; // FIXME: SET DEFAULT AND PASS TO STYLED.TS
+  title?: string | any | null;
+  titleSize?: string;
   titleColor?: string;
 
-  subtitle?: any | null; // string
-  subtitleSize?: string; // FIXME: SET DEFAULT AND PASS TO STYLED.TS
+  subtitle?: string | any | null;
+  subtitleSize?: string;
   subtitleColor?: string;
 
-  thirdtitle?: string | null;
-  thirdtitleSize?: string; // FIXME: SET DEFAULT AND PASS TO STYLED.TS
+  thirdtitle?: string | any | null;
+  thirdtitleSize?: string;
   thirdtitleColor?: string;
 }
 
@@ -46,17 +46,10 @@ const ListItem: React.FC<IProps> = (props: any) => {
 
     <ItemContainer
       className={className?.className}
-
-      // disabled={
-      //   props.disabled
-      //     ? props.disabled
-      //     : props.onPress
-      //       ? false
-      //       : true
-      // }
+      disabled={props.disabled}
       borderBottomColor={props.border ? '#878787' : 'transparent'}
       borderBottomWidth={0.5}
-      onClick={(!props.disabled || !props.onPress) && props.onPress}>
+      onClick={(!props.disabled || !props.onPress) ? props.onPress : null}>
 
       {props.iconLeft && (
         <IconContent>
@@ -65,51 +58,51 @@ const ListItem: React.FC<IProps> = (props: any) => {
       )}
 
 
+
       <InfoContainer>
 
-        {props.title && typeof props.title !== 'string'
-          ? props.title
-          : (
-            <ItemTitle
-              style={{
-                color: props.titleColor,
-                fontSize: props.titleSize,
-              }}>
-              {props.title}
-            </ItemTitle>
-          )
-        }
+        {props.title && typeof props.title !== 'string' && (
+          props.title
+        )}
+
+        {props.title && typeof props.title === 'string' && (
+          <ItemTitle
+            color={props.titleColor}
+            fontSize={props.titleSize}>
+            {props.title}
+          </ItemTitle>
+        )}
 
 
-        {props.subtitle && typeof props.subtitle !== 'string'
-          ? props.subtitle
-          : (
-            <ItemSubtitle
-              style={{
-                color: props.subtitleColor,
-                fontSize: props.subtitleSize,
-              }}>
-              {props.subtitle}
-            </ItemSubtitle>
-          )
-        }
+
+        {props.subtitle && typeof props.subtitle !== 'string' && (
+          props.subtitle
+        )}
+
+        {props.subtitle && typeof props.subtitle === 'string' && (
+          <ItemSubtitle
+            color={props.subtitleColor}
+            fontSize={props.subtitleSize}>
+            {props.subtitle}
+          </ItemSubtitle>
+        )}
 
 
-        {props.thirdtitle && typeof props.thirdtitle !== 'string'
-          ? props.thirdtitle
-          : (
-            <ItemLastTitle
-              style={{
-                color: props.thirdtitleColor,
-                fontSize: props.thirdtitleSize,
-                fontStyle: 'italic',
-              }}>
-              {props.thirdtitle}
-            </ItemLastTitle>
-          )
-        }
+
+        {props.thirdtitle && typeof props.thirdtitle !== 'string' && (
+          props.thirdtitle
+        )}
+
+        {props.thirdtitle && typeof props.thirdtitle === 'string' && (
+          <ItemLastTitle
+            color={props.thirdtitleColor}
+            fontSize={props.thirdtitleSize}>
+            {props.thirdtitle}
+          </ItemLastTitle>
+        )}
 
       </InfoContainer>
+
 
 
       {props.iconRight && (
