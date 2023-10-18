@@ -1,6 +1,6 @@
 # composh-react
 
-> Components + React + Osh = A React Component Library
+> Components + Osh + React = A React Component Library
 
 
 [![NPM](https://img.shields.io/npm/v/composh-react.svg)](https://www.npmjs.com/package/composh-react) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
@@ -32,7 +32,7 @@ import {
 
 const ScreenName: React.FC = () => {
   return (
-    
+
     <Accordion />
 
   )
@@ -43,7 +43,7 @@ const ScreenName: React.FC = () => {
 
 ## License
 
-© MIT 
+© MIT
 © [italosena9](https://github.com/italosena9)
 
 

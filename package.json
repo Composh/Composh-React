@@ -1,7 +1,7 @@
 {
   "name": "composh-react",
-  "description": "React + Component + Osh = A React Native Component Library",
-  "version": "1.0.32",
+  "description": "Components + Osh + React = A React Native Component Library",
+  "version": "2.0.0",
   "author": "Italo Sena",
   "license": "MIT",
   "homepage": "https://composh.io/",
