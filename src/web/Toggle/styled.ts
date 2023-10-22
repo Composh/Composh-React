@@ -90,3 +90,12 @@ export const ToggleText = styled.p`
   color: ${(props: ITextProps) => props.colorText};
   ${(props: ITextProps) => props.marginLeftText && `margin-left: ${props.marginLeftText || 0}px`};
 `;
+
+
+export const ToggleIconRightView = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 4px;
+`;

@@ -13,11 +13,12 @@ import {
   // ToggleButtonStyle,
   ToggleIconView,
   ToggleText,
+  ToggleIconRightView,
 } from './styled';
 
 
 
-interface IProps {
+export interface IProps {
   disabled?: boolean;
   noPress?: boolean;
 
@@ -43,6 +44,7 @@ interface IProps {
   borderWidth?: number;
 
   iconContent?: any;
+  iconRight?: any;
   onPress?: any;
 
   textStyle?: any;
@@ -143,6 +145,13 @@ const Toggle: React.FC<IProps> = (props: IProps) => {
           }
 
         </ToggleText>
+      )}
+
+
+      {!props.children && props.iconRight && (
+        <ToggleIconRightView>
+          {props.iconRight}
+        </ToggleIconRightView>
       )}
 
     </ToggleButtonContent>
