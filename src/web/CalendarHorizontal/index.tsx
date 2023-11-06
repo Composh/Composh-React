@@ -44,7 +44,7 @@ const CalendarHorizontal: React.FC<IProps> = (props: IProps) => {
 
 
 
-  const getDates = (): Array<Date> => {
+  const getArrayDates = (): Array<Date> => {
     const startDay = new Date(props.startDate);
     startDay.setDate(startDay.getDate() - 1);
 
@@ -86,28 +86,33 @@ const CalendarHorizontal: React.FC<IProps> = (props: IProps) => {
   };
 
 
-  const formatedDays = () => {
-    const initial = currectCount - 1;
-    const final = showDates + initial;
-    const result = dates.slice(initial, final);
+  const formattedDays = () => {
+    let result: Array<any> = [];
 
-    if (!result.includes(props?.selectedDate || new Date())) {
-      const last_date = result.slice(-1)[0];
+    if (dates?.length > 0) {
+      const initial = currectCount - 1;
+      const final = showDates + initial;
+      result = dates?.slice(initial, final);
 
-      if (last_date > (props.selectedDate || new Date())) {
-        props.onSelectDate(result[0]);
-      }
-      else {
-        props.onSelectDate(last_date);
+      if (!result?.includes(props?.selectedDate || new Date())) {
+        const last_date = result?.slice(-1)[0];
+
+        if (last_date > (props.selectedDate || new Date())) {
+          props.onSelectDate(result[0]);
+        }
+        else {
+          props.onSelectDate(last_date);
+        }
       }
     }
+
     return result;
   };
 
 
 
   useEffect(() => {
-    setDates(getDates);
+    setDates(getArrayDates);
   }, [props.startDate, props.endDate]);
 
 
@@ -134,7 +139,7 @@ const CalendarHorizontal: React.FC<IProps> = (props: IProps) => {
         textColor={props.textColor}
         selectDate={props?.selectedDate || new Date()}
         backgroundColor={props.backgroundColor}
-        dates={formatedDays()}
+        dates={formattedDays()}
         onSelectDay={(date: Date) => {
           props.onSelectDate(date);
         }}
