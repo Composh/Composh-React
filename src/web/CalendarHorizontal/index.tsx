@@ -15,6 +15,8 @@ import {
 
 
 export interface IProps {
+  hideArrows?: boolean;
+
   color?: string;
   textColor?: string;
   backgroundColor?: Array<string> | string;
@@ -114,15 +116,17 @@ const CalendarHorizontal: React.FC<IProps> = (props: IProps) => {
 
     <CalendarContainer>
 
-      <CalendarArrowButton
-        onClick={() => {
-          onRenderPastWeek();
-        }}>
-        <CalendarArrowText
-          color={props.textColor}>
-          {'<'}
-        </CalendarArrowText>
-      </CalendarArrowButton>
+      {!props.hideArrows && (
+        <CalendarArrowButton
+          onClick={() => {
+            onRenderPastWeek();
+          }}>
+          <CalendarArrowText
+            color={props.textColor}>
+            {'<'}
+          </CalendarArrowText>
+        </CalendarArrowButton>
+      )}
 
 
       <DatesCalendar
@@ -138,15 +142,17 @@ const CalendarHorizontal: React.FC<IProps> = (props: IProps) => {
       />
 
 
-      <CalendarArrowButton
-        onClick={() => {
-          onRenderNextWeek();
-        }}>
-        <CalendarArrowText
-          color={props.textColor}>
-          {'>'}
-        </CalendarArrowText>
-      </CalendarArrowButton>
+      {!props.hideArrows && (
+        <CalendarArrowButton
+          onClick={() => {
+            onRenderNextWeek();
+          }}>
+          <CalendarArrowText
+            color={props.textColor}>
+            {'>'}
+          </CalendarArrowText>
+        </CalendarArrowButton>
+      )}
 
     </CalendarContainer>
 
