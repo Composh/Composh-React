@@ -1,9 +1,17 @@
-import styled from 'styled-components';
+import styled,
+{
+  css,
+} from 'styled-components';
 
 
 
-interface IProps {
+export interface IProps {
+  flexDirection?: string;
+  width?: number;
+  height?: number;
+  backgroundColor?: string;
   color?: string;
+  borderRadius?: number;
 }
 
 
@@ -14,39 +22,42 @@ export const ActivityIndicatorWrapper = styled.div`
   align-items: center;
   justify-content: center;
 
+  width: ${(props: IProps) => props.width || 95}px;
+  height: ${(props: IProps) => props.height || 95}px;
+  background-color: ${(props: IProps) => props.backgroundColor || '#ffffff'};
+  border-radius: ${(props: IProps) => props.borderRadius || 5}px;
+
   shadow-offset: 5px 5px;
   shadow-color: gray;
   shadow-opacity: 0.7;
   shadow-radius: 10px;
   elevation: 5;
-
-  .MuiCircularProgress-root {
-    color: ${(props: IProps) => props.color ? props.color : 'blue'};
-  }
-`;
-
-export const TextWait = styled.p`
-  margin-top: 8px;
-  font-size: 12.5px;
-  text-align: center;
 `;
 
 
 
-export const ModalBackground = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+export const DirectionRow = css`
+  flex-direction: row;
   align-items: center;
+`;
+
+export const DirectionColumn = css`
   flex-direction: column;
   justify-content: center;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+`;
 
-  .MuiCircularProgress-root {
-    color: ${(props: IProps) => props.color ? props.color : 'blue'};
-  }
+export const LoaderContent = styled.div`
+  display: flex;
+
+  ${(props: IProps) => props.flexDirection === 'row' && DirectionRow};
+  ${(props: IProps) => props.flexDirection === 'column' && DirectionColumn};
+`;
+
+
+export const TextWait = styled.p`
+  margin-top: ${(props: IProps) => props.flexDirection === 'row' ? 0 : 15}px;
+  margin-left: ${(props: IProps) => props.flexDirection === 'row' ? 10 : 0}px;
+  color: ${(props: IProps) => props.color || '#000000'};
+  font-size: 12.5px;
+  text-align: ${(props: IProps) => props.flexDirection === 'row' ? 'left' : 'center'};
 `;
