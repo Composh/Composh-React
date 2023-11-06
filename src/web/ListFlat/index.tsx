@@ -30,7 +30,7 @@ export interface IProps {
 
 
 
-const FlatList: React.FC<IProps> = (props: IProps) => {
+const ListFlat: React.FC<IProps> = (props: IProps) => {
   return (
 
     <Container>
@@ -67,4 +67,4 @@ const FlatList: React.FC<IProps> = (props: IProps) => {
 
 
 
-export default FlatList;
+export default ListFlat;
