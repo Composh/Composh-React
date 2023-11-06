@@ -12,7 +12,6 @@ import CheckBox from './CheckBox';
 import Chip from './Chip';
 import Container from './Container';
 import Content from './Content';
-import Dialog from './Dialog';
 import Divider from './Divider';
 import Epigraph from './Epigraph';
 import FAB from './FAB';
@@ -25,6 +24,8 @@ import Input from './Inputs'; // import SearchBar
 import Items from './Items';
 import LinearGradient from './LinearGradient';
 import ListSection from './ListSection';
+import ListTable from './ListTable';
+import Loader from './Loader';
 // import MenuOverflow from './MenuOverflow';
 import Overlay from './Overlay';
 import Radio from './Radio';
@@ -66,7 +67,6 @@ export {
   Chip,
   Container,
   Content,
-  Dialog,
   Divider,
   Epigraph,
   FAB,
@@ -79,6 +79,8 @@ export {
   Items,
   LinearGradient,
   ListSection,
+  ListTable,
+  Loader,
   // MenuOverflow,
   Overlay,
   Radio,

@@ -30,7 +30,7 @@ export interface IProps {
   isActive: boolean;
 
   // Called when user taps a date
-  onPress: (index: number) => void;
+  onPress: (date: Date) => void;
 
   // Called after date is rendered to pass its width up to the parent component
   // onRender: (index: number, width: number) => void;
@@ -67,7 +67,7 @@ const DateCalendar: React.FC<IProps> = (props: IProps) => {
   // Call 'onPress' passed from the parent component when date is pressed
   const onPress = () => {
     if (props.onPress) {
-      props.onPress(props.index);
+      props.onPress(props.date);
     }
   };
 

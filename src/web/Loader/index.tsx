@@ -19,11 +19,12 @@ import {
 
 
 
-const DialogLoader = (props: any) => {
+const Loader = (props: any) => {
   const {
     visible,
-    // heightLoader,
-    // widthLoader,
+    display = 'row',
+    heightLoader,
+    widthLoader,
     overlayBackground,
     backgroundLoader,
     borderRadiusLoader,
@@ -45,18 +46,17 @@ const DialogLoader = (props: any) => {
       visible={visible}
       overlayColor={overlayBackground || 'rgba(0, 0, 0, 0.5)'}>
 
-      <ActivityIndicatorWrapper
-        color={indicatorColor}
-        style={{
-          height: 95,
-          width: 95,
-          backgroundColor: backgroundLoader || 'white',
-          borderRadius: borderRadiusLoader || 0,
-        }}>
-
+      <ActivityIndicatorWrapper style={{
+        display: 'flex',
+        flexDirection: display,
+        height: heightLoader || 95,
+        width: widthLoader || 95,
+        backgroundColor: backgroundLoader || 'white',
+        borderRadius: borderRadiusLoader || 0,
+      }}>
 
         <CircularProgress
-          // color={indicatorColor}
+          color={indicatorColor}
           size={sizeLoad}
         />
 
@@ -78,4 +78,4 @@ const DialogLoader = (props: any) => {
 
 
 
-export default DialogLoader;
+export default Loader;

@@ -16,90 +16,97 @@ import {
 
 export interface IProps {
   color?: string;
-
   textColor?: string;
-
   backgroundColor?: Array<string> | string;
 
-  // Optional prop to pass a custom date to use instead of today
-  currentDate?: Date;
+  quantityDates?: 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
-  // Callback executed when user taps on a date
-  onSelectDate?: any; // (date: Moment | Date) => any;
+  selectedDate?: Date;
+  startDate: Date;
+  endDate: Date;
 
-  // Number of days to show before today or custom current date
-  showDaysAfterCurrent?: number;
+  onSelectDate?: any; // (date: Moment | Date) => any; // Callback executed when user taps on a date
 
-  // Number of days to show after
-  showDaysBeforeCurrent?: number;
-
-  dates?: any;
+  showDaysAfterCurrent?: number; // Number of days to show before today or custom current date
+  showDaysBeforeCurrent?: number; // Number of days to show after
 };
 
 
 
 const CalendarHorizontal: React.FC<IProps> = (props: IProps) => {
-  const [allDatesHaveRendered, setAllDatesHaveRendered] = useState(false);
-
-  const [currentDateIndex, setCurrentDateIndex] = useState(0);
-  const [showDaysBeforeCurrent, setShowDaysBeforeCurrent] = useState(0);
+  const showDates = props?.quantityDates || 7;
 
   const [dates, setDates] = useState(new Array<Date>());
-
-  const [dayWidths, setDayWidths] = useState(undefined);
-  const [visibleMonths, setVisibleMonths] = useState(undefined);
-  const [visibleYears, setVisibleYears] = useState(undefined);
+  const [currectCount, setCurretCount] = useState(1);
+  const [totalDates, setTotalDates] = useState(1);
 
 
 
-  const formatMonth = (date: Date): string => ''; // date.format('MMMM');
-  const formatYear = (date: Date): string => ''; // date.format('YYYY');
-
-
-  // Get an array of dates for showing in a horizontal scroll view
   const getDates = (): Array<Date> => {
-    const {
-      currentDate,
-      showDaysAfterCurrent,
-      dates,
-    } = props;
+    const startDay = new Date(props.startDate);
+    startDay.setDate(startDay.getDate() - 1);
 
-    // Go 'showDaysBeforeCurrent' ago before today or custom 'currentDate'
-    const startDay = currentDate ? new Date(currentDate) : new Date();
-    startDay.setDate(startDay.getDate() - (showDaysBeforeCurrent + 1));
+    const endDay = new Date(props.endDate);
 
-    // Number of days in total
-    // const totalDaysCount = showDaysBeforeCurrent + showDaysAfterCurrent + 1;
-    const totalDaysCount = showDaysAfterCurrent ? showDaysBeforeCurrent + showDaysAfterCurrent : showDaysAfterCurrent;
+    const totalDaysCount = Math.abs((endDay.getTime() - startDay.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+    const startDate = new Date(props.startDate);
 
-    // And return an array of 'totalDaysCount' dates
-    return dates ? dates : [...Array(totalDaysCount)].map((_) => new Date(startDay.setDate(startDay.getDate() + 1)));
+    let datesFormatted: Date[] = [];
+
+    if (totalDaysCount > 0) {
+      datesFormatted = [...Array(totalDaysCount)].map((_, index) => {
+        const newDate = new Date(startDate);
+        newDate.setDate(startDate.getDate() + index);
+        return newDate;
+      });
+    }
+    else {
+      datesFormatted.push(startDay);
+    }
+
+    setTotalDates(datesFormatted.length);
+
+    return datesFormatted;
   };
 
 
-  // Update visible month(s) and year(s) of the dates currently visible on the screen
   const onRenderPastWeek = () => {
-    // TODO
-    console.log('FOWARD');
-  };
-
-
-  const onSelectDay = (index: number) => {
-    setCurrentDateIndex(index);
-    props.onSelectDate(dates[index]);
+    if (currectCount > 1) {
+      setCurretCount((prev) => prev - 1);
+    }
   };
 
 
   const onRenderNextWeek = () => {
-    // TODO
-    console.log('NEXT');
+    if (currectCount < totalDates - showDates) {
+      setCurretCount((prev) => prev + 1);
+    }
+  };
+
+
+  const formatedDays = () => {
+    const initial = currectCount - 1;
+    const final = showDates + initial;
+    const result = dates.slice(initial, final);
+
+    if (!result.includes(props?.selectedDate || new Date())) {
+      const last_date = result.slice(-1)[0];
+
+      if (last_date > (props.selectedDate || new Date())) {
+        props.onSelectDate(result[0]);
+      }
+      else {
+        props.onSelectDate(last_date);
+      }
+    }
+    return result;
   };
 
 
 
   useEffect(() => {
     setDates(getDates);
-  }, []);
+  }, [props.startDate, props.endDate]);
 
 
 
@@ -121,11 +128,11 @@ const CalendarHorizontal: React.FC<IProps> = (props: IProps) => {
       <DatesCalendar
         color={props.color}
         textColor={props.textColor}
+        selectDate={props?.selectedDate || new Date()}
         backgroundColor={props.backgroundColor}
-        dates={dates}
-        currentDateIndex={currentDateIndex}
-        onSelectDay={(index: number) => {
-          onSelectDay(index);
+        dates={formatedDays()}
+        onSelectDay={(date: Date) => {
+          props.onSelectDate(date);
         }}
       // onRenderDay={onRenderDay}
       />
@@ -144,15 +151,6 @@ const CalendarHorizontal: React.FC<IProps> = (props: IProps) => {
     </CalendarContainer>
 
   );
-};
-
-
-
-CalendarHorizontal.defaultProps = {
-  // Show days before the current day
-  showDaysBeforeCurrent: 0,
-  // And after
-  showDaysAfterCurrent: 7,
 };
 
 
