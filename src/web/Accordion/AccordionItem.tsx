@@ -29,29 +29,38 @@ export interface IProps {
 
 
 const AccordionItem: React.FC<IProps> = (props) => {
+  function onOpenCloseAccordion() {
+    props.onAccordionOpen && !props.expanded && props.onAccordionOpen(props.item, props.index);
+    props.onAccordionClose && props.expanded && props.onAccordionClose(props.item, props.index);
+    props.setSelected(props.index);
+  }
+
+
+
   return (
 
     <AccordionItemStyled>
 
-      <AccordionItemTouchable
-        onClick={() => {
-          props.onAccordionOpen && !props.expanded && props.onAccordionOpen(props.item, props.index);
-          props.onAccordionClose && props.expanded && props.onAccordionClose(props.item, props.index);
-          props.setSelected(props.index);
-        }}>
-
-        <AccordionItemRenderView>
-          {props.renderHeader ? (
-            props.renderHeader(props.item, props.expanded)
-          ) : (
-            <DefaultHeader
-              expanded={props.expanded}
-              expandedIcon={props.expandedIcon}
-              headerStyle={props.headerStyle}
-              title={props.item.title}
-            />
+      <AccordionItemTouchable>
+        {props.renderHeader
+          ? (props.renderHeader(
+            props.item,
+            props.expanded,
+            onOpenCloseAccordion,
+          ))
+          : (
+            <AccordionItemRenderView
+              onClick={() => {
+                onOpenCloseAccordion();
+              }}>
+              <DefaultHeader
+                expanded={props.expanded}
+                expandedIcon={props.expandedIcon}
+                headerStyle={props.headerStyle}
+                title={props.item.title}
+              />
+            </AccordionItemRenderView>
           )}
-        </AccordionItemRenderView>
 
       </AccordionItemTouchable>
 

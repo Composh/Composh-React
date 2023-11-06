@@ -1,14 +1,14 @@
-import styled,
-{
-  css,
-} from 'styled-components';
+import styled from 'styled-components';
 
 // import LinearGradient from 'react-native-linear-gradient';
+
+import color from 'color';
 
 import {
   LinearGradient,
 } from '..';
 
+const normalColor = '#000000';
 const accentColor = '#FE2472';
 
 
@@ -43,7 +43,7 @@ export const CalendarArrowButton = styled.a`
 `;
 
 export const CalendarArrowText = styled.p`
-  color: #ffffff;
+  color: ${(props: IProps) => props.color || normalColor};
   font-size: 18px;
 `;
 
@@ -83,30 +83,27 @@ export const DayView = styled.div`
 `;
 
 
-export const TextStyle = css`
-  color: ${(props: IProps) => props.active
-    ? props.color || accentColor
-    : 'rgba(255, 255, 255, 0.5)'};
+
+export const DayItem = styled.p`
+  margin-bottom: 1px;
+  color: ${(props: IProps) => color(props.color || normalColor).alpha(0.6).toString()};
+  font-size: ${(props: IProps) => props.size ? `${props.size * 0.9}px` : '9px'};
   text-align: center;
 `;
 
-export const DayItem = styled.p`
-  ${TextStyle};
-  margin-bottom: 1px;
-  font-size: ${(props: IProps) => props.size ? `${props.size * 0.9}px` : '9px'};
-`;
-
 export const DateItem = styled.p`
-  ${TextStyle};
+  color: ${(props: IProps) => color(props.color || normalColor).alpha(0.6).toString()};
   font-size: ${(props: IProps) => props.size ? `${props.size * 1.1}px` : '11px'};
+  text-align: center;
 `;
 
 
 export const YearItem = styled.p`
-  ${TextStyle};
+  color: ${(props: IProps) => color(props.color || normalColor).alpha(0.6).toString()};
   font-size: ${(props: IProps) => props.size ? `${props.size * 0.8}px` : '8px'};
   letter-spacing: 1px;
   margin-bottom: 2px;
+  text-align: center;
 `;
 
 

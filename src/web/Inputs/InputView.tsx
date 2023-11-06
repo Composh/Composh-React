@@ -11,6 +11,8 @@ import {
 
 
 export interface IProps {
+  className?: any;
+
   disabled?: boolean;
   noShadow?: boolean;
 
@@ -35,19 +37,24 @@ export interface IProps {
   countLimit?: any; // string | number;
   countColor?: string;
 
+  style?: any;
+
   children?: any;
 }
 
 
 
 const InputView: React.FC<IProps> = (props: IProps) => {
+  const className = { ...props } as any;
   const opacityValue = props.disabled ? 0.5 : 1;
 
 
 
   return (
 
-    <InputsContainer>
+    <InputsContainer
+      className={className?.className}
+      style={props.style}>
 
       {props.labelText && (
         <InputLabel

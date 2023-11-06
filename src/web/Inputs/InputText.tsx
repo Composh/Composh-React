@@ -96,11 +96,14 @@ export interface IProps {
   lowercase?: boolean;
   children?: any;
   multiline?: boolean;
+
+  style?: any;
 }
 
 
 
 const InputText: React.FC<IProps> = (props: IProps) => {
+  const className = { ...props } as any;
   const opacityValue = props.disabled ? 0.5 : 1;
   const enumPasswordInput = ETypesInput().PASSWORD;
 
@@ -242,6 +245,8 @@ const InputText: React.FC<IProps> = (props: IProps) => {
   return (
 
     <InputView
+      className={className?.className}
+
       disabled={props.disabled}
       noShadow={props.noShadow}
 
@@ -321,8 +326,8 @@ const InputText: React.FC<IProps> = (props: IProps) => {
         // placeholderTextColor={props.placeholderTextColor}
 
         type={isPassword ? enumPasswordInput : typeKeyboard} // Web
-        // keyboardType={props.password ? 'default' : typeKeyboard} // Mobile
-        // secureTextEntry={isPassword} // Mobile
+      // keyboardType={props.password ? 'default' : typeKeyboard} // Mobile
+      // secureTextEntry={isPassword} // Mobile
 
       // underlineColorAndroid={'transparent'} // Mobile
       />

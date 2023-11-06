@@ -10,6 +10,8 @@ import {
 
 
 export interface IProps {
+  textColor?: string;
+
   // Date to render
   date: Date;
 
@@ -51,18 +53,21 @@ const DateViewCalendar: React.FC<IProps> = (props: IProps) => {
     <DayView>
 
       <DayItem
+        color={props.textColor}
         size={props.size}>
         {weekday[date.getDay()]}
       </DayItem>
 
 
       <DateItem
+        color={props.textColor}
         size={props.size}>
         {convertToDate()}
       </DateItem>
 
 
       <YearItem
+        color={props.textColor}
         size={props.size}>
         {date.getFullYear()}
       </YearItem>

@@ -52,6 +52,7 @@ export const TabBarContainer = styled.div`
 export const TabBarContent = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
   flex: 1;
 `;
 

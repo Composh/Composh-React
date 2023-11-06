@@ -11,6 +11,8 @@ import {
 export interface IProps {
   color?: string;
 
+  textColor?: string;
+
   backgroundColor?: Array<string> | string;
 
   // Currently active date index
@@ -37,6 +39,7 @@ const DatesCalendar: React.FC<IProps> = (props: IProps) => {
         <DateCalendar
           index={index}
           color={props.color}
+          textColor={props.textColor}
           backgroundColor={props.backgroundColor}
           date={date}
           isActive={index === props.currentDateIndex}

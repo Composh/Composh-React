@@ -92,7 +92,7 @@ const Accordion: React.FC<IProps> = (props) => {
           index={index}
           item={item}
           renderContent={(item: any, index: number) => renderContent(item, index)}
-          renderHeader={(item: any, expanded: boolean) => renderHeader(item, expanded, index)}
+          renderHeader={(item: any, expanded: boolean, functionChange: any) => renderHeader(item, expanded, functionChange, index)}
           onAccordionOpen={onAccordionOpen}
           onAccordionClose={onAccordionClose}
           setSelected={(index: any) => onPress

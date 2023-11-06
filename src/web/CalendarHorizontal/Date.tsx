@@ -13,6 +13,8 @@ import {
 export interface IProps {
   color?: string;
 
+  textColor?: string;
+
   backgroundColor?: Array<string> | string;
 
   // No press date
@@ -79,8 +81,8 @@ const DateCalendar: React.FC<IProps> = (props: IProps) => {
   return (
 
     <DateContainer
-      color={props.color}
       active={isDateActive()}
+      color={isDateActive() ? props.color : props.textColor}
       onClick={onPress}>
 
       <LinearDayGradient
@@ -101,22 +103,19 @@ const DateCalendar: React.FC<IProps> = (props: IProps) => {
         }>
 
         <DayItem
-          active={isDateActive()}
-          color={props.color}>
+          color={isDateActive() ? props.color : props.textColor}>
           {weekday[date.getDay()]}
         </DayItem>
 
 
         <DateItem
-          active={isDateActive()}
-          color={props.color}>
+          color={isDateActive() ? props.color : props.textColor}>
           {convertToDate()}
         </DateItem>
 
 
         <YearItem
-          active={isDateActive()}
-          color={props.color}>
+          color={isDateActive() ? props.color : props.textColor}>
           {date.getFullYear()}
         </YearItem>
 

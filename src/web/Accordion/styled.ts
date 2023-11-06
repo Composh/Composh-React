@@ -25,15 +25,16 @@ export const AccordionItemStyled = styled.div`
   flex-direction: column;
 `;
 
-export const AccordionItemTouchable = styled.a`
+export const AccordionItemTouchable = styled.div`
   display: flex;
   flex-direction: column;
   cursor: pointer;
 `;
 
-export const AccordionItemRenderView = styled.div`
+export const AccordionItemRenderView = styled.a`
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 `;
 
 

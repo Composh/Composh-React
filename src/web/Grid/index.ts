@@ -129,7 +129,6 @@ export const smGridStyle = css`
 // Breakpoint Médio (md) - Geralmente de 768px a 991px
 export const mdGridStyle = css`
  @media (min-width: 768px) and (max-width: 991px) {
-    background-color: lightgreen;
       flex-grow: 0;
       max-width: none;
       flex-basis: auto;

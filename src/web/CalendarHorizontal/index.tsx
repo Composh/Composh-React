@@ -17,6 +17,8 @@ import {
 export interface IProps {
   color?: string;
 
+  textColor?: string;
+
   backgroundColor?: Array<string> | string;
 
   // Optional prop to pass a custom date to use instead of today
@@ -31,14 +33,12 @@ export interface IProps {
   // Number of days to show after
   showDaysBeforeCurrent?: number;
 
-  hideArrows?: boolean;
-
   dates?: any;
 };
 
 
 
-const CalendarHorizontal: React.FC<IProps> = (props: any) => {
+const CalendarHorizontal: React.FC<IProps> = (props: IProps) => {
   const [allDatesHaveRendered, setAllDatesHaveRendered] = useState(false);
 
   const [currentDateIndex, setCurrentDateIndex] = useState(0);
@@ -65,12 +65,12 @@ const CalendarHorizontal: React.FC<IProps> = (props: any) => {
     } = props;
 
     // Go 'showDaysBeforeCurrent' ago before today or custom 'currentDate'
-    const startDay = new Date(currentDate);
+    const startDay = currentDate ? new Date(currentDate) : new Date();
     startDay.setDate(startDay.getDate() - (showDaysBeforeCurrent + 1));
 
     // Number of days in total
     // const totalDaysCount = showDaysBeforeCurrent + showDaysAfterCurrent + 1;
-    const totalDaysCount = showDaysBeforeCurrent + showDaysAfterCurrent;
+    const totalDaysCount = showDaysAfterCurrent ? showDaysBeforeCurrent + showDaysAfterCurrent : showDaysAfterCurrent;
 
     // And return an array of 'totalDaysCount' dates
     return dates ? dates : [...Array(totalDaysCount)].map((_) => new Date(startDay.setDate(startDay.getDate() + 1)));
@@ -107,20 +107,20 @@ const CalendarHorizontal: React.FC<IProps> = (props: any) => {
 
     <CalendarContainer>
 
-      {!props.hideArrows && (
-        <CalendarArrowButton
-          onClick={() => {
-            onRenderPastWeek();
-          }}>
-          <CalendarArrowText>
-            {'<'}
-          </CalendarArrowText>
-        </CalendarArrowButton>
-      )}
+      <CalendarArrowButton
+        onClick={() => {
+          onRenderPastWeek();
+        }}>
+        <CalendarArrowText
+          color={props.textColor}>
+          {'<'}
+        </CalendarArrowText>
+      </CalendarArrowButton>
 
 
       <DatesCalendar
         color={props.color}
+        textColor={props.textColor}
         backgroundColor={props.backgroundColor}
         dates={dates}
         currentDateIndex={currentDateIndex}
@@ -131,16 +131,15 @@ const CalendarHorizontal: React.FC<IProps> = (props: any) => {
       />
 
 
-      {!props.hideArrows && (
-        <CalendarArrowButton
-          onClick={() => {
-            onRenderNextWeek();
-          }}>
-          <CalendarArrowText>
-            {'>'}
-          </CalendarArrowText>
-        </CalendarArrowButton>
-      )}
+      <CalendarArrowButton
+        onClick={() => {
+          onRenderNextWeek();
+        }}>
+        <CalendarArrowText
+          color={props.textColor}>
+          {'>'}
+        </CalendarArrowText>
+      </CalendarArrowButton>
 
     </CalendarContainer>
 
