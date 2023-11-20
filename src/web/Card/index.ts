@@ -5,4 +5,3 @@ export default {
   Flip: CardFlip,
   View: CardView,
 };
-

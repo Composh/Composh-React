@@ -1,13 +1,13 @@
 import Accordion from './Accordion';
 import ActionSheet from './ActionSheet';
-// import Alert from './Alert';
+import Alert from './Alert';
 import AppBar from './AppBar';
 // import Avatar from './Avatar';
 import Badge from './Badge/';
 // import BadgeIndicator from './BadgeIndicator';
 import Body from './Body';
 import Button from './Button';
-// import Card from './Card';
+import Card from './Card';
 import CheckBox from './CheckBox';
 import Chip from './Chip';
 import Container from './Container';
@@ -23,6 +23,8 @@ import Icon from './Icon';
 // import Input from './Input';
 import Items from './Items';
 // import LinearGradient from './LinearGradient';
+import ListFlat from './ListFlat';
+import Loader from './Loader';
 // import MenuOverflow from './MenuOverflow';
 import Overlay from './Overlay';
 import ProgressBar from './ProgressBar';
@@ -54,13 +56,13 @@ import Tooltip from './Tooltip';
 export {
   Accordion,
   ActionSheet,
-  // Alert,
+  Alert,
   AppBar,
   Badge,
   // BadgeIndicator,
   Body,
   Button,
-  // Card,
+  Card,
   CheckBox,
   Chip,
   Container,
@@ -75,6 +77,8 @@ export {
   // Input,
   Items,
   // LinearGradient,
+  ListFlat,
+  Loader,
   // MenuOverflow,
   Overlay,
   ProgressBar,

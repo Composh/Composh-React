@@ -10,18 +10,20 @@ import React,
 
 import {
   ToggleButtonContent,
-  ToggleButtonStyle,
+  // ToggleButtonStyle,
   ToggleIconView,
   ToggleText,
+  ToggleIconRightView,
 } from './styled';
 
 
 
 export interface IProps {
   disabled?: boolean;
+  noPress?: boolean;
+
   noToggle?: boolean;
   selected?: boolean;
-  activeOpacity?: number;
   flexToggle?: number;
 
   height?: number;
@@ -42,16 +44,24 @@ export interface IProps {
   borderWidth?: number;
 
   iconContent?: any;
+  iconRight?: any;
   onPress?: any;
 
   textStyle?: any;
   style?: any;
+
+  children?: any;
 }
 
 
 
-const Toggle: React.FC<IProps> = (props: any) => {
+const Toggle: React.FC<IProps> = (props: IProps) => {
+  const className: any = { ...props };
+
+
   const selectedProp = props.selected;
+
+  const opacityValue = props.disabled ? 0.5 : 1;
 
   const [selectedState, setSelectedState] = useState(selectedProp);
 
@@ -77,12 +87,12 @@ const Toggle: React.FC<IProps> = (props: any) => {
 
 
   function onPressToggle() {
-    if (props.onPress) {
+    if (!props.disabled && props.onPress) {
       props.onPress();
     }
 
     if (!props.noToggle) {
-      setSelectedState(!selectedState);
+      setSelectedState(!selectedProp);
     }
   }
 
@@ -90,32 +100,39 @@ const Toggle: React.FC<IProps> = (props: any) => {
 
   return (
 
-    <ToggleButtonStyle
+    <ToggleButtonContent
+      // className={className?.className}
+
       disabled={props.disabled}
-      activeOpacity={props.activeOpacity}
-      onPress={() => {
-        onPressToggle();
+      flexContent={props.flexToggle}
+      width={props.width}
+      height={props.height}
+      borderColor={((!props.disabled && !props.noToggle) ? selectedState : selectedProp) ? props.borderTintColor : props.borderColor}
+      borderWidth={props.borderWidth}
+      borderRadius={props.borderRadius}
+      backgroundColor={((!props.disabled && !props.noToggle) ? selectedState : selectedProp) ? props.backgroundTintColor : props.backgroundColor}
+      iconContent={props.iconContent}
+      style={{
+        ...props.style,
+        opacity: opacityValue,
+      }}
+      onClick={() => {
+        if (!props.noPress) {
+          onPressToggle();
+        }
       }}>
 
-      <ToggleButtonContent
-        flexContent={props.flexToggle}
-        width={props.width}
-        height={props.height}
-        borderColor={((!props.disabled && !props.noToggle) ? selectedState : selectedProp) ? props.borderTintColor : props.borderColor}
-        borderWidth={props.borderWidth}
-        borderRadius={props.borderRadius}
-        backgroundColor={((!props.disabled && !props.noToggle) ? selectedState : selectedProp) ? props.backgroundTintColor : props.backgroundColor}
-        iconContent={props.iconContent}
-        style={props.style}>
+      {props.children && props.children}
 
 
-        {props.iconContent && (
-          <ToggleIconView>
-            {props.iconContent}
-          </ToggleIconView>
-        )}
+      {!props.children && props.iconContent && (
+        <ToggleIconView>
+          {props.iconContent}
+        </ToggleIconView>
+      )}
 
 
+      {!props.children && (
         <ToggleText
           colorText={((!props.disabled && !props.noToggle) ? selectedState : selectedProp) ? props.textTintColor : props.textColor}
           marginLeftText={props.iconContent ? 5 : 0}
@@ -128,10 +145,16 @@ const Toggle: React.FC<IProps> = (props: any) => {
           }
 
         </ToggleText>
+      )}
 
-      </ToggleButtonContent>
 
-    </ToggleButtonStyle>
+      {!props.children && props.iconRight && (
+        <ToggleIconRightView>
+          {props.iconRight}
+        </ToggleIconRightView>
+      )}
+
+    </ToggleButtonContent>
 
   );
 };

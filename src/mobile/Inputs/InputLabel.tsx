@@ -18,6 +18,7 @@ const InputLabel: React.FC<IProps> = (props: any) => {
   return (
 
     <LabelStyle
+      {...props}
       color={props.labelColor}
       style={props.labelStyle}>
       {props.labelText}

@@ -3,12 +3,10 @@ import styled,
   css,
 } from 'styled-components/native';
 
-import TextInputMask from 'react-native-text-input-mask';
-
 
 
 export interface IProps {
-  wrap?: boolean;
+  wrapView?: boolean;
   inputTextCenter?: boolean;
   multiline?: boolean;
   backgroundColor?: string;
@@ -74,8 +72,15 @@ export const BackgroundStyle = css`
 `;
 
 export const BorderStyle = css`
-  border-color: ${(props: IProps) => props.borderColor};
+  border-color: ${(props: IProps) => props.borderColor || 'transparent'};
+  border-style: solid;
   border-width: ${(props: IProps) => props.borderWidth || 0}px;
+`;
+
+export const BorderNone = css`
+  border-color: transparent;
+  border-style: solid;
+  border-width: 0;
 `;
 
 export const WrapStyle = css`
@@ -83,7 +88,7 @@ export const WrapStyle = css`
 `;
 
 export const ShadowStyle = css`
-  box-shadow: 0 2px 18px 1px rgb(49 53 72 / 10%);
+  /* box-shadow: 0 2px 18px 1px rgb(49 53 72 / 10%); */
 `;
 
 export const InputViewStyle = styled.View`
@@ -93,15 +98,15 @@ export const InputViewStyle = styled.View`
   align-items: center;
   justify-content: center;
   min-height: 42px;
-  margin-top: 4px;
-  margin-bottom: 3px;
+  margin-top: 5px;
+  margin-bottom: 4px;
   border-radius: 5px;
   opacity: ${(props: IProps) => props.opacity};
 
-  ${(props: IProps) => props.wrap && WrapStyle};
+  ${(props: IProps) => props.wrapView && WrapStyle};
   ${(props: IProps) => props.multiline && MultilineStyle};
   ${(props: IProps) => props.backgroundColor && BackgroundStyle};
-  ${(props: IProps) => props.borderColor && BorderStyle};
+  ${(props: IProps) => props.borderColor ? BorderStyle : BorderNone};
   ${(props: IProps) => !props.noShadow && ShadowStyle};
 `;
 
@@ -112,20 +117,6 @@ export const InputViewStyle = styled.View`
 export const TextAlignStyle = css`
   text-align: center;
 `;
-
-export const TextInputMaskStyle = styled(TextInputMask)`
-  display: flex;
-  flex: 1;
-  padding-left: 10px;
-  padding-right: 10px;
-  background-color: transparent;
-  font-size: 14px;
-  border-width: 0;
-
-  text-decoration-color: transparent;
-  text-shadow-color: transparent;
-`;
-
 
 export const TextInputStyle = styled.TextInput`
   display: flex;
@@ -139,6 +130,8 @@ export const TextInputStyle = styled.TextInput`
 
   text-decoration-color: transparent;
   text-shadow-color: transparent;
+
+  ${(props: IProps) => props.inputTextCenter && TextAlignStyle};
 `;
 
 
@@ -184,4 +177,5 @@ export const ShowPasswordStyle = styled.TouchableOpacity`
 export const IconEye = styled.Image`
   width: 100%;
   height: 100%;
+  resize-mode: contain;
 `;

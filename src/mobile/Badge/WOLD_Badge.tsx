@@ -15,7 +15,7 @@ import {
   BadgeButtonContainer,
   BadgeViewContainer,
   TextBadge,
-} from './styled';
+} from './WOLD_styled';
 
 
 

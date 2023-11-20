@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 
 import Container from '../Container';
 import Content from '../Content';
@@ -20,7 +20,7 @@ export const ComposhFlatListStyle = styled(Content)`
   flex: 1;
 `;
 
-export const ComposhFlatListContent = styled.div`
+export const ComposhFlatListContent = styled.View`
   display: flex;
   flex-direction: column;
 `;

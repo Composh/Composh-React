@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 export interface IProps {
   disabled?: boolean;
-  color?: number;
+  color?: string;
   fontSize?: number;
   borderBottomColor?: string;
   borderBottomWidth?: number;

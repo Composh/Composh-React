@@ -41,40 +41,49 @@ const TableBody: React.FC<IProps> = (props: IProps) => {
   }
 
 
-
-  if (dadosOrdenados && dadosOrdenados?.length <= 0) {
+  if (!(Array.isArray(dadosOrdenados) && dadosOrdenados.length > 0)) {
     if (typeof props.textEmpty !== 'string') {
       return (
+
         <Linha>
           <CelulaDiv>
             {props.textEmpty}
           </CelulaDiv>
         </Linha>
+
       );
     }
-    else {
-      return (
 
-        <Linha>
-          <CelulaDiv>
+
+    return (
+
+      <Linha>
+        <CelulaDiv>
+          <p>
             {props.textEmpty || 'No data'}
-          </CelulaDiv>
-        </Linha>
+          </p>
+        </CelulaDiv>
+      </Linha>
 
-      );
-    }
+    );
   }
 
 
-  return dadosOrdenados?.map((item, index) => (
-    <Linha key={index}>
-      {props.columns?.map((coluna) => (
-        <CelulaDiv key={coluna?.dataField}>
-          {renderResult(item, coluna)}
-        </CelulaDiv>
+  return (
+
+    <>
+      {dadosOrdenados?.map((item, index) => (
+        <Linha key={index}>
+          {props.columns?.map((coluna) => (
+            <CelulaDiv key={coluna?.dataField}>
+              {renderResult(item, coluna)}
+            </CelulaDiv>
+          ))}
+        </Linha>
       ))}
-    </Linha>
-  ));
+    </>
+
+  );
 };
 
 

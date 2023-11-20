@@ -10,7 +10,7 @@ import {
 
 
 const ListTable = ({ color, data, colunasVisiveis, textEmpty }) => {
-  const dataTable = data && data?.length > 0 ? data : [];
+  const dataTable = data && Array.isArray(data) && data?.length > 0 ? data : [];
 
 
 

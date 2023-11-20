@@ -17,8 +17,9 @@ interface IButtonProps {
   iconContent?: any;
 }
 
+
 interface ITextProps {
-  colorText?: any;
+  colorText?: string;
   marginLeftText?: number;
 }
 
@@ -87,7 +88,7 @@ export const ToggleText = styled.p`
   text-align: center;
   white-space: nowrap;
 
-  color: ${(props: ITextProps) => props.colorText};
+  color: ${(props: ITextProps) => props.colorText || '#000000'};
   ${(props: ITextProps) => props.marginLeftText && `margin-left: ${props.marginLeftText || 0}px`};
 `;
 

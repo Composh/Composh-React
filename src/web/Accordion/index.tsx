@@ -30,6 +30,8 @@ export interface IProps {
 
 
 const Accordion: React.FC<IProps> = (props) => {
+  const className = { ...props } as any;
+
   const {
     borderColor,
     contentStyle,
@@ -65,6 +67,8 @@ const Accordion: React.FC<IProps> = (props) => {
   return (
 
     <AccordionStyled
+      className={className?.className}
+
       // data={ }
       // extraData={this.state}
       // style={[
