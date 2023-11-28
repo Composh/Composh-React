@@ -47,9 +47,15 @@ export interface IProps {
 
 
 
-const ShimmerPlaceholder: React.FC<IProps> = (props: any) => {
+const ShimmerPlaceholder: React.FC<IProps> = (props: IProps) => {
+  const className = { ...props } as any;
+
+
   const [visible, setVisible] = useState(props.visible);
   // const [beginShimmerPosition] = useState(new Animated.Value(-1));
+
+
+  const calcWidth = (props.width || 200) * (props.shimmerWidthPercent || 1);
 
 
   // const linearTranslate = beginShimmerPosition.interpolate({
@@ -115,6 +121,8 @@ const ShimmerPlaceholder: React.FC<IProps> = (props: any) => {
   return (
 
     <ShimmerContainer
+      className={className?.className}
+
       {...props}
       // {...props.containerProps}
       visible={visible}
@@ -122,9 +130,10 @@ const ShimmerPlaceholder: React.FC<IProps> = (props: any) => {
       widthFull={props.widthFull}
       height={props.height}
       borderRadius={props.borderRadius}
-      style={
-        !visible ? props.shimmerStyle : null
-      }>
+      style={{
+        ...(visible ? null : props.shimmerStyle),
+        ...props.style,
+      }}>
 
       {/* Force render children to restrict rendering twice */}
       {visible && (
@@ -154,7 +163,7 @@ const ShimmerPlaceholder: React.FC<IProps> = (props: any) => {
             style={{
               flex: 1,
               // width: props.width * props.shimmerWidthPercent,
-              width: props.widthFull ? '100%' : props.width * props.shimmerWidthPercent,
+              width: props.widthFull ? '100%' : calcWidth,
               // transform: [{
               //   translateX: linearTranslate,
               // }],
