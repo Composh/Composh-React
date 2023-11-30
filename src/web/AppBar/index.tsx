@@ -21,10 +21,15 @@ export interface IProps {
 
 
 const AppBar: React.FC<IProps> = (props: any) => {
+  const className = { ...props } as any;
+
+
+
   return (
 
     <HeaderAppContainer>
       <HeaderContainer
+        className={className?.className}
         absolute={props.absolute}
         transparent={props.transparent}
         backgroundColor={props.backgroundColor}

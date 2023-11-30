@@ -15,7 +15,7 @@ export interface IProps {
 
 
 export const ShadowToolbar = css`
-  box-shadow: 0 2px 30px 2px rgb(0 0 0 / 10%) !important;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
 `;
 
 export const AbsoluteToolbar = css`
