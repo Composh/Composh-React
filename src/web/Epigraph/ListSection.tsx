@@ -21,12 +21,10 @@ import {
 
 
 export interface IProps {
-  colors?: any;
-  start?: any;
-  end?: any;
-
   expanded?: boolean;
   // elipsing?: boolean;
+
+  bold?: boolean;
 
   text: string;
   textColor?: string;
@@ -84,6 +82,7 @@ const ListSection: React.FC<IProps> = (props) => {
         )}
 
         <TitleComponent
+          bold={props.bold}
           textColor={props.textColor}
           textSize={props.textSize}>
           {props.text?.toUpperCase()}

@@ -138,7 +138,7 @@ const Tab: React.FC<ITabProps> = (props: any) => {
   //       </Animated.Text>
   //     </TouchableOpacity>
   //   );
-  // })} 
+  // })}
 
 
   const iconTabView = props.icon && (
@@ -174,7 +174,7 @@ const Tab: React.FC<ITabProps> = (props: any) => {
       </TabText>
 
 
-      {props.right && iconTabView}
+      {!props.left && props.right && iconTabView}
 
     </TabContainer>
 

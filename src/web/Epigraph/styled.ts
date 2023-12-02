@@ -8,6 +8,8 @@ import LinearGradient from '../LinearGradient';
 
 
 export interface IProps {
+  bold?: boolean;
+
   textSize?: number;
   textColor?: string;
   backgroundColor?: string;
@@ -96,7 +98,7 @@ export const TitleComponent = styled.p`
   flex: 1;
   color: ${(props: IProps) => props.textColor || 'green'};
   font-size: ${(props: IProps) => props.textSize || 15}px;
-  font-weight: 200;
+  font-weight: ${(props: IProps) => props.bold ? 'bold' : '200'};
   letter-spacing: 0.5px;
 `;
 

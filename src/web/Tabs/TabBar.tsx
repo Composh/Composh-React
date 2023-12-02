@@ -82,15 +82,16 @@ const TabBar: React.FC<ITabBarProps> = (props: any) => {
 
 
   const renderTabElement = (element: TabElement, index: number): TabElement => {
-    const aaaa = {
-      display: 'flex',
-      flexDirection: 'column',
-      flex: 1,
-    };
+    const itemStyle = null;
+    // const itemStyle = {
+    //   display: 'flex',
+    //   flexDirection: 'column',
+    //   flex: 1,
+    // };
 
     const styleTabAssign = element.props.style
-      ? Object.assign(element.props.style, aaaa)
-      : aaaa;
+      ? Object.assign(element.props.style, itemStyle)
+      : itemStyle;
 
     return React.cloneElement(element, {
       key: index,

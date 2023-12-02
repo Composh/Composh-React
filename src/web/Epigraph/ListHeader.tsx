@@ -20,6 +20,8 @@ export interface IProps {
   start?: any;
   end?: any;
 
+  bold?: boolean;
+
   expanded?: boolean;
   // elipsing?: boolean;
 
@@ -62,6 +64,7 @@ const ListHeader: React.FC<IProps> = (props) => {
 
       <ContentFlexComponent>
         <TitleComponent
+          bold={props.bold}
           textColor={props.textColor}
           textSize={props.textSize}>
           {props.text?.toUpperCase()}
