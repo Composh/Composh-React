@@ -1,11 +1,28 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import {
+  ScrollVerticalContainer,
+} from './styled';
 
-const ScrollVertical: React.FC = () => {
-  return <div />;
+
+
+export interface IProps {
+  children?: any;
+}
+
+
+
+const ScrollHorizontal: React.FC<IProps> = (props: IProps) => {
+  return (
+
+    <ScrollVerticalContainer
+      {...props}>
+      {props.children}
+    </ScrollVerticalContainer>
+
+  );
 };
 
 
 
-export default ScrollVertical;
+export default ScrollHorizontal;
