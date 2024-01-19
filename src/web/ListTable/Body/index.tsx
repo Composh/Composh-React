@@ -34,7 +34,7 @@ const TableBody: React.FC<IProps> = (props: IProps) => {
   // });
 
 
-  function renderResult(item, coluna) {
+  function renderResult(item: any, coluna: any) {
     return coluna?.formatter
       ? coluna.formatter(item[coluna?.dataField], item)
       : item[coluna?.dataField];
@@ -74,7 +74,7 @@ const TableBody: React.FC<IProps> = (props: IProps) => {
     <>
       {dadosOrdenados?.map((item, index) => (
         <Linha key={index}>
-          {props.columns?.map((coluna) => (
+          {props.columns?.map((coluna: any) => (
             <CelulaDiv key={coluna?.dataField}>
               {renderResult(item, coluna)}
             </CelulaDiv>

@@ -26,7 +26,8 @@ export const SwitchContainer = styled.a`
 `;
 
 export const SwitchTextOn = styled.p`
-  margin-right: 8px;
+  margin-right: 12px;
+  color: ${(props: IProps) => props.color || '#000000'};
   font-size: ${(props: IProps) => props.textSize}px;
   font-weight: normal;
   text-align: center;

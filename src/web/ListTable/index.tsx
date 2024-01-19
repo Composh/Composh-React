@@ -9,7 +9,7 @@ import {
 
 
 
-const ListTable = ({ color, data, colunasVisiveis, textEmpty }) => {
+const ListTable: React.FC<any> = ({ color, data, colunasVisiveis, textEmpty }) => {
   const dataTable = data && Array.isArray(data) && data?.length > 0 ? data : [];
 
 

@@ -9,6 +9,12 @@ import {
 
 
 
+export interface IProps {
+  backgroundColor?: string;
+}
+
+
+
 export const ScrollbarHideStyle = css`
   ::-webkit-scrollbar {
     display: none;
@@ -47,6 +53,8 @@ export const ScrollHorizontalContainer = styled.div`
   overflow-x: auto;
   overflow-y: hidden;
   width: 100%;
-  
-  ${GetPlatform() === 'WEB' ? ScrollbarProfileStyle : ScrollbarHideStyle}
+  background-color: ${(props: IProps) => props.backgroundColor || 'transparent'};
+  z-index: 1000;
+
+  ${GetPlatform() === 'WEB' ? ScrollbarProfileStyle : ScrollbarHideStyle};
 `;

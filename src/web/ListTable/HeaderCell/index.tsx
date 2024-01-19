@@ -16,7 +16,7 @@ export interface IProps {
 }
 
 const TableHeaderCell: React.FC<IProps> = (props: IProps) => {
-  const ordenarDados = (coluna) => {
+  const ordenarDados = (coluna: any) => {
     // setOrdenacao((prevOrdenacao) => ({
     //   coluna,
     //   direcao: prevOrdenacao.direcao === 'asc' ? 'desc' : 'asc',

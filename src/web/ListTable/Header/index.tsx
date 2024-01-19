@@ -28,14 +28,14 @@ export interface IProps {
 
 const TableHeader: React.FC<IProps> = (props: IProps) => {
   const childrens = [
-    props.columns.map((column, i) => {
+    props.columns.map((column: any, index: number) => {
       const currSort = column.dataField === props.sortField;
       const isLastSorting = column.dataField === props.sortField;
 
       return (
 
         <TableHeaderCell
-          index={i}
+          index={index}
           // key={column.dataField}
           column={column}
           // onSort={onSort}

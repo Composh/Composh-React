@@ -7,6 +7,7 @@ import {
 
 
 export interface IProps {
+  backgroundColor?: any;
   children?: any;
 }
 
@@ -16,7 +17,8 @@ const ScrollHorizontal: React.FC<IProps> = (props: IProps) => {
   return (
 
     <ScrollHorizontalContainer
-      {...props}>
+      {...props}
+      backgroundColor={props.backgroundColor}>
       {props.children}
     </ScrollHorizontalContainer>
 

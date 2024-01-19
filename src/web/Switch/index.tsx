@@ -20,6 +20,8 @@ export interface IProps {
 
   textOn?: string;
   textOff?: string;
+  textColor?: string;
+
   textSize?: number;
   onPress?: any;
 }
@@ -27,17 +29,26 @@ export interface IProps {
 
 
 const Switch: React.FC<IProps> = (props) => {
-  const colorSwitch = props.selected ? props.selectedColor : props.color;
+  const className = { ...props } as any;
+
+  const colorSwitch = props.selected
+    ? props.selectedColor ? props.selectedColor : props.color
+    : props.color;
+
+
+  const textColorSwitch = props.textColor || props.color;
 
 
 
   return (
 
     <SwitchContainer
+      className={className?.className}
       onClick={props.disabled ? null : props.onPress}>
 
       {!props.hideText && (
         <SwitchTextOn
+          color={textColorSwitch}
           textSize={props.textSize}>
           {props.selected
             ? props.textOn
@@ -71,8 +82,6 @@ const Switch: React.FC<IProps> = (props) => {
 Switch.defaultProps = {
   selected: false,
   textSize: 16,
-  selectedColor: '#00f000',
-  color: '#000000',
 };
 
 
