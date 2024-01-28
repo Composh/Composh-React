@@ -53,14 +53,14 @@ const CalendarHorizontal: React.FC<IProps> = (props: IProps) => {
     const totalDaysCount = Math.abs((endDay.getTime() - startDay.getTime()) / (1000 * 60 * 60 * 24)) + 1;
     const startDate = new Date(props.startDate);
 
-    let datesFormatted: Date[] = [];
+    const datesFormatted: Date[] = [];
 
     if (totalDaysCount > 0) {
-      datesFormatted = [...Array(totalDaysCount)].map((_, index) => {
+      for (let index = 0; index < totalDaysCount; index++) {
         const newDate = new Date(startDate);
         newDate.setDate(startDate.getDate() + index);
-        return newDate;
-      });
+        datesFormatted.push(newDate);
+      }
     }
     else {
       datesFormatted.push(startDay);
