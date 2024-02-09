@@ -10,9 +10,10 @@ export interface IProps {
 
 const Title = styled.h1`
   margin-top: 1px;
+  margin-bottom: 1px;
   color: ${(props: IProps) => props.color || 'white'};
-  font-size: 18px;
-  line-height: 21px;
+  font-size: 19px;
+  line-height: 19px;
   font-weight: bold;
 `;
 

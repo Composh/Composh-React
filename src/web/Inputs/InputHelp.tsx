@@ -30,10 +30,12 @@ const InputHelp: React.FC<IProps> = (props: IProps) => {
 
     <HelpContainerViewStyle>
 
-      <HelpTextComponentStyle
-        style={props.helpTextStyle}>
-        {!props.noHelp && props.helpText}
-      </HelpTextComponentStyle>
+      {props.helpText && (
+        <HelpTextComponentStyle
+          style={props.helpTextStyle}>
+          {!props.noHelp && props.helpText}
+        </HelpTextComponentStyle>
+      )}
 
 
 
