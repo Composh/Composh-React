@@ -72,8 +72,8 @@ export const LinearDayGradient = styled(LinearGradient)`
   flex-direction: column;
   width: 100%;
   height: 100%;
-  padding-top: 4px;
-  padding-bottom: 2px;
+  padding-top: 2px;
+  padding-bottom: 1px;
   justify-content: center;
 `;
 
