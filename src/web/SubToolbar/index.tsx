@@ -13,6 +13,7 @@ import {
 export interface IProps {
   noSubToolbarPadding?: boolean;
 
+  height?: number;
   backgroundColor?: string;
   // style?: any;
 
@@ -27,7 +28,7 @@ const SubToolbar: React.FC<IProps> = (props: any) => {
     <ToolbarContainer
       style={{
         justifyContent: 'center',
-        height: 46, // Sizes.SubToolbar,
+        height: props.height || 46, // Sizes.SubToolbar,
         paddingLeft: props.noSubToolbarPadding ? 0 : 8,
         paddingRight: props.noSubToolbarPadding ? 0 : 8,
         backgroundColor: props.backgroundColor,
