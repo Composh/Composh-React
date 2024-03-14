@@ -22,11 +22,20 @@ import TabIndicator from './TabIndicator';
 
 
 
+export interface ISelectInfo {
+  index: number;
+  key: string;
+}
+
+
 export interface ITabBarProps {
   children?: ChildrenWithProps<ITabProps>;
 
   selectedIndex?: number;
-  onSelect?: (index: number) => void;
+  onSelect?: (index: {
+    index: number;
+    key: string;
+  }) => void;
   indicatorStyle?: any;
 
   height?: number;
@@ -51,7 +60,7 @@ const TabBar: React.FC<ITabBarProps> = (props: any) => {
   // }
 
 
-  const onTabSelect = (index: number): void => {
+  const onTabSelect = (index: ISelectInfo): void => {
     props.onSelect && props.onSelect(index);
   };
 
@@ -81,7 +90,11 @@ const TabBar: React.FC<ITabBarProps> = (props: any) => {
   };
 
 
-  const renderTabElement = (element: TabElement, index: number): TabElement => {
+  const renderTabElement = (element: TabElement, indexReceived: number): TabElement | null => {
+    if (!element) {
+      return null;
+    }
+
     const itemStyle = null;
     // const itemStyle = {
     //   display: 'flex',
@@ -94,10 +107,10 @@ const TabBar: React.FC<ITabBarProps> = (props: any) => {
       : itemStyle;
 
     return React.cloneElement(element, {
-      key: index,
+      key: indexReceived,
       style: styleTabAssign,
-      selected: isTabSelected(index),
-      onSelect: () => onTabSelect(index),
+      selected: isTabSelected(indexReceived),
+      onSelect: () => onTabSelect({ index: indexReceived, key: element?.key ? String(element?.key) : String(indexReceived) }),
     });
   };
 

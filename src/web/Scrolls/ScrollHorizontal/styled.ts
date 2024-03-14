@@ -54,7 +54,6 @@ export const ScrollHorizontalContainer = styled.div`
   overflow-y: hidden;
   width: 100%;
   background-color: ${(props: IProps) => props.backgroundColor || 'transparent'};
-  z-index: 1000;
 
   ${GetPlatform() === 'WEB' ? ScrollbarProfileStyle : ScrollbarHideStyle};
 `;
