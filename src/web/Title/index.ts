@@ -4,17 +4,26 @@ import styled from 'styled-components';
 
 export interface IProps {
   color?: string;
+  numberOfLines?: number;
+  ellipsizeMode?: string;
 }
 
 
 
 const Title = styled.h1`
   margin-top: 1px;
-  margin-bottom: 1px;
-  color: ${(props: IProps) => props.color || 'white'};
-  font-size: 19px;
-  line-height: 19px;
+  color: ${(props: IProps) => props.color || '#ffffff'};
+  font-size: 18px;
+  line-height: 21px;
   font-weight: bold;
+
+  display: -webkit-box;
+  -webkit-line-clamp: ${(props: IProps) => props.numberOfLines || 1};
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  /* TODO: ellipsizeMode */
+  text-overflow: ellipsis;
 `;
 
 
