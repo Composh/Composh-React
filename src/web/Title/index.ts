@@ -22,6 +22,8 @@ const Title = styled.h1`
   -webkit-box-orient: vertical;
   overflow: hidden;
 
+  word-break: break-word;
+
   /* TODO: ellipsizeMode */
   text-overflow: ellipsis;
 `;
