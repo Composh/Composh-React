@@ -6,6 +6,8 @@ import styled,
 
 
 export interface IProps {
+  paddingLeft?: boolean;
+  paddingRight?: boolean;
   wrapView?: boolean;
   inputTextCenter?: boolean;
   multiline?: boolean;
@@ -118,12 +120,18 @@ export const TextAlignStyle = css`
   text-align: center;
 `;
 
+export const PaddingLeftStyle = css`
+  padding-left: 10px;
+`;
+
+export const PaddingRightStyle = css`
+  padding-right: 10px;
+`;
+
 export const TextInputStyle = styled.input`
   display: flex;
   flex: 1;
   width: 100%;
-  padding-left: 10px;
-  padding-right: 10px;
   background-color: transparent;
   font-size: 14px;
   border: none;
@@ -133,6 +141,8 @@ export const TextInputStyle = styled.input`
 
   outline: none;
 
+  ${(props: IProps) => props.paddingLeft && PaddingLeftStyle};
+  ${(props: IProps) => props.paddingRight && PaddingRightStyle};
   ${(props: IProps) => props.inputTextCenter && TextAlignStyle};
 `;
 

@@ -283,6 +283,9 @@ const InputText: React.FC<IProps> = (props: IProps) => {
       <TextInputStyle
         // {...props}
         // returnKeyType={'next'}
+        paddingLeft={props.iconRight}
+        paddingRight={props.iconLeft}
+
         inputTextCenter={props.inputTextCenter}
 
         disabled={props.disabled} // Web
