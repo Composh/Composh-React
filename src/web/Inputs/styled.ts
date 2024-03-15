@@ -128,6 +128,11 @@ export const PaddingRightStyle = css`
   padding-right: 10px;
 `;
 
+export const AllPaddingLeftStyle = css`
+  ${PaddingLeftStyle};
+  ${PaddingRightStyle};
+`;
+
 export const TextInputStyle = styled.input`
   display: flex;
   flex: 1;
