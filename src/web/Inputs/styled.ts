@@ -141,8 +141,10 @@ export const TextInputStyle = styled.input`
 
   outline: none;
 
+  ${(props: IProps) => !props.paddingLeft && !props.paddingRight && AllPaddingLeftStyle};
   ${(props: IProps) => props.paddingLeft && PaddingLeftStyle};
   ${(props: IProps) => props.paddingRight && PaddingRightStyle};
+
   ${(props: IProps) => props.inputTextCenter && TextAlignStyle};
 `;
 
