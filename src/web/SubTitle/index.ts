@@ -9,7 +9,7 @@ export interface IProps {
 
 
 const SubTitle = styled.h2`
-  margin-top: 2px;
+  margin-top: 3px;
   color: ${(props: IProps) => props.color || 'gray'};
   font-size: 13.5px;
   font-weight: 500;
