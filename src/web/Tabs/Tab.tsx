@@ -35,7 +35,7 @@ export type TabElement = React.ReactElement<ITabProps>;
 
 
 
-const Tab: React.FC<ITabProps> = (props: any) => {
+const Tab: React.FC<ITabProps> = (props: ITabProps) => {
   // const onMouseEnter = (event: NativeSyntheticEvent<TargetedEvent>): void => {
   //   // this.props.eva.dispatch([Interaction.HOVER]);
   //   props.onMouseEnter && props.onMouseEnter(event);
@@ -145,7 +145,7 @@ const Tab: React.FC<ITabProps> = (props: any) => {
     <TabIcon
       style={{
         marginRight: props.left ? 8 : 0,
-        marginLeft: props.right ? 8 : 0,
+        marginLeft: !props.left && props.right ? 8 : 0,
       }}>
 
       {props.icon}
@@ -158,7 +158,7 @@ const Tab: React.FC<ITabProps> = (props: any) => {
   return (
 
     <TabContainer
-      {...props}
+      {...props as any}
       style={props.style}
       // onMouseEnter={this.onMouseEnter}
       // onMouseLeave={this.onMouseLeave}
