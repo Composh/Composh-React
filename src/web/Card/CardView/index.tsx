@@ -17,6 +17,11 @@ export interface IProps {
   borderRadius?: number;
 
   style?: any;
+
+  onMouseEnter?: any;
+  onMouseLeave?: any;
+  onMouseOut?: any;
+
   onPress?: any;
   children?: any;
 }
@@ -30,6 +35,8 @@ const Card: React.FC<IProps> = (props) => {
       <CardButton
         {...props}
         shadow={props.shadow}
+        onMouseEnter={props.onMouseEnter}
+        onMouseLeave={props.onMouseLeave}
         backgroundColor={props.backgroundColor}
         borderLeftColor={props.borderLeftColor}
         borderLeftStyle={props.borderLeftStyle}
@@ -50,6 +57,8 @@ const Card: React.FC<IProps> = (props) => {
       <CardView
         {...props}
         shadow={props.shadow}
+        onMouseEnter={props.onMouseEnter}
+        onMouseLeave={props.onMouseLeave}
         backgroundColor={props.backgroundColor}
         borderLeftColor={props.borderLeftColor}
         borderLeftStyle={props.borderLeftStyle}
