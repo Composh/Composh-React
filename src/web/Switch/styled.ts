@@ -37,7 +37,9 @@ export const SwitchContent = styled.a`
   display: flex;
   position: relative;
   width: ${(props: IProps) => (props.size || sizeSwitch) * 1.87}px;
+  min-width: ${(props: IProps) => (props.size || sizeSwitch) * 1.87}px;
   height: ${(props: IProps) => (props.size || sizeSwitch)}px;
+  min-height: ${(props: IProps) => (props.size || sizeSwitch)}px;
   border-color: ${(props: IProps) => props.color};
   border-style: solid;
   border-width: ${(props: IProps) => (props.size || sizeSwitch) * 0.05}px;
