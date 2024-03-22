@@ -3,8 +3,6 @@ import styled,
   css,
 } from 'styled-components';
 
-import Color from 'color';
-
 
 
 export interface IProps {
@@ -31,7 +29,7 @@ export const PaginatorPageItem = styled.a`
   position: relative;
   display: block;
   background-color: ${(props: IProps) => props.color || '#fbfaf9'};
-  border-color: ${(props: IProps) => Color(props.accentColor || '#000').alpha(0.25).toString()};
+  border: 1px solid rgba(0, 0, 0, .125) !important;
   border-style: solid;
   border-width: 1px;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
