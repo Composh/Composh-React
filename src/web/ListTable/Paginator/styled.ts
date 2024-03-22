@@ -3,11 +3,14 @@ import styled,
   css,
 } from 'styled-components';
 
+import Color from 'color';
+
 
 
 export interface IProps {
   active?: boolean;
   color?: string;
+  accentColor?: string;
 }
 
 
@@ -20,18 +23,19 @@ export const Containerpaginationreacttable = styled.div`
 
 
 export const PaginatorActive = css`
-  background-color: ${(props: IProps) => props.color || '#000'};
-  border-color: ${(props: IProps) => props.color || '#000'};
+  background-color: ${(props: IProps) => props.accentColor || '#000'};
   box-shadow: none;
 `;
 
 export const PaginatorPageItem = styled.a`
   position: relative;
   display: block;
-  background-color: #fff;
-  border: 1px solid #dee2e6;
+  background-color: ${(props: IProps) => props.color || '#fbfaf9'};
+  border-color: ${(props: IProps) => Color(props.accentColor || '#000').alpha(0.25).toString()};
+  border-style: solid;
+  border-width: 1px;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-   
+
   padding-bottom: 6px;
   padding-left: 12px;
   padding-right: 12px;
@@ -54,11 +58,11 @@ export const PaginatorPageItem = styled.a`
 
 
 export const TextActive = css`
-  color: #FFFFFF !important;
+  color: ${(props: IProps) => props.color || '#fff'} !important;
 `;
 
 export const PaginatorPageItemText = styled.p`
-  color: ${(props: IProps) => props.color || '#000'};
+  color: ${(props: IProps) => props.accentColor || '#000'};
   font-size: 13px;
   ${(props: IProps) => props.active && TextActive}
 `;
