@@ -1,5 +1,8 @@
 import React from 'react';
-import { ReactTotalStyle } from './styled';
+
+import {
+  ReactTotalStyle,
+} from './styled';
 
 
 
@@ -13,7 +16,7 @@ export interface IProps {
 
 
 
-const PaginationTotal = (props: IProps) => {
+const PaginationTotal: React.FC<IProps> = (props: IProps) => {
   if (props.paginationTotalRenderer) {
     return props.paginationTotalRenderer(props.from, props.to, props.dataSize);
   }

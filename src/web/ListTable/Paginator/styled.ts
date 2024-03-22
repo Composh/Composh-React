@@ -26,19 +26,23 @@ export const PaginatorActive = css`
 `;
 
 export const PaginatorPageItem = styled.a`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  display: block;
+  min-width: 40px;
+  margin-left: -1px;
+  padding-bottom: 6px;
+  padding-left: 11px;
+  padding-right: 11px;
+  padding-top: 6px;
+
   background-color: ${(props: IProps) => props.color || '#fbfaf9'};
   border: 1px solid rgba(0, 0, 0, .125) !important;
   border-style: solid;
   border-width: 1px;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-
-  padding-bottom: 6px;
-  padding-left: 12px;
-  padding-right: 12px;
-  padding-top: 6px;
-  margin-left: -1px;
 
   ${(props: IProps) => props.active && PaginatorActive}
 `;
