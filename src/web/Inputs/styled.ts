@@ -13,6 +13,7 @@ export interface IProps {
   multiline?: boolean;
   backgroundColor?: string;
   color?: string;
+  placeholderTextColor?: string;
   borderColor?: string;
   borderWidth?: number;
   opacity?: number;
@@ -151,6 +152,10 @@ export const TextInputStyle = styled.input`
   ${(props: IProps) => props.paddingRight && PaddingRightStyle};
 
   ${(props: IProps) => props.inputTextCenter && TextAlignStyle};
+
+  ::placeholder {
+    color: ${(props: IProps) => props.placeholderTextColor || '#808080'};
+  }
 `;
 
 

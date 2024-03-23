@@ -68,7 +68,6 @@ export interface IProps {
 
   // Placeholder
   placeholderText?: string;
-  placeholderColor?: string;
   placeholderTextColor?: string;
 
   inputTextCenter?: boolean;
@@ -326,7 +325,7 @@ const InputText: React.FC<IProps> = (props: IProps) => {
         value={textValue}
 
         placeholder={props.placeholderText}
-        // placeholderTextColor={props.placeholderTextColor}
+        placeholderTextColor={props.placeholderTextColor}
 
         type={isPassword ? enumPasswordInput : typeKeyboard} // Web
       // keyboardType={props.password ? 'default' : typeKeyboard} // Mobile
@@ -360,7 +359,6 @@ InputText.defaultProps = {
 
   autoCapitalize: 'none',
   backgroundColor: 'white',
-  placeholderColor: 'black',
   inputTextColor: 'black',
   borderWidth: 1,
 };
