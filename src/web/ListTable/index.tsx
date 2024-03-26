@@ -9,18 +9,31 @@ import {
 
 
 
-const ListTable: React.FC<any> = ({ color, data, colunasVisiveis, textEmpty }) => {
-  const dataTable = data && Array.isArray(data) && data?.length > 0 ? data : [];
+export interface IProps {
+  color: any;
+  data: any;
+  colunasVisiveis: any;
+  textEmpty: any;
+}
+
+
+
+const ListTable: React.FC<IProps> = (props: IProps) => {
+  const className = { ...props } as any;
+
+
+  const dataTable = props.data && Array.isArray(props.data) && props.data?.length > 0 ? props.data : [];
 
 
 
   return (
 
-    <TableComponentStyle>
+    <TableComponentStyle
+      className={className?.className}>
 
       <TableHeader
-        color={color}
-        columns={colunasVisiveis}
+        color={props.color}
+        columns={props.colunasVisiveis}
       />
 
 
@@ -43,8 +56,8 @@ const ListTable: React.FC<any> = ({ color, data, colunasVisiveis, textEmpty }) =
 
       <TableBody
         data={dataTable}
-        columns={colunasVisiveis}
-        textEmpty={textEmpty}
+        columns={props.colunasVisiveis}
+        textEmpty={props.textEmpty}
       />
 
 

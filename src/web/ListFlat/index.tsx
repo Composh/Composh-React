@@ -35,22 +35,24 @@ export interface IProps {
 const ListFlat: React.FC<IProps> = (props: IProps) => {
   const ListContainer = props.noScroll ? ComposhFlatListContainer : ComposhFlatListStyle;
 
+  const dataTable = props.data && Array.isArray(props.data) && props.data?.length > 0 ? props.data : [];
+
 
 
   return (
 
     <Container>
 
-      {/* {props.data?.length === 0 && props.loading && props.listLoadingComponent} */}
+      {/* {dataTable?.length === 0 && props.loading && props.listLoadingComponent} */}
       {props.loading && props.listLoadingComponent}
 
 
 
-      {!props.loading && (!props.data || props.data?.length === 0) && props.listEmptyComponent}
+      {!props.loading && (!dataTable || dataTable?.length === 0) && props.listEmptyComponent}
 
 
 
-      {!props.loading && (props.data && props.data?.length !== 0) && (
+      {!props.loading && (dataTable && dataTable?.length !== 0) && (
         <ListContainer
           style={props.style}>
 
@@ -58,7 +60,7 @@ const ListFlat: React.FC<IProps> = (props: IProps) => {
 
           <ComposhFlatListContent
             style={props.contentContainerStyle}>
-            {props.data?.length !== 0 && props.data?.map((item: any, index: any) => (
+            {dataTable?.length !== 0 && dataTable?.map((item: any, index: any) => (
               props.renderItem(item, index)
             ))}
           </ComposhFlatListContent>

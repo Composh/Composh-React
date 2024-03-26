@@ -98,7 +98,6 @@ const ListTablePaginator: React.FC<IProps> = (props: IProps) => {
         accentColor={colorAccentPaginator}
         title={sizeString}
         onClick={() => {
-          console.log('sizeString', sizeString);
           handlePageClick(sizeString);
         }}>
 
