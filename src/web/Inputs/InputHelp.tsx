@@ -26,9 +26,14 @@ export interface IProps {
 
 
 const InputHelp: React.FC<IProps> = (props: IProps) => {
+  const className = { ...props } as any;
+
+
+
   return (
 
-    <HelpContainerViewStyle>
+    <HelpContainerViewStyle
+      className={className?.className}>
 
       {props.helpText && (
         <HelpTextComponentStyle

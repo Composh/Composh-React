@@ -8,6 +8,7 @@ const sizeSwitch = 20;
 
 
 export interface IProps {
+  disabled?: boolean;
   selected?: boolean;
   size?: number;
   color?: string;
@@ -23,6 +24,8 @@ export const SwitchContainer = styled.a`
   align-items: center;
   justify-content: space-between;
   position: relative;
+
+  opacity: ${(props: IProps) => props.disabled ? 0.4 : 1};
 `;
 
 export const SwitchTextOn = styled.p`

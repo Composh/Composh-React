@@ -43,6 +43,7 @@ const Switch: React.FC<IProps> = (props) => {
   return (
 
     <SwitchContainer
+      disabled={props.disabled}
       className={className?.className}
       onClick={props.disabled ? null : props.onPress}>
 
