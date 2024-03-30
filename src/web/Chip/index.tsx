@@ -53,6 +53,9 @@ export interface IProps {
 
 
 const Chip: React.FC<IProps> = (props: IProps) => {
+  const className = { ...props } as any;
+
+
   // const [elevation, setElevation] = useState(new Animated.Value(0));
 
   // const scale = 2;
@@ -138,6 +141,8 @@ const Chip: React.FC<IProps> = (props: IProps) => {
   return (
 
     <ChipContainer
+      className={className?.className}
+
       // activeOpacity={props.activeOpacity || 0.75}
       // disabled={props.disabled}
       onClick={!props.disabled ? props.onPress : undefined}
