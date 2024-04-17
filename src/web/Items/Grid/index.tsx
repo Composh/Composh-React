@@ -31,13 +31,11 @@ const GridIcon: React.FC<IProps> = (props: IProps) => {
 
 
   function onPressComponent() {
-    if (props.disabled) {
+    if (props.disabled || !props.onPress) {
       return;
     }
 
-    if (!props.disabled || !props.onPress) {
-      props.onPress();
-    }
+    props.onPress();
   }
 
 

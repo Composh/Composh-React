@@ -1,4 +1,9 @@
 import React from 'react';
+
+import {
+  FlatList,
+} from 'react-native';
+
 import Container from '../Container';
 
 import {
@@ -50,20 +55,24 @@ const ListFlat: React.FC<IProps> = (props: IProps) => {
 
 
 
-      {!props.loading && (props.data && props.data?.length !== 0) && (
-        <ListContainer
-          style={props.style}>
+      {!props.loading && props.data && props.data.length !== 0 && (
+        // <ListContainer style={props.style}>
+        //   {props.listHeaderComponent && props.listHeaderComponent}
 
-          {props.listHeaderComponent && props.listHeaderComponent}
-
-          <ComposhFlatListContent
-            style={props.contentContainerStyle}>
-            {props.data?.length !== 0 && props.data?.map((item: any, index: any) => (
-              props.renderItem(item, index)
-            ))}
-          </ComposhFlatListContent>
-
-        </ListContainer>
+        // <ComposhFlatListContent style={props.contentContainerStyle}>
+        <FlatList
+          style={props.style}
+          contentContainerStyle={props.contentContainerStyle}
+          data={props.data}
+          keyExtractor={props.keyExtractor}
+          ListHeaderComponent={props.listHeaderComponent}
+          renderItem={({ item, index }) => props.renderItem(item, index)}
+          ListFooterComponent={props.listFooterComponent}
+          refreshControl={props.refreshControl}
+          onEndReachedThreshold={props.onEndReachedThreshold}
+        />
+        //   </ComposhFlatListContent>
+        // </ListContainer>
       )}
 
     </Container>

@@ -3,6 +3,8 @@ import styled from 'styled-components/native';
 
 
 export interface IProps {
+  height?: number | string;
+  backgroundColor?: string;
   color?: string;
 }
 
@@ -32,4 +34,30 @@ export const TabText = styled.Text`
   margin: 0;
   font-size: 14px;
   color: ${(props: IProps) => props.color || '#000000'};
+`;
+
+
+
+// TabBar Styles
+
+export const TabBarContainer = styled.View`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: ${(props: IProps) => props.height || 10}px;
+  background-color: ${(props: IProps) => props.backgroundColor || '#636363'};
+`;
+
+export const TabBarContent = styled.View`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 1;
+`;
+
+
+
+// TabIndicator Styles
+
+export const TabIndicatorContainer = styled.View`
 `;

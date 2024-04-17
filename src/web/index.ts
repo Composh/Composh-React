@@ -19,6 +19,7 @@ import FABItem from './FAB/Item';
 // import Footer from './Footer';
 import Grid from './Grid';
 import Icon from './Icon';
+import Image from './Image';
 import Input from './Inputs'; // import SearchBar
 import Items from './Items';
 import LinearGradient from './LinearGradient';
@@ -76,6 +77,7 @@ export {
   // Footer,
   Grid,
   Icon,
+  Image,
   Input,
   Items,
   LinearGradient,

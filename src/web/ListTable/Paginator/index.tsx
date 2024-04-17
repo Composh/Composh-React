@@ -30,7 +30,7 @@ const ListTablePaginator: React.FC<IProps> = (props: IProps) => {
 
   const generatePageList = () => {
     const maxPagesToShow = props.maxPagesToShow || 10;
-    const pageList = [];
+    const pageList: Array<number> = [];
 
     const middlePage = Math.floor(maxPagesToShow / 2);
     let startPage = Math.max(1, pageCurrent - middlePage);
@@ -85,7 +85,7 @@ const ListTablePaginator: React.FC<IProps> = (props: IProps) => {
   };
 
 
-  function renderItemPage(active: boolean, page: string) {
+  function renderItemPage(active: boolean, page: number | string) {
     const sizeString = String(page);
 
 

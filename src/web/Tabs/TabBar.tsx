@@ -29,7 +29,7 @@ export interface ISelectInfo {
 
 
 export interface ITabBarProps {
-  children?: ChildrenWithProps<ITabProps>;
+  children?: ChildrenWithProps<ITabProps> | any; // FIXME
 
   selectedIndex?: number;
   onSelect?: (index: {

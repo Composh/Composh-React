@@ -1,20 +1,12 @@
-/**
- * @license
- * Copyright Composh. All Rights Reserved.
- * Licensed under the MIT License. See License.txt in the project root for license information.
- */
-
 import React from 'react';
 
 import {
-  // ImageProps,
-  // NativeSyntheticEvent,
-  StyleSheet,
-  // TargetedEvent,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+  TabContainer,
+  TabIcon,
+  TabText,
+} from './styled';
+
+
 
 // type TabStyledProps = Overwrite<StyledComponentProps, {
 //   appearance?: 'default' | string;
@@ -23,13 +15,14 @@ import {
 
 
 export interface ITabProps {
-  children?: React.ReactElement;
+  // children?: React.ReactElement;
 
   right?: boolean;
   left?: boolean;
 
-  // title?: string | React.ReactText; // RenderProp<TextProps> | React.ReactText;
-  title?: any;
+  title?: any; // string | React.ReactText; // RenderProp<TextProps> | React.ReactText;
+  textColor?: any;
+
   icon?: any; // RenderProp<Partial<ImageProps>>;
   selected?: boolean;
   onSelect?: (selected: boolean) => void;
@@ -145,31 +138,26 @@ const Tab: React.FC<ITabProps> = (props) => {
   //       </Animated.Text>
   //     </TouchableOpacity>
   //   );
-  // })} 
+  // })}
 
   const iconTabView = props.icon && (
-    <View style={{
-      height: 35,
-      width: 35,
+    <TabIcon style={{
       marginRight: props.left ? 8 : 0,
       marginLeft: props.right ? 8 : 0,
     }}>
 
       {props.icon}
 
-    </View>
+    </TabIcon>
   );
 
 
 
   return (
 
-    <TouchableOpacity
-      // {...touchableProps}
-      style={[
-        styles.container,
-        props.style,
-      ]}
+    <TabContainer
+      {...props as any}
+      style={props.style}
       // onMouseEnter={this.onMouseEnter}
       // onMouseLeave={this.onMouseLeave}
       onPress={onPress}>
@@ -177,25 +165,18 @@ const Tab: React.FC<ITabProps> = (props) => {
       {props.left && iconTabView}
 
 
-      <Text
+      <TabText
         numberOfLines={1}
         ellipsizeMode="tail"
-        style={[
-          {
-            fontSize: 14,
-            color: 'black',
-          },
-          props.titleStyle,
-        ]}>
-
+        color={props.textColor}
+        style={props.titleStyle}>
         {props.title}
+      </TabText>
 
-      </Text>
 
+      {!props.left && props.right && iconTabView}
 
-      {props.right && iconTabView}
-
-    </TouchableOpacity>
+    </TabContainer>
 
   );
 };
@@ -207,19 +188,6 @@ Tab.defaultProps = {
   left: false,
   right: true,
 };
-
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingLeft: 10,
-    paddingRight: 10,
-  },
-});
 
 
 

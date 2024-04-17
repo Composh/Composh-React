@@ -20,6 +20,7 @@ import FABItem from './FAB/Item';
 // import Footer from './Footer';
 // import Grid from './Grid';
 import Icon from './Icon';
+import Image from './Image';
 // import Input from './Input';
 import Items from './Items';
 // import LinearGradient from './LinearGradient';
@@ -31,6 +32,7 @@ import ProgressBar from './ProgressBar';
 import Radio from './Radio';
 import Rating from './Rating';
 import Screen from './Screen';
+import Scrolls from './Scrolls';
 import Shimmer from './Shimmer';
 // import SearchBar from './SearchBar';
 // import Select from './Select';
@@ -74,6 +76,7 @@ export {
   FABItem,
   // Footer,
   Icon,
+  Image,
   // Input,
   Items,
   // LinearGradient,
@@ -85,6 +88,7 @@ export {
   Radio,
   Rating,
   Screen,
+  Scrolls,
   Shimmer,
   // Select,
   SnackBar,
