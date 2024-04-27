@@ -90,20 +90,22 @@ const ListSection: React.FC<IProps> = (props) => {
       </TitleSectionView>
 
 
-      <IconContentView
-      // style={{
-      //   transform: [
-      //     {
-      //       rotate: animation.interpolate({
-      //         inputRange: [0, 1],
-      //         outputRange: ['0deg', '180deg'],
-      //       }),
-      //     },
-      //   ],
-      // }}
-      >
-        {props.rightIcon}
-      </IconContentView>
+      {props.rightIcon && (
+        <IconContentView
+        // style={{
+        //   transform: [
+        //     {
+        //       rotate: animation.interpolate({
+        //         inputRange: [0, 1],
+        //         outputRange: ['0deg', '180deg'],
+        //       }),
+        //     },
+        //   ],
+        // }}
+        >
+          {props.rightIcon}
+        </IconContentView>
+      )}
 
     </ContainerSection>
 
