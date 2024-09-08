@@ -171,6 +171,11 @@ export const HelpContainerViewStyle = styled.div`
   padding-right: 5px;
 `;
 
+export const HelpTextViewStyle = styled.div`
+  display: flex;
+  flex: 1;
+`;
+
 export const HelpTextComponentStyle = styled.p`
   display: flex;
   flex: 1;

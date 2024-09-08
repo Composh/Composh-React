@@ -7,6 +7,7 @@ import styled,
 
 export interface IProps {
   direction?: string;
+  disabled?: boolean;
   width?: number;
   height?: number;
   color?: string;
@@ -25,6 +26,7 @@ export const ButtonRadioContainer = styled.div`
   ${(props: IProps) => props.direction && DirectionStyle};
   margin-top: 5px;
   margin-bottom: 5px;
+  /* opacity: ${(props: IProps) => props.disabled ? 0.4 : 1}; */
 `;
 
 

@@ -77,6 +77,7 @@ const Radio: React.FC<IProps> = (props: any) => {
   return (
 
     <ButtonRadioContainer
+      disabled={props.disabled}
       direction={props.direction}
       style={props.style}>
       {props.data.map((item: any, index: any) => {
@@ -85,7 +86,9 @@ const Radio: React.FC<IProps> = (props: any) => {
           <ButtonRadioTouchable
             key={index}
             onClick={() => {
-              _changeRadio(item, index);
+              if (!props.disabled) {
+                _changeRadio(item, index);
+              }
             }}
             direction={props.boxDirection}
             style={props.boxStyle}>

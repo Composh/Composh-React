@@ -2,6 +2,7 @@ import React from 'react';
 
 import {
   HelpContainerViewStyle,
+  HelpTextViewStyle,
   HelpTextComponentStyle,
   HelpCountTextStyle,
 } from './styled';
@@ -35,12 +36,16 @@ const InputHelp: React.FC<IProps> = (props: IProps) => {
     <HelpContainerViewStyle
       className={className?.className}>
 
-      {props.helpText && (
-        <HelpTextComponentStyle
-          style={props.helpTextStyle}>
-          {!props.noHelp && props.helpText}
-        </HelpTextComponentStyle>
-      )}
+      <HelpTextViewStyle>
+
+        {props.helpText && (
+          <HelpTextComponentStyle
+            style={props.helpTextStyle}>
+            {!props.noHelp && props.helpText}
+          </HelpTextComponentStyle>
+        )}
+
+      </HelpTextViewStyle>
 
 
 

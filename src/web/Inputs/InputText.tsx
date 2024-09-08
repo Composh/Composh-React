@@ -231,7 +231,7 @@ const InputText: React.FC<IProps> = (props: IProps) => {
 
 
   useEffect(() => {
-    if (hasMask || props.value) {
+    if ((props.value && props.value !== '' && props.value !== null && props.value !== undefined)) {
       _onChangeText(props.value || textValue);
     }
     else {
