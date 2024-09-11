@@ -24,7 +24,7 @@ import {
 } from './styled';
 
 import {
-  EEnumType,
+  EMaskEnumType,
   ETypesInput,
 } from './types.enum';
 
@@ -35,20 +35,7 @@ export interface IProps {
   noShadow?: boolean;
   password?: boolean;
 
-  type:
-  'CNPJ' |
-  'CPF' |
-  'CREDITCARD' |
-  'CUSTOM' |
-  'DATETIME' |
-  'MONEY' |
-  'NUMBER' |
-  'PHONE' |
-  'TEXT' |
-  'ZIPCODE' |
-  'EMAIL' |
-  'PASSWORD' |
-  'URL';
+  type: EMaskEnumType | string;
 
   options?: any;
 
@@ -129,21 +116,21 @@ const InputText: React.FC<IProps> = (props: IProps) => {
       const { maskedText, rawText } = inputUpdateValue(hasMask, typeMaskInput, props.options, masketToRawText);
 
       if (props.onChange) {
-        if (props.type === EEnumType.CREDITCARD) {
+        if (props.type === EMaskEnumType.CREDITCARD) {
           const rawNumberJoin = rawText.join('');
           setRawValue(rawNumberJoin);
           setTextValue(maskedText);
           props.onChange(rawNumberJoin, maskedText);
         }
 
-        else if (props.type === EEnumType.DATETIME) {
+        else if (props.type === EMaskEnumType.DATETIME) {
           const dateReturn = maskedText.replace(/[^\w\s]/gi, '');
           setRawValue(dateReturn);
           setTextValue(maskedText);
           props.onChange(dateReturn, maskedText);
         }
 
-        else if (props.type === EEnumType.MONEY) {
+        else if (props.type === EMaskEnumType.MONEY) {
           const textWithoutSpecialChars = String(maskedText).replace(/\D/g, '');
 
           if (props.countLimit && typeof props.countLimit === 'number' && textWithoutSpecialChars.length > props.countLimit) {

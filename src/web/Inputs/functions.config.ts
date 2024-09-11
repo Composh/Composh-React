@@ -1,7 +1,7 @@
 import MaskResolver from '../../plugins/Mask/mask-resolver';
 
 import {
-  EEnumType,
+  EMaskEnumType,
   ETypesInput,
   ETypesMasks,
 } from './types.enum';
@@ -12,28 +12,28 @@ export function returnTypeMaskEnum(maskType: string) {
   const itemsTypeMask = ETypesMasks();
 
   switch (maskType) {
-    case EEnumType.CNPJ:
+    case EMaskEnumType.CNPJ:
       return itemsTypeMask.CNPJ;
 
-    case EEnumType.CPF:
+    case EMaskEnumType.CPF:
       return itemsTypeMask.CPF;
 
-    case EEnumType.CREDITCARD:
+    case EMaskEnumType.CREDITCARD:
       return itemsTypeMask.CREDIT_CARD;
 
-    case EEnumType.CUSTOM:
+    case EMaskEnumType.CUSTOM:
       return itemsTypeMask.CUSTOM;
 
-    case EEnumType.DATETIME:
+    case EMaskEnumType.DATETIME:
       return itemsTypeMask.DATE_TIME;
 
-    case EEnumType.MONEY:
+    case EMaskEnumType.MONEY:
       return itemsTypeMask.MONEY;
 
-    case EEnumType.PHONE:
+    case EMaskEnumType.PHONE:
       return itemsTypeMask.PHONE;
 
-    case EEnumType.ZIPCODE:
+    case EMaskEnumType.ZIPCODE:
       return itemsTypeMask.ZIP_CODE;
 
     default:
@@ -47,29 +47,29 @@ export function returnTypeInput(maskType: string) {
   const enumTypesInput = ETypesInput();
 
   switch (maskType) {
-    case EEnumType.CNPJ:
-    case EEnumType.CPF:
-    case EEnumType.CREDITCARD:
-    case EEnumType.CUSTOM:
-    case EEnumType.DATETIME:
-    case EEnumType.MONEY:
-    case EEnumType.NUMBER:
+    case EMaskEnumType.CNPJ:
+    case EMaskEnumType.CPF:
+    case EMaskEnumType.CREDITCARD:
+    case EMaskEnumType.CUSTOM:
+    case EMaskEnumType.DATETIME:
+    case EMaskEnumType.MONEY:
+    case EMaskEnumType.NUMBER:
       return enumTypesInput.NUMBER;
 
-    case EEnumType.PHONE:
+    case EMaskEnumType.PHONE:
       return enumTypesInput.TEL_PHONE;
 
-    case EEnumType.TEXT:
-    case EEnumType.ZIPCODE:
+    case EMaskEnumType.TEXT:
+    case EMaskEnumType.ZIPCODE:
       return enumTypesInput.TEXT;
 
-    case EEnumType.EMAIL:
+    case EMaskEnumType.EMAIL:
       return enumTypesInput.EMAIL;
 
-    case EEnumType.PASSWORD:
+    case EMaskEnumType.PASSWORD:
       return enumTypesInput.TEXT;
 
-    case EEnumType.URL:
+    case EMaskEnumType.URL:
       return enumTypesInput.URL;
 
     default:
@@ -81,14 +81,14 @@ export function returnTypeInput(maskType: string) {
 
 export function returnIfHasMask(maskType: string) {
   if ([
-    EEnumType.CNPJ.valueOf(),
-    EEnumType.CPF.valueOf(),
-    EEnumType.CREDITCARD.valueOf(),
-    EEnumType.CUSTOM.valueOf(),
-    EEnumType.DATETIME.valueOf(),
-    EEnumType.MONEY.valueOf(),
-    EEnumType.PHONE.valueOf(),
-    EEnumType.ZIPCODE.valueOf(),
+    EMaskEnumType.CNPJ.valueOf(),
+    EMaskEnumType.CPF.valueOf(),
+    EMaskEnumType.CREDITCARD.valueOf(),
+    EMaskEnumType.CUSTOM.valueOf(),
+    EMaskEnumType.DATETIME.valueOf(),
+    EMaskEnumType.MONEY.valueOf(),
+    EMaskEnumType.PHONE.valueOf(),
+    EMaskEnumType.ZIPCODE.valueOf(),
   ].includes(maskType)) {
     return true;
   }

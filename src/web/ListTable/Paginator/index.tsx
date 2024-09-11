@@ -85,7 +85,7 @@ const ListTablePaginator: React.FC<IProps> = (props: IProps) => {
   };
 
 
-  function renderItemPage(active: boolean, page: number | string) {
+  function renderItemPage(active: boolean, page: string) {
     const sizeString = String(page);
 
 
@@ -122,7 +122,7 @@ const ListTablePaginator: React.FC<IProps> = (props: IProps) => {
       {pageCurrent > 1 && renderItemPage(false, '<<')}
       {pageCurrent > 1 && renderItemPage(false, '<')}
 
-      {generatePageList().map((page) => renderItemPage(page === pageCurrent, page))}
+      {generatePageList().map((page) => renderItemPage(page === pageCurrent, String(page)))}
 
       {pageCurrent < pagesTotal && renderItemPage(false, '>')}
       {pageCurrent < pagesTotal && renderItemPage(false, '>>')}

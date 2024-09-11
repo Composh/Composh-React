@@ -1,5 +1,5 @@
-export enum EEnumType {
-  NONE = 'NONE',
+export enum EMaskEnumType {
+  // NONE = 'NONE',
   CNPJ = 'CNPJ',
   CPF = 'CPF',
   CREDITCARD = 'CREDITCARD',
