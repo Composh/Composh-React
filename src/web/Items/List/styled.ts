@@ -25,7 +25,7 @@ export const ItemContainer = styled.a`
   border-bottom-style: solid;
   border-bottom-width: ${(props: IProps) => props.borderBottomColor ? props.borderBottomWidth || 1 : 0}px;
 
-  opacity: ${(props: IProps) => props.disabled ? 0.5 : 1};
+  opacity: ${(props: IProps) => props.disabled ? 0.4 : 1};
 
   cursor: ${(props: IProps) => props.disabled ? 'default' : 'pointer'};
 `;

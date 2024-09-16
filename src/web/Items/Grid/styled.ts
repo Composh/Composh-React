@@ -16,7 +16,7 @@ export const GridIconContent = styled.a`
   min-height: 70px;
   padding-top: 4px;
   padding-bottom: 4px;
-  opacity: ${(props: IProps) => props.disabled ? 0.5 : 1};
+  opacity: ${(props: IProps) => props.disabled ? 0.4 : 1};
   cursor: ${(props: IProps) => props.disabled ? 'default' : 'pointer'};
 
   @media (max-width: 480px){

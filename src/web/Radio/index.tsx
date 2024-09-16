@@ -80,6 +80,7 @@ const Radio: React.FC<IProps> = (props: any) => {
       disabled={props.disabled}
       direction={props.direction}
       style={props.style}>
+
       {props.data.map((item: any, index: any) => {
         return (
 
@@ -119,6 +120,7 @@ const Radio: React.FC<IProps> = (props: any) => {
 
         );
       })}
+
     </ButtonRadioContainer>
 
   );

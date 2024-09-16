@@ -22,7 +22,7 @@ export const CheckBoxButton = styled.a`
   padding-bottom: 2px;
   cursor: pointer;
 
-  opacity: ${(props: IProps) => props.disabled ? 0.5 : 1};
+  opacity: ${(props: IProps) => props.disabled ? 0.4 : 1};
 
   ${(props: IProps) => props.center && 'align-items: center'};
 `;
