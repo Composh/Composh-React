@@ -14,9 +14,9 @@ import {
 export interface IProps {
   height?: number;
 
-  leftIcon?: object | null;
-  rightIcon?: object | null;
-  centerContent?: object;
+  leftIcon?: any | null;
+  rightIcon?: any | null;
+  centerContent?: any;
 
   backgroundColor?: string;
   // style?: any;
@@ -26,7 +26,7 @@ export interface IProps {
 
 
 
-const Toolbar: React.FC<IProps> = (props: any) => {
+const Toolbar: React.FC<IProps> = (props: IProps) => {
   return (
 
     <ToolbarContainer

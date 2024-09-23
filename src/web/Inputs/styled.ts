@@ -53,9 +53,9 @@ export const IconContent = styled.div`
 // Label
 
 export const LabelStyle = styled.p`
-  margin-top: 1px;
-  margin-bottom: 5px;
-  margin-left: 6px;
+  margin-bottom: 3px;
+  padding-left: 3px;
+  padding-right: 3px;
   color: ${(props: IProps) => props.color || '#000'};
   font-weight: 500;
   font-size: 14px;
@@ -100,8 +100,8 @@ export const InputViewStyle = styled.div`
   overflow: hidden;
   align-items: center;
   justify-content: center;
-  min-height: 42px;
-  margin-top: 5px;
+  min-height: 40px;
+  margin-top: 4px;
   margin-bottom: 4px;
   border-radius: 5px;
   opacity: ${(props: IProps) => props.opacity};
@@ -165,15 +165,9 @@ export const TextInputStyle = styled.input`
 export const HelpContainerViewStyle = styled.div`
   display: flex;
   flex-direction: row;
-  margin-top: 4px;
-  margin-bottom: 4px;
+  margin-top: 3px;
   padding-left: 5px;
   padding-right: 5px;
-`;
-
-export const HelpTextViewStyle = styled.div`
-  display: flex;
-  flex: 1;
 `;
 
 export const HelpTextComponentStyle = styled.p`

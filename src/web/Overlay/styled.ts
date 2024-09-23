@@ -33,5 +33,6 @@ export const OverlayView = styled.div`
 
 
 export const OverlayChildren = styled.div`
+  ${OverlayStyle};
   z-index: 9999 !important;
 `;

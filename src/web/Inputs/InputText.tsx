@@ -111,7 +111,13 @@ const InputText: React.FC<IProps> = (props: IProps) => {
 
   function _onChangeText(newText: string) {
     if (hasMask) {
-      const masketToRawText = newText?.replace(/[\u0300-\u036f]/g, '').replaceAll(/\s/g, '').replace(/[^\w\s]/gi, '').trim();
+      // O operador de coalescência nula (?? '') garante que, se newText for null ou undefined, ele será substituído por uma string vazia ('').
+      // O método toString() converte qualquer valor de newText para string antes de aplicar os métodos replace.
+      const masketToRawText = (newText ?? '').toString()
+        .replace(/[\u0300-\u036f]/g, '')  // Remove acentos
+        .replace(/\s/g, '')               // Remove espaços
+        .replace(/[^\w\s]/gi, '')         // Remove caracteres não alfanuméricos
+        .trim();
 
       const { maskedText, rawText } = inputUpdateValue(hasMask, typeMaskInput, props.options, masketToRawText);
 
