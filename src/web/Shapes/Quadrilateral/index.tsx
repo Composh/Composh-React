@@ -21,7 +21,9 @@ const Quadrilateral: React.FC<IProps> = (props: IProps) => {
     <QuadriShape
       style={{
         right: (props.dimension || 200) - (props.distance || 20),
-        borderBottomWidth: props.dimension || 200,
+        top: -10,
+        left: -4,
+        borderBottomWidth: props.dimension + 12 || 200,
         borderBottomColor: props.color || 'black',
       }}
     />
