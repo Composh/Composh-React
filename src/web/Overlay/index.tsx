@@ -24,7 +24,10 @@ export interface IProps {
 
 
 
-const Overlay: React.FC<IProps> = (props: any) => {
+const Overlay: React.FC<IProps> = (props: IProps) => {
+  const className = { ...props } as any;
+
+
   const visibleOverlay = props.visible;
   if (!visibleOverlay) {
     return null;
@@ -55,6 +58,7 @@ const Overlay: React.FC<IProps> = (props: any) => {
       />
 
       <OverlayChildren
+        className={className?.className}
         style={props.containerStyle}>
         {props.children}
       </OverlayChildren>

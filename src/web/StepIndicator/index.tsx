@@ -9,10 +9,14 @@ import {
 
 
 export interface IProps {
-  data: any;
+  data: Array<string>;
+  stepsValidity: boolean[];
+
   stepCurrent: number;
 
-  // onPress?: any;
+  height?: number;
+  backgroundColor?: string;
+
   colorPassed?: string;
   textColorPassed?: string;
 
@@ -20,91 +24,89 @@ export interface IProps {
 
   colorMoreStep?: string;
 
-  backgroundColor?: string;
+  onStepPress: (index: number) => void;
 }
 
 
 
-const StepIndicator: React.FC<IProps> = (props: any) => {
-  const {
-    stepCurrent,
-    data,
-  } = props;
+const StepIndicator: React.FC<IProps> = (props: IProps) => {
+  const stepReceivedCurrent = props.stepCurrent;
+  const dataStep = props.data && Array.isArray(props.data) && props.data?.length > 0 ? props.data : [];
 
 
   function chooseBackgroundColor(index: number) {
-    if (index > stepCurrent && index !== stepCurrent) {
+    if (index > stepReceivedCurrent && index !== stepReceivedCurrent) {
       return props.backgroundColor;
     }
-    else if (index < stepCurrent) {
+
+    if (index < stepReceivedCurrent) {
       return props.colorAccent;
     }
-    else if (index === stepCurrent) {
+
+    if (index === stepReceivedCurrent) {
       return props.colorPassed;
     }
-    else {
-      return 'black';
-    }
+
+    return '#000000';
   }
 
 
 
   function chooseBorderColor(index: number) {
-    if (index > stepCurrent && index !== stepCurrent) {
+    if (index > stepReceivedCurrent && index !== stepReceivedCurrent) {
       return props.colorMoreStep;
     }
-    else if (index < stepCurrent) {
+
+    if (index < stepReceivedCurrent) {
       return props.colorAccent;
     }
-    else if (index === stepCurrent) {
+
+    if (index === stepReceivedCurrent) {
       return props.colorPassed;
     }
-    else {
-      return 'black';
-    }
+
+    return '#000000';
   }
 
 
 
   function chooseTextColor(index: number) {
-    if (index > stepCurrent && index !== stepCurrent) {
+    if (index > stepReceivedCurrent && index !== stepReceivedCurrent) {
       return props.colorMoreStep;
     }
-    else if (index < stepCurrent) {
+
+    if (index < stepReceivedCurrent) {
       return props.textColorPassed;
     }
-    else if (index === stepCurrent) {
+
+    if (index === stepReceivedCurrent) {
       return props.textColorPassed;
     }
-    else {
-      return 'red';
-    }
+
+    return '#ff0000';
   }
+
 
 
   return (
 
-    <StepContainer>
+    <StepContainer
+      height={props.height || 46}>
 
-      {data.map((label: string, index: number) => (
+      {dataStep?.map((label: string, index: number) => (
         <StepIndicatorContainer
           key={index}
-          style={{
-            backgroundColor: chooseBackgroundColor(index),
-            borderColor: chooseBorderColor(index),
-            borderWidth: 1,
+          disabled={!props.stepsValidity[index]}
+          backgroundColor={chooseBackgroundColor(index)}
+          borderColor={chooseBorderColor(index)}
+          onClick={() => {
+            if (props.onStepPress) {
+              props.onStepPress(index);
+            }
           }}>
 
-          {/*
-          <Text>
-            {i + 1}
-          </Text>
-          */}
-
           <StepText
-            style={{
-              color: chooseTextColor(index),
-            }}>
+            color={chooseTextColor(index)}>
             {label}
           </StepText>
 
