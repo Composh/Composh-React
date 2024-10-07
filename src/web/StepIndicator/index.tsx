@@ -100,6 +100,10 @@ const StepIndicator: React.FC<IProps> = (props: IProps) => {
           backgroundColor={chooseBackgroundColor(index)}
           borderColor={chooseBorderColor(index)}
           onClick={() => {
+            if (!props.stepsValidity[index]) {
+              return;
+            }
+
             if (props.onStepPress) {
               props.onStepPress(index);
             }
