@@ -43,7 +43,7 @@ export const StepIndicatorContainer = styled.div`
   margin-right: 3px;
   background-color: ${(props: IProps) => props.backgroundColor};
   border-radius: ${5}px;
-  cursor: ${(props: IProps) => props.disabled ? 'pointer' : 'not-allowed'};
+  cursor: ${(props: IProps) => props.disabled ? 'not-allowed' : 'pointer'};
 
   ${(props: IProps) => props.borderColor && StepBorderStyle}
 `;
