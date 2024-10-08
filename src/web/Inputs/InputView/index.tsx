@@ -1,7 +1,7 @@
 import React from 'react';
 
-import InputHelp from './InputHelp';
-import InputLabel from './InputLabel';
+import InputHelp from '../InputHelp';
+import InputLabel from '../InputLabel';
 
 import {
   InputsContainer,
@@ -15,6 +15,10 @@ export interface IProps {
 
   disabled?: boolean;
   noShadow?: boolean;
+
+  required?: boolean;
+  requiredText?: string;
+  requiredColor?: string;
 
   noWrap?: boolean;
   backgroundColor?: string;
@@ -58,6 +62,9 @@ const InputView: React.FC<IProps> = (props: IProps) => {
 
       {props.labelText && (
         <InputLabel
+          required={props.required}
+          requiredText={props.requiredText}
+          requiredColor={props.requiredColor}
           labelText={props.labelText}
           labelStyle={{
             color: props.labelColor,

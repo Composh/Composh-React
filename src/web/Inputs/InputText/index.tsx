@@ -4,17 +4,22 @@ import React,
   useState,
 } from 'react';
 
-import EyeOffImage from './eye_off_black.png';
-import EyeOnImage from './eye_on_black.png';
-
 import {
   returnTypeMaskEnum,
   returnTypeInput,
   returnIfHasMask,
   inputUpdateValue,
-} from './functions.config';
+} from '../functions.config';
 
-import InputView from './InputView';
+import InputView from '../InputView';
+
+import {
+  EMaskEnumType,
+  ETypesInput,
+} from '../types.enum';
+
+import EyeOffImage from './eye_off_black.png';
+import EyeOnImage from './eye_on_black.png';
 
 import {
   IconContent,
@@ -23,17 +28,18 @@ import {
   IconEye,
 } from './styled';
 
-import {
-  EMaskEnumType,
-  ETypesInput,
-} from './types.enum';
-
 
 
 export interface IProps {
+  className?: any;
+
   disabled?: boolean;
   noShadow?: boolean;
   password?: boolean;
+
+  required?: boolean;
+  requiredText?: string;
+  requiredColor?: string;
 
   type: EMaskEnumType | string;
 
@@ -90,6 +96,7 @@ export interface IProps {
 
 const InputText: React.FC<IProps> = (props: IProps) => {
   const className = { ...props } as any;
+
   const opacityValue = props.disabled ? 0.5 : 1;
   const enumPasswordInput = ETypesInput().PASSWORD;
 
@@ -111,13 +118,7 @@ const InputText: React.FC<IProps> = (props: IProps) => {
 
   function _onChangeText(newText: string) {
     if (hasMask) {
-      // O operador de coalescência nula (?? '') garante que, se newText for null ou undefined, ele será substituído por uma string vazia ('').
-      // O método toString() converte qualquer valor de newText para string antes de aplicar os métodos replace.
-      const masketToRawText = (newText ?? '').toString()
-        .replace(/[\u0300-\u036f]/g, '')  // Remove acentos
-        .replace(/\s/g, '')               // Remove espaços
-        .replace(/[^\w\s]/gi, '')         // Remove caracteres não alfanuméricos
-        .trim();
+      const masketToRawText = newText?.replace(/[\u0300-\u036f]/g, '').replaceAll(/\s/g, '').replace(/[^\w\s]/gi, '').trim();
 
       const { maskedText, rawText } = inputUpdateValue(hasMask, typeMaskInput, props.options, masketToRawText);
 
@@ -224,7 +225,7 @@ const InputText: React.FC<IProps> = (props: IProps) => {
 
 
   useEffect(() => {
-    if ((props.value && props.value !== '' && props.value !== null && props.value !== undefined)) {
+    if (hasMask || props.value) {
       _onChangeText(props.value || textValue);
     }
     else {
@@ -241,6 +242,10 @@ const InputText: React.FC<IProps> = (props: IProps) => {
 
       disabled={props.disabled}
       noShadow={props.noShadow}
+
+      required={props.required}
+      requiredText={props.requiredText}
+      requiredColor={props.requiredColor}
 
       noWrap={props.noWrap}
       backgroundColor={props.backgroundColor}
