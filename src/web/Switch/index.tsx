@@ -49,7 +49,7 @@ const Switch: React.FC<IProps> = (props) => {
       style={props.style}
 
       disabled={props.disabled}
-      onPress={() => {
+      onClick={() => {
         if (props.disabled && props.onPress) {
           props.onPress();
         }
