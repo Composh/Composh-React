@@ -1,9 +1,4 @@
 import React from 'react';
-
-import {
-  FlatList,
-} from 'react-native';
-
 import Container from '../Container';
 
 import {
@@ -38,7 +33,54 @@ export interface IProps {
 
 
 const ListFlat: React.FC<IProps> = (props: IProps) => {
-  const ListContainer = props.noScroll ? ComposhFlatListContainer : ComposhFlatListStyle;
+  const dataTable: Array<any> = props.data && Array.isArray(props.data) && props.data?.length > 0 ? props.data : [];
+
+
+
+  function renderFlatList() {
+    return (
+
+      <ComposhFlatListContent
+        style={props.contentContainerStyle}>
+        {dataTable?.length > 0 && dataTable?.map((item: any, index: any) => (
+          props.renderItem(item, index)
+        ))}
+      </ComposhFlatListContent>
+
+    );
+  }
+
+
+  function renderNoScroll() {
+    return (
+
+      <ComposhFlatListContainer
+        style={props.style}>
+
+        {props.listHeaderComponent && props.listHeaderComponent}
+
+        {renderFlatList()}
+
+      </ComposhFlatListContainer>
+
+    );
+  }
+
+
+  function renderScroll() {
+    return (
+
+      <ComposhFlatListStyle
+        style={props.style}>
+
+        {props.listHeaderComponent && props.listHeaderComponent}
+
+        {renderFlatList()}
+
+      </ComposhFlatListStyle>
+
+    );
+  }
 
 
 
@@ -46,33 +88,17 @@ const ListFlat: React.FC<IProps> = (props: IProps) => {
 
     <Container>
 
-      {/* {props.data?.length === 0 && props.loading && props.listLoadingComponent} */}
+      {/* {dataTable?.length === 0 && props.loading && props.listLoadingComponent} */}
       {props.loading && props.listLoadingComponent}
 
 
 
-      {!props.loading && (!props.data || props.data?.length === 0) && props.listEmptyComponent}
+      {!props.loading && (!dataTable || dataTable?.length === 0) && props.listEmptyComponent}
 
 
 
-      {!props.loading && props.data && props.data.length !== 0 && (
-        // <ListContainer style={props.style}>
-        //   {props.listHeaderComponent && props.listHeaderComponent}
-
-        // <ComposhFlatListContent style={props.contentContainerStyle}>
-        <FlatList
-          style={props.style}
-          contentContainerStyle={props.contentContainerStyle}
-          data={props.data}
-          keyExtractor={props.keyExtractor}
-          ListHeaderComponent={props.listHeaderComponent}
-          renderItem={({ item, index }) => props.renderItem(item, index)}
-          ListFooterComponent={props.listFooterComponent}
-          refreshControl={props.refreshControl}
-          onEndReachedThreshold={props.onEndReachedThreshold}
-        />
-        //   </ComposhFlatListContent>
-        // </ListContainer>
+      {!props.loading && (dataTable && dataTable?.length !== 0) && (
+        props.noScroll ? renderNoScroll() : renderScroll()
       )}
 
     </Container>

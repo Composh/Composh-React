@@ -33,9 +33,54 @@ export interface IProps {
 
 
 const ListFlat: React.FC<IProps> = (props: IProps) => {
-  const ListContainer = props.noScroll ? ComposhFlatListContainer : ComposhFlatListStyle;
+  const dataTable: Array<any> = props.data && Array.isArray(props.data) && props.data?.length > 0 ? props.data : [];
 
-  const dataTable = props.data && Array.isArray(props.data) && props.data?.length > 0 ? props.data : [];
+
+
+  function renderFlatList() {
+    return (
+
+      <ComposhFlatListContent
+        style={props.contentContainerStyle}>
+        {dataTable?.length > 0 && dataTable?.map((item: any, index: any) => (
+          props.renderItem(item, index)
+        ))}
+      </ComposhFlatListContent>
+
+    );
+  }
+
+
+  function renderNoScroll() {
+    return (
+
+      <ComposhFlatListContainer
+        style={props.style}>
+
+        {props.listHeaderComponent && props.listHeaderComponent}
+
+        {renderFlatList()}
+
+      </ComposhFlatListContainer>
+
+    );
+  }
+
+
+  function renderScroll() {
+    return (
+
+      <ComposhFlatListStyle
+        style={props.style}>
+
+        {props.listHeaderComponent && props.listHeaderComponent}
+
+        {renderFlatList()}
+
+      </ComposhFlatListStyle>
+
+    );
+  }
 
 
 
@@ -53,19 +98,7 @@ const ListFlat: React.FC<IProps> = (props: IProps) => {
 
 
       {!props.loading && (dataTable && dataTable?.length !== 0) && (
-        <ListContainer
-          style={props.style}>
-
-          {props.listHeaderComponent && props.listHeaderComponent}
-
-          <ComposhFlatListContent
-            style={props.contentContainerStyle}>
-            {dataTable?.length !== 0 && dataTable?.map((item: any, index: any) => (
-              props.renderItem(item, index)
-            ))}
-          </ComposhFlatListContent>
-
-        </ListContainer>
+        props.noScroll ? renderNoScroll() : renderScroll()
       )}
 
     </Container>

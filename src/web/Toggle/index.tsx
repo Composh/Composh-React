@@ -97,6 +97,18 @@ const Toggle: React.FC<IProps> = (props: IProps) => {
   }
 
 
+  function renderTextToggle() {
+    const displayValue = props.displayValue ? String(props.displayValue) : '-';
+    const value = props.value ? String(props.value) : '-';
+
+    if (displayValue === '' || displayValue === null || displayValue === undefined) {
+      return value;
+    }
+
+    return displayValue || '-';
+  }
+
+
 
   return (
 
@@ -139,10 +151,7 @@ const Toggle: React.FC<IProps> = (props: IProps) => {
           style={props.textStyle}>
 
 
-          {props.displayValue === '' || props.displayValue === null || props.displayValue === undefined
-            ? props.value
-            : props.displayValue
-          }
+          {renderTextToggle()}
 
         </ToggleText>
       )}

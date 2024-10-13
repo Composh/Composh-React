@@ -15,7 +15,6 @@ import Content from './Content';
 import Divider from './Divider';
 import Epigraph from './Epigraph';
 import FAB from './FAB';
-import FABItem from './FAB/Item';
 // import Footer from './Footer';
 import Grid from './Grid';
 import Icon from './Icon';
@@ -73,7 +72,6 @@ export {
   Divider,
   Epigraph,
   FAB,
-  FABItem,
   // Footer,
   Grid,
   Icon,
