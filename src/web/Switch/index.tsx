@@ -45,6 +45,7 @@ const Switch: React.FC<IProps> = (props) => {
   return (
 
     <SwitchContainer
+      className={className?.className}
       style={props.style}
 
       disabled={props.disabled}
