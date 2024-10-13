@@ -1,6 +1,10 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import {
+  FabItemContainer,
+} from './styled';
+
+
 
 export interface IProps {
   color?: any;
@@ -11,8 +15,10 @@ export interface IProps {
   onPress?: any;
 }
 
-const FABItem: React.FC<IProps> = (props) => {
-  return <div />;
+
+
+const FABItem: React.FC<IProps> = (props: IProps) => {
+  return <FabItemContainer />;
 };
 
 
