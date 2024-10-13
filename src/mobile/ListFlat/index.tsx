@@ -93,11 +93,11 @@ const ListFlat: React.FC<IProps> = (props: IProps) => {
 
 
 
-      {!props.loading && (!dataTable || dataTable?.length === 0) && props.listEmptyComponent}
+      {!props.loading && (!dataTable || dataTable?.length <= 0) && props.listEmptyComponent}
 
 
 
-      {!props.loading && (dataTable && dataTable?.length !== 0) && (
+      {!props.loading && (dataTable && dataTable?.length > 0) && (
         props.noScroll ? renderNoScroll() : renderScroll()
       )}
 
