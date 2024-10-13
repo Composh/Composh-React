@@ -28,15 +28,15 @@ export interface IProps {
   renderHeader?: (item: any, isExpanded: boolean, onClick: () => void) => React.ReactNode; // Função para renderizar o cabeçalho
   renderContent?: (item: any) => React.ReactNode; // Função para renderizar o conteúdo
 
-  headerStyle?: React.CSSProperties; // Estilo do cabeçalho
-  contentStyle?: React.CSSProperties; // Estilo do conteúdo
+  headerStyle?: any; // Estilo do cabeçalho
+  contentStyle?: any; // Estilo do conteúdo
 
   onAccordionOpen?: (item: any, index: number) => void; // Callback chamado quando um item é aberto
   onAccordionClose?: (item: any, index: number) => void; // Callback chamado quando um item é fechado
 
   noPress?: boolean; // Se verdadeiro, desativa o gerenciamento de cliques para abrir/fechar
   onPress?: (index: number) => void; // Callback chamado quando um item é pressionado
-  style?: React.CSSProperties; // Estilo do componente Accordion
+  style?: any; // Estilo do componente Accordion
 }
 
 

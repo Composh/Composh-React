@@ -32,6 +32,7 @@ import {
 
 export interface IProps {
   className?: any;
+  style?: any;
 
   disabled?: boolean;
   noShadow?: boolean;
@@ -88,8 +89,6 @@ export interface IProps {
   lowercase?: boolean;
   children?: any;
   multiline?: boolean;
-
-  style?: any;
 }
 
 
@@ -239,6 +238,7 @@ const InputText: React.FC<IProps> = (props: IProps) => {
 
     <InputView
       className={className?.className}
+      style={props.style}
 
       disabled={props.disabled}
       noShadow={props.noShadow}

@@ -59,4 +59,3 @@ export const DefaultContentTitle = styled.p`
   color: ${(props: IProps) => props.color};
   font-size: 14px;
 `;
-

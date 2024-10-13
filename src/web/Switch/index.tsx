@@ -10,6 +10,8 @@ import {
 
 
 export interface IProps {
+  style?: any;
+
   selected?: boolean;
   disabled?: boolean;
   hideText?: boolean;
@@ -43,9 +45,14 @@ const Switch: React.FC<IProps> = (props) => {
   return (
 
     <SwitchContainer
+      style={props.style}
+
       disabled={props.disabled}
-      className={className?.className}
-      onClick={props.disabled ? null : props.onPress}>
+      onPress={() => {
+        if (props.disabled && props.onPress) {
+          props.onPress();
+        }
+      }}>
 
       {!props.hideText && (
         <SwitchTextOn
