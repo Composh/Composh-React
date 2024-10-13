@@ -54,7 +54,7 @@ export const FabButtonStyle = css`
     : 0
   }px;
   z-index: 1050;
-  
+
   opacity: ${(props: IProps) => props.disabled ? 0.4 : 1};
   cursor: ${(props: IProps) => props.disabled ? 'default' : 'pointer'};
 
@@ -93,7 +93,7 @@ export const FabSimpleButton = styled.a`
   justify-content: center;
   background-color: ${(props: IProps) => props.backgroundColor};
 
-  box-shadow: rgb(0 0 0 / 20%) 0px 3px 5px -1px, rgb(0 0 0 / 14%) 0px 6px 10px 0px, rgb(0 0 0 / 12%) 0px 1px 18px 0px;
+  ${ShadowToolbar};
 
 
   :hover {
