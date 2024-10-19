@@ -35,6 +35,7 @@ const TableHeader: React.FC<IProps> = (props: IProps) => {
       return (
 
         <TableHeaderCell
+          key={index}
           index={index}
           // key={column.dataField}
           column={column}

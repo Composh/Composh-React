@@ -72,15 +72,21 @@ const TableBody: React.FC<IProps> = (props: IProps) => {
   return (
 
     <>
-      {dadosOrdenados?.map((item, index) => (
-        <Linha key={index}>
-          {props.columns?.map((coluna: any) => (
-            <CelulaDiv key={coluna?.dataField}>
+
+      {dadosOrdenados?.map((item: any, index: number) => (
+        <Linha
+          key={index}>
+
+          {props.columns?.map((coluna: any, index: number) => (
+            <CelulaDiv
+              key={index}>
               {renderResult(item, coluna)}
             </CelulaDiv>
           ))}
+
         </Linha>
       ))}
+
     </>
 
   );

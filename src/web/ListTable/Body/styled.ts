@@ -5,8 +5,18 @@ import styled from 'styled-components';
 export const Linha = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
+  margin-top: -1px;
+  margin-bottom: -1px;
+  padding-top: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 12px;
+  border-top-color: ${'#ddd'};
+  border-top-style: solid;
+  border-top-width: 0.5px;
+  border-bottom-color: ${'#ddd'};
+  border-bottom-style: solid;
+  border-bottom-width: 0.5px;
 `;
 
 
