@@ -16,14 +16,14 @@ export interface IProps {
 
 
 
+export const ShadowCard = css`
+  box-shadow: 0 2px 18px 1px rgba(0, 0, 0, 0.1);
+`;
+
 export const CardLeftBorder = css`
   border-left-color: ${(props: IProps) => props.borderLeftColor};
   border-left-style: ${(props: IProps) => props.borderLeftStyle || 'solid'};
   border-left-width: ${(props: IProps) => props.borderLeftWidth || 4}px;
-`;
-
-export const CardShadow = css`
-  box-shadow: 0 2px 18px 1px rgb(49 53 72 / 10%);
 `;
 
 export const CardStyle = css`
@@ -35,7 +35,7 @@ export const CardStyle = css`
 
   ${(props: IProps) => props.borderLeftColor && CardLeftBorder};
 
-  ${(props: IProps) => props.shadow && CardShadow};
+  ${(props: IProps) => props.shadow && ShadowCard};
 `;
 
 

@@ -12,6 +12,12 @@ import {
 
 
 export interface IProps {
+  style?: any;
+
+  noPadding?: boolean;
+  noLeftPadding?: boolean;
+  noRightPadding?: boolean;
+
   height?: number;
 
   leftIcon?: any | null;
@@ -19,20 +25,24 @@ export interface IProps {
   centerContent?: any;
 
   backgroundColor?: string;
-  // style?: any;
-
-  // children?: object;
 }
 
 
 
 const Toolbar: React.FC<IProps> = (props: IProps) => {
+  const paddingLeft = props.noPadding || props.noLeftPadding ? 0 : 8;
+  const paddingRight = props.noPadding || props.noRightPadding ? 0 : 8;
+
+
+
   return (
 
     <ToolbarContainer
       style={{
         height: props.height || 56, // Sizes.Toolbar,
         backgroundColor: props.backgroundColor,
+        paddingLeft: paddingLeft,
+        paddingRight: paddingRight,
       }}>
 
       {props.leftIcon && props.leftIcon}
