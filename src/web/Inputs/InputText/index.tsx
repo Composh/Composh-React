@@ -37,6 +37,7 @@ export interface IProps {
   disabled?: boolean;
   noShadow?: boolean;
   password?: boolean;
+  reset?: boolean;
 
   required?: boolean;
   requiredText?: string;
@@ -116,58 +117,67 @@ const InputText: React.FC<IProps> = (props: IProps) => {
 
 
   function _onChangeText(newText: string) {
-    if (hasMask) {
-      const masketToRawText = newText?.replace(/[\u0300-\u036f]/g, '').replaceAll(/\s/g, '').replace(/[^\w\s]/gi, '').trim();
-
-      const { maskedText, rawText } = inputUpdateValue(hasMask, typeMaskInput, props.options, masketToRawText);
-
-      if (props.onChange) {
-        if (props.type === EMaskEnumType.CREDITCARD) {
-          const rawNumberJoin = rawText.join('');
-          setRawValue(rawNumberJoin);
-          setTextValue(maskedText);
-          props.onChange(rawNumberJoin, maskedText);
-        }
-
-        else if (props.type === EMaskEnumType.DATETIME) {
-          const dateReturn = maskedText.replace(/[^\w\s]/gi, '');
-          setRawValue(dateReturn);
-          setTextValue(maskedText);
-          props.onChange(dateReturn, maskedText);
-        }
-
-        else if (props.type === EMaskEnumType.MONEY) {
-          const textWithoutSpecialChars = String(maskedText).replace(/\D/g, '');
-
-          if (props.countLimit && typeof props.countLimit === 'number' && textWithoutSpecialChars.length > props.countLimit) {
-            return;
-          }
-
-          setRawValue(textWithoutSpecialChars);
-          setTextValue(maskedText);
-          props.onChange(textWithoutSpecialChars, maskedText);
-        }
-
-        else {
-          const textWithoutSpecialChars = String(rawText).replace(/[^\w\s]/gi, '');
-          setRawValue(textWithoutSpecialChars);
-          setTextValue(maskedText);
-          props.onChange(textWithoutSpecialChars, maskedText);
-        }
-      }
-      else {
-        setRawValue(masketToRawText);
-      }
-    }
-    else {
+    if (!hasMask) {
       const itemToReturn = String(newText);
 
-      if (props.onChange) {
-        setRawValue(itemToReturn);
-        setTextValue(itemToReturn);
-        props.onChange(itemToReturn);
+      if (!props.onChange) {
+        return;
       }
+
+      setRawValue(itemToReturn);
+      setTextValue(itemToReturn);
+      props.onChange(itemToReturn);
+      return;
     }
+
+    // O operador de coalescência nula (?? '') garante que, se newText for null ou undefined, ele será substituído por uma string vazia ('').
+    // O método toString() converte qualquer valor de newText para string antes de aplicar os métodos replace.
+    const masketToRawText = (newText ?? '').toString()
+      .replace(/[\u0300-\u036f]/g, '')  // Remove acentos
+      .replace(/\s/g, '')               // Remove espaços
+      .replace(/[^\w\s]/gi, '')         // Remove caracteres não alfanuméricos
+      .trim();
+
+    const { maskedText, rawText } = inputUpdateValue(hasMask, typeMaskInput, props.options, masketToRawText);
+
+    if (!props.onChange) {
+      setRawValue(masketToRawText);
+      return;
+    }
+
+    if (props.type === EMaskEnumType.CREDITCARD) {
+      const rawNumberJoin = rawText.join('');
+      setRawValue(rawNumberJoin);
+      setTextValue(maskedText);
+      props.onChange(rawNumberJoin, maskedText);
+      return;
+    }
+
+    if (props.type === EMaskEnumType.DATETIME) {
+      const dateReturn = maskedText.replace(/[^\w\s]/gi, '');
+      setRawValue(dateReturn);
+      setTextValue(maskedText);
+      props.onChange(dateReturn, maskedText);
+      return;
+    }
+
+    if (props.type === EMaskEnumType.MONEY) {
+      const textWithoutSpecialChars = String(maskedText).replace(/\D/g, '');
+
+      if (props.countLimit && typeof props.countLimit === 'number' && textWithoutSpecialChars.length > props.countLimit) {
+        return;
+      }
+
+      setRawValue(textWithoutSpecialChars);
+      setTextValue(maskedText);
+      props.onChange(textWithoutSpecialChars, maskedText);
+      return;
+    }
+
+    const textWithoutSpecialChars = String(rawText).replace(/[^\w\s]/gi, '');
+    setRawValue(textWithoutSpecialChars);
+    setTextValue(maskedText);
+    props.onChange(textWithoutSpecialChars, maskedText);
   }
 
 
@@ -224,13 +234,18 @@ const InputText: React.FC<IProps> = (props: IProps) => {
 
 
   useEffect(() => {
-    if (hasMask || props.value) {
-      _onChangeText(props.value || textValue);
-    }
-    else {
-      _onChangeText('');
+    if (props.value) {
+      _onChangeText(props.value);
     }
   }, [props.value, rawValue]);
+
+
+  // Reseta para uma string vazia
+  useEffect(() => {
+    if (props.reset || (typeof props.value === 'string' && props.value === '')) {
+      _onChangeText('');
+    }
+  }, [props.reset, props.value]);
 
 
 
@@ -306,7 +321,7 @@ const InputText: React.FC<IProps> = (props: IProps) => {
 
         multiline={props.password ? false : props.multiline}
 
-        onChange={(event) => { // Web
+        onChange={(event: any) => { // Web
           _onChangeText(event.target.value);
         }}
         // onChangeText={(eventText) => { // Mobile
