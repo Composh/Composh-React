@@ -111,8 +111,8 @@ const InputText: React.FC<IProps> = (props: IProps) => {
 
   const [typeKeyboard, setTypeKeyboard] = useState<any | string>('');
 
-  const [hasMask, setHasMask] = useState<boolean>(false);
-  const [typeMaskInput, setTypeMaskInput] = useState<any>(null);
+  const [hasMask, setHasMask] = useState<boolean>(returnIfHasMask(props.type));
+  const [typeMaskInput, setTypeMaskInput] = useState<any>(returnTypeMaskEnum(props.type));
 
 
 
@@ -141,7 +141,6 @@ const InputText: React.FC<IProps> = (props: IProps) => {
     const { maskedText, rawText } = inputUpdateValue(hasMask, typeMaskInput, props.options, masketToRawText);
 
     if (!props.onChange) {
-      setRawValue(masketToRawText);
       return;
     }
 
@@ -178,15 +177,6 @@ const InputText: React.FC<IProps> = (props: IProps) => {
     setRawValue(textWithoutSpecialChars);
     setTextValue(maskedText);
     props.onChange(textWithoutSpecialChars, maskedText);
-  }
-
-
-  function defineInputMask() {
-    const hasMaskReturn = returnIfHasMask(props.type);
-    setHasMask(hasMaskReturn);
-
-    const valueMask = returnTypeMaskEnum(props.type);
-    setTypeMaskInput(valueMask);
   }
 
 
@@ -228,7 +218,9 @@ const InputText: React.FC<IProps> = (props: IProps) => {
 
 
   useEffect(() => {
-    defineInputMask();
+    setHasMask(returnIfHasMask(props.type));
+    setTypeMaskInput(returnTypeMaskEnum(props.type));
+
     defineInputKeyboardType();
   }, [props.type]);
 
@@ -237,7 +229,7 @@ const InputText: React.FC<IProps> = (props: IProps) => {
     if (props.value) {
       _onChangeText(props.value);
     }
-  }, [props.value, rawValue]);
+  }, [props.value]);
 
 
   // Reseta para uma string vazia
@@ -367,9 +359,6 @@ const InputText: React.FC<IProps> = (props: IProps) => {
 
 
 InputText.defaultProps = {
-  autoCorrect: false,
-  noShadow: false,
-
   autoCapitalize: 'none',
   backgroundColor: 'white',
   inputTextColor: 'black',

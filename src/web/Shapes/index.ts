@@ -1,7 +1,7 @@
-import LineTear from './LineTear';
-import Quadrilateral from './Quadrilateral';
+import LineTearComp from './LineTear';
+import QuadrilateralComp from './Quadrilateral';
 
 export default {
-  LineTear: LineTear,
-  Quadrilateral: Quadrilateral,
+  LineTear: LineTearComp,
+  Quadrilateral: QuadrilateralComp,
 };

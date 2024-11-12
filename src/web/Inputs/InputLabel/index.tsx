@@ -12,6 +12,8 @@ export interface IProps {
   required?: boolean;
   requiredText?: string;
   requiredColor?: string;
+  requiredStyle?: any;
+
   labelText: string;
   labelColor?: string;
   labelStyle?: any;
@@ -37,7 +39,8 @@ const InputLabel: React.FC<IProps> = (props: IProps) => {
 
       {props.required && (
         <LabelRequiredStyle
-          color={props.requiredColor}>
+          color={props.requiredColor}
+          style={props.requiredStyle}>
           {props.requiredText || 'Required'}
         </LabelRequiredStyle>
       )}

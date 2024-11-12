@@ -19,7 +19,7 @@ export interface IProps {
 
 
 
-export const Cell: React.FC<IProps> = (props) => {
+export const CellComp: React.FC<IProps> = (props) => {
   const {
     data,
     width,

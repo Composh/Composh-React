@@ -3,6 +3,8 @@ import styled,
   css,
 } from 'styled-components';
 
+const marginComponent = `${5}px`;
+
 
 
 export interface IProps {
@@ -22,6 +24,8 @@ export const InputsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-content: center;
+  margin-top: ${marginComponent};
+  margin-bottom: ${marginComponent};
   z-index: 0;
 `;
 

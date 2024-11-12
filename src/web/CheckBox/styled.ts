@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+const marginComponent = `${5}px`;
+
 
 
 export interface IProps {
@@ -16,8 +18,8 @@ export interface IProps {
 export const CheckBoxButton = styled.a`
   display: flex;
   flex-direction: column;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: ${marginComponent};
+  margin-bottom: ${marginComponent};
   padding-top: 2px;
   padding-bottom: 2px;
   cursor: pointer;

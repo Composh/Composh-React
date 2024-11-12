@@ -15,7 +15,7 @@ export interface IProps {
 
 
 
-const Quadrilateral: React.FC<IProps> = (props: IProps) => {
+const QuadrilateralComp: React.FC<IProps> = (props: IProps) => {
   return (
 
     <QuadriShape
@@ -33,4 +33,4 @@ const Quadrilateral: React.FC<IProps> = (props: IProps) => {
 
 
 
-export default Quadrilateral;
+export default QuadrilateralComp;

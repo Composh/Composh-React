@@ -65,9 +65,13 @@ const InputView: React.FC<IProps> = (props: IProps) => {
           required={props.required}
           requiredText={props.requiredText}
           requiredColor={props.requiredColor}
+          requiredStyle={{
+            opacity: opacityValue,
+          }}
+
           labelText={props.labelText}
+          labelColor={props.labelColor}
           labelStyle={{
-            color: props.labelColor,
             opacity: opacityValue,
           }}
         />

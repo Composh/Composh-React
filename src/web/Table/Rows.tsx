@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {
-  Cell,
+  CellComp,
 } from './Cell';
 
 import {
@@ -26,7 +26,7 @@ export interface IProps {
 
 
 
-export const Row: React.FC<IProps> = (props) => {
+export const RowComp: React.FC<IProps> = (props) => {
   const {
     data,
     style,
@@ -51,7 +51,7 @@ export const Row: React.FC<IProps> = (props) => {
         const wth = widthArr && widthArr[i];
         return (
 
-          <Cell
+          <CellComp
             key={i}
             data={item}
             width={wth}
@@ -69,7 +69,7 @@ export const Row: React.FC<IProps> = (props) => {
 
 
 
-export const Rows: React.FC<IProps> = (props) => {
+export const RowsComp: React.FC<IProps> = (props) => {
   const { data, style, widthArr, heightArr, flexArr, textStyle } = props;
   const flex = flexArr ? sum(flexArr) : 0;
   const width = widthArr ? sum(widthArr) : null;
@@ -84,7 +84,7 @@ export const Rows: React.FC<IProps> = (props) => {
         const height = heightArr && heightArr[i];
         return (
 
-          <Row
+          <RowComp
             key={i}
             data={item}
             widthArr={widthArr}

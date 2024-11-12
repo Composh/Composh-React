@@ -32,7 +32,7 @@ export interface IProps {
 
 
 
-const LineTear: React.FC<IProps> = (props: IProps) => {
+const LineTearComp: React.FC<IProps> = (props: IProps) => {
   const className: any = { ...props };
 
 
@@ -112,4 +112,4 @@ const LineTear: React.FC<IProps> = (props: IProps) => {
 
 
 
-export default LineTear;
+export default LineTearComp;

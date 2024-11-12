@@ -26,7 +26,7 @@ export interface IProps {
 
 
 
-export const Table: React.FC<IProps> = (props) => {
+export const TableComp: React.FC<IProps> = (props) => {
   function _renderChildren(props: any) {
     return React.Children.map(props.children, (child) =>
       React.cloneElement(
@@ -63,7 +63,7 @@ export const Table: React.FC<IProps> = (props) => {
 
 
 
-export const TableWrapper: React.FC<IProps> = (props) => {
+export const TableWrapperComp: React.FC<IProps> = (props) => {
   function _renderChildren(props: any) {
     return React.Children.map(props.children, (child) =>
       React.cloneElement(child, props.borderStyle ? { borderStyle: props.borderStyle } : {}),

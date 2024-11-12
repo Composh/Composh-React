@@ -30,8 +30,8 @@ export interface IProps {
 
 
 const Toolbar: React.FC<IProps> = (props: IProps) => {
-  const paddingLeft = props.noPadding || props.noLeftPadding ? 0 : 8;
-  const paddingRight = props.noPadding || props.noRightPadding ? 0 : 8;
+  const paddingLeftReceived = props.noPadding || props.noLeftPadding ? 0 : 8;
+  const paddingRightReceived = props.noPadding || props.noRightPadding ? 0 : 8;
 
 
 
@@ -41,8 +41,8 @@ const Toolbar: React.FC<IProps> = (props: IProps) => {
       style={{
         height: props.height || 56, // Sizes.Toolbar,
         backgroundColor: props.backgroundColor,
-        paddingLeft: paddingLeft,
-        paddingRight: paddingRight,
+        paddingLeft: paddingLeftReceived,
+        paddingRight: paddingRightReceived,
       }}>
 
       {props.leftIcon && props.leftIcon}

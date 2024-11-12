@@ -27,8 +27,8 @@ export const TabIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 35px;
-  height: 35px;
+  /* width: 35px;
+  height: 35px; */
 `;
 
 export const TabText = styled.p`
