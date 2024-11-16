@@ -5,7 +5,7 @@ import styled,
 
 
 
-interface IButtonProps {
+export interface IProps {
   disabled?: boolean;
   flexContent?: number;
   height?: any;
@@ -15,25 +15,21 @@ interface IButtonProps {
   borderColor?: any;
   backgroundColor?: any;
   iconContent?: any;
-}
 
-
-interface ITextProps {
   colorText?: string;
   marginLeftText?: number;
 }
 
 
 
-// export const ToggleButtonStyle = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   margin-top: 6px;
-//   margin-left: 6px;
-//   margin-right: 6px;
-//   margin-bottom: 6px;
-// `;
+export const FlexToggle = css<IProps>`
+  flex: ${(props: IProps) => props.flexContent};
+`;
 
+export const BorderToggle = css<IProps>`
+  border-style: solid;
+  border-width: ${(props: IProps) => props.borderWidth}px;
+`;
 
 export const ButtonIconPadding = css`
   padding-left: 10px;
@@ -45,7 +41,7 @@ export const ButtonNoIconPadding = css`
   padding-right: 15px;
 `;
 
-export const ToggleButtonContent = styled.a`
+export const ToggleButtonContent = styled.a<IProps>`
   margin-top: 5px;
   margin-left: 5px;
   margin-right: 5px;
@@ -58,22 +54,23 @@ export const ToggleButtonContent = styled.a`
   padding-top: 8px;
   padding-bottom: 8px;
 
-  ${(props: IButtonProps) => props.flexContent && `flex: ${props.flexContent ? props.flexContent : 0}`};
-  align-self: ${(props: IButtonProps) => props.flexContent ? 'auto' : 'flex-start'};
-  ${(props: IButtonProps) => props.width && `width: ${props.width || 0}px`};
-  ${(props: IButtonProps) => props.height && `height: ${props.height || 0}px`};
-  border-color: ${(props: IButtonProps) => props.borderColor};
-  ${(props: IButtonProps) => props.borderWidth && 'border-style: solid'};
-  ${(props: IButtonProps) => props.borderWidth && `border-width: ${props.borderWidth || 0}px`};
-  ${(props: IButtonProps) => props.borderRadius && `border-radius: ${props.borderRadius || 0}px`};
-  background-color: ${(props: IButtonProps) => props.backgroundColor};
-  ${(props: IButtonProps) => props.iconContent ? ButtonIconPadding : ButtonNoIconPadding};
+  ${(props: IProps) => Boolean(props.flexContent) && FlexToggle};
+  align-self: ${(props: IProps) => props.flexContent ? 'auto' : 'flex-start'};
+  ${(props: IProps) => props.width && `width: ${props.width || 0}px`};
+  ${(props: IProps) => props.height && `height: ${props.height || 0}px`};
+  border-color: ${(props: IProps) => props.borderColor};
 
-  cursor: ${(props: IButtonProps) => props.disabled ? 'default' : 'pointer'};
+  ${(props: IProps) => Boolean(props.borderWidth) && BorderToggle};
+
+  border-radius: ${(props: IProps) => props.borderRadius || 0}px;
+  background-color: ${(props: IProps) => props.backgroundColor};
+  ${(props: IProps) => props.iconContent ? ButtonIconPadding : ButtonNoIconPadding};
+
+  cursor: ${(props: IProps) => props.disabled ? 'default' : 'pointer'};
 `;
 
 
-export const ToggleIconView = styled.div`
+export const ToggleIconLeftView = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,14 +79,19 @@ export const ToggleIconView = styled.div`
 `;
 
 
-export const ToggleText = styled.p`
+
+export const MarginTextToggle = css<IProps>`
+  margin-left: ${(props: IProps) => props.marginLeftText}px;
+`;
+
+export const ToggleText = styled.p<IProps>`
   margin: 0;
   font-size: 14px;
   text-align: center;
   white-space: nowrap;
 
-  color: ${(props: ITextProps) => props.colorText || '#000000'};
-  ${(props: ITextProps) => props.marginLeftText && `margin-left: ${props.marginLeftText || 0}px`};
+  color: ${(props: IProps) => props.colorText || '#000000'};
+  ${(props: IProps) => Boolean(props.marginLeftText) && MarginTextToggle};
 `;
 
 

@@ -11,7 +11,7 @@ import React,
 import {
   ToggleButtonContent,
   // ToggleButtonStyle,
-  ToggleIconView,
+  ToggleIconLeftView,
   ToggleText,
   ToggleIconRightView,
 } from './styled';
@@ -59,31 +59,24 @@ const Toggle: React.FC<IProps> = (props: IProps) => {
   const className: any = { ...props };
 
 
+  const flexToggle = props.flexToggle || 0;
+  const height = props.height || 35;
+  const backgroundColor = props.backgroundColor || '#ffffff'; // Colors.WHITE
+  const backgroundTintColor = props.backgroundTintColor || '#020279'; // Colors.PRIMARY
+  const textColor = props.textColor || '#020279'; // Colors.PRIMARY
+  const textTintColor = props.textTintColor || '#ffffff'; // Colors.WHITE
+  const displayValue = props.displayValue ? String(props.displayValue) : '-';
+  const borderColor = props.borderColor || '#808080'; // Colors.GREY
+  const borderTintColor = props.borderTintColor || '#7c0303'; // Colors.SECONDARY
+  const borderRadius = props.borderRadius || 4;
+  const borderWidth = props.borderWidth || 0;
+
   const selectedProp = props.selected;
 
   const opacityValue = props.disabled ? 0.5 : 1;
 
   const [selectedState, setSelectedState] = useState(selectedProp);
 
-
-  useEffect(() => {
-    if (!props.noToggle) {
-      setSelectedState(selectedState);
-    }
-  }, []);
-
-
-  // componentWillReceiveProps(nextProps) {
-  //   const {
-  //     selected,
-  //   } = this.props;
-
-  //   if (selected !== nextProps.selected) {
-  //     this.setState({
-  //       selected: nextProps.selected,
-  //     });
-  //   }
-  // }
 
 
   function onPressToggle() {
@@ -98,7 +91,6 @@ const Toggle: React.FC<IProps> = (props: IProps) => {
 
 
   function renderTextToggle() {
-    const displayValue = props.displayValue ? String(props.displayValue) : '-';
     const value = props.value ? String(props.value) : '-';
 
     if (displayValue === '' || displayValue === null || displayValue === undefined) {
@@ -110,24 +102,32 @@ const Toggle: React.FC<IProps> = (props: IProps) => {
 
 
 
+  useEffect(() => {
+    if (!props.noToggle) {
+      setSelectedState(selectedState);
+    }
+  }, []);
+
+
+
   return (
 
     <ToggleButtonContent
       className={className?.className}
-
-      disabled={props.disabled}
-      flexContent={props.flexToggle}
-      width={props.width}
-      height={props.height}
-      borderColor={((!props.disabled && !props.noToggle) ? selectedState : selectedProp) ? props.borderTintColor : props.borderColor}
-      borderWidth={props.borderWidth}
-      borderRadius={props.borderRadius}
-      backgroundColor={((!props.disabled && !props.noToggle) ? selectedState : selectedProp) ? props.backgroundTintColor : props.backgroundColor}
-      iconContent={props.iconContent}
       style={{
         ...props.style,
         opacity: opacityValue,
       }}
+
+      disabled={props.disabled}
+      flexContent={flexToggle}
+      width={props.width}
+      height={height}
+      borderColor={((!props.disabled && !props.noToggle) ? selectedState : selectedProp) ? borderTintColor : borderColor}
+      borderWidth={borderWidth}
+      borderRadius={borderRadius}
+      backgroundColor={((!props.disabled && !props.noToggle) ? selectedState : selectedProp) ? backgroundTintColor : backgroundColor}
+      iconContent={props.iconContent}
       onClick={() => {
         if (!props.noPress) {
           onPressToggle();
@@ -138,15 +138,15 @@ const Toggle: React.FC<IProps> = (props: IProps) => {
 
 
       {!props.children && props.iconContent && (
-        <ToggleIconView>
+        <ToggleIconLeftView>
           {props.iconContent}
-        </ToggleIconView>
+        </ToggleIconLeftView>
       )}
 
 
       {!props.children && (
         <ToggleText
-          colorText={((!props.disabled && !props.noToggle) ? selectedState : selectedProp) ? props.textTintColor : props.textColor}
+          colorText={((!props.disabled && !props.noToggle) ? selectedState : selectedProp) ? textTintColor : textColor}
           marginLeftText={props.iconContent ? 5 : 0}
           style={props.textStyle}>
 
@@ -166,30 +166,6 @@ const Toggle: React.FC<IProps> = (props: IProps) => {
     </ToggleButtonContent>
 
   );
-};
-
-
-
-Toggle.defaultProps = {
-  disabled: false,
-  noToggle: false,
-  selected: false,
-  flexToggle: 0,
-
-  height: 35,
-
-  backgroundColor: '#ffffff', // Colors.WHITE,
-  backgroundTintColor: '#020279', // Colors.PRIMARY,
-
-  textColor: '#020279', // Colors.PRIMARY,
-  textTintColor: '#ffffff', // Colors.WHITE,
-
-  displayValue: 'Toggle',
-
-  borderColor: '#808080', // Colors.GREY,
-  borderTintColor: '#7c0303', // Colors.SECONDARY,
-  borderRadius: 4,
-  borderWidth: 0,
 };
 
 
