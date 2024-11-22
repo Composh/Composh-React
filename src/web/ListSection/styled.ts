@@ -22,4 +22,6 @@ export const SectionHeader = styled.div`
 `;
 
 export const SectionItemContent = styled.div`
+  display: flex;
+  flex-direction: column;
 `;

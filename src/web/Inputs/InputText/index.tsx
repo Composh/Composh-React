@@ -250,6 +250,7 @@ const InputText: React.FC<IProps> = (props: IProps) => {
       disabled={props.disabled}
       noShadow={props.noShadow}
 
+      // Required Text
       required={props.required}
       requiredText={props.requiredText}
       requiredColor={props.requiredColor}

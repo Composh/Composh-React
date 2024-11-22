@@ -14,7 +14,6 @@ export const BadgeView = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 16px;
   min-width: 16px;
   background-color: ${(props: IProps) => props.backgroundColor || 'red'};
   border-radius: 10px;

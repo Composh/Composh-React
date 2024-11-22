@@ -11,6 +11,8 @@ import {
 
 
 export interface IProps {
+  style?: any;
+
   className?: any;
 
   disabled?: boolean;
@@ -40,8 +42,6 @@ export interface IProps {
   noCount?: boolean;
   countLimit?: any; // string | number;
   countColor?: string;
-
-  style?: any;
 
   children?: any;
 }

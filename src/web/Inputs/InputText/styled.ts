@@ -52,7 +52,7 @@ export const AllPaddingLeftStyle = css`
   ${PaddingRightStyle};
 `;
 
-export const TextInputStyle = styled.input`
+export const TextInputStyle = styled.input<IProps>`
   display: flex;
   flex: 1;
   width: 100%;

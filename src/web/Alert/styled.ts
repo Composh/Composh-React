@@ -26,6 +26,7 @@ export const AlertContent = styled.div`
   padding: 16px;
   background-color: #FFFFFF;
   min-width: 300px;
+  max-width: 90%;
   min-height: 50px;
   border-radius: 3px;
 `;
@@ -59,7 +60,7 @@ export const ButtonSeparator = styled.div`
 
 // Button
 
-export const ButtonComponent = styled.a`
+export const ButtonComponent = styled.a<IProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -72,7 +73,7 @@ export const ButtonComponent = styled.a`
   `}
 `;
 
-export const ButtonComponentText = styled.p`
+export const ButtonComponentText = styled.p<IProps>`
   color: ${(props: IProps) => props.color || '#000000'};
   font-size: 14px;
   font-weight: ${(props: IProps) => props.fontWeight ? '600' : 'normal'};

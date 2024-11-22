@@ -38,11 +38,11 @@ export const MultilineStyle = css`
   padding-bottom: 4px;
 `;
 
-export const BackgroundStyle = css`
+export const BackgroundStyle = css<IProps>`
   background-color: ${(props: IProps) => props.backgroundColor || '#ffffff'};
 `;
 
-export const BorderStyle = css`
+export const BorderStyle = css<IProps>`
   border-color: ${(props: IProps) => props.borderColor || 'transparent'};
   border-style: solid;
   border-width: ${(props: IProps) => props.borderWidth || 0}px;
@@ -62,7 +62,7 @@ export const ShadowStyle = css`
   box-shadow: 0 2px 18px 1px rgb(49 53 72 / 10%);
 `;
 
-export const InputViewStyle = styled.div`
+export const InputViewStyle = styled.div<IProps>`
   display: flex;
   flex-direction: row;
   overflow: hidden;

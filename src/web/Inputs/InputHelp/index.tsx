@@ -10,6 +10,8 @@ import {
 
 
 export interface IProps {
+  style?: any;
+
   // Props Text
   helpTextValue?: string;
 
@@ -34,7 +36,8 @@ const InputHelp: React.FC<IProps> = (props: IProps) => {
   return (
 
     <HelpContainerViewStyle
-      className={className?.className}>
+      className={className?.className}
+      style={props.style}>
 
       <HelpTextView>
 

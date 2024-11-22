@@ -9,6 +9,8 @@ import {
 
 
 export interface IProps {
+  style?: any;
+
   required?: boolean;
   requiredText?: string;
   requiredColor?: string;
@@ -28,7 +30,8 @@ const InputLabel: React.FC<IProps> = (props: IProps) => {
   return (
 
     <LabelViewStyle
-      className={className?.className}>
+      className={className?.className}
+      style={props.style}>
 
       <LabelStyle
         color={props.labelColor}
