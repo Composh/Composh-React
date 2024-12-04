@@ -1,12 +1,12 @@
 import React,
 {
+  useEffect,
   useState,
 } from 'react';
 
 import Overlay from '../../Overlay';
 
 import {
-  FabAbsoluteContainer,
   FabLinearContainer,
   FabLinearGradient,
   FabSimpleButton,
@@ -14,7 +14,7 @@ import {
 
 
 
-interface IProps {
+export interface IProps {
   visible?: boolean;
   disabled?: boolean;
   active?: boolean;
@@ -153,10 +153,15 @@ const FAB: React.FC<IProps> = (props) => {
 
 
 
+  useEffect(() => {
+    setActive(false);
+  }, []);
+
+
+
   return (
 
-    <FabAbsoluteContainer
-      pointerEvents={'box-none'}>
+    <>
 
       <Overlay
         visible={props.active}
@@ -172,7 +177,7 @@ const FAB: React.FC<IProps> = (props) => {
       {renderActions()}
       {renderMainButton()}
 
-    </FabAbsoluteContainer>
+    </>
 
   );
 };

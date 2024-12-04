@@ -15,10 +15,12 @@ export const BadgeView = styled.div`
   align-items: center;
   justify-content: center;
   min-width: 16px;
-  background-color: ${(props: IProps) => props.backgroundColor || 'red'};
-  border-radius: 10px;
+  padding-top: 3px;
   padding-left: 5px;
   padding-right: 5px;
+  padding-bottom: 3px;
+  background-color: ${(props: IProps) => props.backgroundColor || '#ff0000'};
+  border-radius: 15px;
 `;
 
 
@@ -26,7 +28,7 @@ export const BadgeView = styled.div`
 export const BadgeText = styled.span`
   padding-left: 4px;
   padding-right: 4px;
-  color: ${(props: IProps) => props.color || 'white'};
+  color: ${(props: IProps) => props.color || '#ffffff'};
   text-align: center;
   font-size: 10.5px;
   font-weight: 700;
