@@ -11,7 +11,7 @@ export interface IProps {
 
 export const BadgeView = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   min-width: 16px;

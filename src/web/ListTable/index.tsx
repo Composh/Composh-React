@@ -12,7 +12,7 @@ import {
 export interface IProps {
   color: any;
   data: any;
-  colunasVisiveis: any;
+  receivedColumns: any;
   textEmpty: any;
 }
 
@@ -33,7 +33,7 @@ const ListTable: React.FC<IProps> = (props: IProps) => {
 
       <TableHeader
         color={props.color}
-        columns={props.colunasVisiveis}
+        columns={props.receivedColumns}
       />
 
 
@@ -56,7 +56,7 @@ const ListTable: React.FC<IProps> = (props: IProps) => {
 
       <TableBody
         data={dataTable}
-        columns={props.colunasVisiveis}
+        columns={props.receivedColumns}
         textEmpty={props.textEmpty}
       />
 

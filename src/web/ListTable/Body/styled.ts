@@ -1,10 +1,21 @@
-import styled from 'styled-components';
+import styled,
+{
+  css,
+} from 'styled-components';
+
+
+
+export interface IProps {
+  width?: number | string;
+}
 
 
 
 export const Linha = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
   margin-top: -1px;
   margin-bottom: -1px;
   padding-top: 12px;
@@ -20,18 +31,33 @@ export const Linha = styled.div`
 `;
 
 
+
+export const MaxWidthStyle = css<IProps>`
+  width: ${(props: IProps) => typeof props.width === 'number' ? `${props.width}px` : props.width || 'auto'};
+  min-width: ${(props: IProps) => typeof props.width === 'number' ? `${props.width}px` : props.width || 'auto'};
+  max-width: ${(props: IProps) => typeof props.width === 'number' ? `${props.width}px` : props.width || 'auto'};
+`;
+
 export const CelulaDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   flex: 1;
+
+  ${(props: IProps) => props.width && MaxWidthStyle}
 `;
 
 
-export const CelulaP = styled.p`
+export const CelulaDataPText = styled.p`
   display: flex;
   flex-direction: column;
   flex: 1;
+  padding-left: 5px;
+  padding-right: 5px;
   text-align: center;
+`;
+
+
+export const CelulaNoDataText = styled.p`
 `;

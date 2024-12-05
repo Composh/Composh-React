@@ -3,6 +3,8 @@ import React from 'react';
 import {
   Linha,
   CelulaDiv,
+  CelulaDataPText,
+  CelulaNoDataText,
 } from './styled';
 
 
@@ -35,9 +37,23 @@ const TableBody: React.FC<IProps> = (props: IProps) => {
 
 
   function renderResult(item: any, coluna: any) {
-    return coluna?.formatter
-      ? coluna.formatter(item[coluna?.dataField], item)
-      : item[coluna?.dataField];
+    if (coluna.formatter && typeof coluna.formatter(item[coluna?.dataField], item) === 'string') {
+      return (
+        <CelulaDataPText>
+          {coluna.formatter(item[coluna?.dataField], item)}
+        </CelulaDataPText>
+      );
+    }
+
+    if (coluna.formatter) {
+      return coluna.formatter(item[coluna?.dataField], item);
+    }
+
+    return (
+      <CelulaDataPText>
+        {item[coluna?.dataField]}
+      </CelulaDataPText>
+    );
   }
 
 
@@ -59,9 +75,11 @@ const TableBody: React.FC<IProps> = (props: IProps) => {
 
       <Linha>
         <CelulaDiv>
-          <p>
+
+          <CelulaNoDataText>
             {props.textEmpty || 'No data'}
-          </p>
+          </CelulaNoDataText>
+
         </CelulaDiv>
       </Linha>
 
@@ -79,7 +97,8 @@ const TableBody: React.FC<IProps> = (props: IProps) => {
 
           {props.columns?.map((coluna: any, index: number) => (
             <CelulaDiv
-              key={index}>
+              key={index}
+              width={coluna?.width}>
               {renderResult(item, coluna)}
             </CelulaDiv>
           ))}

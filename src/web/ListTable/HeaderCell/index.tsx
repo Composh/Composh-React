@@ -1,5 +1,11 @@
 import React from 'react';
-import { Coluna } from './styled';
+
+import {
+  Coluna,
+  ColunaText,
+} from './styled';
+
+
 
 export interface IProps {
   column?: any;
@@ -15,6 +21,8 @@ export interface IProps {
   globalSortCaret?: any;
 }
 
+
+
 const TableHeaderCell: React.FC<IProps> = (props: IProps) => {
   const ordenarDados = (coluna: any) => {
     // setOrdenacao((prevOrdenacao) => ({
@@ -29,12 +37,17 @@ const TableHeaderCell: React.FC<IProps> = (props: IProps) => {
 
     <Coluna
       key={props.column?.dataField}
+      width={props.column?.width}
       onClick={() => ordenarDados(props.column?.label)}
-      style={props.column?.headerStyle ? props.column?.headerStyle() : null}
-    // headerStyle={coluna?.headerStyle}
-    // formatter={coluna?.formatter}
-    >
-      {props.column?.label}
+      style={props.column?.headerStyle ? props.column?.headerStyle() : null}>
+
+      <ColunaText
+      // headerStyle={coluna?.headerStyle}
+      // formatter={coluna?.formatter}
+      >
+        {props.column?.label}
+      </ColunaText>
+
     </Coluna>
 
   );
