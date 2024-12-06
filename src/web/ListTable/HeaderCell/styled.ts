@@ -28,5 +28,6 @@ export const Coluna = styled.div<IProps>`
 `;
 
 export const ColunaText = styled.p`
+  font-size: 13px;
   text-align: center;
 `;

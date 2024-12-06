@@ -20,12 +20,12 @@ export const Containerpaginationreacttable = styled.div`
 
 
 
-export const PaginatorActive = css`
+export const PaginatorActive = css<IProps>`
   background-color: ${(props: IProps) => props.accentColor || '#000'};
   box-shadow: none;
 `;
 
-export const PaginatorPageItem = styled.a`
+export const PaginatorPageItem = styled.a<IProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,11 +59,11 @@ export const PaginatorPageItem = styled.a`
 
 
 
-export const TextActive = css`
+export const TextActive = css<IProps>`
   color: ${(props: IProps) => props.color || '#fff'} !important;
 `;
 
-export const PaginatorPageItemText = styled.p`
+export const PaginatorPageItemText = styled.p<IProps>`
   color: ${(props: IProps) => props.accentColor || '#000'};
   font-size: 13px;
   ${(props: IProps) => props.active && TextActive}

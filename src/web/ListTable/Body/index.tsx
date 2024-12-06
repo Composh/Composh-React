@@ -37,7 +37,7 @@ const TableBody: React.FC<IProps> = (props: IProps) => {
 
 
   function renderResult(item: any, coluna: any) {
-    if (coluna.formatter && typeof coluna.formatter(item[coluna?.dataField], item) === 'string') {
+    if (coluna?.formatter && typeof coluna?.formatter(item[coluna?.dataField], item) === 'string') {
       return (
         <CelulaDataPText>
           {coluna.formatter(item[coluna?.dataField], item)}

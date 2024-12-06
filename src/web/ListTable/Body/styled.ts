@@ -16,8 +16,8 @@ export const Linha = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: -1px;
-  margin-bottom: -1px;
+  margin-top: -0.5px;
+  margin-bottom: -0.5px;
   padding-top: 12px;
   padding-left: 10px;
   padding-right: 10px;
@@ -38,7 +38,7 @@ export const MaxWidthStyle = css<IProps>`
   max-width: ${(props: IProps) => typeof props.width === 'number' ? `${props.width}px` : props.width || 'auto'};
 `;
 
-export const CelulaDiv = styled.div`
+export const CelulaDiv = styled.div<IProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,9 +55,13 @@ export const CelulaDataPText = styled.p`
   flex: 1;
   padding-left: 5px;
   padding-right: 5px;
+  font-size: 13px;
   text-align: center;
 `;
 
 
 export const CelulaNoDataText = styled.p`
+  width: 100%;
+  font-size: 14px;
+  text-align: left !important;
 `;

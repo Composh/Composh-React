@@ -8,7 +8,7 @@ export interface IProps {
 
 
 
-export const HeaderContainer = styled.div`
+export const HeaderContainer = styled.div<IProps>`
   display: flex;
   background-color: ${(props: IProps) => props.backgroundColor || 'gray'};
   padding: 10px;

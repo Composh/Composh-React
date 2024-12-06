@@ -22,7 +22,11 @@ const ListTable: React.FC<IProps> = (props: IProps) => {
   const className = { ...props } as any;
 
 
-  const dataTable = props.data && Array.isArray(props.data) && props.data?.length > 0 ? props.data : [];
+  const dataTable = props.data && Array.isArray(props.data) && props.data?.length > 0
+    ? props.data.every((item) => item !== null && item !== undefined && item !== '')
+      ? props.data
+      : []
+    : [];
 
 
 
