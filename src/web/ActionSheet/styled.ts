@@ -23,7 +23,7 @@ export const ActionSheetContainer = styled.div`
   z-index: 9999;
 `;
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<IProps>`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

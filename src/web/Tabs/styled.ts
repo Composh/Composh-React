@@ -31,7 +31,7 @@ export const TabIcon = styled.div`
   height: 35px; */
 `;
 
-export const TabText = styled.p`
+export const TabText = styled.p<IProps>`
   margin: 0;
   font-size: 14px;
   color: ${(props: IProps) => props.color || '#000000'};
@@ -41,7 +41,7 @@ export const TabText = styled.p`
 
 // TabBar Styles
 
-export const TabBarContainer = styled.div`
+export const TabBarContainer = styled.div<IProps>`
   display: flex;
   flex-direction: column;
   flex: 1;

@@ -32,7 +32,7 @@ const AppBar: React.FC<IProps> = (props: any) => {
         className={className?.className}
         absolute={props.absolute}
         transparent={props.transparent}
-        backgroundColor={props.backgroundColor}
+        backgroundColor={props.backgroundColor || '#000000'}
         borderBottomColor={props.borderBottomColor}
         style={props.style}>
 
@@ -42,12 +42,6 @@ const AppBar: React.FC<IProps> = (props: any) => {
     </HeaderAppContainer>
 
   );
-};
-
-
-
-AppBar.defaultProps = {
-  backgroundColor: 'black',
 };
 
 

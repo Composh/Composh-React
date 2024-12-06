@@ -18,7 +18,7 @@ import {
   ITabProps,
 } from './Tab';
 
-import TabIndicator from './TabIndicator';
+// import TabIndicator from './TabIndicator';
 
 
 
@@ -49,6 +49,8 @@ export type TabBarElement = React.ReactElement<ITabBarProps>;
 
 const TabBar: React.FC<ITabBarProps> = (props: any) => {
   const tabIndicatorRef = React.createRef<any | null>();
+
+  const selectedIndexReceived = props.selectedIndex || 0;
 
 
   // public scrollToIndex(params: { index: number, animated?: boolean }): void {
@@ -86,7 +88,7 @@ const TabBar: React.FC<ITabBarProps> = (props: any) => {
 
 
   const isTabSelected = (index: number): boolean => {
-    return index === props.selectedIndex;
+    return index === selectedIndexReceived;
   };
 
 
@@ -129,7 +131,7 @@ const TabBar: React.FC<ITabBarProps> = (props: any) => {
 
     <TabBarContainer
       // width: '100%',
-      height={props.height} // '100%',
+      height={props.height || 46} // '100%',
       backgroundColor={props.backgroundColor}
       style={props.style}>
 
@@ -143,19 +145,12 @@ const TabBar: React.FC<ITabBarProps> = (props: any) => {
       {/* <TabIndicator
         ref={tabIndicatorRef}
         style={props.indicatorStyle}
-        selectedPosition={props.selectedIndex}
+        selectedPosition={selectedIndexReceived}
         positions={tabElements.length}
       /> */}
     </TabBarContainer>
 
   );
-};
-
-
-
-TabBar.defaultProps = {
-  selectedIndex: 0,
-  height: 46, // Metrics.SubToolbar,
 };
 
 

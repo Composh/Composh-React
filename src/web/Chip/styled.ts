@@ -11,7 +11,7 @@ interface IProps {
 
 
 
-export const ChipContainer = styled.a`
+export const ChipContainer = styled.a<IProps>`
   display: inline-flex;
   flex-direction: column;
   align-self: flex-start;
@@ -44,7 +44,7 @@ export const ChipThumb = styled.div`
 `;
 
 
-export const ChipText = styled.p`
+export const ChipText = styled.p<IProps>`
   font-size: 14px;
   color: ${(props: IProps) => props.color};
 `;

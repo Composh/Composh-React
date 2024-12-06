@@ -16,7 +16,7 @@ interface IProps {
 
 // Cell Styles
 
-export const ViewCellStyled = styled.div`
+export const ViewCellStyled = styled.div<IProps>`
   display: flex;
   flex-direction: column;
   flex: ${(props: IProps) => !props.width && !props.flex && !props.height ? 1 : (props.flex || 1)};
@@ -36,7 +36,7 @@ export const TextCellStyled = styled.p`
 
 // Col Styles
 
-export const ViewColStyled = styled.div`
+export const ViewColStyled = styled.div<IProps>`
   display: flex;
   flex-direction: column;
   ${(props: IProps) => props.width && `width: ${(props: IProps) => props.width || 0}px`};
@@ -44,7 +44,7 @@ export const ViewColStyled = styled.div`
   ${(props: IProps) => props.flex && `flex: ${props.flex}`};
 `;
 
-export const ViewColsStyled = styled.div`
+export const ViewColsStyled = styled.div<IProps>`
   display: flex;
   flex-direction: row;
   ${(props: IProps) => props.width && `width: ${(props: IProps) => props.width || 0}px`};
@@ -54,7 +54,7 @@ export const ViewColsStyled = styled.div`
 
 // Rows Styles
 
-export const ViewRowStyled = styled.div`
+export const ViewRowStyled = styled.div<IProps>`
   overflow: hidden;
   display: flex;
   flex-direction: row;
@@ -62,7 +62,7 @@ export const ViewRowStyled = styled.div`
   ${(props: IProps) => props.height && `height: ${(props: IProps) => props.height || 0}px`};
 `;
 
-export const ViewRowsStyled = styled.div`
+export const ViewRowsStyled = styled.div<IProps>`
   display: flex;
   flex-direction: column;
   ${(props: IProps) => props.width && `width: ${(props: IProps) => props.width || 0}px`};
@@ -73,7 +73,7 @@ export const ViewRowsStyled = styled.div`
 
 // Table Styles
 
-export const ViewTableStyled = styled.div`
+export const ViewTableStyled = styled.div<IProps>`
   display: flex;
   flex-direction: column;
   border-left-width: ${(props: IProps) => props.borderLeftWidth || 0}px;

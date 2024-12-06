@@ -90,10 +90,4 @@ const AlertContainer: React.FC<IProps> = (props) => {
 
 
 
-AlertContainer.defaultProps = {
-  visible: false,
-};
-
-
-
 export default AlertContainer;

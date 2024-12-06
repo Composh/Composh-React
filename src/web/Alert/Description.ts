@@ -9,7 +9,7 @@ export interface IProps {
 
 
 
-const DialogDescription = styled.p`
+const DialogDescription = styled.p<IProps>`
   margin-top: 12px;
   margin-bottom: 1px;
   color: ${(props: IProps) => props.color || '#33383D'};

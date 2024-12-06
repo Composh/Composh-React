@@ -21,7 +21,9 @@ export interface IProps {
 
 
 
-const ButtonCircle: React.FC<IProps> = (props) => {
+const ButtonCircle: React.FC<IProps> = (props: IProps) => {
+  const marginReceived = props.margin === false ? false : true;
+
   const width28 = props.size + 10;
   const width26 = props.size + 8;
 
@@ -33,7 +35,7 @@ const ButtonCircle: React.FC<IProps> = (props) => {
   return (
 
     <LeftProductBox
-      margin={props.margin}
+      margin={marginReceived}
       size={width28}>
 
       <IconCircleView

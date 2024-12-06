@@ -24,9 +24,11 @@ export interface IProps {
 
 
 const ButtonCheck: React.FC<IProps> = (props) => {
-  const width28 = props.size + 10;
-  const width26 = props.size + 8;
-  const width22 = props.size + 2;
+  const sizeReceived = props.size || 18;
+
+  const width28 = sizeReceived + 10;
+  const width26 = sizeReceived + 8;
+  const width22 = sizeReceived + 2;
 
   const haveIcon = props.activeIcon && props.deactiveColor;
   const validIcon = React.isValidElement(props.activeIcon) && React.isValidElement(props.deactiveColor);
@@ -44,6 +46,7 @@ const ButtonCheck: React.FC<IProps> = (props) => {
 
         {props.active && (
           <ButtonCheckboxIconContent
+            size={0}
             backgroundColor={props.active ? props.activeColor : 'transparent'}>
             {haveIcon
               ? validIcon

@@ -28,16 +28,21 @@ export interface IProps {
 
 
 
-const Card: React.FC<IProps> = (props) => {
+const Card: React.FC<IProps> = (props: IProps) => {
+  const backgroundColorReceived = props.backgroundColor || '#000000';
+  const shadowReceived = props.shadow === false ? false : true;
+
+
+
   function renderCardButton() {
     return (
 
       <CardButton
         {...props}
-        shadow={props.shadow}
+        shadow={shadowReceived}
         onMouseEnter={props.onMouseEnter}
         onMouseLeave={props.onMouseLeave}
-        backgroundColor={props.backgroundColor}
+        backgroundColor={backgroundColorReceived}
         borderLeftColor={props.borderLeftColor}
         borderLeftStyle={props.borderLeftStyle}
         borderLeftWidth={props.borderLeftWidth}
@@ -51,15 +56,16 @@ const Card: React.FC<IProps> = (props) => {
   };
 
 
+
   function renderCardView() {
     return (
 
       <CardView
         {...props}
-        shadow={props.shadow}
+        shadow={shadowReceived}
         onMouseEnter={props.onMouseEnter}
         onMouseLeave={props.onMouseLeave}
-        backgroundColor={props.backgroundColor}
+        backgroundColor={backgroundColorReceived}
         borderLeftColor={props.borderLeftColor}
         borderLeftStyle={props.borderLeftStyle}
         borderLeftWidth={props.borderLeftWidth}
@@ -74,14 +80,6 @@ const Card: React.FC<IProps> = (props) => {
 
 
   return props.onPress && props.onPress !== null ? renderCardButton() : renderCardView();
-};
-
-
-
-Card.defaultProps = {
-  shadow: true,
-  borderRadius: 0,
-  backgroundColor: '#000000',
 };
 
 

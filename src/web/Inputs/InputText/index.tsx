@@ -256,9 +256,9 @@ const InputText: React.FC<IProps> = (props: IProps) => {
       requiredColor={props.requiredColor}
 
       noWrap={props.noWrap}
-      backgroundColor={props.backgroundColor}
+      backgroundColor={props.backgroundColor || '#ffffff'}
       borderColor={props.borderColor}
-      borderWidth={props.borderWidth}
+      borderWidth={props.borderWidth || 1}
 
       labelText={props.labelText}
       labelColor={props.labelColor}
@@ -298,11 +298,11 @@ const InputText: React.FC<IProps> = (props: IProps) => {
         // selectTextOnFocus={!props.disabled} // Mobile
 
         autoCorrect={correctAutoProps}
-        autoCapitalize={props.autoCapitalize}
+        autoCapitalize={props.autoCapitalize || 'none'}
 
         style={{
           // height: Math.max(28, height),
-          color: props.inputTextColor,
+          color: props.inputTextColor || '#000000',
           opacity: opacityValue,
           // borderRadius: 5,
         }}
@@ -355,15 +355,6 @@ const InputText: React.FC<IProps> = (props: IProps) => {
     </InputView>
 
   );
-};
-
-
-
-InputText.defaultProps = {
-  autoCapitalize: 'none',
-  backgroundColor: 'white',
-  inputTextColor: 'black',
-  borderWidth: 1,
 };
 
 

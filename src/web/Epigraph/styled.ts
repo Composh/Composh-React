@@ -31,7 +31,7 @@ export const ContainerLinearHeader = styled(LinearGradient)`
   padding-right: 15px;
 `;
 
-export const ContainerBackgroundHeader = styled.div`
+export const ContainerBackgroundHeader = styled.div<IProps>`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -52,7 +52,7 @@ export const ContentFlexComponent = styled.div`
 
 
 
-export const ContainerBorderHaveStyle = css`
+export const ContainerBorderHaveStyle = css<IProps>`
   border-bottom-color: ${(props: IProps) => props.borderBottomColor || 'green'};
   border-bottom-style: solid;
   border-bottom-width: ${(props: IProps) => props.borderBottomWidth || 2}px;
@@ -63,7 +63,7 @@ export const ContainerBorderNoHaveStyle = css`
   border-bottom-width: 0;
 `;
 
-export const ContainerSection = styled.div`
+export const ContainerSection = styled.div<IProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -93,7 +93,7 @@ export const IconView = styled.div`
   margin-right: 10px;
 `;
 
-export const TitleComponent = styled.p`
+export const TitleComponent = styled.p<IProps>`
   display: flex;
   flex: 1;
   color: ${(props: IProps) => props.textColor || 'green'};

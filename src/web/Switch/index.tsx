@@ -58,7 +58,7 @@ const Switch: React.FC<IProps> = (props) => {
       {!props.hideText && (
         <SwitchTextOn
           color={textColorSwitch}
-          textSize={props.textSize}>
+          textSize={props.textSize || 16}>
           {props.selected
             ? props.textOn
               ? props.textOn
@@ -84,13 +84,6 @@ const Switch: React.FC<IProps> = (props) => {
     </SwitchContainer>
 
   );
-};
-
-
-
-Switch.defaultProps = {
-  selected: false,
-  textSize: 16,
 };
 
 

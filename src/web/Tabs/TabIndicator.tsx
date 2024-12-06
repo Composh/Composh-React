@@ -22,6 +22,8 @@ export type TabIndicatorElement = React.ReactElement<ITabIndicatorProps>;
 
 
 const TabIndicator: React.FC<ITabIndicatorProps> = (props: any) => {
+  // const selectedPosition = 0;
+
   // const indicatorWidth: number;
 
   // function componentDidMount() {
@@ -131,12 +133,6 @@ const TabIndicator: React.FC<ITabIndicatorProps> = (props: any) => {
     // onLayout={this.onLayout}
     />
   );
-};
-
-
-
-TabIndicator.defaultProps = {
-  selectedPosition: 0,
 };
 
 

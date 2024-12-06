@@ -12,7 +12,7 @@ export interface IProps {
 
 
 
-export const ItemContainer = styled.a`
+export const ItemContainer = styled.a<IProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -51,20 +51,20 @@ export const InfoContainer = styled.div`
   justify-content: center;
 `;
 
-export const ItemTitle = styled.h3`
+export const ItemTitle = styled.h3<IProps>`
   color: ${(props: IProps) => props.color ? props.color : 'black'};
   font-size: ${(props: IProps) => props.fontSize ? props.fontSize : 15}px;
   font-weight: 700;
 `;
 
-export const ItemSubtitle = styled.h4`
+export const ItemSubtitle = styled.h4<IProps>`
   margin-top: 2px;
   color: ${(props: IProps) => props.color ? props.color : 'black'};
   font-size: ${(props: IProps) => props.fontSize ? props.fontSize : 12}px;
   font-weight: 700;
 `;
 
-export const ItemLastTitle = styled.h4`
+export const ItemLastTitle = styled.h4<IProps>`
   margin-top: 4px;
   color: ${(props: IProps) => props.color ? props.color : 'black'};
   font-size: ${(props: IProps) => props.fontSize ? props.fontSize : 12}px;

@@ -9,7 +9,7 @@ export interface IProps {
 
 
 
-const DialogText = styled.p`
+const DialogText = styled.p<IProps>`
   margin-top: 10px;
   color: ${(props: IProps) => props.color || '#595e64'};
   font-size: 12px;

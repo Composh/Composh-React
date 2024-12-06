@@ -183,12 +183,4 @@ const Tab: React.FC<ITabProps> = (props: ITabProps) => {
 
 
 
-Tab.defaultProps = {
-  selected: false,
-  left: false,
-  right: true,
-};
-
-
-
 export default Tab;

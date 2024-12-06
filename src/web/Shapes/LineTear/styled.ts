@@ -45,7 +45,7 @@ export const ShapeInfo = styled.div`
   ${TearContainerCss};
 `;
 
-export const ShapeTearComponent1 = styled.div`
+export const ShapeTearComponent1 = styled.div<IProps>`
   ${TearItemCss};
 
   ${(props: IProps) => props.width && `width: ${props.width || DEFAULT_TEAR_SIZE}px`};
@@ -54,7 +54,7 @@ export const ShapeTearComponent1 = styled.div`
   ${(props: IProps) => props.backgroundColor && `background-color: ${props.backgroundColor || DEFAULT_TEAR_COLOR}`};
 `;
 
-export const ShapeItemTear = styled.div`
+export const ShapeItemTear = styled.div<IProps>`
   ${TearItemCss};
 
   ${(props: IProps) => props.width && `width: ${props.width || DEFAULT_TEAR_SIZE}px`};
@@ -62,7 +62,7 @@ export const ShapeItemTear = styled.div`
   ${(props: IProps) => props.backgroundColor && `background-color: ${props.backgroundColor || DEFAULT_TEAR_COLOR}`};
 `;
 
-export const ShapeTearComponent2 = styled.div`
+export const ShapeTearComponent2 = styled.div<IProps>`
   ${TearEndsCss};
 
   ${(props: IProps) => props.width && `width: ${props.width || DEFAULT_TEAR_SIZE}px`};

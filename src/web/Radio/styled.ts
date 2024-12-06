@@ -16,12 +16,12 @@ export interface IProps {
 
 
 
-export const DirectionStyle = css`
+export const DirectionStyle = css<IProps>`
   flex-direction: ${(props: IProps) => props.direction};
   flex: 1;
 `;
 
-export const ButtonRadioContainer = styled.div`
+export const ButtonRadioContainer = styled.div<IProps>`
   display: flex;
   ${(props: IProps) => props.direction && DirectionStyle};
   margin-top: 5px;
@@ -30,7 +30,7 @@ export const ButtonRadioContainer = styled.div`
 `;
 
 
-export const ButtonRadioTouchable = styled.a`
+export const ButtonRadioTouchable = styled.a<IProps>`
   display: flex;
   flex-direction: ${(props: IProps) => props.direction};
   align-items: ${(props: IProps) => props.direction === 'row' ? 'flex-start' : 'center'};
@@ -78,7 +78,7 @@ export const CenterProductBox = styled.div`
   align-self: center;
 `;
 
-export const TextRadio = styled.p`
+export const TextRadio = styled.p<IProps>`
   ${(props: IProps) => props.color && `color: ${props.color}`};
   font-size: 15px;
 `;

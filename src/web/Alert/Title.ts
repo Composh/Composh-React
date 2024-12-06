@@ -9,7 +9,7 @@ export interface IProps {
 
 
 
-const DialogTitle = styled.h2`
+const DialogTitle = styled.h2<IProps>`
   width: 100%;
   margin-top: 8px;
   margin-bottom: 4px;

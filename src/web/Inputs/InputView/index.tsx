@@ -83,9 +83,9 @@ const InputView: React.FC<IProps> = (props: IProps) => {
         noShadow={props.noShadow}
         wrapView={props.children ? !props.noWrap : undefined}
         // multiline={props.multiline}
-        backgroundColor={props.backgroundColor}
+        backgroundColor={props.backgroundColor || '#ffffff'}
         borderColor={props.borderColor ? props.borderColor : undefined}
-        borderWidth={props.borderWidth}
+        borderWidth={props.borderWidth || 1}
         opacity={opacityValue}>
 
 
@@ -118,15 +118,6 @@ const InputView: React.FC<IProps> = (props: IProps) => {
     </InputsContainer>
 
   );
-};
-
-
-
-InputView.defaultProps = {
-  noShadow: false,
-
-  backgroundColor: 'white',
-  borderWidth: 1,
 };
 
 

@@ -15,7 +15,7 @@ export interface IProps {
 
 
 
-export const CheckBoxButton = styled.a`
+export const CheckBoxButton = styled.a<IProps>`
   display: flex;
   flex-direction: column;
   margin-top: ${marginComponent};
@@ -35,7 +35,7 @@ export const CheckBoxWrapper = styled.div`
   align-items: flex-start;
 `;
 
-export const CheckboxFlexText = styled.div`
+export const CheckboxFlexText = styled.div<IProps>`
   display: flex;
   flex-direction: column;
   align-self: center;

@@ -20,7 +20,7 @@ export const LeftMarginProductStyle = css`
   margin-right: 12px;
 `;
 
-export const LeftProductBox = styled.div`
+export const LeftProductBox = styled.div<IProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,13 +33,13 @@ export const LeftProductBox = styled.div`
 
 
 
-export const RadioBorderStyle = css`
+export const RadioBorderStyle = css<IProps>`
   border-color: ${(props: IProps) => props.borderColor || '#000000'};
   border-style: solid;
   border-width: 1.8px;
 `;
 
-export const IconCircleView = styled.div`
+export const IconCircleView = styled.div<IProps>`
   display: flex;
   flex-direction: column;
   align-items: center;

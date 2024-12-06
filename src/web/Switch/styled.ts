@@ -18,7 +18,7 @@ export interface IProps {
 
 
 
-export const SwitchContainer = styled.a`
+export const SwitchContainer = styled.a<IProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -28,7 +28,7 @@ export const SwitchContainer = styled.a`
   opacity: ${(props: IProps) => props.disabled ? 0.4 : 1};
 `;
 
-export const SwitchTextOn = styled.p`
+export const SwitchTextOn = styled.p<IProps>`
   margin-right: 12px;
   color: ${(props: IProps) => props.color || '#000000'};
   font-size: ${(props: IProps) => props.textSize}px;
@@ -36,7 +36,7 @@ export const SwitchTextOn = styled.p`
   text-align: center;
 `;
 
-export const SwitchContent = styled.a`
+export const SwitchContent = styled.a<IProps>`
   display: flex;
   position: relative;
   width: ${(props: IProps) => (props.size || sizeSwitch) * 1.87}px;
@@ -50,15 +50,15 @@ export const SwitchContent = styled.a`
   cursor: pointer;
 `;
 
-export const ToggleOnStyle = css`
+export const ToggleOnStyle = css<IProps>`
   left: ${(props: IProps) => (props.size || sizeSwitch) * 0.97}px;
 `;
 
-export const ToggleOffStyle = css`
+export const ToggleOffStyle = css<IProps>`
   right: ${(props: IProps) => (props.size || sizeSwitch) * 0.97}px;
 `;
 
-export const ToggleButton = styled.div`
+export const ToggleButton = styled.div<IProps>`
   position: absolute;
   top: ${(props: IProps) => (props.size || sizeSwitch) * 0.1}px;
   bottom: ${(props: IProps) => (props.size || sizeSwitch) * 0.1}px;

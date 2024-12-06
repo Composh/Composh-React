@@ -17,7 +17,7 @@ export interface IContentProps {
 
 
 
-export const CheckBoxContainer = styled.div`
+export const CheckBoxContainer = styled.div<IProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,13 +30,13 @@ export const CheckBoxContainer = styled.div`
 
 
 
-export const CheckBoxBorderStyle = css`
+export const CheckBoxBorderStyle = css<IProps>`
   border-color: ${(props: IProps) => props.borderColor || '#000000'};
   border-style: solid;
   border-width: 1.8px;
 `;
 
-export const CheckBoxItemContent = styled.div`
+export const CheckBoxItemContent = styled.div<IProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,14 +49,14 @@ export const CheckBoxItemContent = styled.div`
   ${CheckBoxBorderStyle};
 `;
 
-export const ButtonCheckboxIconContent = styled.div`
+export const ButtonCheckboxIconContent = styled.div<IProps>`
   display: flex;
   flex-direction: column;
   background-color: ${(props: IContentProps) => props.backgroundColor};
   border-radius: 3px;
 `;
 
-export const CheckBoxContent = styled.div`
+export const CheckBoxContent = styled.div<IProps>`
   display: flex;
   width: ${(props: IProps) => props.size}px;
   height: ${(props: IProps) => props.size}px;
@@ -65,7 +65,7 @@ export const CheckBoxContent = styled.div`
   -webkit-transform: rotate(45deg);
 `;
 
-export const CheckmarkContent = styled.div`
+export const CheckmarkContent = styled.div<IProps>`
   position: absolute;
   top: 0;
   left: 0;
@@ -76,7 +76,7 @@ export const CheckmarkContent = styled.div`
   border-radius: 50px;
 `;
 
-export const CheckmarkStem = styled.div`
+export const CheckmarkStem = styled.div<IProps>`
   position: absolute;
   top: ${(props: IProps) => props.size * (5 / 22)}px;
   left: ${(props: IProps) => props.size * 0.5}px;
@@ -89,7 +89,7 @@ export const CheckmarkStem = styled.div`
 // width: 3px;
 // height: 10px;
 
-export const CheckmarkCkick = styled.div`
+export const CheckmarkCkick = styled.div<IProps>`
   position: absolute;
   top: ${(props: IProps) => props.size * (6 / 11)}px;
   left: ${(props: IProps) => props.size * (4 / 11)}px;

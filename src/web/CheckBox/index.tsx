@@ -46,16 +46,23 @@ export interface IProps {
 const CheckBox: React.FC<IProps> = (props) => {
   const className: any = { ...props };
 
+  const checked = props.checked !== undefined ? props.checked : false;
+  const center = props.center !== undefined ? props.center : false;
+  const direction = props.direction !== undefined ? props.direction : 'LEFT';
+  const checkedColor = props.checkedColor !== undefined ? props.checkedColor : '#107e1f';
+  const uncheckedColor = props.uncheckedColor !== undefined ? props.uncheckedColor : '#bfbfbf';
+  const size = props.size !== undefined ? props.size : 18;
+
 
 
   function renderIconInstance() {
     return (
 
       <ButtonCheck
-        active={props.checked}
-        size={props.size}
-        activeColor={props.checkedColor}
-        deactiveColor={props.uncheckedColor}
+        active={checked}
+        size={size}
+        activeColor={checkedColor}
+        deactiveColor={uncheckedColor}
         activeIcon={props.checkedIcon}
         deactiveIcon={props.uncheckedIcon}
       />
@@ -70,51 +77,39 @@ const CheckBox: React.FC<IProps> = (props) => {
     <CheckBoxButton
       className={className?.className}
       disabled={props.disabled}
-      center={props.center}
+      center={center}
       style={props?.style}
-      onClick={!props.disabled ? props.onPress : null}>
+      onClick={() => {
+        if (!props.disabled && props.onPress) {
+          props.onPress();
+        }
+      }}>
 
       <CheckBoxWrapper>
-
-        {props.direction === 'LEFT' && renderIconInstance()}
+        {direction === 'LEFT' && renderIconInstance()}
 
         {(props.checkedTitle || props.uncheckedTitle || props.title) && (
           <CheckboxFlexText
-            direction={props.direction}>
-            {React.isValidElement(props.title)
-              ? props.title
-              : (
-                <CheckboxText
-                  style={props.titleStyle}>
-                  {props.checked
-                    ? props.checkedTitle || props.title
-                    : props.uncheckedTitle || props.title
-                  }
-                </CheckboxText>
-              )}
+            direction={direction}>
+
+            {React.isValidElement(props.title) ? (
+              props.title
+            ) : (
+              <CheckboxText style={props.titleStyle}>
+                {checked ? props.checkedTitle || props.title : props.uncheckedTitle || props.title}
+              </CheckboxText>
+            )}
+
           </CheckboxFlexText>
         )}
 
-        {props.direction === 'RIGHT' && renderIconInstance()}
+        {direction === 'RIGHT' && renderIconInstance()}
 
       </CheckBoxWrapper>
 
     </CheckBoxButton>
 
   );
-};
-
-
-
-CheckBox.defaultProps = {
-  checked: false,
-  center: false,
-  direction: 'LEFT',
-  checkedColor: '#107e1f',
-  uncheckedColor: '#bfbfbf',
-  size: 18,
-  // Component: TouchableOpacity,
-  // titleProps: {},
 };
 
 

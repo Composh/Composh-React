@@ -53,7 +53,7 @@ export const AccordionSubItemTitle = styled.div`
 
 // DefaultContent
 
-export const DefaultContentTitle = styled.p`
+export const DefaultContentTitle = styled.p<IProps>`
   padding: 16px;
   background-color: ${(props: IProps) => props.backgroundColor};
   color: ${(props: IProps) => props.color};

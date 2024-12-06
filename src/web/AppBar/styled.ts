@@ -26,7 +26,7 @@ export const AbsoluteToolbar = css`
   z-index: 5;
 `;
 
-export const BorderBottomToolbar = css`
+export const BorderBottomToolbar = css<IProps>`
   border-bottom-color: ${(props: IProps) => props.borderBottomColor || 'transparent'};
   border-bottom-width: 1;
 `;
@@ -40,7 +40,7 @@ export const HeaderAppContainer = styled.div`
   z-index: 40;
 `;
 
-export const HeaderContainer = styled.div`
+export const HeaderContainer = styled.div<IProps>`
   display: flex;
   flex-direction: column;
   width: 100%;

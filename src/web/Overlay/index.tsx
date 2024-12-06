@@ -27,6 +27,8 @@ export interface IProps {
 const Overlay: React.FC<IProps> = (props: IProps) => {
   const className = { ...props } as any;
 
+  const showBackground = props.showBackground !== undefined ? props.showBackground : true;
+
 
   const visibleOverlay = props.visible;
   if (!visibleOverlay) {
@@ -50,8 +52,8 @@ const Overlay: React.FC<IProps> = (props: IProps) => {
       <OverlayTouchable
         // disabled={props.noPress}
         style={{
-          backgroundColor: props.showBackground
-            ? props.overlayColor
+          backgroundColor: showBackground
+            ? props.overlayColor || 'rgba(0, 0, 0, 0.5)'
             : 'transparent',
         }}
         onClick={onPressOverlayFunction}
@@ -66,17 +68,6 @@ const Overlay: React.FC<IProps> = (props: IProps) => {
     </OverlayView>
 
   );
-};
-
-
-
-Overlay.defaultProps = {
-  visible: true,
-
-  noPress: false,
-
-  overlayColor: 'rgba(0, 0, 0, 0.5)',
-  showBackground: true,
 };
 
 

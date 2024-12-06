@@ -22,10 +22,9 @@ import {
 interface IProps {
   disabled?: boolean;
 
-  data: any; // PropTypes.array,
+  data: any; // PropTypes.array
   initial?: number;
 
-  animationTypes?: any; // PropTypes.array,
   duration?: number;
 
   activeColor?: string;
@@ -46,7 +45,7 @@ interface IProps {
 
   icon?: any;
 
-  onPress?: any; // PropTypes.func,
+  onPress?: any; // PropTypes.func
 
   style?: object;
 }
@@ -54,23 +53,36 @@ interface IProps {
 
 
 const Radio: React.FC<IProps> = (props: any) => {
+  // Constantes com valores padrão usando operador ternário
+  const initial = props.initial !== undefined ? props.initial : -1;
+  const circleSize = props.circleSize !== undefined ? props.circleSize : 18;
+  const activeColor = props.activeColor !== undefined ? props.activeColor : '#03a9f4';
+  const deactiveColor = props.deactiveColor !== undefined ? props.deactiveColor : '#e2e2e2';
+  const boxActiveBgColor = props.boxActiveBgColor !== undefined ? props.boxActiveBgColor : '#e1f5fe33';
+  const boxDeactiveBgColor = props.boxDeactiveBgColor !== undefined ? props.boxDeactiveBgColor : '#fff';
+  const direction = props.direction !== undefined ? props.direction : 'row';
+  const boxDirection = props.boxDirection !== undefined ? props.boxDirection : 'row';
+
+
   const [activeIndex, setActiveIndex] = useState(-1);
 
 
 
   function _changeRadio(item: any, activeIndexA: any) {
     setActiveIndex(activeIndexA);
-    props.onPress(item);
+    if (props.onPress) {
+      props.onPress(item);
+    }
   }
 
 
 
   useEffect(() => {
-    if (props.initial > 0) {
-      const initialActive = props.initial - 1;
+    if (initial > 0) {
+      const initialActive = initial - 1;
       _changeRadio(props.data[initialActive], initialActive);
     }
-  }, [props.initial]);
+  }, [initial]);
 
 
 
@@ -78,73 +90,51 @@ const Radio: React.FC<IProps> = (props: any) => {
 
     <ButtonRadioContainer
       disabled={props.disabled}
-      direction={props.direction}
+      direction={direction}
       style={props.style}>
 
-      {props.data.map((item: any, index: any) => {
-        return (
-
-          <ButtonRadioTouchable
-            key={index}
-            onClick={() => {
-              if (!props.disabled) {
-                _changeRadio(item, index);
-              }
-            }}
-            direction={props.boxDirection}
-            style={props.boxStyle}>
-
-
-            <ButtonCircle
-              active={activeIndex === index}
-              size={props.circleSize}
-              deactiveColor={props.deactiveColor}
-              activeColor={props.activeColor}
-            />
+      {props.data.map((item: any, index: any) => (
+        <ButtonRadioTouchable
+          key={index}
+          onClick={() => {
+            if (!props.disabled) {
+              _changeRadio(item, index);
+            }
+          }}
+          direction={boxDirection}
+          style={{
+            ...props.boxStyle,
+            backgroundColor:
+              activeIndex === index ? boxActiveBgColor : boxDeactiveBgColor,
+          }}>
 
 
+          <ButtonCircle
+            active={activeIndex === index}
+            size={circleSize}
+            deactiveColor={deactiveColor}
+            activeColor={activeColor}
+          />
 
-            <CenterProductBox>
-              {React.isValidElement(item.label)
-                ? item.label
-                : (
-                  <TextRadio
-                    color={activeIndex === index ? props.activeColor : props.deactiveColor}
-                    style={props.textStyle}>
-                    {item.label}
-                  </TextRadio>
-                )}
-            </CenterProductBox>
 
-          </ButtonRadioTouchable>
-
-        );
-      })}
+          <CenterProductBox>
+            {React.isValidElement(item.label)
+              ? item.label
+              : (
+                <TextRadio
+                  color={activeIndex === index ? activeColor : deactiveColor}
+                  style={props.textStyle}>
+                  {item.label}
+                </TextRadio>
+              )
+            }
+          </CenterProductBox>
+        </ButtonRadioTouchable>
+      ))}
 
     </ButtonRadioContainer>
 
   );
-};
-
-
-
-Radio.defaultProps = {
-  style: {},
-  boxStyle: {},
-  textStyle: {},
-  initial: -1,
-  circleSize: 18,
-  duration: 500,
-  data: [],
-  animationTypes: [],
-  onPress: null, // () => { },
-  activeColor: '#03a9f4',
-  deactiveColor: '#e2e2e2',
-  boxActiveBgColor: '#e1f5fe33',
-  boxDeactiveBgColor: '#fff',
-  box: false,
-  direction: 'row',
-  boxDirection: 'row',
 };
 
 
