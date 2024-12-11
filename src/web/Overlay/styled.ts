@@ -5,6 +5,12 @@ import styled,
 
 
 
+export interface IProps {
+  backgroundColor?: string;
+}
+
+
+
 export const OverlayStyle = css`
   display: flex;
   flex-direction: column;
@@ -21,8 +27,10 @@ export const OverlayStyle = css`
 `;
 
 
-export const OverlayTouchable = styled.a`
+export const OverlayTouchable = styled.a<IProps>`
   ${OverlayStyle};
+
+  background-color: ${(props: IProps) => props.backgroundColor};
   cursor: pointer;
 `;
 

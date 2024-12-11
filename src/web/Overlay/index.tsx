@@ -16,8 +16,7 @@ export interface IProps {
   overlayColor?: string;
   showBackground?: boolean;
 
-  style?: any;
-  containerStyle?: any; // ViewPropTypes.style,
+  style?: any; // ViewPropTypes.style,
 
   children?: any;
 }
@@ -51,17 +50,15 @@ const Overlay: React.FC<IProps> = (props: IProps) => {
 
       <OverlayTouchable
         // disabled={props.noPress}
-        style={{
-          backgroundColor: showBackground
-            ? props.overlayColor || 'rgba(0, 0, 0, 0.5)'
-            : 'transparent',
-        }}
+        backgroundColor={showBackground
+          ? props.overlayColor || 'rgba(0, 0, 0, 0.5)'
+          : 'transparent'}
         onClick={onPressOverlayFunction}
       />
 
       <OverlayChildren
         className={className?.className}
-        style={props.containerStyle}>
+        style={props.style}>
         {props.children}
       </OverlayChildren>
 
