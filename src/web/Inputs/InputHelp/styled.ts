@@ -18,11 +18,15 @@ export const HelpTextView = styled.div`
 `;
 
 export const HelpTextComponentStyle = styled.p`
+  margin-top: 0;
+  margin-bottom: 0;
   font-size: 12px;
   font-style: italic;
 `;
 
 export const HelpCountTextStyle = styled.p`
+  margin-top: 0;
+  margin-bottom: 0;
   margin-left: 5px;
   font-size: 12px;
 `;

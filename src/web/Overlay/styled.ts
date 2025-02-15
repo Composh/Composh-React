@@ -23,7 +23,7 @@ export const OverlayStyle = css`
 
   justify-content: center;
   align-items: center;
-  z-index: 9998;
+  z-index: 99998;
 `;
 
 
@@ -42,5 +42,5 @@ export const OverlayView = styled.div`
 
 export const OverlayChildren = styled.div`
   ${OverlayStyle};
-  z-index: 9999 !important;
+  z-index: 99999 !important;
 `;

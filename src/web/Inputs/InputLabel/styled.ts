@@ -20,6 +20,8 @@ export const LabelViewStyle = styled.div`
 
 
 export const LabelStyle = styled.p<IProps>`
+  margin-top: 0;
+  margin-bottom: 0;
   color: ${(props: IProps) => props.color || '#000'};
   font-weight: 500;
   font-size: 14px;
@@ -27,6 +29,8 @@ export const LabelStyle = styled.p<IProps>`
 
 
 export const LabelRequiredStyle = styled.p<IProps>`
+  margin-top: 0;
+  margin-bottom: 0;
   color: ${(props: IProps) => props.color || '#ff0000'};
   font-size: 12px;
 `;
