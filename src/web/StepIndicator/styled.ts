@@ -15,7 +15,7 @@ export interface IProps {
 
 
 
-export const StepContainer = styled.div`
+export const StepContainer = styled.div<IProps>`
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -27,13 +27,13 @@ export const StepContainer = styled.div`
 `;
 
 
-export const StepBorderStyle = css`
+export const StepBorderStyle = css<IProps>`
   border-color: ${(props: IProps) => props.borderColor};
   border-style: solid;
   border-width: 1px;
 `;
 
-export const StepIndicatorContainer = styled.div`
+export const StepIndicatorContainer = styled.div<IProps>`
   display: flex;
   flex-direction: column;
   align-items: center;

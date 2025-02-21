@@ -10,7 +10,7 @@ import {
 
 export interface IProps {
   data: Array<string>;
-  stepsValidity: boolean[];
+  stepsValidity?: boolean[];
 
   stepCurrent: number;
 
