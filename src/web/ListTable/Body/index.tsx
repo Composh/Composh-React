@@ -11,6 +11,7 @@ import {
 
 export interface IProps {
   data: any;
+  color?: string;
   columns: any;
   textEmpty?: any;
 }
@@ -19,6 +20,7 @@ export interface IProps {
 
 const TableBody: React.FC<IProps> = (props: IProps) => {
   const dadosOrdenados = props.data;
+  const colorReceived = props.color || 'black';
 
   // const dadosOrdenados = [...data].sort((a, b) => {
   //   const valorA = a[ordenacao.coluna];
@@ -93,7 +95,8 @@ const TableBody: React.FC<IProps> = (props: IProps) => {
 
       {dadosOrdenados?.map((item: any, index: number) => (
         <Linha
-          key={index}>
+          key={index}
+          backgroundColor={index % 2 === 0 ? 'transparent' : colorReceived}>
 
           {props.columns?.map((coluna: any, index: number) => (
             <CelulaDiv

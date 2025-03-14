@@ -10,8 +10,9 @@ import {
 
 
 export interface IProps {
-  color: any;
   data: any;
+  colorHeader?: any;
+  colorLine?: any;
   receivedColumns: any;
   textEmpty: any;
 }
@@ -36,7 +37,7 @@ const ListTable: React.FC<IProps> = (props: IProps) => {
       className={className?.className}>
 
       <TableHeader
-        color={props.color}
+        color={props.colorHeader}
         columns={props.receivedColumns}
       />
 
@@ -60,6 +61,7 @@ const ListTable: React.FC<IProps> = (props: IProps) => {
 
       <TableBody
         data={dataTable}
+        color={props.colorLine}
         columns={props.receivedColumns}
         textEmpty={props.textEmpty}
       />

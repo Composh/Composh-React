@@ -9,6 +9,7 @@ export interface IProps {
   active?: boolean;
   color?: string;
   accentColor?: string;
+  hoverColor?: string;
 }
 
 
@@ -16,6 +17,9 @@ export interface IProps {
 export const Containerpaginationreacttable = styled.div`
   display: flex;
   flex-direction: row;
+  overflow: hidden;
+  border: 0.5px solid rgba(0, 0, 0, .125) !important;
+  border-radius: 4px;
 `;
 
 
@@ -32,19 +36,25 @@ export const PaginatorPageItem = styled.a<IProps>`
   justify-content: center;
   position: relative;
   min-width: 40px;
-  margin-left: -1px;
+  margin-left: -0.5px;
+  margin-right: -0.5px;
   padding-bottom: 6px;
   padding-left: 11px;
   padding-right: 11px;
   padding-top: 6px;
 
   background-color: ${(props: IProps) => props.color || '#fbfaf9'};
-  border: 1px solid rgba(0, 0, 0, .125) !important;
-  border-style: solid;
-  border-width: 1px;
+  border-left: 0.5px solid rgba(0, 0, 0, .125) !important;
+  border-right: 0.5px solid rgba(0, 0, 0, .125) !important;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 
-  ${(props: IProps) => props.active && PaginatorActive}
+  ${(props: IProps) => props.active && PaginatorActive};
+
+  :hover {
+    background-color: ${(props: IProps) => props.hoverColor};
+    background: ${(props: IProps) => props.hoverColor};
+    border-color: ${(props: IProps) => props.hoverColor};
+  }
 `;
 
 // .page-item:first-child .page-link {
@@ -67,4 +77,8 @@ export const PaginatorPageItemText = styled.p<IProps>`
   color: ${(props: IProps) => props.accentColor || '#000'};
   font-size: 13px;
   ${(props: IProps) => props.active && TextActive}
+
+  ${PaginatorPageItem}:hover & {
+    color: ${'#fff'} !important;
+  }
 `;

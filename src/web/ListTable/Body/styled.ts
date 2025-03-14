@@ -7,11 +7,12 @@ import styled,
 
 export interface IProps {
   width?: number | string;
+  backgroundColor?: string;
 }
 
 
 
-export const Linha = styled.div`
+export const Linha = styled.div<IProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -22,12 +23,7 @@ export const Linha = styled.div`
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 12px;
-  border-top-color: ${'#ddd'};
-  border-top-style: solid;
-  border-top-width: 0.5px;
-  border-bottom-color: ${'#ddd'};
-  border-bottom-style: solid;
-  border-bottom-width: 0.5px;
+  background-color: ${(props: IProps) => props.backgroundColor};
 `;
 
 

@@ -11,6 +11,7 @@ import {
 export interface IProps {
   color?: string;
   accentColor?: string;
+  hoverColor?: string;
   maxPagesToShow?: number;
   pageCurrent?: number | string;
   pagesTotal?: number | string;
@@ -22,6 +23,7 @@ export interface IProps {
 const ListTablePaginator: React.FC<IProps> = (props: IProps) => {
   const colorPaginator = props.color;
   const colorAccentPaginator = props.accentColor;
+  const colorHoverPaginator = props.hoverColor || 'black';
 
   const pageCurrent = parseInt(String(props.pageCurrent), 10); // Convertendo para número inteiro
   const pagesTotal = parseInt(String(props.pagesTotal), 10); // Convertendo para número inteiro
@@ -96,6 +98,7 @@ const ListTablePaginator: React.FC<IProps> = (props: IProps) => {
         active={active}
         color={colorPaginator}
         accentColor={colorAccentPaginator}
+        hoverColor={colorHoverPaginator}
         title={sizeString}
         onClick={() => {
           handlePageClick(sizeString);
