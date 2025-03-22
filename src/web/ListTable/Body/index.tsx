@@ -101,7 +101,9 @@ const TableBody: React.FC<IProps> = (props: IProps) => {
           {props.columns?.map((coluna: any, index: number) => (
             <CelulaDiv
               key={index}
-              width={coluna?.width}>
+              width={coluna?.width}
+              minWidth={coluna?.minWidth}
+              maxWidth={coluna?.maxWidth}>
               {renderResult(item, coluna)}
             </CelulaDiv>
           ))}

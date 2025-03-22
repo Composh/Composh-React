@@ -7,6 +7,8 @@ import styled,
 
 export interface IProps {
   width?: number | string;
+  minWidth?: number | string;
+  maxWidth?: number | string;
   backgroundColor?: string;
 }
 
@@ -28,10 +30,18 @@ export const Linha = styled.div<IProps>`
 
 
 
-export const MaxWidthStyle = css<IProps>`
+export const WidthStyle = css<IProps>`
   width: ${(props: IProps) => typeof props.width === 'number' ? `${props.width}px` : props.width || 'auto'};
   min-width: ${(props: IProps) => typeof props.width === 'number' ? `${props.width}px` : props.width || 'auto'};
   max-width: ${(props: IProps) => typeof props.width === 'number' ? `${props.width}px` : props.width || 'auto'};
+`;
+
+export const MinWidthStyle = css<IProps>`
+  min-width: ${(props: IProps) => typeof props.minWidth === 'number' ? `${props.minWidth}px` : props.minWidth || 'auto'};
+`;
+
+export const MaxWidthStyle = css<IProps>`
+  max-width: ${(props: IProps) => typeof props.maxWidth === 'number' ? `${props.maxWidth}px` : props.maxWidth || 'auto'};
 `;
 
 export const CelulaDiv = styled.div<IProps>`
@@ -41,7 +51,9 @@ export const CelulaDiv = styled.div<IProps>`
   justify-content: center;
   flex: 1;
 
-  ${(props: IProps) => props.width && MaxWidthStyle}
+  ${(props: IProps) => props.width && WidthStyle};
+  ${(props: IProps) => props.minWidth && MinWidthStyle};
+  ${(props: IProps) => props.maxWidth && MaxWidthStyle};
 `;
 
 

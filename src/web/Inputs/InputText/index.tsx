@@ -124,6 +124,10 @@ const InputText: React.FC<IProps> = (props: IProps) => {
         return;
       }
 
+      if (props.type === EMaskEnumType.NUMBER) {
+        if (!/^\d*$/.test(itemToReturn)) return; // Bloqueia tudo que não for número inteiro
+      }
+
       setRawValue(itemToReturn);
       setTextValue(itemToReturn);
       props.onChange(itemToReturn);

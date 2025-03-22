@@ -38,15 +38,20 @@ const TableHeaderCell: React.FC<IProps> = (props: IProps) => {
     <Coluna
       key={props.column?.dataField}
       width={props.column?.width}
+      minWidth={props.column?.minWidth}
+      maxWidth={props.column?.maxWidth}
       onClick={() => ordenarDados(props.column?.label)}
       style={props.column?.headerStyle ? props.column?.headerStyle() : null}>
 
       <ColunaText
-      // headerStyle={coluna?.headerStyle}
-      // formatter={coluna?.formatter}
-      >
+        // headerStyle={coluna?.headerStyle}
+        // formatter={coluna?.formatter}
+        hasIconRight={props.column?.headerRightIcon}>
         {props.column?.label}
       </ColunaText>
+
+
+      {props.column?.headerRightIcon && props.column?.headerRightIcon()}
 
     </Coluna>
 
