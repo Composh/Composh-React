@@ -189,37 +189,37 @@ const ShimmerPlaceholder: React.FC<IProps> = (props: IProps) => {
 
 
 
-ShimmerPlaceholder.defaultProps = {
-  width: 200,
-  height: 15,
-  widthFull: false,
+// ShimmerPlaceholder.defaultProps = {
+//   width: 200,
+//   height: 15,
+//   widthFull: false,
 
-  shimmerColors: ['#ebebeb', '#c5c5c5', '#ebebeb'],
-  location: [0.3, 0.5, 0.7],
-  shimmerWidthPercent: 1,
-  opacity: 1,
-  borderRadius: 0,
+//   shimmerColors: ['#ebebeb', '#c5c5c5', '#ebebeb'],
+//   location: [0.3, 0.5, 0.7],
+//   shimmerWidthPercent: 1,
+//   opacity: 1,
+//   borderRadius: 0,
 
-  visible: false,
-  duration: 1000,
-  delay: 0,
-  isReversed: false,
-  stopAutoRun: false,
-  isInteraction: true,
+//   visible: false,
+//   duration: 1000,
+//   delay: 0,
+//   isReversed: false,
+//   stopAutoRun: false,
+//   isInteraction: true,
 
-  // LinearGradient = global.Expo
-  //   ? global.Expo.LinearGradient
-  //   : View,
+//   // LinearGradient = global.Expo
+//   //   ? global.Expo.LinearGradient
+//   //   : View,
 
-  // contentStyle,
-  // shimmerStyle,
-  // containerProps,
-  // shimmerContainerProps,
-  // childrenContainerProps
-  // style,
+//   // contentStyle,
+//   // shimmerStyle,
+//   // containerProps,
+//   // shimmerContainerProps,
+//   // childrenContainerProps
+//   // style,
 
-  // children,
-};
+//   // children,
+// };
 
 
 

@@ -96,11 +96,11 @@ const StepIndicator: React.FC<IProps> = (props: IProps) => {
       {dataStep?.map((label: string, index: number) => (
         <StepIndicatorContainer
           key={index}
-          disabled={!props.stepsValidity[index]}
+          disabled={props.stepsValidity ? !props.stepsValidity[index] : false}
           backgroundColor={chooseBackgroundColor(index)}
           borderColor={chooseBorderColor(index)}
           onClick={() => {
-            if (!props.stepsValidity[index]) {
+            if (props.stepsValidity && !props.stepsValidity[index]) {
               return;
             }
 

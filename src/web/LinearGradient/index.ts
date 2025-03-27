@@ -57,7 +57,7 @@ function returnBackground(props: IProps) {
 }
 
 
-const LinearGradient = styled.div`
+const LinearGradient = styled.div<IProps>`
   display: flex;
   flex-direction: column;
   background: ${(props: IProps) => props.colors?.[0]};

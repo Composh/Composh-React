@@ -72,10 +72,4 @@ const ButtonCircle: React.FC<IProps> = (props: IProps) => {
 
 
 
-ButtonCircle.defaultProps = {
-  margin: true,
-};
-
-
-
 export default ButtonCircle;

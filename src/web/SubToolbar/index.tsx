@@ -31,18 +31,12 @@ const SubToolbar: React.FC<IProps> = (props: any) => {
         height: props.height || 46, // Sizes.SubToolbar,
         paddingLeft: props.noSubToolbarPadding ? 0 : 8,
         paddingRight: props.noSubToolbarPadding ? 0 : 8,
-        backgroundColor: props.backgroundColor,
+        backgroundColor: props.backgroundColor || 'gray',
       }}>
       {props.children}
     </ToolbarContainer>
 
   );
-};
-
-
-
-SubToolbar.defaultProps = {
-  backgroundColor: 'gray',
 };
 
 

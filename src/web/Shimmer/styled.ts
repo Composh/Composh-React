@@ -15,14 +15,14 @@ export interface IProps {
 
 
 
-export const ShimmerContainerStyle = css`
+export const ShimmerContainerStyle = css<IProps>`
   width: ${(props: IProps) => props.widthFull
     ? '100%'
     : (props.width + 'px') || (100 + 'px')};
   height: ${(props: IProps) => props.height || 50}px;
 `;
 
-export const ShimmerContainer = styled.div`
+export const ShimmerContainer = styled.div<IProps>`
   display: flex;
   flex-direction: column;
   overflow: hidden;
