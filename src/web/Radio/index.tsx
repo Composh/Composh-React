@@ -19,7 +19,7 @@ import {
 
 
 
-interface IProps {
+export interface IProps {
   disabled?: boolean;
 
   data: any; // PropTypes.array
@@ -52,14 +52,14 @@ interface IProps {
 
 
 
-const Radio: React.FC<IProps> = (props: any) => {
+const Radio: React.FC<IProps> = (props: IProps) => {
   // Constantes com valores padrão usando operador ternário
   const initial = props.initial !== undefined ? props.initial : -1;
   const circleSize = props.circleSize !== undefined ? props.circleSize : 18;
   const activeColor = props.activeColor !== undefined ? props.activeColor : '#03a9f4';
   const deactiveColor = props.deactiveColor !== undefined ? props.deactiveColor : '#e2e2e2';
-  const boxActiveBgColor = props.boxActiveBgColor !== undefined ? props.boxActiveBgColor : '#e1f5fe33';
-  const boxDeactiveBgColor = props.boxDeactiveBgColor !== undefined ? props.boxDeactiveBgColor : '#fff';
+  const boxActiveBgColor = props.boxActiveBgColor !== undefined ? props.boxActiveBgColor : 'transparent';
+  const boxDeactiveBgColor = props.boxDeactiveBgColor !== undefined ? props.boxDeactiveBgColor : 'transparent';
   const direction = props.direction !== undefined ? props.direction : 'row';
   const boxDirection = props.boxDirection !== undefined ? props.boxDirection : 'row';
 

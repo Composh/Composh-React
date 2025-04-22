@@ -12,7 +12,7 @@ export interface IProps {
 
 
 
-export const ItemContainer = styled.a<IProps>`
+export const ItemContainer = styled.button<IProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -55,6 +55,7 @@ export const ItemTitle = styled.h3<IProps>`
   color: ${(props: IProps) => props.color ? props.color : 'black'};
   font-size: ${(props: IProps) => props.fontSize ? props.fontSize : 15}px;
   font-weight: 700;
+  text-align: left;
 `;
 
 export const ItemSubtitle = styled.h4<IProps>`
@@ -62,6 +63,7 @@ export const ItemSubtitle = styled.h4<IProps>`
   color: ${(props: IProps) => props.color ? props.color : 'black'};
   font-size: ${(props: IProps) => props.fontSize ? props.fontSize : 12}px;
   font-weight: 700;
+  text-align: left;
 `;
 
 export const ItemLastTitle = styled.h4<IProps>`
@@ -69,6 +71,7 @@ export const ItemLastTitle = styled.h4<IProps>`
   color: ${(props: IProps) => props.color ? props.color : 'black'};
   font-size: ${(props: IProps) => props.fontSize ? props.fontSize : 12}px;
   font-weight: 400;
+  text-align: left;
 `;
 
 

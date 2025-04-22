@@ -39,6 +39,7 @@ export interface IProps {
   helpColor?: string;
 
   // Props Count Letter
+  hideCount?: boolean;
   noCount?: boolean;
   countLimit?: any; // string | number;
   countColor?: string;
@@ -84,7 +85,7 @@ const InputView: React.FC<IProps> = (props: IProps) => {
         wrapView={props.children ? !props.noWrap : undefined}
         // multiline={props.multiline}
         backgroundColor={props.backgroundColor || '#ffffff'}
-        borderColor={props.borderColor ? props.borderColor : undefined}
+        borderColor={props.borderColor ? props.borderColor : 'transparent'}
         borderWidth={props.borderWidth || 1}
         opacity={opacityValue}>
 
@@ -95,7 +96,7 @@ const InputView: React.FC<IProps> = (props: IProps) => {
 
 
 
-      {(props.helpText || props.countLimit) && (!props.noHelp || !props.noCount) && (
+      {!props.hideCount && (props.helpText || props.countLimit) && (!props.noHelp || !props.noCount) && (
         <InputHelp
           helpTextValue={props.countTextValue}
           noHelp={props.noHelp}
