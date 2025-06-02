@@ -29,6 +29,6 @@ export const Wrapper = styled.div<IProps>`
   justify-content: flex-end;
   height: ${(props: IProps) => props.height}px;
   background-color: ${(props: IProps) => props.backgroundColor};
-  z-index: 9999;
+  z-index: 99999;
   overflow-y: auto;
 `;
