@@ -4,10 +4,10 @@ import React from 'react';
 
 
 
-const InputArea: React.FC = () => {
+const InputDropdown: React.FC = () => {
   return <div />;
 };
 
 
 
-export default InputArea;
+export default InputDropdown;

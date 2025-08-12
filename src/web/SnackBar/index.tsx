@@ -36,7 +36,7 @@ const SnackBar: React.FC<IProps> = (props: IProps) => {
   return (
 
     <SnackbarMui
-      open={props.visible}
+      open={Boolean(props.visible)}
       autoHideDuration={1800}
       onClose={props.onClose}
       message={props.textMessage}

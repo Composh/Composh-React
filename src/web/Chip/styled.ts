@@ -11,13 +11,12 @@ interface IProps {
 
 
 
-export const ChipContainer = styled.a<IProps>`
-  display: inline-flex;
-  flex-direction: column;
+export const ChipContainer = styled.div<IProps>`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   align-self: flex-start;
   height: 35px;
-  padding-left: 15px;
-  padding-right: 15px;
   margin-top: 4px;
   margin-left: 2px;
   margin-right: 2px;
@@ -27,14 +26,16 @@ export const ChipContainer = styled.a<IProps>`
   border-style: solid;
   border-width: 1px;
   border-radius: ${(props: IProps) => props.borderRadius || 0}px;
-  cursor: pointer;
 `;
 
-export const ChipContent = styled.div`
+export const ChipButtonContent = styled.button`
   display: flex;
   flex-direction: row;
-  flex: 1;
   align-items: center;
+  flex: 1;
+  padding-left: 15px;
+  padding-right: 15px;
+  cursor: pointer;
 `;
 
 export const ChipThumb = styled.div`
@@ -49,14 +50,23 @@ export const ChipText = styled.p<IProps>`
   color: ${(props: IProps) => props.color};
 `;
 
-export const ChipIcon = styled.a`
+export const ChipIcon = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 8px;
   margin-right: -2px;
   padding-top: 4px;
   padding-bottom: 4px;
-  cursor: pointer;
+`;
+
+
+export const ThumbRightIcon = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 8px;
+  margin-right: -2px;
+  padding-top: 4px;
+  padding-bottom: 4px;
 `;
 
 

@@ -37,7 +37,6 @@ export interface IProps {
   disabled?: boolean;
   noShadow?: boolean;
   password?: boolean;
-  reset?: boolean;
 
   required?: boolean;
   requiredText?: string;
@@ -49,7 +48,6 @@ export interface IProps {
 
   autoCapitalize?: any;
   autoCorrect?: boolean;
-  noWrap?: boolean;
   backgroundColor?: string;
   borderColor?: string | null;
   borderWidth?: number;
@@ -82,13 +80,9 @@ export interface IProps {
   countLimit?: any; // string | number;
   countColor?: string;
 
-  onChange?: any; // onChange?(event: any): any;
+  onChange?: (raw: any, masked?: any) => void;
   onBlur?: any; // onBlur?(event: any): any;
 
-
-
-  lowercase?: boolean;
-  children?: any;
   multiline?: boolean;
 }
 
@@ -104,11 +98,7 @@ const InputText: React.FC<IProps> = (props: IProps) => {
   // const correctAutoProps = props.autoCorrect ? true : false; // Mobile
 
 
-  const [textValue, setTextValue] = useState<string>('');
-  const [rawValue, setRawValue] = useState<string>('');
-
-  const [isPassword, setIsPassword] = useState<boolean>(false);
-
+  const [isPassword, setIsPassword] = useState<boolean>(props.password || false);
   const [typeKeyboard, setTypeKeyboard] = useState<any | string>('');
 
   const [hasMask, setHasMask] = useState<boolean>(returnIfHasMask(props.type));
@@ -117,20 +107,19 @@ const InputText: React.FC<IProps> = (props: IProps) => {
 
 
   function _onChangeText(newText: string) {
+    if (!props.onChange) {
+      return;
+    };
+
     if (!hasMask) {
-      const itemToReturn = String(newText);
-
-      if (!props.onChange) {
-        return;
-      }
-
       if (props.type === EMaskEnumType.NUMBER) {
-        if (!/^\d*\.?\d*$/.test(itemToReturn)) return; // Permite números com ou sem ponto decimal
+        // Permite apenas números inteiros ou decimais (com um ponto opcional)
+        if (!/^\d*\.?\d*$/.test(newText)) {
+          return;
+        };
       }
 
-      setRawValue(itemToReturn);
-      setTextValue(itemToReturn);
-      props.onChange(itemToReturn);
+      props.onChange(newText);
       return;
     }
 
@@ -144,22 +133,14 @@ const InputText: React.FC<IProps> = (props: IProps) => {
 
     const { maskedText, rawText } = inputUpdateValue(hasMask, typeMaskInput, props.options, masketToRawText);
 
-    if (!props.onChange) {
-      return;
-    }
-
     if (props.type === EMaskEnumType.CREDITCARD) {
       const rawNumberJoin = rawText.join('');
-      setRawValue(rawNumberJoin);
-      setTextValue(maskedText);
       props.onChange(rawNumberJoin, maskedText);
       return;
     }
 
     if (props.type === EMaskEnumType.DATETIME) {
       const dateReturn = maskedText.replace(/[^\w\s]/gi, '');
-      setRawValue(dateReturn);
-      setTextValue(maskedText);
       props.onChange(dateReturn, maskedText);
       return;
     }
@@ -171,15 +152,11 @@ const InputText: React.FC<IProps> = (props: IProps) => {
         return;
       }
 
-      setRawValue(textWithoutSpecialChars);
-      setTextValue(maskedText);
       props.onChange(textWithoutSpecialChars, maskedText);
       return;
     }
 
     const textWithoutSpecialChars = String(rawText).replace(/[^\w\s]/gi, '');
-    setRawValue(textWithoutSpecialChars);
-    setTextValue(maskedText);
     props.onChange(textWithoutSpecialChars, maskedText);
   }
 
@@ -195,19 +172,13 @@ const InputText: React.FC<IProps> = (props: IProps) => {
 
       <ShowPasswordStyle
         onClick={() => !props.disabled && setIsPassword(!isPassword)}>
+        {/* {isPassword
+          ? props.iconPasswordOn || <IconEye alt="eye" src={EyeOnImage} />
+          : props.iconPasswordOff || <IconEye alt="eye" src={EyeOffImage} />
+        } */}
         {isPassword
-          ? props.iconPasswordOn || (
-            <IconEye
-              alt={'eye'}
-              src={EyeOnImage}
-            />
-          )
-          : props.iconPasswordOff || (
-            <IconEye
-              alt={'eye'}
-              src={EyeOffImage}
-            />
-          )
+          ? props.iconPasswordOn
+          : props.iconPasswordOff
         }
       </ShowPasswordStyle>
 
@@ -229,21 +200,6 @@ const InputText: React.FC<IProps> = (props: IProps) => {
   }, [props.type]);
 
 
-  useEffect(() => {
-    if (props.value) {
-      _onChangeText(props.value);
-    }
-  }, [props.value]);
-
-
-  // Reseta para uma string vazia
-  useEffect(() => {
-    if (props.reset || (typeof props.value === 'string' && props.value === '')) {
-      _onChangeText('');
-    }
-  }, [props.reset, props.value]);
-
-
 
   return (
 
@@ -259,7 +215,7 @@ const InputText: React.FC<IProps> = (props: IProps) => {
       requiredText={props.requiredText}
       requiredColor={props.requiredColor}
 
-      noWrap={props.noWrap}
+      noWrap={false}
       backgroundColor={props.backgroundColor || '#ffffff'}
       borderColor={props.borderColor}
       borderWidth={props.borderWidth || 1}
@@ -268,7 +224,7 @@ const InputText: React.FC<IProps> = (props: IProps) => {
       labelColor={props.labelColor}
 
       // Props Text
-      countTextValue={rawValue}
+      countTextValue={props.value}
 
       // Props Help
       noHelp={props.noHelp}
@@ -330,9 +286,9 @@ const InputText: React.FC<IProps> = (props: IProps) => {
         // onContentSizeChange={(event) => {
         //   setHeight(event.nativeEvent.contentSize.height);
         // }}
-        // eslint-disable-next-line no-extra-boolean-cast
 
-        value={textValue}
+
+        value={props.value || ''}
 
         placeholder={props.placeholderText}
         placeholderTextColor={props.placeholderTextColor}

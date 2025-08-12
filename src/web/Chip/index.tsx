@@ -4,9 +4,10 @@ import color from 'color';
 
 import {
   ChipContainer,
-  ChipContent,
+  ChipButtonContent,
   ChipIcon,
   ChipText,
+  ThumbRightIcon,
   ChipThumb,
 } from './styled';
 
@@ -42,12 +43,10 @@ export interface IProps {
   onPress?: any;
   onLongPress?: any;
 
-  onCloseDisabled?: boolean;
-  onClose?: any;
-
 
   // Visual Label
   thumb?: any;
+  thumbRight?: any;
 }
 
 
@@ -145,13 +144,13 @@ const Chip: React.FC<IProps> = (props: IProps) => {
 
       // activeOpacity={props.activeOpacity || 0.75}
       // disabled={props.disabled}
-      onClick={!props.disabled ? props.onPress : undefined}
       backgroundColor={selectedBackgroundColor()}
       borderColor={borderColor()}
       borderRadius={16}
       style={props.style}>
 
-      <ChipContent>
+      <ChipButtonContent
+        onClick={!props.disabled ? props.onPress : undefined}>
 
         {/* {avatar && !icon && (
           <View
@@ -182,16 +181,22 @@ const Chip: React.FC<IProps> = (props: IProps) => {
         </ChipText>
 
 
+
         {props.icon && (
-          <ChipIcon
-            // activeOpacity={props.activeOpacity}
-            // disabled={props.onCloseDisabled}
-            onClick={!props.onCloseDisabled && props.onClose ? props.onClose : undefined}>
+          <ChipIcon>
             {props.icon}
           </ChipIcon>
         )}
 
-      </ChipContent>
+      </ChipButtonContent>
+
+
+
+      {props.thumbRight && (
+        <ThumbRightIcon>
+          {props.thumbRight}
+        </ThumbRightIcon>
+      )}
 
     </ChipContainer>
 
