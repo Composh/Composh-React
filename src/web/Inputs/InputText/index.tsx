@@ -82,6 +82,7 @@ export interface IProps {
 
   onChange?: (raw: any, masked?: any) => void;
   onBlur?: any; // onBlur?(event: any): any;
+  onKeyDown?: any;
 
   multiline?: boolean;
 }
@@ -176,6 +177,12 @@ const InputText: React.FC<IProps> = (props: IProps) => {
           ? props.iconPasswordOn || <IconEye alt="eye" src={EyeOnImage} />
           : props.iconPasswordOff || <IconEye alt="eye" src={EyeOffImage} />
         } */}
+
+        {/* {isPassword
+          ? props.iconPasswordOn || <IconEye alt="eye" src={EyeOnImage?.src} />
+          : props.iconPasswordOff || <IconEye alt="eye" src={EyeOffImage?.src} />
+        } */}
+
         {isPassword
           ? props.iconPasswordOn
           : props.iconPasswordOff
@@ -184,6 +191,37 @@ const InputText: React.FC<IProps> = (props: IProps) => {
 
     );
   }
+
+
+
+  const displayValue = (() => {
+    const current = (props.value ?? '').toString();
+
+    if (!hasMask) {
+      return current;
+    }
+
+    const { maskedText } = inputUpdateValue(
+      hasMask,
+      typeMaskInput,
+      props.options,
+      current,
+    );
+
+    return maskedText || '';
+  })();
+
+
+  const countDigitsValue = (() => {
+    const current = (props.value ?? '').toString();
+
+    if (!hasMask) {
+      return current;
+    }
+
+    // para máscaras, contar apenas dígitos (ignora / . - espaços etc)
+    return current.replace(/\D/g, '');
+  })();
 
 
 
@@ -224,7 +262,7 @@ const InputText: React.FC<IProps> = (props: IProps) => {
       labelColor={props.labelColor}
 
       // Props Text
-      countTextValue={props.value}
+      countTextValue={countDigitsValue}
 
       // Props Help
       noHelp={props.noHelp}
@@ -283,12 +321,14 @@ const InputText: React.FC<IProps> = (props: IProps) => {
 
         onBlur={props.onBlur}
 
+        onKeyDown={props.onKeyDown}
+
         // onContentSizeChange={(event) => {
         //   setHeight(event.nativeEvent.contentSize.height);
         // }}
 
 
-        value={props.value || ''}
+        value={displayValue}
 
         placeholder={props.placeholderText}
         placeholderTextColor={props.placeholderTextColor}

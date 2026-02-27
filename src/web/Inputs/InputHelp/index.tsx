@@ -53,7 +53,7 @@ const InputHelp: React.FC<IProps> = (props: IProps) => {
       <HelpCountTextStyle
         style={props.helpCountStyle}>
         {typeof props.countLimit === 'number'
-          ? props.helpTextValue?.length + ' / ' + props.countLimit
+          ? `${(props.helpTextValue ?? '').length} / ${props.countLimit}`
           : props.countLimit
         }
       </HelpCountTextStyle>

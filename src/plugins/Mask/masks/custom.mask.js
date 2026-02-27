@@ -29,12 +29,12 @@ function toPattern(value, mask, translation) {
 
   while (true) {
     // if mask is ended, break.
-    if (maskCharIndex === mask.length) {
+    if (maskCharIndex === mask?.length) {
       break;
     }
 
     // if value is ended, break.
-    if (valueCharIndex === value.length) {
+    if (valueCharIndex === value?.length) {
       break;
     }
 
