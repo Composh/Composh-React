@@ -2,7 +2,12 @@ import ScrollHorizontal from './ScrollHorizontal';
 import ScrollVertical from './ScrollVertical';
 
 
-export default {
+
+const Scrolls = {
   Horizontal: ScrollHorizontal,
   Vertical: ScrollVertical,
 };
+
+
+
+export default Scrolls;

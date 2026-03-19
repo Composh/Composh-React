@@ -47,7 +47,7 @@ export const ScrollbarProfileStyle = css`
   }
 `;
 
-export const ScrollHorizontalContainer = styled.div`
+export const ScrollHorizontalContainer = styled.div<IProps>`
   display: flex;
   flex-direction: row;
   overflow-x: auto;

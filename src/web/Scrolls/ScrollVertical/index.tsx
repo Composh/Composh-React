@@ -1,4 +1,7 @@
-import React from 'react';
+import React,
+{
+  forwardRef,
+} from 'react';
 
 import {
   ScrollVerticalContainer,
@@ -12,17 +15,20 @@ export interface IProps {
 
 
 
-const ScrollHorizontal: React.FC<IProps> = (props: IProps) => {
+const ScrollVertical = forwardRef<HTMLDivElement, IProps>((props, ref) => {
   return (
 
     <ScrollVerticalContainer
+      ref={ref}
       {...props}>
       {props.children}
     </ScrollVerticalContainer>
 
   );
-};
+});
 
 
 
-export default ScrollHorizontal;
+ScrollVertical.displayName = 'ScrollVertical';
+
+export default ScrollVertical;
