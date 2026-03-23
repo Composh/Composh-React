@@ -323,7 +323,7 @@ const InputText: React.FC<IProps> = (props: IProps) => {
 
         onKeyDown={props.onKeyDown}
 
-        // onContentSizeChange={(event) => {
+        // onContentSizeChange={(event: any) => {
         //   setHeight(event.nativeEvent.contentSize.height);
         // }}
 

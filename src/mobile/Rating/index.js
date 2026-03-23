@@ -148,7 +148,7 @@ class Rating extends Component {
         <AnimatableView
           key={i}
           ref={(node) => {
-            this.starRef.push(node); 
+            this.starRef.push(node);
           }}
         >
           <StarButton
@@ -158,7 +158,7 @@ class Rating extends Component {
             halfStarEnabled={halfStarEnabled}
             icoMoonJson={icoMoonJson}
             iconSet={iconSet}
-            onStarButtonPress={(event) => {
+            onStarButtonPress={(event: any) => {
               if (animation && ANIMATION_TYPES.includes(animation)) {
                 for (let s = 0; s <= i; s++) {
                   this.starRef[s][animation](1000 + (s * 200));

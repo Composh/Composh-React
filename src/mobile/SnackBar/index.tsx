@@ -139,7 +139,7 @@ class SnackbarComponent extends React.Component<IProps> {
         ]}>
 
         <Animated.View
-          onLayout={(event) => this.setState({ hideDistance: event.nativeEvent.layout.height })}
+          onLayout={(event: any) => this.setState({ hideDistance: event.nativeEvent.layout.height })}
           style={[
             this.props.containerStyle,
             styles.container,

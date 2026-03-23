@@ -307,7 +307,7 @@ const InputText: React.FC<IProps> = (props: IProps) => {
 
         multiline={props.password ? false : props.multiline}
 
-        // onChange={(event) => { // Web
+        // onChange={(event: any) => { // Web
         //   _onChangeText(event.target.value);
         // }}
         onChangeText={(eventText) => { // Mobile
@@ -316,7 +316,7 @@ const InputText: React.FC<IProps> = (props: IProps) => {
 
         onBlur={props.onBlur}
 
-        // onContentSizeChange={(event) => {
+        // onContentSizeChange={(event: any) => {
         //   setHeight(event.nativeEvent.contentSize.height);
         // }}
         // eslint-disable-next-line no-extra-boolean-cast

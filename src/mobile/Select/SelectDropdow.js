@@ -373,7 +373,7 @@ class DropDownPicker extends React.Component {
       ]}>
 
         <TouchableOpacity
-          onLayout={(event) => this.getLayout(event.nativeEvent.layout)}
+          onLayout={(event: any) => this.getLayout(event.nativeEvent.layout)}
           disabled={disabled}
           activeOpacity={0.85}
           style={[

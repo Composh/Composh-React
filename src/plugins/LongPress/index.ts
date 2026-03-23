@@ -16,7 +16,7 @@ const LongPress = (
   const target = useRef<any>();
 
   const start = useCallback(
-    (event) => {
+    (event: any) => {
       if (shouldPreventDefault && event.target) {
         event.target.addEventListener('touchend', preventDefault, {
           passive: false,

@@ -13,6 +13,7 @@ import Chip from './Chip';
 import Container from './Container';
 import Content from './Content';
 import Divider from './Divider';
+import Empty from './Empty';
 import Epigraph from './Epigraph';
 import FAB from './FAB';
 // import Footer from './Footer';
@@ -70,6 +71,7 @@ export {
   Container,
   Content,
   Divider,
+  Empty,
   Epigraph,
   FAB,
   // Footer,
