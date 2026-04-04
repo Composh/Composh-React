@@ -51,6 +51,8 @@ const CheckBox: React.FC<IProps> = (props) => {
   const direction = props.direction !== undefined ? props.direction : 'LEFT';
   const checkedColor = props.checkedColor !== undefined ? props.checkedColor : '#107e1f';
   const uncheckedColor = props.uncheckedColor !== undefined ? props.uncheckedColor : '#bfbfbf';
+  const checkedTitleColor = props.checkedTitleColor !== undefined ? props.checkedTitleColor : undefined;
+  const uncheckedTitleColor = props.uncheckedTitleColor !== undefined ? props.uncheckedTitleColor : undefined;
   const size = props.size !== undefined ? props.size : 18;
 
 
@@ -95,7 +97,12 @@ const CheckBox: React.FC<IProps> = (props) => {
             {React.isValidElement(props.title) ? (
               props.title
             ) : (
-              <CheckboxText style={props.titleStyle}>
+              <CheckboxText
+                {...props.titleProps}
+                style={{
+                  color: checked ? checkedTitleColor : uncheckedTitleColor,
+                  ...props.titleStyle,
+                }}>
                 {checked ? props.checkedTitle || props.title : props.uncheckedTitle || props.title}
               </CheckboxText>
             )}
