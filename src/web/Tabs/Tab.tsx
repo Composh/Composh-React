@@ -1,7 +1,9 @@
 import React from 'react';
 
 import {
+  TabBadge,
   TabContainer,
+  TabButtonContainer,
   TabIcon,
   TabText,
 } from './styled';
@@ -24,6 +26,7 @@ export interface ITabProps {
   textColor?: any;
 
   icon?: any; // RenderProp<Partial<ImageProps>>;
+  badge?: React.ReactNode;
   selected?: boolean;
   onSelect?: (selected: boolean) => void;
 
@@ -160,21 +163,33 @@ const Tab: React.FC<ITabProps> = (props: ITabProps) => {
     <TabContainer
       {...props as any}
       style={props.style}
-      // onMouseEnter={this.onMouseEnter}
-      // onMouseLeave={this.onMouseLeave}
-      onClick={onPress}>
+    // onMouseEnter={this.onMouseEnter}
+    // onMouseLeave={this.onMouseLeave}
+    >
 
-      {props.left && iconTabView}
+      <TabButtonContainer
+        onClick={onPress}>
 
-
-      <TabText
-        color={props.textColor}
-        style={props.titleStyle}>
-        {props.title}
-      </TabText>
+        {props.left && iconTabView}
 
 
-      {!props.left && props.right && iconTabView}
+        <TabText
+          color={props.textColor}
+          style={props.titleStyle}>
+          {props.title}
+        </TabText>
+
+
+        {!props.left && props.right && iconTabView}
+
+      </TabButtonContainer>
+
+
+      {props.badge && (
+        <TabBadge>
+          {props.badge}
+        </TabBadge>
+      )}
 
     </TabContainer>
 
