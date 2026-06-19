@@ -79,7 +79,7 @@ export const TextInputStyle = styled.input<IProps>`
 
 // Show Password Component Style
 
-export const ShowPasswordStyle = styled.a`
+export const ShowPasswordStyle = styled.button`
   display: flex;
   flex-direction: column;
   height: 35px;

@@ -76,6 +76,7 @@ export interface IProps {
   helpColor?: string;
 
   // Props Count Letter
+  hideCount?: boolean;
   noCount?: boolean;
   countLimit?: any; // string | number;
   countColor?: string;
@@ -270,6 +271,7 @@ const InputText: React.FC<IProps> = (props: IProps) => {
       helpColor={props.helpColor}
 
       // Props Count Letter
+      hideCount={props.hideCount}
       noCount={props.noCount}
       countLimit={props.countLimit}
       countColor={props.countColor}>
