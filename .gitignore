@@ -36,3 +36,6 @@ yarn.lock*
 example/node_modules/
 example/npm-debug.log
 example/yarn-error.log
+
+# Logs de debug
+debug.log
