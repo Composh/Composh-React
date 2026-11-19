@@ -46,6 +46,7 @@ import Table from './Table';
 import Tab from './Tabs/Tab';
 import TabBar from './Tabs/TabBar';
 // import TabView from './Tabs/TabView';
+import Text from './Text';
 import Title from './Title';
 // import Toast from './Toast';
 import Toggle from './Toggle';
@@ -104,6 +105,7 @@ export {
   Tab,
   TabBar,
   // TabView,
+  Text,
   Title,
   // Toast,
   Toggle,

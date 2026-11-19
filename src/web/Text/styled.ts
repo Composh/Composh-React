@@ -94,7 +94,10 @@ export const PStyle = css`
 
 
 
-export const TextStyled = styled.p`
+// type so escolhe o estilo: nao vai para o DOM (evita <h1 type="h1">, HTML invalido para SEO)
+export const TextStyled = styled.p.withConfig<IProps>({
+  shouldForwardProp: (prop, defaultValidatorFn) => prop !== 'type' && defaultValidatorFn(prop),
+})`
   ${(props: IProps) => {
     switch (props.type) {
       case 'h1':

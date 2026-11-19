@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 
 export interface IProps {
+  // true: titulo principal da pagina (h1, um por pagina para SEO). false: p. Visual igual nos dois.
+  main?: boolean;
   color?: string;
   numberOfLines?: number;
   ellipsizeMode?: string;
@@ -10,7 +12,14 @@ export interface IProps {
 
 
 
-const Title = styled.h1`
+const Title = styled.p
+  .withConfig<IProps>({
+    // main so escolhe a tag: nao vai para o DOM
+    shouldForwardProp: (prop, defaultValidatorFn) => prop !== 'main' && defaultValidatorFn(prop),
+  })
+  .attrs((props: IProps) => ({
+    as: props.main ? 'h1' : 'p',
+  }))`
   margin-top: 1px;
   margin-bottom: 0;
   color: ${(props: IProps) => props.color || '#ffffff'};

@@ -12,7 +12,8 @@ export interface IProps {
   ellipsiMode?: 'tail'; // ellipsizeMode
   color?: string;
   fontSize?: number;
-  children?: string;
+  // Normalmente texto; tambem aceita elementos dentro do texto (span, label etc.)
+  children?: string | React.ReactNode;
 }
 
 
@@ -25,7 +26,11 @@ const Text: React.FC<IProps> = (props: IProps) => {
   return (
 
     <TextStyled
+      // Tag renderizada: p por padrao, h1 a h6 so quando vier por props
+      as={props.type || 'p'}
       className={className?.className}
+      type={props.type}
+      fontSize={props.fontSize}
       lineNumbers={props.lineNumbers}
       ellipsiMode={props.ellipsiMode}
       color={props.color}>
